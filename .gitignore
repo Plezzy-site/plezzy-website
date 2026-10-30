@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Binaries & executables
+*.exe
+cloudflared.exe
+
+# Database & Sensitive Customer Data
+/data/
+*.log
+.env
+.env.*
+
+# Backups & Historical edits
+*bak*
+*.orig
+*.pre_*
+dump.html
+
+# One-off Scratch Scripts & Test Files
+*.py
+mob_section_*.jpg
+mobile_step_*.jpg
+slice_*.jpg
+verify_*.jpg
+statement_*.jpg
+shelf_*.jpg
+im1_*.png
+im2_*.jpg
+
+# Scratch & Verification Screenshots
+*_crop*.png
+hero_*.png
+shelf_*.png
+slice_*.png
+verify_*.png
+test_*.png
+desktop_*.png
+mobile_*.png
+final_*.png
+curr_card_*.png
+ref_*.png
+
+# OS & Editor
+Thumbs.db
+.DS_Store
+.vscode/
+.idea/

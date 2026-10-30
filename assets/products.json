@@ -1,0 +1,260 @@
+[
+  {
+    "id": "plz-pebble",
+    "slug": "pocket-muse",
+    "name": "pocket muse",
+    "subtitle": "SENSORY ERGONOMIC PEBBLE • POCKET MUSE",
+    "category": "sensory essentials",
+    "badge": "",
+    "role": "palm acoustic resonance & velvety tactile wellness",
+    "tagline": "An ultra-smooth, palm-sculpted tactile pebble with whisper acoustic dampening and water-resistant finish.",
+    "priceINR": 2499,
+    "priceUSD": "$30.00",
+    "rating": 4.9,
+    "reviewsCount": 348,
+    "image": "/assets/products/pocket-pebble-main.jpg",
+    "images": [
+      {
+        "src": "/assets/products/pocket-pebble-main.jpg",
+        "label": "Studio Portrait with Hibiscus"
+      },
+      {
+        "src": "/assets/products/pocket-pebble-macro.jpg",
+        "label": "Sculptural Form & Specular Finish"
+      },
+      {
+        "src": "/assets/products/pocket-pebble-detail.jpg",
+        "label": "Tactile Texture & Droplet Detail"
+      }
+    ],
+    "shades": [
+      {
+        "name": "sunburst yellow",
+        "color": "#F7C948",
+        "desc": "warm velvety saffron",
+        "badge": "signature"
+      },
+      {
+        "name": "obsidian noir",
+        "color": "#1A1A1A",
+        "desc": "deep matte obsidian",
+        "badge": "core"
+      }
+    ],
+    "desc1": "The pocket muse is an intentional sensory wellness object designed to rest naturally within the palm. Encased in velvety, hypoallergenic medical-grade silicone with water-resistant acoustic dampening, it delivers deeply calming acoustic frequencies for discreet daily wellness.",
+    "desc2": "Engineered with magnetic rapid charging and an intuitive one-touch control interface. Crafted to elevate intimate sensory rituals with quiet confidence.",
+    "accordions": [
+      {
+        "title": "Benefits & Sensory Ritual",
+        "content": "Ultra-quiet acoustic dampening (<28dB) delivers deep physical relaxation and sensory harmony. Waterproof construction allows for warm bath relaxation and effortless cleansing."
+      },
+      {
+        "title": "Application & Care",
+        "content": "Press and hold power button for 2 seconds to awaken. Cycle through 8 calibrated harmonic wave patterns. Clean with warm water and mild soap after each use."
+      },
+      {
+        "title": "Materials & Engineering Specs",
+        "content": "100% body-safe hypoallergenic liquid silicone unibody. IPX7 waterproof submersible seal. Magnetic USB rapid charging with 80+ minutes of continuous ritual time."
+      },
+      {
+        "title": "Stealth Delivery & 1-Year Guarantee",
+        "content": "Dispatched in plain, unbranded protective packaging with no identifiable exterior markings. Backed by an unconditional 1-year replacement warranty."
+      }
+    ],
+    "availability": "in_stock",
+    "price": 2499,
+    "priceNumeric": 2499
+  },
+  {
+    "id": "plz-dual-wand",
+    "slug": "cloud-kiss",
+    "name": "cloud kiss",
+    "subtitle": "DUAL HARMONIC RESONANCE WAND • CLOUD KISS",
+    "category": "harmonic resonance",
+    "badge": "",
+    "role": "dual-point harmonic resonance with floating celestial hearts",
+    "tagline": "Translucent frosted silicone body infused with floating celestial hearts and dual harmonic motors.",
+    "priceINR": 3999,
+    "priceUSD": "$48.00",
+    "rating": 5,
+    "reviewsCount": 412,
+    "image": "/assets/products/astral-wave-wand-main.jpg",
+    "images": [
+      {
+        "src": "/assets/products/astral-wave-wand-main.jpg",
+        "label": "Translucent Dual Silhouette"
+      },
+      {
+        "src": "/assets/products/astral-wave-wand-macro.jpg",
+        "label": "Frosted Silicone & Heart Particles"
+      },
+      {
+        "src": "/assets/products/astral-wave-wand-detail.jpg",
+        "label": "Precision Wave Nodes & Contour"
+      }
+    ],
+    "shades": [
+      {
+        "name": "celestial frost",
+        "color": "#E0DBE8",
+        "desc": "frosted lavender with hearts",
+        "badge": "signature"
+      },
+      {
+        "name": "amethyst mist",
+        "color": "#7B5E8C",
+        "desc": "deep violet shimmer",
+        "badge": "limited"
+      }
+    ],
+    "desc1": "The cloud kiss represents the pinnacle of sculptural intimacy design. Molded from frosted translucent medical silicone and hand-infused with iridescent micro-hearts, it houses dual synchronized acoustic motors that generate deep resonant frequencies across both contact nodes.",
+    "desc2": "Features independent multi-speed harmonic wave modes and ergonomic dual-end curvature tailored for both focused acupressure and expansive resonance.",
+    "accordions": [
+      {
+        "title": "Benefits & Sensory Ritual",
+        "content": "Dual independent resonance motors deliver simultaneous dual-zone acoustic stimulation. Ergonomically balanced to adapt gracefully to body contours."
+      },
+      {
+        "title": "Application & Care",
+        "content": "Intuitive dual-button interface enables individual or synchronized control of both resonance points. Wash thoroughly with mild cleanser and store dry."
+      },
+      {
+        "title": "Materials & Engineering Specs",
+        "content": "Medical-grade frosted liquid silicone with suspended non-toxic micro-elements. Dual low-frequency core motors (<29dB). Magnetic hermetic fast charge. IPX7 100% waterproof."
+      },
+      {
+        "title": "Stealth Delivery & 1-Year Guarantee",
+        "content": "Shipped in discreet matte black eco-conscious packaging with complete confidentiality. Comprehensive 1-year guarantee included."
+      }
+    ],
+    "availability": "in_stock",
+    "price": 3999,
+    "priceNumeric": 3999
+  },
+  {
+    "id": "plz-elixir",
+    "slug": "banana-espresso",
+    "name": "Banana Espresso",
+    "subtitle": "BOTANICAL HYDRATION ELIXIR • BANANA ESPRESSO",
+    "category": "botanical elixirs",
+    "badge": "",
+    "role": "ultra-glide clean moisture & botanical nourishment",
+    "tagline": "pH-balanced organic botanical intimacy serum formulated for silky, long-lasting hydration.",
+    "priceINR": 1299,
+    "priceUSD": "$16.00",
+    "rating": 4.9,
+    "reviewsCount": 520,
+    "image": "/assets/products/nectar-elixir-main.jpg",
+    "images": [
+      {
+        "src": "/assets/products/nectar-elixir-main.jpg",
+        "label": "Canister with Dripping Viscous Drop"
+      },
+      {
+        "src": "/assets/products/nectar-elixir-macro.jpg",
+        "label": "Graphic Halftone Banana Label Artwork"
+      },
+      {
+        "src": "/assets/products/nectar-elixir-detail.jpg",
+        "label": "Dispenser Nozzle & Viscosity Closeup"
+      }
+    ],
+    "shades": [
+      {
+        "name": "pure botanical",
+        "color": "#F0E130",
+        "desc": "canary yellow dispenser",
+        "badge": "essential"
+      }
+    ],
+    "desc1": "Banana Espresso is a water-soluble, clean botanical formulation that provides an effortless, frictionless glide with skin-soothing hydration. Packaged in a contemporary airtight pump dispenser featuring signature graphic artwork.",
+    "desc2": "Formulated to match the body's natural chemistry with a balanced pH of 3.9–4.2. Safe with natural rubber latex and all silicone wellness objects.",
+    "accordions": [
+      {
+        "title": "Benefits & Sensory Ritual",
+        "content": "Ultra-slippery, non-sticky texture that never gets tacky or leaves stains. Provides restorative moisture to delicate skin barriers."
+      },
+      {
+        "title": "Application & Care",
+        "content": "Dispense 2–3 pumps into palms and warm gently before applying. Compatible with all silicone devices, condoms, and natural touch rituals."
+      },
+      {
+        "title": "Materials & Ingredients",
+        "content": "Purified Aqua, Plant-Derived Hyaluronic Acid, Organic Aloe Barbadensis Leaf Juice, Vegetable Glycerin, Chamomile Extract, Citric Acid. 100% Vegan, cruelty-free, paraben-free."
+      },
+      {
+        "title": "Stealth Delivery & 1-Year Guarantee",
+        "content": "Shipped with neutral return address and zero product descriptions on exterior packing. 100% satisfaction guarantee."
+      }
+    ],
+    "availability": "in_stock",
+    "price": 1299,
+    "priceNumeric": 1299
+  },
+  {
+    "id": "plz-cherry-wand",
+    "slug": "rose-rush",
+    "name": "rose rush",
+    "subtitle": "PRECISION CONTOURED WAND • ROSE RUSH",
+    "category": "precision resonance",
+    "badge": "",
+    "role": "targeted acupressure & whisper-quiet sonic depth",
+    "tagline": "Sculptural flexible wand in frosted silicone with deep rumbly vibrations for pinpoint release.",
+    "priceINR": 3499,
+    "priceUSD": "$42.00",
+    "rating": 4.9,
+    "reviewsCount": 289,
+    "image": "/assets/products/carmine-resonance-wand-main.jpg",
+    "images": [
+      {
+        "src": "/assets/products/carmine-resonance-wand-main.jpg",
+        "label": "Sculptural Silhouette & Dripping Carmine Glaze"
+      },
+      {
+        "src": "/assets/products/carmine-resonance-wand-macro.jpg",
+        "label": "Contoured Flexible Tip on Violet Velvet"
+      },
+      {
+        "src": "/assets/products/carmine-resonance-wand-detail.jpg",
+        "label": "Ergonomic Neck & Glaze Texture Detail"
+      }
+    ],
+    "shades": [
+      {
+        "name": "carmine glaze",
+        "color": "#B82E3E",
+        "desc": "translucent cherry rose",
+        "badge": "limited"
+      },
+      {
+        "name": "noir shadow",
+        "color": "#2B2B2B",
+        "desc": "smoky matte shadow",
+        "badge": "core"
+      }
+    ],
+    "desc1": "The rose rush is an ergonomically sculpted resonance instrument engineered with a flexible contoured head to deliver focused, deep-tissue acoustic resonance exactly where required. Its frosted, velvet-soft silicone surface glides weightlessly.",
+    "desc2": "Equipped with an ultra-quiet high-torque magnetic motor operating below 26dB, offering 10 discrete rhythmic frequencies ranging from gentle continuous murmurs to powerful pulse waves.",
+    "accordions": [
+      {
+        "title": "Benefits & Sensory Ritual",
+        "content": "Flexible ergonomic head pivots seamlessly to adapt to personal contours. Low-frequency motor produces deep sensations without irritating high-pitched buzzes."
+      },
+      {
+        "title": "Application & Care",
+        "content": "Long-press the concave touch key to activate. Tap rhythm key to cycle through frequency curves. Completely submersible for bath relaxation."
+      },
+      {
+        "title": "Materials & Engineering Specs",
+        "content": "100% body-safe medical silicone unibody. IPX7 waterproof. High-torque acoustic motor (<26dB). Rapid magnetic charging with up to 2 hours of ritual time."
+      },
+      {
+        "title": "Stealth Delivery & 1-Year Guarantee",
+        "content": "Packaged in discreet luxury matte casing. Backed by 1-year replacement warranty."
+      }
+    ],
+    "availability": "in_stock",
+    "price": 3499,
+    "priceNumeric": 3499
+  }
+]
