@@ -8228,6 +8228,185 @@ function _F(){
         }),
 
         // ══════════════════════════════════════════════════════════════
+        // SECTION 4: LUXURY EDITORIAL TWO-COLUMN SPLIT (LUXE & STANDARD)
+        // ══════════════════════════════════════════════════════════════
+        v.jsx("section",{
+          id:"editorial-collection-split",
+          className:"w-full select-none relative overflow-hidden bg-black py-0 mb-12 sm:mb-20 lg:mb-24",
+          style:{width:"100%", marginBottom:"clamp(48px, 6vw, 96px)"},
+          children: v.jsxs("div",{
+            className:"split-grid-container w-full grid grid-cols-1 md:grid-cols-2 gap-0 relative",
+            children:[
+
+              // ─── LEFT PANEL: LUXE ──────────────────────────────────
+              v.jsxs("div",{
+                onClick:()=>handleCategoryNavigation("luxe"),
+                className:"split-panel-editorial group relative w-full overflow-hidden cursor-pointer flex flex-col justify-end p-8 sm:p-12 lg:p-16 border-b md:border-b-0 md:border-r border-white/10 select-none",
+                role:"button",
+                "aria-label":"Explore Luxe Collection",
+                tabIndex:0,
+                onKeyDown:(e)=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); handleCategoryNavigation("luxe"); } },
+                children:[
+
+                  // Background Image with subtle zoom on hover
+                  v.jsx("img",{
+                    src:"/assets/plezzy_luxe_panel.jpg",
+                    alt:"PLEZZY Luxe Collection",
+                    className:"split-bg-img split-bg-img-luxe absolute inset-0 w-full h-full object-cover select-none",
+                    style:{zIndex:0}
+                  }),
+
+                  // Deep Burgundy / Wine Cinematic Gradient Overlay
+                  v.jsx("div",{
+                    className:"split-overlay absolute inset-0",
+                    style:{
+                      zIndex:1,
+                      background:"linear-gradient(to top, rgba(24,4,8,0.96) 0%, rgba(36,6,12,0.68) 35%, rgba(20,4,8,0.2) 60%, rgba(0,0,0,0.35) 100%)",
+                      pointerEvents:"none"
+                    }
+                  }),
+
+                  // Content Container (Lift slightly on hover)
+                  v.jsxs("div",{
+                    className:"split-content relative z-10 space-y-3.5 transition-transform duration-500 ease-out group-hover:-translate-y-1.5 text-left max-w-lg",
+                    children:[
+                      // Subtitle / Collection Tag
+                      v.jsx("div",{children:
+                        v.jsx("span",{
+                          className:"inline-flex items-center px-2.5 py-0.5 rounded-full bg-black/60 text-[#E8FB76] border border-white/15 backdrop-blur-xs text-[10px] sm:text-[11px] font-extrabold uppercase tracking-[0.22em]",
+                          children:"THE INDULGENT COLLECTION"
+                        })
+                      }),
+
+                      // Category Title
+                      v.jsx("h2",{
+                        className:"font-black uppercase tracking-tight text-white m-0",
+                        style:{
+                          fontFamily:"'Plus Jakarta Sans', -apple-system, sans-serif",
+                          fontSize:"clamp(2.75rem, 5.5vw, 4.75rem)",
+                          lineHeight:"0.95",
+                          letterSpacing:"-0.03em",
+                          textShadow:"0 2px 24px rgba(0,0,0,0.8)"
+                        },
+                        children:"LUXE"
+                      }),
+
+                      // Supporting Copy
+                      v.jsx("p",{
+                        className:"text-xs sm:text-sm text-white/90 font-normal leading-relaxed max-w-sm pt-1",
+                        style:{textShadow:"0 1px 8px rgba(0,0,0,0.8)"},
+                        children:"Elevated essentials for a more indulgent experience."
+                      }),
+
+                      // Minimal Luxury CTA
+                      v.jsx("div",{
+                        className:"pt-3",
+                        children: v.jsxs("span",{
+                          className:"text-xs sm:text-[13px] font-extrabold uppercase tracking-[0.18em] text-white inline-flex items-center gap-2 pb-1 border-b border-white/40 group-hover:border-[#E8FB76] group-hover:text-[#E8FB76] transition-all duration-300",
+                          style:{textShadow:"0 1px 8px rgba(0,0,0,0.8)"},
+                          children:[
+                            "SHOP LUXE",
+                            v.jsx("span",{
+                              className:"inline-block transition-transform duration-300 group-hover:translate-x-1.5",
+                              children:"→"
+                            })
+                          ]
+                        })
+                      })
+                    ]
+                  })
+
+                ]
+              }),
+
+              // ─── RIGHT PANEL: STANDARD ──────────────────────────────
+              v.jsxs("div",{
+                onClick:()=>handleCategoryNavigation("standard"),
+                className:"split-panel-editorial group relative w-full overflow-hidden cursor-pointer flex flex-col justify-end p-8 sm:p-12 lg:p-16 select-none",
+                role:"button",
+                "aria-label":"Explore Standard Collection",
+                tabIndex:0,
+                onKeyDown:(e)=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); handleCategoryNavigation("standard"); } },
+                children:[
+
+                  // Background Image with subtle zoom on hover
+                  v.jsx("img",{
+                    src:"/assets/plezzy_std_panel.jpg",
+                    alt:"PLEZZY Standard Collection",
+                    className:"split-bg-img split-bg-img-std absolute inset-0 w-full h-full object-cover select-none",
+                    style:{zIndex:0}
+                  }),
+
+                  // Soft Warm Luxury Cinematic Gradient Overlay
+                  v.jsx("div",{
+                    className:"split-overlay absolute inset-0",
+                    style:{
+                      zIndex:1,
+                      background:"linear-gradient(to top, rgba(10,8,8,0.96) 0%, rgba(18,14,14,0.72) 35%, rgba(18,14,14,0.25) 60%, rgba(0,0,0,0.15) 100%)",
+                      pointerEvents:"none"
+                    }
+                  }),
+
+                  // Content Container (Lift slightly on hover)
+                  v.jsxs("div",{
+                    className:"split-content relative z-10 space-y-3.5 transition-transform duration-500 ease-out group-hover:-translate-y-1.5 text-left max-w-lg",
+                    children:[
+                      // Subtitle / Collection Tag
+                      v.jsx("div",{children:
+                        v.jsx("span",{
+                          className:"inline-flex items-center px-2.5 py-0.5 rounded-full bg-black/60 text-[#E8FB76] border border-white/15 backdrop-blur-xs text-[10px] sm:text-[11px] font-extrabold uppercase tracking-[0.22em]",
+                          children:"THE EVERYDAY COLLECTION"
+                        })
+                      }),
+
+                      // Category Title
+                      v.jsx("h2",{
+                        className:"font-black uppercase tracking-tight text-white m-0",
+                        style:{
+                          fontFamily:"'Plus Jakarta Sans', -apple-system, sans-serif",
+                          fontSize:"clamp(2.75rem, 5.5vw, 4.75rem)",
+                          lineHeight:"0.95",
+                          letterSpacing:"-0.03em",
+                          textShadow:"0 2px 24px rgba(0,0,0,0.8)"
+                        },
+                        children:"STANDARD"
+                      }),
+
+                      // Supporting Copy
+                      v.jsx("p",{
+                        className:"text-xs sm:text-sm text-white/90 font-normal leading-relaxed max-w-sm pt-1",
+                        style:{textShadow:"0 1px 8px rgba(0,0,0,0.8)"},
+                        children:"Everyday essentials, done well."
+                      }),
+
+                      // Minimal Luxury CTA
+                      v.jsx("div",{
+                        className:"pt-3",
+                        children: v.jsxs("span",{
+                          className:"text-xs sm:text-[13px] font-extrabold uppercase tracking-[0.18em] text-white inline-flex items-center gap-2 pb-1 border-b border-white/40 group-hover:border-[#E8FB76] group-hover:text-[#E8FB76] transition-all duration-300",
+                          style:{textShadow:"0 1px 8px rgba(0,0,0,0.8)"},
+                          children:[
+                            "SHOP STANDARD",
+                            v.jsx("span",{
+                              className:"inline-block transition-transform duration-300 group-hover:translate-x-1.5",
+                              children:"→"
+                            })
+                          ]
+                        })
+                      })
+                    ]
+                  })
+
+                ]
+              })
+
+            ]
+          })
+        }),
+
+
+
+        // ══════════════════════════════════════════════════════════════
         // SECTION 7: FULL-WIDTH CINEMATIC CAMPAIGN VIDEO
         // ══════════════════════════════════════════════════════════════
         v.jsx("section",{
