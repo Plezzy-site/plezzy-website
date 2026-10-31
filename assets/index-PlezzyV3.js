@@ -8061,170 +8061,207 @@ function _F(){
         }),
 
         // ══════════════════════════════════════════════════════════════
-        // SECTION 2: EDITORIAL ICONIC STATEMENT (ABOVE PRODUCT LIST)
+        // SECTION 2 & 3: PLEZZY EDITORIAL BENTO PRODUCT GRID
         // ══════════════════════════════════════════════════════════════
-        v.jsx("div", {
-          id: "campaign-statement",
-          className: "w-full select-none relative pt-8 pb-4 sm:pt-12 sm:pb-6 text-center",
-          children: v.jsx("div", {
-            className: "max-w-5xl mx-auto px-4",
-            children: v.jsx("h2", {
-              className: "tracking-tight",
-              style: {
-                textTransform: "uppercase",
-                fontSize: "clamp(1.95rem, 6vw, 4.5rem)",
-                fontWeight: 900,
-                letterSpacing: "-0.035em",
-                color: "#4A0E17",
-                margin: 0,
-                lineHeight: "1.0",
-                fontFamily: "'Rektorat Heavy', 'Plus Jakarta Sans', 'Swiss', -apple-system, sans-serif",
-                textShadow: "0 2px 4px rgba(255,255,255,0.3)"
-              },
-              children: "SERVING IS SEXY."
-            })
-          })
-        }),
+        v.jsxs("section", {
+          id: "plezzy-editorial-products-grid",
+          className: "plezzy-editorial-grid-section select-none",
+          children: [
+            // Editorial Header (Styled after reference "OUR COCKTAILS" / "OUR ESSENTIALS")
+            v.jsxs("div", {
+              className: "text-center mb-6 sm:mb-10",
+              children: [
+                v.jsxs("div", {
+                  className: "plezzy-editorial-header",
+                  children: [
+                    v.jsx("span", {
+                      className: "plezzy-editorial-tag",
+                      children: "OUR"
+                    }),
+                    v.jsx("h2", {
+                      className: "plezzy-editorial-title",
+                      children: "ESSENTIALS"
+                    })
+                  ]
+                }),
+                v.jsx("p", {
+                  style: {
+                    fontFamily: "'Plus Jakarta Sans', sans-serif",
+                    fontSize: "clamp(12px, 1.4vw, 14px)",
+                    color: "#4A0E17",
+                    opacity: 0.82,
+                    fontWeight: 600,
+                    letterSpacing: "0.04em",
+                    margin: "0 auto",
+                    maxWidth: "520px"
+                  },
+                  children: "Thoughtfully designed everyday essentials for modern intimacy."
+                })
+              ]
+            }),
 
-                // ══════════════════════════════════════════════════════════════
-        // SECTION 3: PRODUCT LIST (LARGE HORIZONTAL SLIDESHOW, RIGHTWARD DIRECTION)
-        // ══════════════════════════════════════════════════════════════
-        v.jsx("section", {
-          id: "plezzy-featured-products-shelf",
-          children: v.jsxs("div", {
-            className: "plezzy-shelf-container",
-            style: { width: "100%", maxWidth: "100%", margin: "0 auto", overflow: "hidden" },
-            children: [
-              // Product Cards Horizontal Slideshow Track (Moving Right)
-              v.jsx("div", {
-                className: "plezzy-shelf-wrapper",
-                children: v.jsx("div", {
-                  className: "plezzy-shelf-track",
-                  children: (() => {
-                    const baseProds = prods.slice(0, 4);
-                    // Duplicate 4 times (16 cards total) for seamless rightward infinite loop
-                    const repeated = [...baseProds, ...baseProds, ...baseProds, ...baseProds];
-                    return repeated.map((p, idx) => {
-                      const mainImg = (p.images && p.images[0]?.src) || p.image || "/assets/products/pocket-pebble-main.jpg";
-                      const comparePrices = [3499, 4999, 1899, 4299];
-                      const compPrice = comparePrices[idx % comparePrices.length];
-                      const priceStr = "Rs. " + (p.priceINR || 2499).toLocaleString("en-IN");
-                      const compStr = "Rs. " + compPrice.toLocaleString("en-IN");
-                      const revCount = p.reviewsCount || [348, 412, 520, 289][idx % 4];
-                      const hasDiscount = (idx % 4) === 1 || (idx % 4) === 3;
+            // Bento Grid Container
+            v.jsx("div", {
+              className: "plezzy-bento-grid",
+              children: (() => {
+                const baseProds = prods.slice(0, 4);
+                return baseProds.map((p, idx) => {
+                  const mainImg = (p.images && p.images[0]?.src) || p.image || "/assets/products/pocket-pebble-main.jpg";
+                  const comparePrices = [3499, 4999, 1899, 4299];
+                  const compPrice = comparePrices[idx % comparePrices.length];
+                  const priceStr = "Rs. " + (p.priceINR || 2499).toLocaleString("en-IN");
+                  const compStr = "Rs. " + compPrice.toLocaleString("en-IN");
+                  const revCount = p.reviewsCount || [348, 412, 520, 289][idx % 4];
+                  const hasDiscount = (idx % 2) === 1 || (idx % 4) === 0;
 
-                      return v.jsxs("div", {
-                        key: `${p.id}-${idx}`,
-                        className: "plezzy-shelf-card",
+                  // Dynamic Bento split: Row 1 (5 & 7 cols), Row 2 (7 & 5 cols)
+                  const colClass = (idx === 0 || idx === 3) ? "plezzy-bento-card-5" : "plezzy-bento-card-7";
+
+                  return v.jsxs("div", {
+                    key: p.id,
+                    onClick: () => {
+                      try { s(); } catch (e) {}
+                      handleSelectProduct(p);
+                    },
+                    className: `plezzy-bento-card group ${colClass}`,
+                    role: "button",
+                    tabIndex: 0,
+                    onKeyDown: (e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        handleSelectProduct(p);
+                      }
+                    },
+                    children: [
+                      // High-res Background Image
+                      v.jsx("img", {
+                        src: mainImg,
+                        alt: p.name,
+                        loading: "lazy",
+                        className: "plezzy-bento-bg-img"
+                      }),
+
+                      // Cinematic Soft Gradient Overlay
+                      v.jsx("div", {
+                        className: "plezzy-bento-overlay"
+                      }),
+
+                      // Top Row: Badges & Ratings
+                      v.jsxs("div", {
+                        className: "plezzy-bento-top-bar",
                         children: [
-                          // Large Product Image Frame
-                          v.jsxs("div", {
-                            onClick: () => { s(); handleSelectProduct(p); },
-                            className: "plezzy-shelf-img-box",
-                            children: [
-                              v.jsx("img", {
-                                src: mainImg,
-                                alt: p.name,
-                                loading: "lazy",
-                                className: "plezzy-shelf-img"
-                              }),
-                              hasDiscount && v.jsx("span", {
-                                className: "plezzy-shelf-badge",
-                                children: "30% OFF"
-                              })
-                            ]
+                          hasDiscount ? v.jsx("span", {
+                            className: "plezzy-bento-badge",
+                            children: "30% OFF"
+                          }) : v.jsx("span", {
+                            className: "plezzy-bento-badge",
+                            style: { backgroundColor: "#ffffff", color: "#111111" },
+                            children: "SIGNATURE"
                           }),
 
-                          // Product Details Block
                           v.jsxs("div", {
-                            style: { display: "flex", flexDirection: "column", justifyContent: "space-between", flex: "1" },
+                            className: "plezzy-bento-rating",
+                            children: [
+                              v.jsx("span", { style: { color: "#ef577a", fontSize: "12px" }, children: "★" }),
+                              v.jsx("span", { children: (p.rating || 4.9).toFixed(1) }),
+                              v.jsxs("span", { style: { opacity: 0.75, fontSize: "10px" }, children: ["(", revCount, ")"] })
+                            ]
+                          })
+                        ]
+                      }),
+
+                      // Bottom Panel: Details & Quick Add
+                      v.jsxs("div", {
+                        className: "plezzy-bento-bottom-panel",
+                        children: [
+                          v.jsx("span", {
+                            className: "plezzy-bento-product-tag",
+                            children: p.category || "Sensory Essentials"
+                          }),
+
+                          v.jsx("h3", {
+                            className: "plezzy-bento-product-name",
+                            children: p.name
+                          }),
+
+                          v.jsx("p", {
+                            className: "plezzy-bento-product-desc",
+                            children: p.tagline || p.subtitle || p.role || "Elevated wellness crafted with hypoallergenic medical-grade silicone."
+                          }),
+
+                          v.jsxs("div", {
+                            className: "plezzy-bento-footer-row",
                             children: [
                               v.jsxs("div", {
+                                className: "plezzy-bento-pricing",
                                 children: [
-                                  // Title (Solid Black)
-                                  v.jsx("h3", {
-                                    onClick: () => { s(); handleSelectProduct(p); },
-                                    className: "plezzy-shelf-title",
-                                    children: p.name
+                                  v.jsx("span", {
+                                    className: "plezzy-bento-price",
+                                    children: priceStr
                                   }),
-
-                                  // Subtitle / Tagline Description (Solid Black)
-                                  v.jsx("p", {
-                                    className: "plezzy-shelf-desc",
-                                    children: p.tagline || p.subtitle || p.role
-                                  }),
-
-                                  // Star Rating & Review Count
-                                  v.jsxs("div", {
-                                    className: "plezzy-shelf-rating",
-                                    children: [
-                                      v.jsx("div", {
-                                        className: "plezzy-shelf-rating-stars",
-                                        children: [0, 1, 2, 3, 4].map((starIdx) => v.jsx("svg", {
-                                          key: starIdx,
-                                          viewBox: "0 0 20 20",
-                                          children: v.jsx("path", {
-                                            d: "M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                                          })
-                                        }, starIdx))
-                                      }),
-                                      v.jsxs("span", {
-                                        className: "plezzy-shelf-reviews",
-                                        children: [revCount, " reviews"]
-                                      })
-                                    ]
-                                  }),
-
-                                  // Pricing (Solid Black Price)
-                                  v.jsxs("div", {
-                                    className: "plezzy-shelf-pricing",
-                                    children: [
-                                      v.jsx("span", {
-                                        className: "plezzy-shelf-price",
-                                        children: priceStr
-                                      }),
-                                      v.jsx("span", {
-                                        className: "plezzy-shelf-compare",
-                                        children: compStr
-                                      })
-                                    ]
+                                  v.jsx("span", {
+                                    className: "plezzy-bento-compare",
+                                    children: compStr
                                   })
                                 ]
                               }),
 
-                              // "ADD TO CART" Pill Button
-                              v.jsx("button", {
+                              v.jsxs("button", {
+                                type: "button",
                                 onClick: (e) => {
                                   e.stopPropagation();
-                                  s();
+                                  try { s(); } catch (err) {}
                                   handleAdd(p, p.shades?.[0]?.name || "signature", 1);
                                 },
-                                className: "plezzy-shelf-btn",
-                                children: "ADD TO CART"
+                                className: "plezzy-bento-add-btn",
+                                "aria-label": `Add ${p.name} to Cart`,
+                                children: [
+                                  v.jsx("svg", {
+                                    viewBox: "0 0 24 24",
+                                    fill: "none",
+                                    stroke: "currentColor",
+                                    strokeWidth: "2.2",
+                                    style: { width: "13px", height: "13px" },
+                                    children: v.jsx("path", {
+                                      d: "M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                                    })
+                                  }),
+                                  "ADD TO CART"
+                                ]
                               })
                             ]
                           })
                         ]
-                      });
-                    });
-                  })()
-                })
-              }),
+                      })
+                    ]
+                  });
+                });
+              })()
+            }),
 
-              // Centered "SHOP ALL" Outline Pill Button
-              v.jsx("div", {
-                style: { display: "flex", justifyContent: "center", marginTop: "20px" },
-                children: v.jsx("button", {
+            // Centered "BROWSE ALL ESSENTIALS" Button with Horizontal Dividing Line
+            v.jsxs("div", {
+              className: "plezzy-divider-cta-wrap",
+              children: [
+                v.jsx("div", {
+                  className: "plezzy-divider-line",
+                  "aria-hidden": "true",
+                  children: v.jsx("div", {
+                    className: "plezzy-divider-line-inner"
+                  })
+                }),
+                v.jsx("button", {
+                  type: "button",
                   onClick: () => {
-                    s();
+                    try { s(); } catch (e) {}
                     handleShopClick();
                   },
-                  className: "plezzy-shelf-shop-all",
-                  children: "SHOP ALL"
+                  className: "plezzy-divider-btn",
+                  children: "BROWSE ALL ESSENTIALS"
                 })
-              })
-            ]
-          })
+              ]
+            })
+          ]
         }),
 
         // ══════════════════════════════════════════════════════════════
