@@ -6542,6 +6542,43 @@ function _F(){
   // Navigation and interactive states
   const[isShopMenuOpen,setIsShopMenuOpen]=G.useState(false);
   const[isMobileNavOpen,setIsMobileNavOpen]=G.useState(false);
+  const[isNavClosing,setIsNavClosing]=G.useState(false);
+
+  const handleOpenNav=()=>{
+    try{s();}catch(e){}
+    setIsNavClosing(false);
+    setIsMobileNavOpen(true);
+  };
+  const handleCloseNav=(callback)=>{
+    try{s();}catch(e){}
+    if(isNavClosing)return;
+    setIsNavClosing(true);
+    setTimeout(()=>{
+      setIsMobileNavOpen(false);
+      setIsNavClosing(false);
+      if(typeof callback==="function"){
+        callback();
+      }
+    },360);
+  };
+
+  G.useEffect(()=>{
+    if(isMobileNavOpen){
+      document.body.style.overflow="hidden";
+      const handleKeyDown=(e)=>{
+        if(e.key==="Escape"){
+          handleCloseNav();
+        }
+      };
+      window.addEventListener("keydown",handleKeyDown);
+      return ()=>{
+        document.body.style.overflow="";
+        window.removeEventListener("keydown",handleKeyDown);
+      };
+    }else{
+      document.body.style.overflow="";
+    }
+  },[isMobileNavOpen,isNavClosing]);
   const[isSearchOpen,setIsSearchOpen]=G.useState(false);
   const[searchQuery,setSearchQuery]=G.useState("");
   const[currency,setCurrency]=G.useState("INR");
@@ -7156,17 +7193,14 @@ function _F(){
             // Left Container: Three-Line Navigation Bar (All Devices)
             v.jsx("div",{className:"flex items-center z-10",children:
               v.jsxs("button",{
-                onClick:()=>{
-                  try { s(); } catch (e) {}
-                  setIsMobileNavOpen(true);
-                },
-                className:"w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-black/80 hover:bg-black text-white border border-white/20 backdrop-blur-md flex flex-col items-center justify-center gap-1 transition-all duration-300 hover:scale-105 cursor-pointer shadow-lg",
+                onClick:handleOpenNav,
+                className:"plezzy-hamburger-btn w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-black/80 hover:bg-black text-white border border-white/20 backdrop-blur-md flex flex-col items-center justify-center gap-1 cursor-pointer shadow-lg",
                 "aria-label":"Open Navigation Menu",
                 title:"Open Menu",
                 children:[
-                  v.jsx("span",{className:"w-4 h-[2px] bg-white rounded-full transition-all"}),
-                  v.jsx("span",{className:"w-4 h-[2px] bg-white rounded-full transition-all"}),
-                  v.jsx("span",{className:"w-4 h-[2px] bg-white rounded-full transition-all"})
+                  v.jsx("span",{className:"plezzy-bar plezzy-bar-1"}),
+                  v.jsx("span",{className:"plezzy-bar plezzy-bar-2"}),
+                  v.jsx("span",{className:"plezzy-bar plezzy-bar-3"})
                 ]
               })
             }),
@@ -7306,19 +7340,22 @@ function _F(){
         // FULLSCREEN LUXURY EDITORIAL MENU OVERLAY (MATCHING REFERENCE)
         // ══════════════════════════════════════════════════════════════
         isMobileNavOpen && v.jsxs("div", {
-          className: "plezzy-menu-overlay fixed inset-0 z-[120] text-white flex flex-col justify-between overflow-y-auto select-none",
+          className: `plezzy-menu-overlay ${isNavClosing ? "plezzy-menu-closing" : "plezzy-menu-opening"} fixed inset-0 z-[120] text-white flex flex-col justify-between overflow-y-auto select-none`,
+          onClick: (e) => {
+            if (e.target === e.currentTarget) handleCloseNav();
+          },
           children: [
             // ── Top Header Row inside Menu ───────────────────────────
             v.jsxs("div", {
-              className: "w-full max-w-screen-xl mx-auto px-5 sm:px-12 py-5 sm:py-7 flex items-center justify-between border-b border-white/10",
+              className: "plezzy-menu-header w-full max-w-screen-xl mx-auto px-5 sm:px-12 py-5 sm:py-7 flex items-center justify-between border-b border-white/10",
               children: [
                 // Left: Brand Logo & Title
                 v.jsxs("div", {
                   onClick: () => {
-                    try { s(); } catch (e) {}
-                    setIsMobileNavOpen(false);
-                    if (isPdp) handleBackToHome();
-                    window.scrollTo({ top: 0, behavior: "smooth" });
+                    handleCloseNav(() => {
+                      if (isPdp) handleBackToHome();
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    });
                   },
                   className: "flex items-center gap-2.5 sm:gap-3.5 cursor-pointer group",
                   children: [
@@ -7339,19 +7376,16 @@ function _F(){
 
                 // Right: CLOSE ✕ Button (Exact Style from Reference)
                 v.jsxs("button", {
-                  onClick: () => {
-                    try { s(); } catch (e) {}
-                    setIsMobileNavOpen(false);
-                  },
+                  onClick: () => handleCloseNav(),
                   "aria-label": "Close Menu",
-                  className: "flex items-center gap-2 group p-2 text-white hover:text-[#E8FB76] transition-colors cursor-pointer",
+                  className: "plezzy-menu-close-btn flex items-center gap-2 group p-2 text-white hover:text-[#E8FB76] transition-colors cursor-pointer",
                   children: [
                     v.jsx("span", {
                       style: { fontFamily: "monospace", fontSize: "11px", fontWeight: "700", letterSpacing: "0.22em", textTransform: "uppercase" },
                       children: "CLOSE"
                     }),
                     v.jsx("div", {
-                      className: "w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-white/25 group-hover:border-[#E8FB76] flex items-center justify-center font-bold text-xs bg-white/5 transition-all group-hover:scale-105",
+                      className: "plezzy-close-circle w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-white/25 flex items-center justify-center font-bold text-xs bg-white/5",
                       children: "✕"
                     })
                   ]
@@ -7370,10 +7404,10 @@ function _F(){
                     label: "Home",
                     tag: "The Entry",
                     action: () => {
-                      try { s(); } catch (e) {}
-                      if (isPdp) handleBackToHome();
-                      setIsMobileNavOpen(false);
-                      window.scrollTo({ top: 0, behavior: "smooth" });
+                      handleCloseNav(() => {
+                        if (isPdp) handleBackToHome();
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      });
                     }
                   },
                   {
@@ -7381,10 +7415,10 @@ function _F(){
                     label: "The Collection",
                     tag: "Luxe & Standard Editions",
                     action: () => {
-                      try { s(); } catch (e) {}
-                      if (isPdp) handleBackToHome();
-                      setIsMobileNavOpen(false);
-                      handleShopClick();
+                      handleCloseNav(() => {
+                        if (isPdp) handleBackToHome();
+                        handleShopClick();
+                      });
                     }
                   },
                   {
@@ -7392,13 +7426,13 @@ function _F(){
                     label: "Best Sellers",
                     tag: "Curated Essentials",
                     action: () => {
-                      try { s(); } catch (e) {}
-                      if (isPdp) handleBackToHome();
-                      setIsMobileNavOpen(false);
-                      setTimeout(() => {
-                        const el = document.getElementById("plezzy-editorial-products-grid");
-                        if (el) el.scrollIntoView({ behavior: "smooth" });
-                      }, 100);
+                      handleCloseNav(() => {
+                        if (isPdp) handleBackToHome();
+                        setTimeout(() => {
+                          const el = document.getElementById("plezzy-editorial-products-grid");
+                          if (el) el.scrollIntoView({ behavior: "smooth" });
+                        }, 50);
+                      });
                     }
                   },
                   {
@@ -7406,13 +7440,13 @@ function _F(){
                     label: "Sensory Ritual",
                     tag: "Wellness & Intimacy",
                     action: () => {
-                      try { s(); } catch (e) {}
-                      if (isPdp) handleBackToHome();
-                      setIsMobileNavOpen(false);
-                      setTimeout(() => {
-                        const el = document.getElementById("editorial-collection-split") || document.getElementById("campaign-video");
-                        if (el) el.scrollIntoView({ behavior: "smooth" });
-                      }, 100);
+                      handleCloseNav(() => {
+                        if (isPdp) handleBackToHome();
+                        setTimeout(() => {
+                          const el = document.getElementById("editorial-collection-split") || document.getElementById("campaign-video");
+                          if (el) el.scrollIntoView({ behavior: "smooth" });
+                        }, 50);
+                      });
                     }
                   },
                   {
@@ -7420,13 +7454,13 @@ function _F(){
                     label: "Our Story",
                     tag: "Modern Intimacy",
                     action: () => {
-                      try { s(); } catch (e) {}
-                      if (isPdp) handleBackToHome();
-                      setIsMobileNavOpen(false);
-                      setTimeout(() => {
-                        const el = document.getElementById("campaign-video");
-                        if (el) el.scrollIntoView({ behavior: "smooth" });
-                      }, 100);
+                      handleCloseNav(() => {
+                        if (isPdp) handleBackToHome();
+                        setTimeout(() => {
+                          const el = document.getElementById("campaign-video");
+                          if (el) el.scrollIntoView({ behavior: "smooth" });
+                        }, 50);
+                      });
                     }
                   },
                   {
@@ -7434,15 +7468,15 @@ function _F(){
                     label: "My Account",
                     tag: "Orders & Profile",
                     action: () => {
-                      try { s(); } catch (e) {}
-                      setIsMobileNavOpen(false);
-                      a("auth");
+                      handleCloseNav(() => {
+                        a("auth");
+                      });
                     }
                   }
                 ].map((item) =>
                   v.jsx("li", {
                     key: item.num,
-                    className: "w-full",
+                    className: "plezzy-menu-item w-full",
                     children: v.jsxs("button", {
                       onClick: item.action,
                       className: "plezzy-menu-nav-link group",
@@ -7473,7 +7507,7 @@ function _F(){
 
             // ── Footer Row inside Menu ───────────────────────────
             v.jsxs("div", {
-              className: "w-full max-w-screen-xl mx-auto px-6 sm:px-16 py-6 sm:py-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/50",
+              className: "plezzy-menu-footer w-full max-w-screen-xl mx-auto px-6 sm:px-16 py-6 sm:py-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/50",
               children: [
                 v.jsx("span", {
                   style: { fontFamily: "monospace", letterSpacing: "0.2em", textTransform: "uppercase", fontSize: "10.5px", fontWeight: "700", color: "#CBD5E1" },
@@ -7506,7 +7540,7 @@ function _F(){
             })
           ]
         })
-      ]}),
+]}),
 
     // CONDITIONAL VIEW: ADMIN, PDP OR HOMEPAGE
     isAdminView ? (
