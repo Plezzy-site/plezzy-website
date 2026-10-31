@@ -7307,11 +7307,6 @@ function _F(){
         // ══════════════════════════════════════════════════════════════
         isMobileNavOpen && v.jsxs("div", {
           className: "plezzy-menu-overlay fixed inset-0 z-[120] text-white flex flex-col justify-between overflow-y-auto select-none",
-          style: {
-            backgroundColor: "rgba(10, 3, 6, 0.98)",
-            backdropFilter: "blur(40px)",
-            WebkitBackdropFilter: "blur(40px)"
-          },
           children: [
             // ── Top Header Row inside Menu ───────────────────────────
             v.jsxs("div", {
@@ -7450,18 +7445,23 @@ function _F(){
                     className: "w-full",
                     children: v.jsxs("button", {
                       onClick: item.action,
-                      className: "plezzy-menu-nav-link group flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6 text-left cursor-pointer w-full py-1",
+                      className: "plezzy-menu-nav-link group",
                       children: [
-                        v.jsx("span", {
-                          style: { fontFamily: "monospace", fontSize: "clamp(12px, 1.2vw, 15px)", color: "rgba(255,255,255,0.4)", fontWeight: 500 },
-                          children: item.num
+                        v.jsxs("div", {
+                          className: "plezzy-menu-nav-left",
+                          children: [
+                            v.jsx("span", {
+                              className: "plezzy-menu-num",
+                              children: item.num
+                            }),
+                            v.jsx("span", {
+                              className: "plezzy-menu-nav-label",
+                              children: item.label
+                            })
+                          ]
                         }),
                         v.jsx("span", {
-                          className: "plezzy-menu-nav-label font-serif font-light text-3xl sm:text-5xl md:text-6xl text-white group-hover:text-[#E8FB76] group-hover:italic group-hover:translate-x-3 transition-all duration-300",
-                          children: item.label
-                        }),
-                        v.jsx("span", {
-                          className: "text-[9px] sm:text-[11px] font-mono tracking-[0.22em] uppercase text-white/40 group-hover:text-[#E8FB76] transition-colors sm:ml-auto pt-1 sm:pt-0",
+                          className: "plezzy-menu-nav-tag",
                           children: item.tag
                         })
                       ]
