@@ -7153,71 +7153,23 @@ function _F(){
           className:"w-full px-4 sm:px-8 h-14 sm:h-16 relative flex items-center justify-between",
           children:[
 
-            // Left Container: Desktop Links (SHOP, LEARN, WATCH) + Mobile Hamburger
-            v.jsxs("div",{className:"flex items-center gap-6 sm:gap-8 z-10",children:[
-              // Mobile Hamburger
-              v.jsx("button",{
-                onClick:()=>{s();setIsMobileNavOpen(!isMobileNavOpen)},
-                className:"lg:hidden p-1.5 -ml-1 flex items-center justify-center focus:outline-none cursor-pointer",
-                style:{width:"36px",height:"36px",color:"#ffffff"},
-                "aria-label":"Toggle navigation menu",
-                children: isMobileNavOpen ? (
-                  v.jsxs("svg",{width:"20",height:"20",viewBox:"0 0 24 24",fill:"none",stroke:"#ffffff",strokeWidth:"2.2",strokeLinecap:"round",children:[
-                    v.jsx("line",{x1:"18",y1:"6",x2:"6",y2:"18"}),
-                    v.jsx("line",{x1:"6",y1:"6",x2:"18",y2:"18"})
-                  ]})
-                ) : (
-                  v.jsxs("svg",{width:"20",height:"20",viewBox:"0 0 24 24",fill:"none",stroke:"#ffffff",strokeWidth:"2.2",strokeLinecap:"round",children:[
-                    v.jsx("line",{x1:"3",y1:"7",x2:"21",y2:"7"}),
-                    v.jsx("line",{x1:"3",y1:"17",x2:"21",y2:"17"})
-                  ]})
-                )
-              }),
-
-              // Desktop Nav Links
-              v.jsxs("div",{className:"hidden lg:flex items-center gap-7 text-xs font-black uppercase tracking-wider",style:{color:"#ffffff"},children:[
-                v.jsxs("div",{className:"relative",
-                  onMouseEnter:()=>setIsShopMenuOpen(true),
-                  onMouseLeave:()=>setIsShopMenuOpen(false),
-                  children:[
-                    v.jsxs("button",{
-                      onClick:(e)=>{s();setIsShopMenuOpen(!isShopMenuOpen)},
-                      className:"hover:text-neutral-400 transition-colors py-4 focus:outline-none flex items-center gap-1 text-xs font-black uppercase tracking-wider cursor-pointer",
-                      style:{color:"#ffffff"},
-                      children:[
-                        "THE COLLECTION",
-                        v.jsx("svg",{className:`w-3 h-3 transition-transform duration-200 ${isShopMenuOpen?"rotate-180":""}`,style:{stroke:"#ffffff"},viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2.5",strokeLinecap:"round",children:v.jsx("polyline",{points:"6 9 12 15 18 9"})})
-                      ]
-                    }),
-                    isShopMenuOpen&&v.jsxs("div",{
-                      className:"absolute top-full left-0 border rounded-2xl shadow-2xl p-6 z-50 animate-in fade-in slide-in-from-top-2 duration-150",
-                      style:{width:"580px",maxWidth:"90vw",backgroundColor:"#141414",borderColor:"#262626",color:"#ffffff"},
-                      children:[
-                        v.jsxs("div",{className:"flex items-center justify-between pb-3 mb-4",style:{borderBottom:"1px solid #262626"},children:[
-                          v.jsx("span",{className:"text-[10px] font-black uppercase tracking-wider",style:{color:"#888888"},children:"CURATED EDITIONS"}),
-                          v.jsx("button",{onClick:handleShopClick,className:"text-[11px] font-black uppercase tracking-wider hover:underline cursor-pointer",style:{color:"#ffffff"},children:"EXPLORE EDITIONS \u2192"})
-                        ]}),
-                        v.jsx("div",{className:"grid grid-cols-2 gap-3.5",children:
-                          prods.map(p=>v.jsxs("button",{key:p.id,onClick:()=>handleSelectProduct(p),className:"flex items-center gap-3 p-3 rounded-xl border hover:border-white hover:shadow-xs transition-all text-left group cursor-pointer",style:{backgroundColor:"#1c1c1c",borderColor:"#2c2c2c"},children:[
-                            v.jsx("div",{style:{width:"54px",height:"54px",minWidth:"54px",minHeight:"54px",borderRadius:"10px",backgroundColor:"#282828",padding:"3px",display:"flex",alignItems:"center",justifyContent:"center",overflow:"hidden",flexShrink:0},children:
-                              v.jsx("img",{src:p.image,alt:p.name,style:{width:"100%",height:"100%",objectFit:"contain"},className:"editorial-bw-img group-hover:scale-105 transition-all duration-500"})
-                            }),
-                            v.jsxs("div",{className:"min-w-0 flex-1",children:[
-                              v.jsx("p",{className:"text-xs font-bold lowercase truncate group-hover:text-[#ff2a85] transition-colors",style:{color:"#ffffff"},children:p.name}),
-                              v.jsx("p",{className:"text-[10px] lowercase truncate",style:{color:"#888888"},children:p.subtitle}),
-                              v.jsxs("p",{className:"text-[11px] font-medium mt-0.5",style:{color:"#dddddd"},children:[p.priceUSD||(`\u20B9` + p.priceINR.toLocaleString('en-IN'))]})
-                            ]})
-                          ]}))
-                        })
-                      ]
-                    })
-                  ]
-                }),
-                v.jsx("button",{onClick:handleShopClick,className:"hover:text-neutral-400 transition-colors cursor-pointer",style:{color:"#ffffff"},children:"COLLECTIONS"}),
-                v.jsx("button",{onClick:handleShopClick,className:"hover:text-neutral-400 transition-colors cursor-pointer",style:{color:"#ffffff"},children:"BEST SELLERS"}),
-                v.jsx("button",{onClick:()=>{s();if(isPdp)handleBackToHome();setTimeout(()=>{const el=document.getElementById("campaign-statement");if(el)el.scrollIntoView({behavior:"smooth"});},100)},className:"hover:text-neutral-400 transition-colors cursor-pointer",style:{color:"#ffffff"},children:"ABOUT"})
-              ]})
-            ]}),
+            // Left Container: Three-Line Navigation Bar (All Devices)
+            v.jsx("div",{className:"flex items-center z-10",children:
+              v.jsxs("button",{
+                onClick:()=>{
+                  try { s(); } catch (e) {}
+                  setIsMobileNavOpen(true);
+                },
+                className:"w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-black/80 hover:bg-black text-white border border-white/20 backdrop-blur-md flex flex-col items-center justify-center gap-1 transition-all duration-300 hover:scale-105 cursor-pointer shadow-lg",
+                "aria-label":"Open Navigation Menu",
+                title:"Open Menu",
+                children:[
+                  v.jsx("span",{className:"w-4 h-[2px] bg-white rounded-full transition-all"}),
+                  v.jsx("span",{className:"w-4 h-[2px] bg-white rounded-full transition-all"}),
+                  v.jsx("span",{className:"w-4 h-[2px] bg-white rounded-full transition-all"})
+                ]
+              })
+            }),
 
             // Center Brand Logo: Topicals Bold Header Typography
             v.jsx("div",{className:"absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-auto z-20 flex items-center justify-center",children:
@@ -7350,34 +7302,210 @@ function _F(){
           ]})
         }),
 
-        // Mobile Navigation Drawer
-        isMobileNavOpen&&v.jsx("div",{className:"lg:hidden w-full border-b px-6 py-6 space-y-5 animate-in slide-in-from-top-4 duration-200 relative z-30",style:{backgroundColor:"#141414",borderColor:"#262626",color:"#ffffff"},children:[
-          v.jsxs("div",{className:"space-y-3",children:[
-            v.jsxs("div",{className:"flex items-center justify-between pb-2",style:{borderBottom:"1px solid #262626"},children:[
-              v.jsx("p",{className:"text-[10px] font-black uppercase tracking-wider",style:{color:"#888888"},children:"CURATED EDITIONS"}),
-              v.jsx("button",{onClick:handleShopClick,className:"text-xs font-bold uppercase tracking-wider underline cursor-pointer",style:{color:"#ffffff"},children:"EXPLORE EDITIONS \u2192"})
-            ]}),
-            prods.map(p=>v.jsxs("button",{key:p.id,onClick:()=>handleSelectProduct(p),className:"flex items-center justify-between w-full py-2.5 text-sm font-bold lowercase text-left hover:text-[#ff2a85] transition-colors cursor-pointer",style:{borderBottom:"1px solid #222222",color:"#ffffff"},children:[
-              v.jsxs("div",{className:"flex items-center gap-3",children:[
-                v.jsx("div",{style:{width:"44px",height:"44px",minWidth:"44px",minHeight:"44px",borderRadius:"8px",backgroundColor:"#262626",padding:"3px",display:"flex",alignItems:"center",justifyContent:"center",overflow:"hidden",flexShrink:0},children:
-                  v.jsx("img",{src:p.image,alt:p.name,style:{width:"100%",height:"100%",objectFit:"contain"},className:"editorial-bw-img"})
+        // ══════════════════════════════════════════════════════════════
+        // FULLSCREEN LUXURY EDITORIAL MENU OVERLAY (MATCHING REFERENCE)
+        // ══════════════════════════════════════════════════════════════
+        isMobileNavOpen && v.jsxs("div", {
+          className: "plezzy-menu-overlay fixed inset-0 z-[120] text-white flex flex-col justify-between overflow-y-auto select-none",
+          style: {
+            backgroundColor: "rgba(10, 3, 6, 0.98)",
+            backdropFilter: "blur(40px)",
+            WebkitBackdropFilter: "blur(40px)"
+          },
+          children: [
+            // ── Top Header Row inside Menu ───────────────────────────
+            v.jsxs("div", {
+              className: "w-full max-w-screen-xl mx-auto px-5 sm:px-12 py-5 sm:py-7 flex items-center justify-between border-b border-white/10",
+              children: [
+                // Left: Brand Logo & Title
+                v.jsxs("div", {
+                  onClick: () => {
+                    try { s(); } catch (e) {}
+                    setIsMobileNavOpen(false);
+                    if (isPdp) handleBackToHome();
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  },
+                  className: "flex items-center gap-2.5 sm:gap-3.5 cursor-pointer group",
+                  children: [
+                    v.jsx("div", {
+                      className: "w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-white/20 p-1 flex items-center justify-center bg-black/70 shadow-lg group-hover:border-[#E8FB76] transition-colors",
+                      children: v.jsx("img", {
+                        src: "/assets/plezzy-brand-logo-transparent.png",
+                        alt: "PLEZZY Crest",
+                        className: "w-full h-full object-contain filter drop-shadow"
+                      })
+                    }),
+                    v.jsx("span", {
+                      className: "font-serif font-bold text-base sm:text-xl uppercase tracking-[0.2em] text-white group-hover:text-[#E8FB76] transition-colors",
+                      children: "PLEZZY"
+                    })
+                  ]
                 }),
-                v.jsxs("div",{children:[
-                  v.jsx("p",{className:"text-xs font-bold lowercase",style:{color:"#ffffff"},children:p.name}),
-                  v.jsx("p",{className:"text-[10px] lowercase",style:{color:"#888888"},children:p.subtitle})
-                ]})
-              ]}),
-              v.jsxs("span",{className:"text-xs font-medium",style:{color:"#cccccc"},children:["\u20B9",p.priceINR.toLocaleString('en-IN')]})
-            ]}))
-          ]}),
-          v.jsxs("div",{className:"pt-2 flex flex-col gap-3 text-xs font-black uppercase tracking-wider",style:{color:"#ffffff"},children:[
-            v.jsx("button",{onClick:handleShopClick,className:"text-left py-1 text-sm font-bold hover:text-[#ff2a85] transition-colors cursor-pointer",style:{color:"#ffffff"},children:"THE COMPLETE COLLECTION"}),
-            v.jsx("button",{onClick:()=>{s();handleBackToHome();setIsMobileNavOpen(false);handleShopClick();},className:"text-left py-1 text-sm font-bold hover:text-[#ff2a85] transition-colors cursor-pointer",style:{color:"#ffffff"},children:"COLLECTIONS"}),
-            v.jsx("button",{onClick:()=>{s();handleBackToHome();setIsMobileNavOpen(false);handleShopClick();},className:"text-left py-1 text-sm font-bold hover:text-[#ff2a85] transition-colors cursor-pointer",style:{color:"#ffffff"},children:"BEST SELLERS"}),
-            v.jsx("button",{onClick:()=>{s();handleBackToHome();setIsMobileNavOpen(false);setTimeout(()=>{const el=document.getElementById("campaign-statement");if(el)el.scrollIntoView({behavior:"smooth"});},100)},className:"text-left py-1 text-sm font-bold hover:text-[#ff2a85] transition-colors cursor-pointer",style:{color:"#ffffff"},children:"ABOUT"}),
-            v.jsx("button",{onClick:()=>{s();a("auth");setIsMobileNavOpen(false)},className:"text-left py-1 text-sm font-bold hover:text-[#ff2a85] transition-colors cursor-pointer",style:{color:"#ffffff"},children:"ACCOUNT"})
-          ]})
-        ]})
+
+                // Right: CLOSE ✕ Button (Exact Style from Reference)
+                v.jsxs("button", {
+                  onClick: () => {
+                    try { s(); } catch (e) {}
+                    setIsMobileNavOpen(false);
+                  },
+                  "aria-label": "Close Menu",
+                  className: "flex items-center gap-2 group p-2 text-white hover:text-[#E8FB76] transition-colors cursor-pointer",
+                  children: [
+                    v.jsx("span", {
+                      style: { fontFamily: "monospace", fontSize: "11px", fontWeight: "700", letterSpacing: "0.22em", textTransform: "uppercase" },
+                      children: "CLOSE"
+                    }),
+                    v.jsx("div", {
+                      className: "w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-white/25 group-hover:border-[#E8FB76] flex items-center justify-center font-bold text-xs bg-white/5 transition-all group-hover:scale-105",
+                      children: "✕"
+                    })
+                  ]
+                })
+              ]
+            }),
+
+            // ── Clean Navigation Links (Numbered Editorial Hierarchy) ────
+            v.jsx("div", {
+              className: "w-full max-w-screen-xl mx-auto px-6 sm:px-16 py-10 sm:py-16 flex-1 flex flex-col justify-center",
+              children: v.jsx("ul", {
+                className: "flex flex-col gap-5 sm:gap-8 max-w-4xl",
+                children: [
+                  {
+                    num: "01",
+                    label: "Home",
+                    tag: "The Entry",
+                    action: () => {
+                      try { s(); } catch (e) {}
+                      if (isPdp) handleBackToHome();
+                      setIsMobileNavOpen(false);
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }
+                  },
+                  {
+                    num: "02",
+                    label: "The Collection",
+                    tag: "Luxe & Standard Editions",
+                    action: () => {
+                      try { s(); } catch (e) {}
+                      if (isPdp) handleBackToHome();
+                      setIsMobileNavOpen(false);
+                      handleShopClick();
+                    }
+                  },
+                  {
+                    num: "03",
+                    label: "Best Sellers",
+                    tag: "Curated Essentials",
+                    action: () => {
+                      try { s(); } catch (e) {}
+                      if (isPdp) handleBackToHome();
+                      setIsMobileNavOpen(false);
+                      setTimeout(() => {
+                        const el = document.getElementById("plezzy-editorial-products-grid");
+                        if (el) el.scrollIntoView({ behavior: "smooth" });
+                      }, 100);
+                    }
+                  },
+                  {
+                    num: "04",
+                    label: "Sensory Ritual",
+                    tag: "Wellness & Intimacy",
+                    action: () => {
+                      try { s(); } catch (e) {}
+                      if (isPdp) handleBackToHome();
+                      setIsMobileNavOpen(false);
+                      setTimeout(() => {
+                        const el = document.getElementById("editorial-collection-split") || document.getElementById("campaign-video");
+                        if (el) el.scrollIntoView({ behavior: "smooth" });
+                      }, 100);
+                    }
+                  },
+                  {
+                    num: "05",
+                    label: "Our Story",
+                    tag: "Modern Intimacy",
+                    action: () => {
+                      try { s(); } catch (e) {}
+                      if (isPdp) handleBackToHome();
+                      setIsMobileNavOpen(false);
+                      setTimeout(() => {
+                        const el = document.getElementById("campaign-video");
+                        if (el) el.scrollIntoView({ behavior: "smooth" });
+                      }, 100);
+                    }
+                  },
+                  {
+                    num: "06",
+                    label: "My Account",
+                    tag: "Orders & Profile",
+                    action: () => {
+                      try { s(); } catch (e) {}
+                      setIsMobileNavOpen(false);
+                      a("auth");
+                    }
+                  }
+                ].map((item) =>
+                  v.jsx("li", {
+                    key: item.num,
+                    className: "w-full",
+                    children: v.jsxs("button", {
+                      onClick: item.action,
+                      className: "plezzy-menu-nav-link group flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6 text-left cursor-pointer w-full py-1",
+                      children: [
+                        v.jsx("span", {
+                          style: { fontFamily: "monospace", fontSize: "clamp(12px, 1.2vw, 15px)", color: "rgba(255,255,255,0.4)", fontWeight: 500 },
+                          children: item.num
+                        }),
+                        v.jsx("span", {
+                          className: "plezzy-menu-nav-label font-serif font-light text-3xl sm:text-5xl md:text-6xl text-white group-hover:text-[#E8FB76] group-hover:italic group-hover:translate-x-3 transition-all duration-300",
+                          children: item.label
+                        }),
+                        v.jsx("span", {
+                          className: "text-[9px] sm:text-[11px] font-mono tracking-[0.22em] uppercase text-white/40 group-hover:text-[#E8FB76] transition-colors sm:ml-auto pt-1 sm:pt-0",
+                          children: item.tag
+                        })
+                      ]
+                    })
+                  })
+                )
+              })
+            }),
+
+            // ── Footer Row inside Menu ───────────────────────────
+            v.jsxs("div", {
+              className: "w-full max-w-screen-xl mx-auto px-6 sm:px-16 py-6 sm:py-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/50",
+              children: [
+                v.jsx("span", {
+                  style: { fontFamily: "monospace", letterSpacing: "0.2em", textTransform: "uppercase", fontSize: "10.5px", fontWeight: "700", color: "#CBD5E1" },
+                  children: "PLEZZY ESSENTIALS • 100% BODY-SAFE & DISCREETLY DELIVERED"
+                }),
+                v.jsxs("div", {
+                  className: "flex gap-6 font-mono text-xs uppercase tracking-wider",
+                  children: [
+                    v.jsxs("a", {
+                      href: "https://www.instagram.com/plezzy",
+                      target: "_blank",
+                      rel: "noopener noreferrer",
+                      className: "hover:text-[#E8FB76] transition-colors flex items-center gap-1.5 font-bold text-white/70",
+                      children: [
+                        v.jsx("span", { children: "Instagram" }),
+                        v.jsx("span", { style: { fontSize: "10px", color: "#E8FB76" }, children: "(@plezzy)" })
+                      ]
+                    }),
+                    v.jsx("button", {
+                      onClick: () => {
+                        try { s(); } catch (e) {}
+                        setCurrency(prev => prev === "USD" ? "INR" : "USD");
+                      },
+                      className: "hover:text-white transition-colors cursor-pointer text-white/70 font-bold",
+                      children: "Currency: ₹ INR"
+                    })
+                  ]
+                })
+              ]
+            })
+          ]
+        })
       ]}),
 
     // CONDITIONAL VIEW: ADMIN, PDP OR HOMEPAGE
