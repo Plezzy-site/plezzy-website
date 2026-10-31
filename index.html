@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Italiana&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261031_smooth_nav_transitions"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261031_three_line_clean"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
@@ -1980,54 +1980,66 @@
         animation: plezzyFooterOut 0.25s cubic-bezier(0.4, 0, 1, 1) forwards !important;
       }
 
-      /* ── Three-Line Navigation Bar (Hamburger Button) Micro-Interactions ── */
+      /* ── Three-Line Navigation Bar (Clean Minimal Hamburger - Non-Circular) ── */
       .plezzy-hamburger-btn {
-        position: relative !important;
-        overflow: hidden !important;
-        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-                    border-color 0.3s ease,
-                    box-shadow 0.3s ease,
-                    background-color 0.3s ease !important;
+        background: transparent !important;
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        padding: 8px !important;
+        margin-left: -8px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: flex-start !important;
+        gap: 5.5px !important;
+        cursor: pointer !important;
+        filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.75)) !important;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease !important;
       }
 
       .plezzy-hamburger-btn:hover {
-        transform: scale(1.08) !important;
-        border-color: rgba(232, 251, 118, 0.6) !important;
-        box-shadow: 0 0 18px rgba(232, 251, 118, 0.3) !important;
+        transform: scale(1.05) translateX(2px) !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
       }
 
       .plezzy-hamburger-btn:active {
-        transform: scale(0.92) !important;
+        transform: scale(0.94) !important;
       }
 
       .plezzy-bar {
         height: 2px !important;
         background-color: #ffffff !important;
-        border-radius: 9999px !important;
-        transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1) !important;
-        transform-origin: center !important;
+        border-radius: 2px !important;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        transform-origin: left center !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6) !important;
       }
 
-      .plezzy-bar-1 { width: 16px !important; }
-      .plezzy-bar-2 { width: 16px !important; }
-      .plezzy-bar-3 { width: 16px !important; }
+      .plezzy-bar-1 { width: 24px !important; }
+      .plezzy-bar-2 { width: 24px !important; }
+      .plezzy-bar-3 { width: 24px !important; }
 
       .plezzy-hamburger-btn:hover .plezzy-bar-1 {
-        width: 18px !important;
+        width: 27px !important;
         background-color: #E8FB76 !important;
-        transform: translateY(-1px) !important;
+        box-shadow: 0 0 12px rgba(232, 251, 118, 0.5) !important;
       }
 
       .plezzy-hamburger-btn:hover .plezzy-bar-2 {
-        width: 12px !important;
+        width: 19px !important;
         background-color: #ffffff !important;
-        transform: translateX(3px) !important;
+        transform: translateX(4px) !important;
       }
 
       .plezzy-hamburger-btn:hover .plezzy-bar-3 {
-        width: 18px !important;
+        width: 27px !important;
         background-color: #E8FB76 !important;
-        transform: translateY(1px) !important;
+        box-shadow: 0 0 12px rgba(232, 251, 118, 0.5) !important;
       }
 
       /* ══════════════════════════════════════════════════════════════

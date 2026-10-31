@@ -7194,7 +7194,7 @@ function _F(){
             v.jsx("div",{className:"flex items-center z-10",children:
               v.jsxs("button",{
                 onClick:handleOpenNav,
-                className:"plezzy-hamburger-btn w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-black/80 hover:bg-black text-white border border-white/20 backdrop-blur-md flex flex-col items-center justify-center gap-1 cursor-pointer shadow-lg",
+                className:"plezzy-hamburger-btn p-2 -ml-2 text-white flex flex-col justify-center items-start gap-[5px] cursor-pointer bg-transparent border-0 outline-none focus:outline-none",
                 "aria-label":"Open Navigation Menu",
                 title:"Open Menu",
                 children:[
