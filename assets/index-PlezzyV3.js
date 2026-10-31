@@ -8064,7 +8064,7 @@ function _F(){
                     v.jsx("button",{
                       onClick:()=>{
                         s();
-                        const el = document.getElementById("plezzy-featured-products-shelf");
+                        const el = document.getElementById("plezzy-editorial-products-grid") || document.getElementById("plezzy-featured-products-shelf");
                         if (el) el.scrollIntoView({ behavior: "smooth" });
                         else handleShopClick();
                       },

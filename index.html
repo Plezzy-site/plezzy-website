@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Italiana&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261031_silver_glass_overlay"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261031_luxury_living_suite"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
@@ -1823,6 +1823,208 @@
         color: #E8FB76 !important;
       }
 
+      /* ══════════════════════════════════════════════════════════════
+         PLEZZY HIGH-FASHION LIVING ANIMATIONS & PREMIUM SUITE
+         ══════════════════════════════════════════════════════════════ */
+
+      /* 1. Discreet Luxury Scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: rgba(74, 14, 23, 0.2);
+        border-radius: 9999px;
+        transition: background 0.3s ease;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(74, 14, 23, 0.55);
+      }
+
+      /* 2. Living Ambient Metallic Foil Background Light Sweep */
+      #plezzy-fixed-foil-bg::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle 900px at 70% 30%, rgba(255, 255, 255, 0.16) 0%, rgba(240, 245, 255, 0.06) 40%, transparent 75%),
+                    linear-gradient(120deg, transparent 20%, rgba(255, 255, 255, 0.08) 50%, transparent 80%);
+        background-size: 200% 200%;
+        animation: plezzyFoilSheen 22s ease-in-out infinite alternate;
+        pointer-events: none;
+        mix-blend-mode: overlay;
+        opacity: 0.85;
+      }
+
+      @keyframes plezzyFoilSheen {
+        0% {
+          background-position: 0% 0%;
+          opacity: 0.65;
+        }
+        50% {
+          background-position: 100% 50%;
+          opacity: 0.95;
+        }
+        100% {
+          background-position: 0% 100%;
+          opacity: 0.65;
+        }
+      }
+
+      /* 3. Hero Cinematic Ken-Burns Slow Zoom */
+      #plezzy-hero-video-banner {
+        animation: heroCinematicZoom 28s ease-in-out infinite alternate !important;
+        will-change: transform;
+        transform-origin: center center;
+      }
+
+      @keyframes heroCinematicZoom {
+        0% {
+          transform: scale(1.0);
+        }
+        100% {
+          transform: scale(1.06);
+        }
+      }
+
+      /* Hero Content Smooth Entrance */
+      #hero-left-content {
+        animation: heroContentEntrance 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      @keyframes heroContentEntrance {
+        from {
+          opacity: 0;
+          transform: translateY(28px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* 4. Scroll-Driven Graceful Elevation System */
+      .reveal-on-scroll {
+        opacity: 0;
+        transform: translateY(32px);
+        transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform;
+      }
+
+      .reveal-on-scroll.is-revealed {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+      }
+
+      /* Staggered cascades for child cards */
+      .reveal-stagger > *:nth-child(1) { transition-delay: 0.04s; }
+      .reveal-stagger > *:nth-child(2) { transition-delay: 0.12s; }
+      .reveal-stagger > *:nth-child(3) { transition-delay: 0.20s; }
+      .reveal-stagger > *:nth-child(4) { transition-delay: 0.28s; }
+      .reveal-stagger > *:nth-child(5) { transition-delay: 0.36s; }
+
+      /* 5. Tactile Button Gleam & Elevation */
+      .btn-luxury-shimmer {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      }
+
+      .btn-luxury-shimmer:hover {
+        transform: translateY(-2px) scale(1.015);
+        box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.25) !important;
+      }
+
+      .btn-luxury-shimmer:active {
+        transform: scale(0.97) !important;
+      }
+
+      /* Add-to-cart diagonal specular light beam */
+      .plezzy-bento-add-btn {
+        position: relative !important;
+        overflow: hidden !important;
+      }
+
+      .plezzy-bento-add-btn::after {
+        content: '' !important;
+        position: absolute !important;
+        top: -60% !important;
+        left: -80% !important;
+        width: 50% !important;
+        height: 220% !important;
+        background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.4), transparent) !important;
+        transform: rotate(25deg) !important;
+        transition: all 0.65s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        pointer-events: none !important;
+      }
+
+      .plezzy-bento-add-btn:hover::after {
+        left: 140% !important;
+      }
+
+      /* Bento Card Glow & Tactile Scale */
+      .plezzy-bento-card {
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                    box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                    border-color 0.4s ease !important;
+      }
+
+      .plezzy-bento-card:hover {
+        transform: translateY(-7px) !important;
+        box-shadow: 0 28px 60px -12px rgba(0, 0, 0, 0.35) !important;
+        border-color: rgba(255, 255, 255, 0.8) !important;
+      }
+
+      /* 30% OFF Badge Ambient Pulse */
+      .plezzy-bento-badge {
+        animation: plezzyBadgeBreathe 3.5s ease-in-out infinite alternate !important;
+      }
+
+      @keyframes plezzyBadgeBreathe {
+        0% {
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), 0 0 0 rgba(234, 255, 50, 0);
+        }
+        100% {
+          box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35), 0 0 14px rgba(234, 255, 50, 0.5);
+        }
+      }
+
+      /* 6. Luxe & Standard Category Split Section Refinement */
+      .split-panel-editorial {
+        transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      }
+
+      .split-panel-editorial:hover .split-bg-img-luxe {
+        transform: scale(1.06) !important;
+      }
+
+      .split-panel-editorial:hover .split-bg-img-std {
+        transform: scale(1.06) !important;
+      }
+
+      .split-panel-editorial:hover {
+        border-color: rgba(255, 255, 255, 0.3) !important;
+      }
+
+      /* 7. Campaign Video Frame Ambient Elevation */
+      #campaign-video-frame {
+        transition: box-shadow 0.6s ease;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5) !important;
+      }
+
+      /* 8. Newsletter Card Refinement */
+      #newsletter > div {
+        transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                    box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      }
+      #newsletter > div:hover {
+        transform: translateY(-4px) !important;
+        box-shadow: 0 20px 48px -10px rgba(74, 14, 23, 0.08) !important;
+      }
+
       .plezzy-shelf-container {
         width: 100% !important;
         max-width: 100% !important;
@@ -2330,6 +2532,63 @@
 
         // Initial fetch
         refreshMobileInfo();
+      })();
+      // ══════════════════════════════════════════════════════════════
+      // SCROLL-DRIVEN LUXURY REVEAL CONTROLLER (INTERSECTION OBSERVER)
+      // ══════════════════════════════════════════════════════════════
+      (function() {
+        if (typeof window === 'undefined' || !('IntersectionObserver' in window)) return;
+
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-revealed');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          root: null,
+          rootMargin: '0px 0px -40px 0px',
+          threshold: 0.08
+        });
+
+        function registerElements() {
+          var selectors = [
+            '#hero-left-content',
+            '#plezzy-ticker-marquee-bar',
+            '#plezzy-editorial-products-grid',
+            '.plezzy-bento-card',
+            '.plezzy-divider-cta-wrap',
+            '#editorial-collection-split',
+            '.split-panel-editorial',
+            '#campaign-video',
+            '#community',
+            '#newsletter',
+            'footer'
+          ];
+
+          selectors.forEach(function(sel) {
+            document.querySelectorAll(sel).forEach(function(el) {
+              if (!el.classList.contains('reveal-on-scroll')) {
+                el.classList.add('reveal-on-scroll');
+              }
+              if (!el.classList.contains('is-revealed')) {
+                observer.observe(el);
+              }
+            });
+          });
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', registerElements);
+        } else {
+          registerElements();
+        }
+
+        var domObserver = new MutationObserver(function() {
+          registerElements();
+        });
+        domObserver.observe(document.body, { childList: true, subtree: true });
       })();
     </script>
   </body>
