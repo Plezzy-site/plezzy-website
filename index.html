@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Italiana&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261102_f82793_theme_v1"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261102_modern_smooth_v2"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
@@ -1327,12 +1327,12 @@
       /* When on PDP or scrolled, nav gets a sleek dark glass tint */
       header.header-pdp,
       header.nav-scrolled {
-        background-color: rgba(14, 14, 14, 0.95) !important;
-        backdrop-filter: blur(24px) saturate(180%) !important;
-        -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
-        box-shadow: 0 4px 28px rgba(0, 0, 0, 0.45) !important;
-        transition: background-color 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease !important;
+        background: rgba(12, 10, 16, 0.72) !important;
+        backdrop-filter: blur(24px) saturate(190%) !important;
+        -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+        box-shadow: 0 10px 32px -8px rgba(0, 0, 0, 0.6) !important;
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
       }
       .dark header.nav-scrolled,
       .dark header.header-pdp {
@@ -1445,7 +1445,7 @@
         font-weight: 800 !important;
         letter-spacing: 0.22em !important;
         text-transform: uppercase !important;
-        color: #4A0E17 !important;
+        color: #f82793 !important;
       }
 
       .plezzy-editorial-title {
@@ -1454,10 +1454,10 @@
         font-weight: 900 !important;
         text-transform: uppercase !important;
         letter-spacing: -0.035em !important;
-        color: #4A0E17 !important;
+        color: #ffffff !important;
         line-height: 0.95 !important;
         margin: 0 !important;
-        text-shadow: 0 2px 4px rgba(255,255,255,0.4) !important;
+        text-shadow: 0 4px 28px rgba(0, 0, 0, 0.7) !important;
       }
 
       .plezzy-bento-grid {
@@ -1541,15 +1541,15 @@
       }
 
       .plezzy-bento-badge {
-        background-color: #eaff32 !important;
-        color: #000000 !important;
+        background-color: #f82793 !important;
+        color: #ffffff !important;
         font-family: 'Plus Jakarta Sans', sans-serif !important;
         font-size: 11px !important;
         font-weight: 800 !important;
         letter-spacing: 0.05em !important;
         padding: 4px 10px !important;
         border-radius: 9999px !important;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+        box-shadow: 0 2px 10px rgba(248, 39, 147, 0.4) !important;
       }
 
       .plezzy-bento-rating {
@@ -1638,7 +1638,7 @@
       }
 
       .plezzy-bento-add-btn {
-        background-color: #ef577a !important;
+        background-color: #f82793 !important;
         color: #ffffff !important;
         border-radius: 9999px !important;
         padding: 8px 18px !important;
@@ -1649,17 +1649,16 @@
         border: none !important;
         cursor: pointer !important;
         font-family: 'Plus Jakarta Sans', sans-serif !important;
-        box-shadow: 0 4px 14px rgba(239, 87, 122, 0.45) !important;
-        transition: all 0.2s ease !important;
+        box-shadow: 0 4px 14px rgba(248, 39, 147, 0.45) !important;
+        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
         display: inline-flex !important;
         align-items: center !important;
         gap: 6px !important;
       }
-
       .plezzy-bento-add-btn:hover {
-        background-color: #ff2a85 !important;
-        transform: scale(1.04) !important;
-        box-shadow: 0 6px 18px rgba(255, 42, 133, 0.55) !important;
+        background-color: #d41c7b !important;
+        transform: translateY(-1px) scale(1.02) !important;
+        box-shadow: 0 6px 20px rgba(248, 39, 147, 0.55) !important;
       }
 
       .plezzy-bento-add-btn:active {

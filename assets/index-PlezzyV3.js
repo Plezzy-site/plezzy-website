@@ -6420,16 +6420,16 @@ function PlezzyCommunitySlideshow() {
             className: "space-y-2",
             children: [
               v.jsx("span", {
-                className: "text-[10px] sm:text-[11px] font-extrabold uppercase tracking-[0.25em] text-[#8b8782]",
+                className: "text-[10px] sm:text-[11px] font-extrabold uppercase tracking-[0.25em] text-[#f82793]",
                 children: "COMMUNITY SPOTLIGHT"
               }),
               v.jsx("h2", {
-                className: "text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#1a1a1a] leading-tight",
+                className: "text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight",
                 style: { fontFamily: "'Plus Jakarta Sans', -apple-system, sans-serif", letterSpacing: "-0.03em" },
                 children: "PLEZZY IN THE WILD"
               }),
               v.jsx("p", {
-                className: "text-xs sm:text-sm text-[#444444] font-medium tracking-wide",
+                className: "text-xs sm:text-sm text-white/70 font-medium tracking-wide",
                 children: "See how the PLEZZY community makes it their own. Tag @plezzy to be featured."
               })
             ]
@@ -6442,7 +6442,7 @@ function PlezzyCommunitySlideshow() {
               // Play/Pause pill
               v.jsxs("button", {
                 onClick: () => setIsPaused(p => !p),
-                className: "px-4 py-2 rounded-full bg-white/90 hover:bg-[#1a1a1a] text-[#1a1a1a] hover:text-white border border-[#dedad2] shadow-sm flex items-center gap-2 text-xs font-bold uppercase tracking-wider transition-all cursor-pointer active:scale-95",
+                className: "px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-md shadow-sm flex items-center gap-2 text-xs font-bold uppercase tracking-wider transition-all cursor-pointer active:scale-95",
                 "aria-label": isPaused ? "Resume animation" : "Pause animation",
                 children: [
                   v.jsx("span", {
@@ -7240,7 +7240,7 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
   };
 
   return v.jsxs("div", {
-    className: "plezzy-collections-page w-full min-h-screen text-white pt-24 sm:pt-28 pb-24 px-4 sm:px-6 md:px-8 max-w-[1140px] mx-auto select-none",
+    className: "plezzy-collections-page w-full min-h-screen text-white pt-20 sm:pt-24 pb-24 px-4 sm:px-6 md:px-8 max-w-[1140px] mx-auto select-none",
     children: [
       // ── EDITORIAL HEADER SECTION (CLASSY LUXURY INTRO) ───────────────────
       v.jsxs("div", {
@@ -8194,21 +8194,11 @@ function _F(){
         textShadow:"0 1px 8px rgba(0,0,0,0.55)"
       },
       children:[
-
-        // Announcement bar (inside fixed header, always dark)
-        v.jsx("div",{
-          className:"w-full flex justify-center py-2 px-4",
-          style:{backgroundColor:"#000000",color:"#ffffff",borderBottom:"1px solid rgba(255,255,255,0.08)"},
-          children: v.jsx("span",{
-            className:"text-[10px] sm:text-[11px] font-bold tracking-[0.2em] text-center uppercase",
-            style:{color:"rgba(255,255,255,0.85)",letterSpacing:"0.2em"},
-            children: "FREE SHIPPING ACROSS INDIA ON ORDERS OVER ₹999"
-          })
-        }),
+        // Top announcement bar removed for ultra-modern borderless aesthetic
 
         // 2. TRANSPARENT NAV LINKS ROW
         v.jsxs("nav",{
-          className:"w-full px-4 sm:px-8 h-14 sm:h-16 relative flex items-center justify-between",
+          className:"w-full px-4 sm:px-8 lg:px-12 h-16 sm:h-20 relative flex items-center justify-between",
           children:[
 
             // Left Container: Three-Line Navigation Bar (All Devices)
@@ -8248,16 +8238,15 @@ function _F(){
               })
             }),
 
-            // Right Links: Globe + USD, SEARCH, SIGN IN, Hot-Pink Cart Pill
-            v.jsxs("div",{className:"flex items-center gap-2 sm:gap-4 z-10 text-xs font-black uppercase tracking-wider",style:{color:"#ffffff"},children:[
+            // Right Links: Globe + USD, SEARCH, SIGN IN, Modern Frosted Cart Capsule
+            v.jsxs("div",{className:"flex items-center gap-2 sm:gap-3 z-10 text-xs font-bold uppercase tracking-wider text-white",children:[
               // Currency Indicator
               v.jsxs("button",{
                 onClick:()=>{setCurrency(prev=>prev==="USD"?"INR":"USD")},
-                className:"hidden md:flex items-center gap-1.5 hover:text-neutral-300 transition-colors text-xs font-bold cursor-pointer",
-                style:{color:"#ffffff"},
+                className:"hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.08] hover:bg-white/[0.16] border border-white/15 hover:border-white/30 text-white/90 hover:text-white transition-all text-xs font-bold cursor-pointer backdrop-blur-xs",
                 title:"Change Currency",
                 children:[
-                  v.jsxs("svg",{width:"14",height:"14",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",children:[
+                  v.jsxs("svg",{width:"13",height:"13",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",children:[
                     v.jsx("circle",{cx:"12",cy:"12",r:"10"}),
                     v.jsx("line",{x1:"2",y1:"12",x2:"22",y2:"12"}),
                     v.jsx("path",{d:"M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"})
@@ -8268,49 +8257,31 @@ function _F(){
               // Search: Icon on mobile, text on desktop
               v.jsxs("button",{
                 onClick:()=>{s();setIsSearchOpen(!isSearchOpen)},
-                className:"hover:text-neutral-400 transition-colors focus:outline-none cursor-pointer flex items-center justify-center p-1",
-                style:{color:"#ffffff"},
+                className:"flex items-center justify-center gap-1.5 p-2 sm:px-3 sm:py-1.5 rounded-full bg-white/[0.08] hover:bg-white/[0.16] border border-white/15 hover:border-white/30 text-white/90 hover:text-white transition-all focus:outline-none cursor-pointer backdrop-blur-xs",
                 "aria-label":"Search",
                 children:[
-                  v.jsxs("svg",{width:"17",height:"17",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2.3",strokeLinecap:"round",strokeLinejoin:"round",className:"sm:hidden",children:[
+                  v.jsxs("svg",{width:"15",height:"15",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2.2",strokeLinecap:"round",strokeLinejoin:"round",children:[
                     v.jsx("circle",{cx:"11",cy:"11",r:"8"}),
                     v.jsx("line",{x1:"21",y1:"21",x2:"16.65",y2:"16.65"})
                   ]}),
-                  v.jsx("span",{className:"hidden sm:inline",children:"SEARCH"})
+                  v.jsx("span",{className:"hidden sm:inline text-xs font-bold tracking-wider",children:"SEARCH"})
                 ]
               }),
               v.jsxs("button",{
                 onClick:()=>{s();a("auth")},
-                className:"hidden sm:inline-flex items-center gap-1.5 hover:text-neutral-300 transition-colors cursor-pointer text-xs font-black uppercase tracking-wider",
-                style:{color:"#ffffff"},
+                className:"hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.08] hover:bg-white/[0.16] border border-white/15 hover:border-white/30 text-white/90 hover:text-white transition-all cursor-pointer text-xs font-bold uppercase tracking-wider backdrop-blur-xs",
                 children:[
-                  v.jsxs("svg",{width:"15",height:"15",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2.2",strokeLinecap:"round",strokeLinejoin:"round",children:[
+                  v.jsxs("svg",{width:"14",height:"14",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2.2",strokeLinecap:"round",strokeLinejoin:"round",children:[
                     v.jsx("path",{d:"M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"}),
                     v.jsx("circle",{cx:"12",cy:"7",r:"4"})
                   ]}),
                   "SIGN IN"
                 ]
               }),
-              // Luxury Minimalist Black Cart Button with Shopping Cart Icon
+              // Luxury Frosted Glass Cart Button with Shopping Cart Icon
               v.jsxs("button",{
                 onClick:()=>{s();openCart(true)},
-                style:{
-                  backgroundColor:"#000000",
-                  color:"#ffffff",
-                  minWidth:"34px",
-                  height:"32px",
-                  padding:totCount>0?"0 10px":"0 8px",
-                  borderRadius:"9999px",
-                  display:"flex",
-                  alignItems:"center",
-                  justifyContent:"center",
-                  gap:"5px",
-                  border:"1.5px solid rgba(255,255,255,0.35)",
-                  cursor:"pointer",
-                  boxShadow:"0 2px 10px rgba(0,0,0,0.6)",
-                  transition:"all 0.2s"
-                },
-                className:"hover:border-white hover:scale-105 active:scale-95 transition-all",
+                className:"flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.08] hover:bg-white/[0.18] border border-white/20 hover:border-white/40 backdrop-blur-md transition-all duration-200 cursor-pointer shadow-sm hover:scale-105 active:scale-95 text-white h-[34px]",
                 "aria-label":"Open cart",
                 children:[
                   v.jsxs("svg",{
@@ -8328,7 +8299,10 @@ function _F(){
                       v.jsx("path",{d:"M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"})
                     ]
                   }),
-                  totCount > 0 && v.jsx("span",{style:{fontFamily:"Swiss, -apple-system, sans-serif",fontSize:"10px",fontWeight:900,color:"#ffffff",backgroundColor:"#f82793",borderRadius:"9999px",padding:"1px 6px",marginLeft:"2px"},children:totCount})
+                  totCount > 0 && v.jsx("span",{
+                    className:"font-mono text-[10px] font-black text-white bg-[#f82793] rounded-full px-1.5 py-0.5 leading-none shadow-sm shadow-[#f82793]/40",
+                    children:totCount
+                  })
                 ]
               })
             ]})
@@ -9061,7 +9035,7 @@ function _F(){
         v.jsxs("section",{
           id:"hero",
           className:"w-full relative overflow-hidden flex flex-col justify-end select-none",
-          style:{minHeight:"clamp(680px, 92vh, 980px)",width:"100%",backgroundColor:"#000000",paddingTop:"80px"},
+          style:{minHeight:"clamp(680px, 92vh, 980px)",width:"100%",backgroundColor:"#000000",paddingTop:"0px"},
           children:[
 
             // Full-Bleed Editorial Campaign Hero Banner (First Image)
@@ -9195,13 +9169,15 @@ function _F(){
         }),
 
         // ══════════════════════════════════════════════════════════════
-        // SECTION 1.5: ANIMATED INFINITE TICKER MARQUEE
+        // SECTION 1.5: ANIMATED INFINITE TICKER MARQUEE (Frosted Dark Glass)
         // ══════════════════════════════════════════════════════════════
         v.jsx("div", {
           id: "plezzy-ticker-marquee-bar",
-          className: "w-full overflow-hidden border-y border-pink-200/50 dark:border-pink-900/30 select-none py-3 relative z-10",
+          className: "w-full overflow-hidden border-y border-white/10 select-none py-3.5 relative z-10",
           style: {
-            background: "linear-gradient(90deg, #dcf0fb 0%, #fde2ec 25%, #f2e7fe 50%, #dbeafe 75%, #fde2ec 100%)"
+            background: "rgba(12, 10, 16, 0.72)",
+            backdropFilter: "blur(20px)",
+            WebkitBackdropFilter: "blur(20px)"
           },
           children: v.jsx("div", {
             className: "flex w-max items-center whitespace-nowrap",
@@ -9210,48 +9186,34 @@ function _F(){
             },
             children: [0, 1, 2, 3].map((loopIdx) => v.jsxs("div", {
               key: loopIdx,
-              className: "flex items-center gap-8 sm:gap-12 px-4 shrink-0 font-sans font-bold text-xs sm:text-sm tracking-wide text-neutral-800",
+              className: "flex items-center gap-8 sm:gap-14 px-4 shrink-0 font-mono font-semibold text-[11px] sm:text-xs tracking-[0.2em] uppercase text-white/90",
               children: [
                 v.jsxs("div", {
                   className: "flex items-center gap-2.5",
                   children: [
-                    v.jsx("svg", {
-                      viewBox: "0 0 24 24",
-                      fill: "#ef577a",
-                      className: "size-4 shrink-0",
-                      children: v.jsx("path", {
-                        d: "M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-                      })
-                    }),
-                    v.jsx("span", { children: "COD & EMI Available" })
+                    v.jsx("span", { className: "text-[#f82793] text-sm", children: "✦" }),
+                    v.jsx("span", { children: "COD & EMI Available Across India" })
                   ]
                 }),
                 v.jsxs("div", {
                   className: "flex items-center gap-2.5",
                   children: [
-                    v.jsx("svg", {
-                      viewBox: "0 0 24 24",
-                      fill: "#ef577a",
-                      className: "size-4 shrink-0",
-                      children: v.jsx("path", {
-                        d: "M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-                      })
-                    }),
-                    v.jsx("span", { children: "FREE & Discreet Shipping" })
+                    v.jsx("span", { className: "text-[#f82793] text-sm", children: "✦" }),
+                    v.jsx("span", { children: "Free & 100% Discreet Shipping Over ₹999" })
                   ]
                 }),
                 v.jsxs("div", {
                   className: "flex items-center gap-2.5",
                   children: [
-                    v.jsx("svg", {
-                      viewBox: "0 0 24 24",
-                      fill: "#ef577a",
-                      className: "size-4 shrink-0",
-                      children: v.jsx("path", {
-                        d: "M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-                      })
-                    }),
-                    v.jsx("span", { children: "Discreet Packaging" })
+                    v.jsx("span", { className: "text-[#f82793] text-sm", children: "✦" }),
+                    v.jsx("span", { children: "Body-Safe Medical Grade Silicone" })
+                  ]
+                }),
+                v.jsxs("div", {
+                  className: "flex items-center gap-2.5",
+                  children: [
+                    v.jsx("span", { className: "text-[#f82793] text-sm", children: "✦" }),
+                    v.jsx("span", { children: "Unbranded Stealth Delivery Packaging" })
                   ]
                 })
               ]
@@ -9259,7 +9221,6 @@ function _F(){
           })
         }),
 
-        // ══════════════════════════════════════════════════════════════
         // SECTION 2 & 3: PLEZZY EDITORIAL BENTO PRODUCT GRID
         // ══════════════════════════════════════════════════════════════
         v.jsxs("section", {
@@ -9287,8 +9248,8 @@ function _F(){
                   style: {
                     fontFamily: "'Plus Jakarta Sans', sans-serif",
                     fontSize: "clamp(12px, 1.4vw, 14px)",
-                    color: "#4A0E17",
-                    opacity: 0.82,
+                    color: "rgba(255, 255, 255, 0.75)",
+                    opacity: 0.95,
                     fontWeight: 600,
                     letterSpacing: "0.04em",
                     margin: "0 auto",
@@ -9361,7 +9322,7 @@ function _F(){
                           v.jsxs("div", {
                             className: "plezzy-bento-rating",
                             children: [
-                              v.jsx("span", { style: { color: "#ef577a", fontSize: "12px" }, children: "★" }),
+                              v.jsx("span", { style: { color: "#f82793", fontSize: "12px" }, children: "★" }),
                               v.jsx("span", { children: (p.rating || 4.9).toFixed(1) }),
                               v.jsxs("span", { style: { opacity: 0.75, fontSize: "10px" }, children: ["(", revCount, ")"] })
                             ]
@@ -9758,15 +9719,15 @@ function _F(){
           id:"newsletter",
           className:"max-w-3xl mx-auto px-4 sm:px-8 py-16 text-center select-none",
           children: v.jsxs("div",{
-            className:"p-8 sm:p-12 rounded-3xl bg-[#faf9f7]/90 backdrop-blur-md border border-[#dedad2] shadow-sm space-y-4",
+            className:"p-8 sm:p-14 rounded-3xl bg-[#121016]/80 backdrop-blur-2xl border border-white/12 shadow-2xl space-y-4",
             children:[
               v.jsx("h3",{
-                className:"text-2xl sm:text-3xl font-extrabold text-[#1a1a1a] tracking-tight uppercase",
+                className:"text-2xl sm:text-3xl font-extrabold text-white tracking-tight uppercase",
                 style:{fontFamily:"'Plus Jakarta Sans', -apple-system, sans-serif"},
                 children:"STAY IN THE LOOP."
               }),
               v.jsx("p",{
-                className:"text-xs sm:text-sm text-[#67645e] max-w-md mx-auto leading-relaxed",
+                className:"text-xs sm:text-sm text-white/70 max-w-md mx-auto leading-relaxed",
                 children:"New drops, private offers and things worth knowing."
               }),
               newsletterSubmitted ? (
@@ -9791,18 +9752,18 @@ function _F(){
                       value:newsletterEmail,
                       onChange:(e)=>setNewsletterEmail(e.target.value),
                       placeholder:"Email address",
-                      className:"w-full sm:flex-1 bg-white border border-[#dedad2] rounded-full px-5 py-3 text-xs text-[#1a1a1a] placeholder:text-[#8b8782] focus:outline-none focus:border-[#1a1a1a] shadow-2xs"
+                      className:"w-full sm:flex-1 bg-white/10 border border-white/20 rounded-full px-5 py-3 text-xs text-white placeholder:text-white/40 focus:outline-none focus:border-[#f82793] backdrop-blur-sm"
                     }),
                     v.jsx("button",{
                       type:"submit",
-                      className:"w-full sm:w-auto px-7 py-3 rounded-full bg-[#1a1a1a] text-white hover:bg-[#ff2a85] font-extrabold uppercase text-xs tracking-wider transition-all duration-300 shrink-0 cursor-pointer shadow-sm",
+                      className:"w-full sm:w-auto px-7 py-3 rounded-full bg-[#f82793] text-white hover:bg-[#d41c7b] font-extrabold uppercase text-xs tracking-wider transition-all duration-300 shrink-0 cursor-pointer shadow-lg shadow-[#f82793]/35",
                       children:"JOIN PLEZZY"
                     })
                   ]
                 })
               ),
               v.jsx("p",{
-                className:"text-[10px] text-[#8b8782] pt-1",
+                className:"text-[10px] text-white/40 pt-1",
                 children:"100% confidential. No sensitive billing markers. Unsubscribe anytime."
               })
             ]
@@ -9812,10 +9773,10 @@ function _F(){
         // ══════════════════════════════════════════════════════════════
         // SECTION 10: GIANT TACTILE PLEZZY WORDMARK BANNER
         // ══════════════════════════════════════════════════════════════
-        v.jsx("div",{className:"mx-3 sm:mx-8 my-8 rounded-[28px] bg-[#f1f0ed]/90 backdrop-blur-xs border border-[#e5e2dd] py-14 sm:py-20 px-6 text-center overflow-hidden relative select-none",children:
+        v.jsx("div",{className:"mx-3 sm:mx-8 my-8 rounded-[28px] bg-[#121016]/65 backdrop-blur-2xl border border-white/10 py-16 sm:py-24 px-6 text-center overflow-hidden relative select-none",children:
           v.jsxs("div",{className:"relative z-10 space-y-4",children:[
             v.jsx("h2",{className:"giant-wordmark select-none",children:"plezzy"}),
-            v.jsx("p",{className:"text-xs uppercase tracking-widest text-[#8b8782] font-bold",children:"everyday essentials, done well."})
+            v.jsx("p",{className:"text-xs uppercase tracking-[0.25em] text-white/60 font-mono font-bold",children:"everyday essentials, done well."})
           ]})
         })
 
@@ -9825,48 +9786,48 @@ function _F(){
     // ══════════════════════════════════════════════════════════════
     // TOPICALS STRUCTURED 5-COLUMN FOOTER (Hidden in Admin Mode)
     // ══════════════════════════════════════════════════════════════
-    !isAdminView && v.jsx("footer",{className:"w-full bg-[#f1f0ed]/95 backdrop-blur-md border-t border-[#e5e2dd] pt-16 pb-12 px-4 sm:px-8 mt-14 relative z-10 select-none",children:
+    !isAdminView && v.jsx("footer",{className:"w-full bg-[#0c0a10]/90 backdrop-blur-2xl border-t border-white/10 pt-16 pb-12 px-4 sm:px-8 mt-14 relative z-10 select-none text-white",children:
       v.jsxs("div",{className:"max-w-7xl mx-auto space-y-12",children:[
 
         // 5-Column Navigation Grid
         v.jsxs("div",{id:"footer-nav-grid",className:"grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 sm:gap-10 text-left text-xs uppercase tracking-wider",children:[
           // 1. SHOP
           v.jsxs("div",{className:"space-y-3",children:[
-            v.jsx("h5",{className:"font-extrabold text-[#1a1a1a] tracking-widest",children:"THE COLLECTION"}),
-            v.jsxs("ul",{className:"space-y-2.5 text-[#8b8782] lowercase",children:[
+            v.jsx("h5",{className:"font-extrabold text-white tracking-widest",children:"THE COLLECTION"}),
+            v.jsxs("ul",{className:"space-y-2.5 text-white/60 lowercase",children:[
               prods.map(p=>v.jsx("li",{key:p.id,children:
-                v.jsx("button",{onClick:()=>handleSelectProduct(p),className:"hover:text-[#1a1a1a] transition-colors cursor-pointer text-left",children:p.name})
+                v.jsx("button",{onClick:()=>handleSelectProduct(p),className:"hover:text-[#f82793] transition-colors cursor-pointer text-left",children:p.name})
               })),
-              v.jsx("li",{children:v.jsx("button",{onClick:handleShopClick,className:"hover:text-[#1a1a1a] font-bold text-[#1a1a1a] transition-colors cursor-pointer",children:"all editions →"})})
+              v.jsx("li",{children:v.jsx("button",{onClick:handleShopClick,className:"hover:text-[#f82793] font-bold text-white transition-colors cursor-pointer",children:"all editions →"})})
             ]})
           ]}),
 
           // 2. HELP
           v.jsxs("div",{className:"space-y-3",children:[
-            v.jsx("h5",{className:"font-extrabold text-[#1a1a1a] tracking-widest",children:"HELP"}),
-            v.jsxs("ul",{className:"space-y-2.5 text-[#8b8782] lowercase",children:[
-              v.jsx("li",{children:v.jsx("button",{onClick:()=>a("contact"),className:"hover:text-[#1a1a1a] transition-colors cursor-pointer",children:"contact"})}),
-              v.jsx("li",{children:v.jsx("button",{onClick:()=>a("faq"),className:"hover:text-[#1a1a1a] transition-colors cursor-pointer",children:"faqs"})}),
-              v.jsx("li",{children:v.jsx("button",{onClick:()=>a("shipping"),className:"hover:text-[#1a1a1a] transition-colors cursor-pointer",children:"shipping"})}),
-              v.jsx("li",{children:v.jsx("button",{onClick:()=>a("shipping"),className:"hover:text-[#1a1a1a] transition-colors cursor-pointer",children:"returns"})}),
-              v.jsx("li",{children:v.jsx("button",{onClick:()=>a("tracking"),className:"hover:text-[#1a1a1a] transition-colors cursor-pointer",children:"order tracking"})})
+            v.jsx("h5",{className:"font-extrabold text-white tracking-widest",children:"HELP"}),
+            v.jsxs("ul",{className:"space-y-2.5 text-white/60 lowercase",children:[
+              v.jsx("li",{children:v.jsx("button",{onClick:()=>a("contact"),className:"hover:text-[#f82793] transition-colors cursor-pointer",children:"contact"})}),
+              v.jsx("li",{children:v.jsx("button",{onClick:()=>a("faq"),className:"hover:text-[#f82793] transition-colors cursor-pointer",children:"faqs"})}),
+              v.jsx("li",{children:v.jsx("button",{onClick:()=>a("shipping"),className:"hover:text-[#f82793] transition-colors cursor-pointer",children:"shipping"})}),
+              v.jsx("li",{children:v.jsx("button",{onClick:()=>a("shipping"),className:"hover:text-[#f82793] transition-colors cursor-pointer",children:"returns"})}),
+              v.jsx("li",{children:v.jsx("button",{onClick:()=>a("tracking"),className:"hover:text-[#f82793] transition-colors cursor-pointer",children:"order tracking"})})
             ]})
           ]}),
 
           // 3. ABOUT
           v.jsxs("div",{className:"space-y-3",children:[
-            v.jsx("h5",{className:"font-extrabold text-[#1a1a1a] tracking-widest",children:"ABOUT"}),
-            v.jsxs("ul",{className:"space-y-2.5 text-[#8b8782] lowercase",children:[
-              v.jsx("li",{children:v.jsx("button",{onClick:()=>{s();if(isPdp)handleBackToHome();setTimeout(()=>{const el=document.getElementById("campaign-statement");if(el)el.scrollIntoView({behavior:"smooth"});},100)},className:"hover:text-[#1a1a1a] transition-colors cursor-pointer",children:"our story"})}),
-              v.jsx("li",{children:v.jsx("button",{onClick:()=>{s();if(isPdp)handleBackToHome();setTimeout(()=>{const el=document.getElementById("campaign-video");if(el)el.scrollIntoView({behavior:"smooth"});},100)},className:"hover:text-[#1a1a1a] transition-colors cursor-pointer",children:"journal"})}),
-              v.jsx("li",{children:v.jsx("button",{onClick:()=>{s();if(isPdp)handleBackToHome();setTimeout(()=>{const el=document.getElementById("campaign-statement");if(el)el.scrollIntoView({behavior:"smooth"});},100)},className:"hover:text-[#1a1a1a] transition-colors cursor-pointer",children:"careers"})})
+            v.jsx("h5",{className:"font-extrabold text-white tracking-widest",children:"ABOUT"}),
+            v.jsxs("ul",{className:"space-y-2.5 text-white/60 lowercase",children:[
+              v.jsx("li",{children:v.jsx("button",{onClick:()=>{s();if(isPdp)handleBackToHome();setTimeout(()=>{const el=document.getElementById("campaign-statement");if(el)el.scrollIntoView({behavior:"smooth"});},100)},className:"hover:text-[#f82793] transition-colors cursor-pointer",children:"our story"})}),
+              v.jsx("li",{children:v.jsx("button",{onClick:()=>{s();if(isPdp)handleBackToHome();setTimeout(()=>{const el=document.getElementById("campaign-video");if(el)el.scrollIntoView({behavior:"smooth"});},100)},className:"hover:text-[#f82793] transition-colors cursor-pointer",children:"journal"})}),
+              v.jsx("li",{children:v.jsx("button",{onClick:()=>{s();if(isPdp)handleBackToHome();setTimeout(()=>{const el=document.getElementById("campaign-statement");if(el)el.scrollIntoView({behavior:"smooth"});},100)},className:"hover:text-[#f82793] transition-colors cursor-pointer",children:"careers"})})
             ]})
           ]}),
 
           // 4. FOLLOW
           v.jsxs("div",{className:"space-y-3",children:[
-            v.jsx("h5",{className:"font-extrabold text-[#1a1a1a] tracking-widest",children:"FOLLOW"}),
-            v.jsxs("ul",{className:"space-y-2.5 text-[#8b8782] lowercase",children:[
+            v.jsx("h5",{className:"font-extrabold text-white tracking-widest",children:"FOLLOW"}),
+            v.jsxs("ul",{className:"space-y-2.5 text-white/60 lowercase",children:[
               v.jsx("li",{children:v.jsx("a",{href:"https://instagram.com",target:"_blank",rel:"noopener noreferrer",className:"hover:text-[#1a1a1a] transition-colors",children:"instagram"})}),
               v.jsx("li",{children:v.jsx("a",{href:"https://tiktok.com",target:"_blank",rel:"noopener noreferrer",className:"hover:text-[#1a1a1a] transition-colors",children:"tiktok"})}),
               v.jsx("li",{children:v.jsx("a",{href:"https://youtube.com",target:"_blank",rel:"noopener noreferrer",className:"hover:text-[#1a1a1a] transition-colors",children:"youtube"})}),
@@ -9876,21 +9837,21 @@ function _F(){
 
           // 5. LEGAL
           v.jsxs("div",{className:"space-y-3",children:[
-            v.jsx("h5",{className:"font-extrabold text-[#1a1a1a] tracking-widest",children:"LEGAL"}),
-            v.jsxs("ul",{className:"space-y-2.5 text-[#8b8782] lowercase",children:[
-              v.jsx("li",{children:v.jsx("button",{onClick:()=>a("faq"),className:"hover:text-[#1a1a1a] transition-colors cursor-pointer",children:"privacy"})}),
-              v.jsx("li",{children:v.jsx("button",{onClick:()=>a("faq"),className:"hover:text-[#1a1a1a] transition-colors cursor-pointer",children:"terms"})}),
-              v.jsx("li",{children:v.jsx("button",{onClick:()=>a("shipping"),className:"hover:text-[#1a1a1a] transition-colors cursor-pointer",children:"shipping policy"})}),
-              v.jsx("li",{children:v.jsx("button",{onClick:()=>a("shipping"),className:"hover:text-[#1a1a1a] transition-colors cursor-pointer",children:"refund policy"})})
+            v.jsx("h5",{className:"font-extrabold text-white tracking-widest",children:"LEGAL"}),
+            v.jsxs("ul",{className:"space-y-2.5 text-white/60 lowercase",children:[
+              v.jsx("li",{children:v.jsx("button",{onClick:()=>a("faq"),className:"hover:text-[#f82793] transition-colors cursor-pointer",children:"privacy"})}),
+              v.jsx("li",{children:v.jsx("button",{onClick:()=>a("faq"),className:"hover:text-[#f82793] transition-colors cursor-pointer",children:"terms"})}),
+              v.jsx("li",{children:v.jsx("button",{onClick:()=>a("shipping"),className:"hover:text-[#f82793] transition-colors cursor-pointer",children:"shipping policy"})}),
+              v.jsx("li",{children:v.jsx("button",{onClick:()=>a("shipping"),className:"hover:text-[#f82793] transition-colors cursor-pointer",children:"refund policy"})})
             ]})
           ]})
 
         ]}),
 
         // Bottom Bar: Country / Currency Selector + Discreet Guarantee + Copyright
-        v.jsxs("div",{className:"pt-8 border-t border-[#e5e2dd] flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-[#8b8782]",children:[
+        v.jsxs("div",{className:"pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-white/40",children:[
           v.jsxs("div",{className:"flex items-center gap-2",children:[
-            v.jsx("span",{className:"font-bold text-[#1a1a1a]",children:"India (INR ₹)"}),
+            v.jsx("span",{className:"font-bold text-white",children:"India (INR ₹)"}),
             v.jsx("span",{children:"•"}),
             v.jsx("span",{children:"tax inclusive"}),
             v.jsx("span",{children:"•"}),
