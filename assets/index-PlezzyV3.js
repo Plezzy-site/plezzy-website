@@ -9069,32 +9069,39 @@ function _F(){
         v.jsxs("section",{
           id:"hero",
           className:"w-full relative overflow-hidden flex flex-col justify-end select-none",
-          style:{minHeight:"clamp(680px, 92vh, 980px)",width:"100%",backgroundColor:"#000000",paddingTop:"0px"},
+          style:{
+            width:"100%",
+            aspectRatio:"16 / 9",
+            minHeight:"clamp(460px, 68vh, 880px)",
+            backgroundColor:"#e2397e",
+            background:"linear-gradient(135deg, #fbbedd 0%, #f3036e 45%, #e2397e 100%)",
+            paddingTop:"0px"
+          },
           children:[
 
-            // Full-Bleed Editorial Campaign Hero Banner (First Image)
+            // Full-Bleed Editorial Campaign Hero Banner (Uncut 16:9 Image)
             v.jsx("img",{
               id:"plezzy-hero-video-banner",
-              src:"/assets/plezzy-hero-banner.jpg?v=20261029_v3_enhanced",
+              src:"/assets/plezzy-hero-banner-new.jpg?v=20261102_front_uncut_v1",
               alt:"PLEZZY Everyday Essentials",
-              className:"editorial-bw-img w-full h-full object-cover select-none",
+              className:"editorial-bw-img w-full h-full object-contain select-none",
               style:{
                 position:"absolute",
                 inset:0,
                 width:"100%",
                 height:"100%",
-                objectFit:"cover",
-                objectPosition:"68% 42%",
+                objectFit:"contain",
+                objectPosition:"center center",
                 zIndex:0
               }
             }),
 
-            // Atmospheric Contrast Vignette (Top & Bottom subtle cinematic gradient)
+            // Atmospheric Contrast Vignette (Bottom subtle gradient for text contrast)
             v.jsx("div",{
               style:{
                 position:"absolute",
                 inset:0,
-                background:"linear-gradient(to right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0) 65%), linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 70%, rgba(0,0,0,0.35) 100%)",
+                background:"linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.2) 32%, transparent 60%)",
                 zIndex:1,
                 pointerEvents:"none"
               }

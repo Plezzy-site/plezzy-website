@@ -23,7 +23,7 @@
     <script>
       window.__PLEZZY_DEFAULT_VIEW__ = "collections";
     </script>
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261102_bento_restored_v8"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261102_front_uncut_v9"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
@@ -613,29 +613,44 @@
         }
       }
 
-      /* ── Hero Banner Styling & Framing ── */
+      /* ── Hero Banner Styling & Framing (Uncut Full Display) ── */
+      #hero {
+        position: relative !important;
+        width: 100% !important;
+        aspect-ratio: 16 / 9 !important;
+        min-height: 480px !important;
+        max-height: 88vh !important;
+        background: linear-gradient(135deg, #fbbedd 0%, #f3036e 45%, #e2397e 100%) !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-end !important;
+      }
       #plezzy-hero-video-banner {
         position: absolute !important;
         inset: 0 !important;
         width: 100% !important;
         height: 100% !important;
-        object-fit: cover !important;
-        object-position: right center !important;
+        object-fit: contain !important;
+        object-position: center center !important;
         transform: none !important;
+        animation: none !important;
         z-index: 0 !important;
         image-rendering: -webkit-optimize-contrast !important;
         image-rendering: crisp-edges !important;
       }
       @media (max-width: 768px) {
         #hero {
-          min-height: 85vh !important;
-          min-height: 85dvh !important;
+          aspect-ratio: 16 / 10 !important;
+          min-height: 380px !important;
+          max-height: 75vh !important;
           padding-top: 64px !important;
         }
         #plezzy-hero-video-banner {
           transform: none !important;
-          object-fit: cover !important;
-          object-position: 70% center !important;
+          animation: none !important;
+          object-fit: contain !important;
+          object-position: center center !important;
         }
         #hero-left-content {
           padding: 1.25rem 1.25rem 1.75rem 1.25rem !important;
@@ -2138,20 +2153,11 @@
         }
       }
 
-      /* 3. Hero Cinematic Ken-Burns Slow Zoom */
+      /* 3. Hero Cinematic Ken-Burns Zoom Disabled for Uncut Image */
       #plezzy-hero-video-banner {
-        animation: heroCinematicZoom 28s ease-in-out infinite alternate !important;
-        will-change: transform;
-        transform-origin: center center;
-      }
-
-      @keyframes heroCinematicZoom {
-        0% {
-          transform: scale(1.0);
-        }
-        100% {
-          transform: scale(1.06);
-        }
+        animation: none !important;
+        will-change: auto;
+        transform: none !important;
       }
 
       /* Hero Content Smooth Entrance */
