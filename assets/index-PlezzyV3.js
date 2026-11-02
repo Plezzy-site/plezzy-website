@@ -6508,470 +6508,908 @@ function PlezzyCommunitySlideshow() {
   });
 }
 
+
+const allCatalogProducts = [
+  {
+    "id": "plz-pebble",
+    "slug": "pocket-muse",
+    "name": "Pocket Muse",
+    "subtitle": "Ultra-smooth palm-sculpted pebble with whisper acoustic dampening",
+    "category": "MASSAGERS",
+    "badge": "30% OFF",
+    "role": "palm acoustic resonance & velvety tactile wellness",
+    "tagline": "An ultra-smooth, palm-sculpted tactile pebble with whisper acoustic dampening and water-resistant finish.",
+    "priceINR": 2499,
+    "priceUSD": "$30.00",
+    "rating": 4.9,
+    "reviewsCount": 348,
+    "image": "/assets/products/pocket-pebble-main.jpg",
+    "images": [
+      {
+        "src": "/assets/products/pocket-pebble-main.jpg",
+        "label": "Studio Portrait with Hibiscus"
+      },
+      {
+        "src": "/assets/products/pocket-pebble-macro.jpg",
+        "label": "Sculptural Form & Specular Finish"
+      },
+      {
+        "src": "/assets/products/pocket-pebble-detail.jpg",
+        "label": "Tactile Texture & Droplet Detail"
+      }
+    ],
+    "shades": [
+      {
+        "name": "sunburst yellow",
+        "color": "#F7C948",
+        "desc": "warm velvety saffron",
+        "badge": "signature"
+      },
+      {
+        "name": "obsidian noir",
+        "color": "#1A1A1A",
+        "desc": "deep matte obsidian",
+        "badge": "core"
+      }
+    ],
+    "desc1": "The pocket muse is an intentional sensory wellness object designed to rest naturally within the palm. Encased in velvety, hypoallergenic medical-grade silicone with water-resistant acoustic dampening, it delivers deeply calming acoustic frequencies for discreet daily wellness.",
+    "desc2": "Engineered with magnetic rapid charging and an intuitive one-touch control interface. Crafted to elevate intimate sensory rituals with quiet confidence.",
+    "accordions": [
+      {
+        "title": "Benefits & Sensory Ritual",
+        "content": "Ultra-quiet acoustic dampening (<28dB) delivers deep physical relaxation and sensory harmony. Waterproof construction allows for warm bath relaxation and effortless cleansing."
+      },
+      {
+        "title": "Application & Care",
+        "content": "Press and hold power button for 2 seconds to awaken. Cycle through 8 calibrated harmonic wave patterns. Clean with warm water and mild soap after each use."
+      },
+      {
+        "title": "Materials & Engineering Specs",
+        "content": "100% body-safe hypoallergenic liquid silicone unibody. IPX7 waterproof submersible seal. Magnetic USB rapid charging with 80+ minutes of continuous ritual time."
+      },
+      {
+        "title": "Stealth Delivery & 1-Year Guarantee",
+        "content": "Dispatched in plain, unbranded protective packaging with no identifiable exterior markings. Backed by an unconditional 1-year replacement warranty."
+      }
+    ],
+    "availability": "in_stock",
+    "price": 2499,
+    "priceNumeric": 2499,
+    "categories": [
+      "ALL",
+      "FOR HER",
+      "FOR HIM",
+      "FOR COUPLES",
+      "MASSAGERS"
+    ],
+    "badgeType": "discount",
+    "originalINR": 3499
+  },
+  {
+    "id": "plz-dual-wand",
+    "slug": "cloud-kiss",
+    "name": "Cloud Kiss",
+    "subtitle": "Frosted silicone body with floating celestial hearts & dual harmonic motors",
+    "category": "MASSAGERS",
+    "badge": "30% OFF",
+    "role": "dual-point harmonic resonance with floating celestial hearts",
+    "tagline": "Translucent frosted silicone body infused with floating celestial hearts and dual harmonic motors.",
+    "priceINR": 3999,
+    "priceUSD": "$48.00",
+    "rating": 5,
+    "reviewsCount": 412,
+    "image": "/assets/products/astral-wave-wand-main.jpg",
+    "images": [
+      {
+        "src": "/assets/products/astral-wave-wand-main.jpg",
+        "label": "Translucent Dual Silhouette"
+      },
+      {
+        "src": "/assets/products/astral-wave-wand-macro.jpg",
+        "label": "Frosted Silicone & Heart Particles"
+      },
+      {
+        "src": "/assets/products/astral-wave-wand-detail.jpg",
+        "label": "Precision Wave Nodes & Contour"
+      }
+    ],
+    "shades": [
+      {
+        "name": "celestial frost",
+        "color": "#E0DBE8",
+        "desc": "frosted lavender with hearts",
+        "badge": "signature"
+      },
+      {
+        "name": "amethyst mist",
+        "color": "#7B5E8C",
+        "desc": "deep violet shimmer",
+        "badge": "limited"
+      }
+    ],
+    "desc1": "The cloud kiss represents the pinnacle of sculptural intimacy design. Molded from frosted translucent medical silicone and hand-infused with iridescent micro-hearts, it houses dual synchronized acoustic motors that generate deep resonant frequencies across both contact nodes.",
+    "desc2": "Features independent multi-speed harmonic wave modes and ergonomic dual-end curvature tailored for both focused acupressure and expansive resonance.",
+    "accordions": [
+      {
+        "title": "Benefits & Sensory Ritual",
+        "content": "Dual independent resonance motors deliver simultaneous dual-zone acoustic stimulation. Ergonomically balanced to adapt gracefully to body contours."
+      },
+      {
+        "title": "Application & Care",
+        "content": "Intuitive dual-button interface enables individual or synchronized control of both resonance points. Wash thoroughly with mild cleanser and store dry."
+      },
+      {
+        "title": "Materials & Engineering Specs",
+        "content": "Medical-grade frosted liquid silicone with suspended non-toxic micro-elements. Dual low-frequency core motors (<29dB). Magnetic hermetic fast charge. IPX7 100% waterproof."
+      },
+      {
+        "title": "Stealth Delivery & 1-Year Guarantee",
+        "content": "Shipped in discreet matte black eco-conscious packaging with complete confidentiality. Comprehensive 1-year guarantee included."
+      }
+    ],
+    "availability": "in_stock",
+    "price": 3999,
+    "priceNumeric": 3999,
+    "categories": [
+      "ALL",
+      "FOR HER",
+      "FOR COUPLES",
+      "MASSAGERS"
+    ],
+    "badgeType": "discount",
+    "originalINR": 4999
+  },
+  {
+    "id": "plz-elixir",
+    "slug": "banana-espresso",
+    "name": "Banana Espresso",
+    "subtitle": "pH-balanced organic botanical intimacy serum for silky hydration",
+    "category": "ELIXIRS & LUBES",
+    "badge": "BEST SELLER",
+    "role": "ultra-glide clean moisture & botanical nourishment",
+    "tagline": "pH-balanced organic botanical intimacy serum formulated for silky, long-lasting hydration.",
+    "priceINR": 1299,
+    "priceUSD": "$16.00",
+    "rating": 4.9,
+    "reviewsCount": 520,
+    "image": "/assets/products/nectar-elixir-main.jpg",
+    "images": [
+      {
+        "src": "/assets/products/nectar-elixir-main.jpg",
+        "label": "Canister with Dripping Viscous Drop"
+      },
+      {
+        "src": "/assets/products/nectar-elixir-macro.jpg",
+        "label": "Graphic Halftone Banana Label Artwork"
+      },
+      {
+        "src": "/assets/products/nectar-elixir-detail.jpg",
+        "label": "Dispenser Nozzle & Viscosity Closeup"
+      }
+    ],
+    "shades": [
+      {
+        "name": "pure botanical",
+        "color": "#F0E130",
+        "desc": "canary yellow dispenser",
+        "badge": "essential"
+      }
+    ],
+    "desc1": "Banana Espresso is a water-soluble, clean botanical formulation that provides an effortless, frictionless glide with skin-soothing hydration. Packaged in a contemporary airtight pump dispenser featuring signature graphic artwork.",
+    "desc2": "Formulated to match the body's natural chemistry with a balanced pH of 3.9–4.2. Safe with natural rubber latex and all silicone wellness objects.",
+    "accordions": [
+      {
+        "title": "Benefits & Sensory Ritual",
+        "content": "Ultra-slippery, non-sticky texture that never gets tacky or leaves stains. Provides restorative moisture to delicate skin barriers."
+      },
+      {
+        "title": "Application & Care",
+        "content": "Dispense 2–3 pumps into palms and warm gently before applying. Compatible with all silicone devices, condoms, and natural touch rituals."
+      },
+      {
+        "title": "Materials & Ingredients",
+        "content": "Purified Aqua, Plant-Derived Hyaluronic Acid, Organic Aloe Barbadensis Leaf Juice, Vegetable Glycerin, Chamomile Extract, Citric Acid. 100% Vegan, cruelty-free, paraben-free."
+      },
+      {
+        "title": "Stealth Delivery & 1-Year Guarantee",
+        "content": "Shipped with neutral return address and zero product descriptions on exterior packing. 100% satisfaction guarantee."
+      }
+    ],
+    "availability": "in_stock",
+    "price": 1299,
+    "priceNumeric": 1299,
+    "categories": [
+      "ALL",
+      "ELIXIRS & LUBES",
+      "FOR COUPLES",
+      "FOR HER",
+      "FOR HIM"
+    ],
+    "badgeType": "bestseller",
+    "originalINR": 1699
+  },
+  {
+    "id": "plz-cherry-wand",
+    "slug": "rose-rush",
+    "name": "Rose Rush",
+    "subtitle": "Sculptural flexible wand in frosted silicone with deep rumbly vibrations",
+    "category": "MASSAGERS",
+    "badge": "30% OFF",
+    "role": "targeted acupressure & whisper-quiet sonic depth",
+    "tagline": "Sculptural flexible wand in frosted silicone with deep rumbly vibrations for pinpoint release.",
+    "priceINR": 3499,
+    "priceUSD": "$42.00",
+    "rating": 4.9,
+    "reviewsCount": 289,
+    "image": "/assets/products/carmine-resonance-wand-main.jpg",
+    "images": [
+      {
+        "src": "/assets/products/carmine-resonance-wand-main.jpg",
+        "label": "Sculptural Silhouette & Dripping Carmine Glaze"
+      },
+      {
+        "src": "/assets/products/carmine-resonance-wand-macro.jpg",
+        "label": "Contoured Flexible Tip on Violet Velvet"
+      },
+      {
+        "src": "/assets/products/carmine-resonance-wand-detail.jpg",
+        "label": "Ergonomic Neck & Glaze Texture Detail"
+      }
+    ],
+    "shades": [
+      {
+        "name": "carmine glaze",
+        "color": "#B82E3E",
+        "desc": "translucent cherry rose",
+        "badge": "limited"
+      },
+      {
+        "name": "noir shadow",
+        "color": "#2B2B2B",
+        "desc": "smoky matte shadow",
+        "badge": "core"
+      }
+    ],
+    "desc1": "The rose rush is an ergonomically sculpted resonance instrument engineered with a flexible contoured head to deliver focused, deep-tissue acoustic resonance exactly where required. Its frosted, velvet-soft silicone surface glides weightlessly.",
+    "desc2": "Equipped with an ultra-quiet high-torque magnetic motor operating below 26dB, offering 10 discrete rhythmic frequencies ranging from gentle continuous murmurs to powerful pulse waves.",
+    "accordions": [
+      {
+        "title": "Benefits & Sensory Ritual",
+        "content": "Flexible ergonomic head pivots seamlessly to adapt to personal contours. Low-frequency motor produces deep sensations without irritating high-pitched buzzes."
+      },
+      {
+        "title": "Application & Care",
+        "content": "Long-press the concave touch key to activate. Tap rhythm key to cycle through frequency curves. Completely submersible for bath relaxation."
+      },
+      {
+        "title": "Materials & Engineering Specs",
+        "content": "100% body-safe medical silicone unibody. IPX7 waterproof. High-torque acoustic motor (<26dB). Rapid magnetic charging with up to 2 hours of ritual time."
+      },
+      {
+        "title": "Stealth Delivery & 1-Year Guarantee",
+        "content": "Packaged in discreet luxury matte casing. Backed by 1-year replacement warranty."
+      }
+    ],
+    "availability": "in_stock",
+    "price": 3499,
+    "priceNumeric": 3499,
+    "categories": [
+      "ALL",
+      "FOR HER",
+      "MASSAGERS"
+    ],
+    "badgeType": "discount",
+    "originalINR": 4299
+  },
+  {
+    "id": "plz-velvet-solstice",
+    "slug": "velvet-solstice",
+    "name": "Velvet Solstice",
+    "subtitle": "Dual-ended wave sculpture engineered with whisper-quiet low-frequency resonance",
+    "category": "MASSAGERS",
+    "categories": [
+      "ALL",
+      "FOR HER",
+      "FOR COUPLES",
+      "MASSAGERS"
+    ],
+    "badge": "NEW LAUNCH",
+    "badgeType": "new",
+    "role": "dual-ended wave sculpture & whisper-quiet low-frequency resonance",
+    "tagline": "Dual-ended wave sculpture engineered with whisper-quiet low-frequency resonance motors.",
+    "priceINR": 3799,
+    "originalINR": 4999,
+    "price": 3799,
+    "priceNumeric": 3799,
+    "priceUSD": "$46.00",
+    "rating": 4.8,
+    "reviewsCount": 194,
+    "image": "/assets/products/custom-1793272920071-velvet-solstice-wand-jpg.jpg",
+    "images": [
+      {
+        "src": "/assets/products/custom-1793272920071-velvet-solstice-wand-jpg.jpg",
+        "label": "Front Sculpture"
+      },
+      {
+        "src": "/assets/plezzy_blush_stack.jpg",
+        "label": "Studio Detail"
+      }
+    ],
+    "shades": [
+      {
+        "name": "amethyst aura",
+        "color": "#8B5CF6",
+        "desc": "deep velvety violet",
+        "badge": "signature"
+      },
+      {
+        "name": "obsidian noir",
+        "color": "#1E1B24",
+        "desc": "smoky matte shadow",
+        "badge": "core"
+      }
+    ],
+    "desc1": "Velvet Solstice is an architectural dual-ended intimacy sculpture engineered for immersive resonance. Cast in medical hypoallergenic liquid silicone, it features calibrated dual core motors with whisper acoustic dampening.",
+    "desc2": "Features 10 harmonic frequency curves and hermetic magnetic charging.",
+    "accordions": [
+      {
+        "title": "Benefits & Sensory Ritual",
+        "content": "Dual-ended acoustic resonance targets both broad contouring and pinpoint acupressure simultaneously."
+      },
+      {
+        "title": "Application & Care",
+        "content": "Long press power button for 2 seconds. Clean with warm water and gentle foam cleanser."
+      },
+      {
+        "title": "Materials & Engineering Specs",
+        "content": "100% body-safe medical silicone. IPX7 waterproof. Dual motors <28dB. Magnetic USB rapid charging."
+      },
+      {
+        "title": "Stealth Delivery & 1-Year Guarantee",
+        "content": "Delivered in plain, unbranded protective packaging. Unconditional 1-year guarantee."
+      }
+    ],
+    "availability": "in_stock"
+  },
+  {
+    "id": "plz-rose-petal",
+    "slug": "rose-petal-touch",
+    "name": "Rose Petal Touch",
+    "subtitle": "Ergonomic ribbed contouring with 10 calibrated wave rhythms for external stimulation",
+    "category": "MASSAGERS",
+    "categories": [
+      "ALL",
+      "FOR HER",
+      "MASSAGERS"
+    ],
+    "badge": "NEW LAUNCH",
+    "badgeType": "new",
+    "role": "ribbed wave contouring & pinpoint acoustic release",
+    "tagline": "Ergonomic ribbed contouring with 10 calibrated wave rhythms for gentle external stimulation.",
+    "priceINR": 2899,
+    "originalINR": 3899,
+    "price": 2899,
+    "priceNumeric": 2899,
+    "priceUSD": "$35.00",
+    "rating": 4.9,
+    "reviewsCount": 165,
+    "image": "/assets/PLEZZY_Rose_Petal_Front_Controls_View.png",
+    "images": [
+      {
+        "src": "/assets/PLEZZY_Rose_Petal_Front_Controls_View.png",
+        "label": "Front Controls View"
+      },
+      {
+        "src": "/assets/products/pocket-pebble-macro.jpg",
+        "label": "Silicone Texture"
+      }
+    ],
+    "shades": [
+      {
+        "name": "blush petal",
+        "color": "#F472B6",
+        "desc": "soft rose petal",
+        "badge": "signature"
+      }
+    ],
+    "desc1": "The Rose Petal Touch combines delicate ribbed wave ridges with deeply penetrating sonic resonance. Sculpted to cup natural body curves with zero pinch.",
+    "desc2": "IPX7 waterproof and submersible for bath and shower sensory rituals.",
+    "accordions": [
+      {
+        "title": "Benefits & Sensory Ritual",
+        "content": "Ribbed contact surfaces amplify tactile sensations while gentle acoustic motors preserve sensitivity."
+      },
+      {
+        "title": "Application & Care",
+        "content": "Simple one-touch cycle through 10 calibrated rhythm curves. Store dry."
+      },
+      {
+        "title": "Materials & Specs",
+        "content": "100% hypoallergenic silicone unibody. Magnetic rapid dock. Submersible seal."
+      },
+      {
+        "title": "Stealth Delivery",
+        "content": "100% plain packaging with no external branding."
+      }
+    ],
+    "availability": "in_stock"
+  },
+  {
+    "id": "plz-suede-pouch",
+    "slug": "suede-travel-pouch",
+    "name": "Suede Travel Pouch",
+    "subtitle": "Ultra-soft antimicrobial vegan suede pouch with hidden zip for confidential travel",
+    "category": "ACCESSORIES & CARE",
+    "categories": [
+      "ALL",
+      "ACCESSORIES & CARE",
+      "FOR HIM",
+      "FOR HER"
+    ],
+    "badge": "ESSENTIAL",
+    "badgeType": "essential",
+    "role": "antimicrobial discreet protection & confidential storage",
+    "tagline": "Ultra-soft antimicrobial vegan suede pouch with hidden zip for confidential travel.",
+    "priceINR": 899,
+    "originalINR": 1299,
+    "price": 899,
+    "priceNumeric": 899,
+    "priceUSD": "$12.00",
+    "rating": 5,
+    "reviewsCount": 210,
+    "image": "/assets/photoshoot-pouch-discrete.jpg",
+    "images": [
+      {
+        "src": "/assets/photoshoot-pouch-discrete.jpg",
+        "label": "Discrete Pouch Portrait"
+      },
+      {
+        "src": "/assets/lifestyle-flatlay.jpg",
+        "label": "Lifestyle Flatlay"
+      }
+    ],
+    "shades": [
+      {
+        "name": "burgundy suede",
+        "color": "#4A0E17",
+        "desc": "deep wine velvet",
+        "badge": "signature"
+      },
+      {
+        "name": "matte obsidian",
+        "color": "#1A1A1A",
+        "desc": "discreet black",
+        "badge": "core"
+      }
+    ],
+    "desc1": "Crafted from double-brushed antimicrobial vegan suede to protect your Plezzy wellness instruments from dust, lint, and curious eyes.",
+    "desc2": "Features an acoustic dampening inner lining and hidden silent-glide zipper.",
+    "accordions": [
+      {
+        "title": "Protection & Care",
+        "content": "Dustproof, water-resistant exterior. Hand wash cold and line dry."
+      },
+      {
+        "title": "Discreet Travel",
+        "content": "Looks like a luxury cosmetic or sunglasses case. Zero logos on outer faces."
+      }
+    ],
+    "availability": "in_stock"
+  },
+  {
+    "id": "plz-ritual-set",
+    "slug": "the-sensory-ritual-set",
+    "name": "The Sensory Ritual Set",
+    "subtitle": "Complete wellness ritual: Pocket Muse, Banana Espresso serum & travel pouch",
+    "category": "BUNDLES & GIFTING",
+    "categories": [
+      "ALL",
+      "BUNDLES & GIFTING",
+      "FOR COUPLES"
+    ],
+    "badge": "SAVE 35%",
+    "badgeType": "discount",
+    "role": "complete 3-piece introductory wellness suite",
+    "tagline": "Complete wellness ritual including Pocket Muse, Banana Espresso serum & travel pouch.",
+    "priceINR": 3999,
+    "originalINR": 5499,
+    "price": 3999,
+    "priceNumeric": 3999,
+    "priceUSD": "$49.00",
+    "rating": 5,
+    "reviewsCount": 142,
+    "image": "/assets/lifestyle-flatlay.jpg",
+    "images": [
+      {
+        "src": "/assets/lifestyle-flatlay.jpg",
+        "label": "Complete Ritual Flatlay"
+      },
+      {
+        "src": "/assets/photoshoot-pouch-discrete.jpg",
+        "label": "With Travel Pouch"
+      }
+    ],
+    "shades": [
+      {
+        "name": "curated ritual edition",
+        "color": "#F7C948",
+        "desc": "gold & saffron edition",
+        "badge": "curated"
+      }
+    ],
+    "desc1": "The complete Plezzy ritual experience bundled together in a keepsake gift box: our flagship Pocket Muse, full-size Banana Espresso organic elixir, and antimicrobial vegan suede pouch.",
+    "desc2": "Enjoy a 35% savings compared to purchasing each item individually.",
+    "accordions": [
+      {
+        "title": "Included in Ritual Set",
+        "content": "1x Pocket Muse pebble, 1x Banana Espresso botanical serum (100ml), 1x Suede Travel Pouch, 1x Magnetic Charging Cable."
+      },
+      {
+        "title": "Stealth Gift Box",
+        "content": "Packed in a neutral luxury gift box with plain outer mailer."
+      }
+    ],
+    "availability": "in_stock"
+  },
+  {
+    "id": "plz-lovers-suite",
+    "slug": "the-lovers-suite",
+    "name": "The Lovers Suite",
+    "subtitle": "The ultimate couples gift box: Cloud Kiss, Rose Rush & botanical elixir",
+    "category": "BUNDLES & GIFTING",
+    "categories": [
+      "ALL",
+      "BUNDLES & GIFTING",
+      "FOR COUPLES"
+    ],
+    "badge": "LIMITED EDITION",
+    "badgeType": "limited",
+    "role": "luxury couples dual-resonance intimate box set",
+    "tagline": "The ultimate couples gift box: Cloud Kiss, Rose Rush & botanical elixir in keepsake box.",
+    "priceINR": 6999,
+    "originalINR": 9999,
+    "price": 6999,
+    "priceNumeric": 6999,
+    "priceUSD": "$85.00",
+    "rating": 5,
+    "reviewsCount": 88,
+    "image": "/assets/plezzy_blush_stack.jpg",
+    "images": [
+      {
+        "src": "/assets/plezzy_blush_stack.jpg",
+        "label": "Luxury Gift Suite"
+      },
+      {
+        "src": "/assets/products/astral-wave-wand-main.jpg",
+        "label": "Cloud Kiss"
+      },
+      {
+        "src": "/assets/products/carmine-resonance-wand-main.jpg",
+        "label": "Rose Rush"
+      }
+    ],
+    "shades": [
+      {
+        "name": "midnight luxury suite",
+        "color": "#B82E3E",
+        "desc": "carmine & amethyst",
+        "badge": "limited"
+      }
+    ],
+    "desc1": "The premier couples collection featuring both signature wands: Cloud Kiss with translucent heart inclusions, Rose Rush with targeted flex-tip resonance, and full-size Banana Espresso elixir.",
+    "desc2": "Presented in an embossed magnetic-closure keepsake box.",
+    "accordions": [
+      {
+        "title": "Suite Contents",
+        "content": "1x Cloud Kiss dual wand, 1x Rose Rush precision wand, 1x Banana Espresso elixir (100ml), 2x Magnetic fast-chargers, 2x Travel pouches."
+      }
+    ],
+    "availability": "in_stock"
+  },
+  {
+    "id": "plz-cards-guide",
+    "slug": "midnight-play-sensory-cards",
+    "name": "Extremely Naughty Cards",
+    "subtitle": "Intimate conversation cards & sensory game prompts to elevate touch and connection",
+    "category": "DIGITAL GUIDES",
+    "categories": [
+      "ALL",
+      "DIGITAL GUIDES",
+      "FOR COUPLES"
+    ],
+    "badge": "NEW LAUNCH",
+    "badgeType": "new",
+    "role": "kinky card game & intimate sensory play prompt deck",
+    "tagline": "Intimate conversation cards & sensory game prompts to elevate touch and connection.",
+    "priceINR": 499,
+    "originalINR": 799,
+    "price": 499,
+    "priceNumeric": 499,
+    "priceUSD": "$7.00",
+    "rating": 4.9,
+    "reviewsCount": 318,
+    "image": "/assets/plezzy-energy-journal-banner.png",
+    "images": [
+      {
+        "src": "/assets/plezzy-energy-journal-banner.png",
+        "label": "Deck Box & Artwork"
+      }
+    ],
+    "shades": [
+      {
+        "name": "standard deck",
+        "color": "#E85A71",
+        "desc": "52 curated cards",
+        "badge": "core"
+      }
+    ],
+    "desc1": "52 beautifully designed intimacy prompts, tactile challenges, and deep conversation starters designed to unlock fantasy, vulnerability, and playful passion between partners.",
+    "desc2": "Features 3 progressive levels of play: Warm Touch, Deep Truth, and Midnight Play.",
+    "accordions": [
+      {
+        "title": "Game Structure",
+        "content": "52 cards printed on linen-finish 350gsm cardstock with hot-stamped gold foil accents."
+      },
+      {
+        "title": "Stealth Delivery",
+        "content": "Discreet packaging with neutral external shipping labels."
+      }
+    ],
+    "availability": "in_stock"
+  }
+];
+
 function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCart, currency }) {
   const { playClickFeedback: s } = Pn();
-  const [selectedCategory, setSelectedCategory] = G.useState("all");
-  const [sortBy, setSortBy] = G.useState("featured");
-  const [searchQuery, setSearchQuery] = G.useState("");
-  const [selectedShades, setSelectedShades] = G.useState({});
+  const [activeCategory, setActiveCategory] = G.useState("ALL");
   const [addedItems, setAddedItems] = G.useState({});
 
-  // Distinct categories
-  const categories = G.useMemo(() => {
-    const set = new Set();
-    (prods || []).forEach(p => {
-      if (p.category) set.add(p.category);
-    });
-    return ["all", ...Array.from(set)];
+  const filterTabs = [
+    "ALL",
+    "FOR HIM",
+    "FOR HER",
+    "DIGITAL GUIDES",
+    "FOR COUPLES",
+    "MASSAGERS",
+    "BUNDLES & GIFTING",
+    "ELIXIRS & LUBES",
+    "ACCESSORIES & CARE"
+  ];
+
+  // Merge dynamic prods with full catalog
+  const catalogList = G.useMemo(() => {
+    const list = [...allCatalogProducts];
+    if (Array.isArray(prods) && prods.length > 0) {
+      prods.forEach(dp => {
+        const idx = list.findIndex(p => p.id === dp.id || p.slug === dp.slug);
+        if (idx !== -1) {
+          list[idx] = { ...list[idx], ...dp };
+        } else {
+          list.push({
+            id: dp.id,
+            slug: dp.slug || dp.id,
+            name: dp.name,
+            subtitle: dp.tagline || dp.role || dp.subtitle || "",
+            category: (dp.category || "MASSAGERS").toUpperCase(),
+            categories: ["ALL", (dp.category || "MASSAGERS").toUpperCase()],
+            badge: dp.badge || "30% OFF",
+            badgeType: "discount",
+            priceINR: dp.priceINR || dp.price || 2499,
+            originalINR: Math.round((dp.priceINR || dp.price || 2499) / 0.7),
+            rating: dp.rating || 4.9,
+            reviewsCount: dp.reviewsCount || 250,
+            image: dp.image,
+            shades: dp.shades || []
+          });
+        }
+      });
+    }
+    return list;
   }, [prods]);
 
-  // Filter and sort products
-  const filteredProducts = G.useMemo(() => {
-    let list = (prods || []).slice();
+  // Filtered by active tab
+  const displayedProducts = G.useMemo(() => {
+    if (activeCategory === "ALL") return catalogList;
+    return catalogList.filter(p => {
+      if (p.category && p.category.toUpperCase() === activeCategory) return true;
+      if (p.categories && p.categories.some(c => c.toUpperCase() === activeCategory)) return true;
+      return false;
+    });
+  }, [catalogList, activeCategory]);
 
-    // Category filter
-    if (selectedCategory !== "all") {
-      list = list.filter(p => p.category && p.category.toLowerCase() === selectedCategory.toLowerCase());
-    }
-
-    // Search query filter
-    if (searchQuery.trim() !== "") {
-      const q = searchQuery.toLowerCase().trim();
-      list = list.filter(p => 
-        (p.name && p.name.toLowerCase().includes(q)) ||
-        (p.subtitle && p.subtitle.toLowerCase().includes(q)) ||
-        (p.category && p.category.toLowerCase().includes(q)) ||
-        (p.tagline && p.tagline.toLowerCase().includes(q))
-      );
-    }
-
-    // Sort
-    if (sortBy === "price-asc") {
-      list.sort((a, b) => (a.priceINR || a.price || 0) - (b.priceINR || b.price || 0));
-    } else if (sortBy === "price-desc") {
-      list.sort((a, b) => (b.priceINR || b.price || 0) - (a.priceINR || a.price || 0));
-    } else if (sortBy === "rating") {
-      list.sort((a, b) => (b.rating || 0) - (a.rating || 0));
-    }
-
-    return list;
-  }, [prods, selectedCategory, searchQuery, sortBy]);
-
-  const handleShadeSelect = (productId, shadeName, e) => {
+  const handleAddToCart = (product, e) => {
     if (e) e.stopPropagation();
     try { s(); } catch (err) {}
-    setSelectedShades(prev => ({ ...prev, [productId]: shadeName }));
-  };
-
-  const handleQuickAdd = (product, e) => {
-    if (e) e.stopPropagation();
-    try { s(); } catch (err) {}
-    const shade = selectedShades[product.id] || (product.shades && product.shades[0]?.name) || "default";
+    const shade = (product.shades && product.shades[0]?.name) || "default";
     onAddToCart(product, shade);
     setAddedItems(prev => ({ ...prev, [product.id]: true }));
     setTimeout(() => {
       setAddedItems(prev => ({ ...prev, [product.id]: false }));
-    }, 2200);
+    }, 2000);
   };
 
   return v.jsxs("div", {
-    className: "plezzy-collections-page w-full min-h-screen text-white pt-24 sm:pt-32 pb-20 px-4 sm:px-8 max-w-7xl mx-auto select-none",
+    className: "plezzy-collections-page w-full min-h-screen text-white pt-24 sm:pt-28 pb-24 px-3 sm:px-6 md:px-8 max-w-[1440px] mx-auto select-none",
     children: [
-      // ── BREADCRUMB & HEADER ───────────────────────────────────────────────
-      v.jsxs("div", {
-        className: "mb-8 sm:mb-12",
-        children: [
-          // Breadcrumbs
-          v.jsxs("nav", {
-            className: "flex items-center gap-2 text-xs font-mono tracking-widest uppercase mb-4 text-white/50",
-            children: [
-              v.jsx("button", {
-                onClick: onBackToHome,
-                className: "hover:text-[#E8FB76] transition-colors cursor-pointer",
-                children: "HOME"
-              }),
-              v.jsx("span", { children: "/" }),
-              v.jsx("span", {
-                className: "text-[#E8FB76] font-bold",
-                children: "THE COLLECTION"
-              })
-            ]
-          }),
-
-          // Page Badge & Title
-          v.jsxs("div", {
-            className: "flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/10 pb-8",
-            children: [
-              v.jsxs("div", {
-                className: "space-y-3 max-w-2xl",
-                children: [
-                  v.jsx("span", {
-                    className: "inline-block px-3.5 py-1 rounded-full text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.22em] bg-white/10 text-[#E8FB76] border border-[#E8FB76]/30",
-                    children: "ARCHITECTURAL INTIMACY • 2026 CATALOG"
-                  }),
-                  v.jsx("h1", {
-                    className: "plezzy-editorial-title",
-                    style: {
-                      fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif",
-                      fontSize: "clamp(2.8rem, 6vw, 5.2rem)",
-                      lineHeight: "0.95",
-                      fontWeight: 300,
-                      textTransform: "uppercase",
-                      letterSpacing: "-0.02em",
-                      color: "#ffffff"
-                    },
-                    children: "THE COLLECTION"
-                  }),
-                  v.jsx("p", {
-                    className: "text-white/70 text-xs sm:text-sm md:text-base leading-relaxed font-sans font-light",
-                    children: "Explore Plezzy's complete portfolio of tactile sensory stones, dual-resonance wand sculptures, and botanical hydration formulations. Engineered with medical-grade hypoallergenic silicone for quiet everyday pleasure."
-                  })
-                ]
-              }),
-
-              // Live Counter & Value Props Pill Group
-              v.jsxs("div", {
-                className: "flex flex-wrap md:flex-col items-start md:items-end gap-2 text-xs font-mono text-white/60 shrink-0",
-                children: [
-                  v.jsxs("span", {
-                    className: "px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 text-[#E8FB76] font-bold text-xs",
-                    children: [filteredProducts.length, " ESSENTIALS AVAILABLE"]
-                  }),
-                  v.jsx("span", {
-                    className: "text-[11px] text-white/50 tracking-wider",
-                    children: "100% UNBRANDED DISCREET PACKAGING"
-                  })
-                ]
-              })
-            ]
-          })
-        ]
-      }),
-
-      // ── FILTER, SEARCH & SORT TOOLBAR ─────────────────────────────────────
-      v.jsxs("div", {
-        className: "sticky top-16 sm:top-20 z-30 mb-8 sm:mb-12 py-3 px-3 sm:px-5 rounded-2xl bg-[#0f0e12]/90 backdrop-blur-xl border border-white/10 shadow-2xl flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4",
-        children: [
-          // Category Pills
-          v.jsx("div", {
-            className: "flex items-center gap-2 overflow-x-auto no-scrollbar py-1",
-            children: categories.map(cat => {
-              const isActive = selectedCategory === cat;
-              return v.jsxs("button", {
-                key: cat,
-                onClick: () => {
-                  try { s(); } catch (e) {}
-                  setSelectedCategory(cat);
-                },
-                className: "px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer " +
-                  (isActive 
-                    ? "bg-[#E8FB76] text-[#121014] font-extrabold shadow-md scale-105" 
-                    : "bg-white/5 hover:bg-white/15 text-white/75 border border-white/10"),
-                children: [
-                  cat === "all" ? "ALL EDITIONS" : cat,
-                  cat === "all" && v.jsxs("span", { className: "ml-1.5 opacity-70", children: ["(", prods.length, ")"] })
-                ]
-              });
-            })
-          }),
-
-          // Search & Sort Controls
-          v.jsxs("div", {
-            className: "flex items-center gap-3 shrink-0",
-            children: [
-              // Search input
-              v.jsxs("div", {
-                className: "relative flex-1 sm:w-48 md:w-56",
-                children: [
-                  v.jsx("input", {
-                    type: "text",
-                    placeholder: "Search collection...",
-                    value: searchQuery,
-                    onChange: e => setSearchQuery(e.target.value),
-                    className: "w-full px-3.5 py-1.5 pl-8 rounded-full bg-black/60 border border-white/15 text-xs text-white placeholder-white/40 outline-none focus:border-[#E8FB76] transition-colors"
-                  }),
-                  v.jsx("span", {
-                    className: "absolute left-2.5 top-1/2 -translate-y-1/2 text-white/40 text-xs pointer-events-none",
-                    children: "🔍"
-                  }),
-                  searchQuery && v.jsx("button", {
-                    onClick: () => setSearchQuery(""),
-                    className: "absolute right-2.5 top-1/2 -translate-y-1/2 text-white/50 hover:text-white text-xs cursor-pointer",
-                    children: "✕"
-                  })
-                ]
-              }),
-
-              // Sort Select Dropdown
-              v.jsxs("div", {
-                className: "relative shrink-0",
-                children: [
-                  v.jsxs("select", {
-                    value: sortBy,
-                    onChange: e => {
-                      try { s(); } catch (err) {}
-                      setSortBy(e.target.value);
-                    },
-                    className: "appearance-none px-3.5 py-1.5 pr-8 rounded-full bg-black/60 border border-white/15 text-xs font-mono text-white outline-none cursor-pointer focus:border-[#E8FB76] transition-colors",
-                    children: [
-                      v.jsx("option", { value: "featured", className: "bg-[#16141a]", children: "Sort: Featured" }),
-                      v.jsx("option", { value: "price-asc", className: "bg-[#16141a]", children: "Price: Low to High" }),
-                      v.jsx("option", { value: "price-desc", className: "bg-[#16141a]", children: "Price: High to Low" }),
-                      v.jsx("option", { value: "rating", className: "bg-[#16141a]", children: "Highest Rated" })
-                    ]
-                  }),
-                  v.jsx("span", {
-                    className: "absolute right-3 top-1/2 -translate-y-1/2 text-white/40 pointer-events-none text-[10px]",
-                    children: "▼"
-                  })
-                ]
-              })
-            ]
-          })
-        ]
-      }),
-
-      // ── PRODUCTS GRID (OR EMPTY STATE) ────────────────────────────────────
-      filteredProducts.length === 0 ? (
-        v.jsxs("div", {
-          className: "text-center py-24 px-4 rounded-3xl bg-white/5 border border-white/10 my-8 space-y-4",
-          children: [
-            v.jsx("span", { className: "text-4xl block", children: "✧" }),
-            v.jsx("h3", {
-              className: "text-xl font-serif uppercase tracking-widest text-white",
-              children: "No Essentials Found"
-            }),
-            v.jsx("p", {
-              className: "text-xs font-sans text-white/60 max-w-sm mx-auto",
-              children: "No items match your active filters. Try searching for a different keyword or reset your filters."
-            }),
-            v.jsx("button", {
+      // ── TOP HORIZONTAL CATEGORY PILLS (MATCHING REFERENCE EXACTLY) ────────
+      v.jsx("div", {
+        className: "w-full border-b border-white/10 pb-4 mb-6 sm:mb-8 overflow-x-auto no-scrollbar",
+        children: v.jsx("div", {
+          className: "flex items-center gap-2 sm:gap-2.5 w-max min-w-full justify-start sm:justify-center py-1 px-1",
+          children: filterTabs.map(tab => {
+            const isActive = activeCategory === tab;
+            return v.jsx("button", {
+              key: tab,
               onClick: () => {
-                setSelectedCategory("all");
-                setSearchQuery("");
-                setSortBy("featured");
+                try { s(); } catch (e) {}
+                setActiveCategory(tab);
               },
-              className: "px-5 py-2 rounded-full bg-[#E8FB76] text-black text-xs font-bold uppercase tracking-wider hover:scale-105 active:scale-95 transition-all cursor-pointer shadow-lg",
-              children: "Clear All Filters"
-            })
-          ]
-        })
-      ) : (
-        v.jsx("div", {
-          className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-7",
-          children: filteredProducts.map((p, idx) => {
-            const currentShade = selectedShades[p.id] || (p.shades && p.shades[0]?.name) || "default";
-            const isAdded = addedItems[p.id];
-            const secondaryImg = (p.images && p.images[1]?.src) || null;
-            const originalPrice = Math.round((p.priceINR || p.price || 2499) / 0.7);
-
-            return v.jsxs("div", {
-              key: p.id,
-              onClick: () => onSelectProduct(p),
-              className: "plezzy-collection-card group relative rounded-3xl overflow-hidden bg-[#121014]/80 border border-white/10 hover:border-white/30 backdrop-blur-xl shadow-xl hover:shadow-2xl flex flex-col justify-between transition-all duration-500 hover:-translate-y-2 cursor-pointer select-none",
-              style: {
-                animation: "plezzyItemSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) " + (0.05 * idx) + "s forwards",
-                opacity: 0
-              },
-              children: [
-                // Top Media Container
-                v.jsxs("div", {
-                  className: "relative w-full aspect-[4/5] bg-black/50 overflow-hidden",
-                  children: [
-                    // Primary Image
-                    v.jsx("img", {
-                      src: p.image,
-                      alt: p.name,
-                      className: "w-full h-full object-cover object-center transition-all duration-700 group-hover:scale-108 " + (secondaryImg ? "group-hover:opacity-0" : "")
-                    }),
-
-                    // Secondary Hover Crossfade Image
-                    secondaryImg && v.jsx("img", {
-                      src: secondaryImg,
-                      alt: p.name + " detail",
-                      className: "absolute inset-0 w-full h-full object-cover object-center opacity-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-108"
-                    }),
-
-                    // Top Badges
-                    v.jsxs("div", {
-                      className: "absolute top-3 inset-x-3 flex items-center justify-between pointer-events-none z-10",
-                      children: [
-                        // Left: Discount / Edition Badge
-                        v.jsx("span", {
-                          className: "px-2.5 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-[#E8FB76] text-[#121014] shadow-md",
-                          children: p.badge || "30% OFF"
-                        }),
-
-                        // Right: Rating Pill
-                        v.jsxs("span", {
-                          className: "px-2 py-0.5 rounded-full text-[10px] font-mono bg-black/60 backdrop-blur-md border border-white/20 text-white/90 flex items-center gap-1",
-                          children: [
-                            v.jsx("span", { style: { color: "#E8FB76" }, children: "★" }),
-                            p.rating || "5.0"
-                          ]
-                        })
-                      ]
-                    }),
-
-                    // Quick Add Hover Pill (Desktop)
-                    v.jsx("div", {
-                      className: "absolute bottom-3 inset-x-3 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 z-10 hidden sm:block",
-                      children: v.jsxs("button", {
-                        onClick: (e) => handleQuickAdd(p, e),
-                        className: "w-full py-2.5 px-4 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-xl flex items-center justify-center gap-2 " +
-                          (isAdded 
-                            ? "bg-emerald-500 text-white" 
-                            : "bg-white hover:bg-[#E8FB76] text-black hover:text-black"),
-                        children: [
-                          isAdded ? "✓ ADDED TO BAG" : "+ QUICK ADD"
-                        ]
-                      })
-                    })
-                  ]
-                }),
-
-                // Card Info & Controls
-                v.jsxs("div", {
-                  className: "p-4 sm:p-5 flex-1 flex flex-col justify-between gap-3 bg-gradient-to-b from-transparent to-black/40",
-                  children: [
-                    // Category & Shade Swatches
-                    v.jsxs("div", {
-                      className: "space-y-2",
-                      children: [
-                        v.jsxs("div", {
-                          className: "flex items-center justify-between gap-2",
-                          children: [
-                            v.jsx("span", {
-                              className: "text-[10px] font-mono uppercase tracking-[0.2em] text-[#E8FB76]",
-                              children: p.category || "EDITION"
-                            }),
-
-                            // Color swatches
-                            p.shades && p.shades.length > 1 && v.jsx("div", {
-                              className: "flex items-center gap-1.5",
-                              children: p.shades.map(sh => (
-                                v.jsx("button", {
-                                  key: sh.name,
-                                  onClick: (e) => handleShadeSelect(p.id, sh.name, e),
-                                  title: sh.name,
-                                  className: "w-3.5 h-3.5 rounded-full border transition-transform " + 
-                                    (currentShade === sh.name 
-                                      ? "scale-125 border-white shadow-sm ring-1 ring-white/50" 
-                                      : "border-white/30 hover:scale-110 opacity-70 hover:opacity-100"),
-                                  style: { backgroundColor: sh.color }
-                                })
-                              ))
-                            })
-                          ]
-                        }),
-
-                        // Product Title
-                        v.jsx("h3", {
-                          className: "font-serif text-lg sm:text-xl font-bold uppercase tracking-wider text-white group-hover:text-[#E8FB76] transition-colors leading-snug",
-                          children: p.name
-                        }),
-
-                        // Short tagline
-                        v.jsx("p", {
-                          className: "text-white/60 text-xs line-clamp-2 leading-relaxed font-sans font-light",
-                          children: p.tagline || p.role
-                        })
-                      ]
-                    }),
-
-                    // Pricing & CTAs Row
-                    v.jsxs("div", {
-                      className: "pt-3 border-t border-white/10 space-y-3",
-                      children: [
-                        // Price row
-                        v.jsxs("div", {
-                          className: "flex items-baseline justify-between",
-                          children: [
-                            v.jsxs("div", {
-                              className: "flex items-baseline gap-2",
-                              children: [
-                                v.jsxs("span", {
-                                  className: "text-base sm:text-lg font-bold font-mono text-white",
-                                  children: [currency === "USD" ? p.priceUSD : "₹" + (p.priceINR || p.price).toLocaleString('en-IN')]
-                                }),
-                                v.jsxs("span", {
-                                  className: "text-xs font-mono text-white/40 line-through",
-                                  children: [currency === "USD" ? "$45.00" : "₹" + originalPrice.toLocaleString('en-IN')]
-                                })
-                              ]
-                            }),
-                            v.jsx("span", {
-                              className: "text-[10px] font-mono text-emerald-400 font-bold",
-                              children: "SAVE 30%"
-                            })
-                          ]
-                        }),
-
-                        // Action Buttons Row (Mobile & Tablet)
-                        v.jsxs("div", {
-                          className: "grid grid-cols-2 gap-2",
-                          children: [
-                            v.jsx("button", {
-                              onClick: () => onSelectProduct(p),
-                              className: "py-2 px-3 rounded-xl bg-white/10 hover:bg-white/20 text-white text-[11px] font-mono uppercase tracking-wider transition-colors text-center cursor-pointer border border-white/10",
-                              children: "DETAILS →"
-                            }),
-                            v.jsx("button", {
-                              onClick: (e) => handleQuickAdd(p, e),
-                              className: "py-2 px-3 rounded-xl text-[11px] font-bold uppercase tracking-wider transition-all text-center cursor-pointer shadow-md " +
-                                (isAdded 
-                                  ? "bg-emerald-500 text-white" 
-                                  : "bg-[#E8FB76] hover:bg-white text-black"),
-                              children: isAdded ? "ADDED ✓" : "+ ADD TO BAG"
-                            })
-                          ]
-                        })
-                      ]
-                    })
-                  ]
-                })
-              ]
+              className: "px-4 sm:px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer " +
+                (isActive 
+                  ? "bg-[#E85A71] text-white shadow-lg shadow-[#E85A71]/30 scale-105" 
+                  : "bg-white/5 text-white/80 border border-[#E85A71]/40 hover:border-[#E85A71] hover:text-[#E85A71] hover:bg-white/10"),
+              children: tab
             });
           })
         })
-      ),
+      }),
 
-      // ── TRUST & E-COMMERCE VALUE PROPOSITIONS BANNER ──────────────────────
+      // ── BREADCRUMBS: Home / All products (MATCHING REFERENCE) ────────────
+      v.jsxs("div", {
+        className: "flex items-center gap-2 text-xs font-mono text-white/50 tracking-wider mb-6 sm:mb-8 px-1",
+        children: [
+          v.jsx("button", {
+            onClick: onBackToHome,
+            className: "hover:text-[#E8FB76] transition-colors cursor-pointer",
+            children: "Home"
+          }),
+          v.jsx("span", { children: "/" }),
+          v.jsxs("span", {
+            className: "text-white/80 font-medium",
+            children: [activeCategory === "ALL" ? "All products" : activeCategory.toLowerCase(), " (", displayedProducts.length, ")"]
+          })
+        ]
+      }),
+
+      // ── 5-COLUMN PRODUCT CARDS GRID (EXACT REFERENCE ARCHITECTURE) ─────────
+      v.jsx("div", {
+        className: "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3.5 sm:gap-4 md:gap-5 lg:gap-6",
+        children: displayedProducts.map((p) => {
+          const isAdded = addedItems[p.id];
+
+          return v.jsxs("div", {
+            key: p.id,
+            className: "flex flex-col justify-between group cursor-pointer transition-all duration-300 hover:-translate-y-1",
+            onClick: () => onSelectProduct(p),
+            children: [
+              // 1. Product Image with Badges
+              v.jsxs("div", {
+                className: "relative w-full aspect-square sm:aspect-[4/5] rounded-2xl sm:rounded-3xl overflow-hidden bg-[#16141a]/90 backdrop-blur-md border border-white/10 group-hover:border-[#E85A71]/40 transition-all duration-300 shadow-md group-hover:shadow-xl",
+                children: [
+                  v.jsx("img", {
+                    src: p.image,
+                    alt: p.name,
+                    className: "w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-106"
+                  }),
+
+                  // Badge: e.g. 30% OFF (Yellow pill on top-left)
+                  (p.badgeType === "discount" || p.badge === "30% OFF" || p.badge === "SAVE 35%") && v.jsx("div", {
+                    className: "absolute top-2.5 left-2.5 bg-[#E8FB76] text-black font-extrabold text-[9px] sm:text-[10px] uppercase px-2.5 py-0.5 rounded-full shadow-md pointer-events-none",
+                    children: p.badge || "30% OFF"
+                  }),
+
+                  // Badge: e.g. NEW LAUNCH (Angled black/pink badge on top-right)
+                  (p.badgeType === "new" || p.badge === "NEW LAUNCH") && v.jsx("div", {
+                    className: "absolute top-2.5 right-2.5 bg-black/90 text-[#E85A71] border border-[#E85A71] font-extrabold text-[8px] sm:text-[9px] uppercase px-2 py-0.5 rounded-md shadow-md rotate-[-3deg] pointer-events-none",
+                    children: "NEW LAUNCH"
+                  }),
+
+                  // Badge: e.g. BEST SELLER or LIMITED EDITION
+                  (p.badgeType === "bestseller" || p.badgeType === "limited" || p.badge === "BEST SELLER" || p.badge === "LIMITED EDITION") && v.jsx("div", {
+                    className: "absolute top-2.5 left-2.5 bg-[#E85A71] text-white font-extrabold text-[9px] sm:text-[10px] uppercase px-2.5 py-0.5 rounded-full shadow-md pointer-events-none",
+                    children: p.badge
+                  }),
+
+                  // Badge: ESSENTIAL
+                  p.badge === "ESSENTIAL" && v.jsx("div", {
+                    className: "absolute top-2.5 left-2.5 bg-white/20 backdrop-blur-md text-white font-extrabold text-[9px] sm:text-[10px] uppercase px-2.5 py-0.5 rounded-full shadow-md border border-white/20 pointer-events-none",
+                    children: "ESSENTIAL"
+                  })
+                ]
+              }),
+
+              // 2. Centered Product Info Block (Exact Reference Typography)
+              v.jsxs("div", {
+                className: "pt-3.5 pb-2 text-center flex-1 flex flex-col justify-between space-y-1.5",
+                children: [
+                  // Title
+                  v.jsx("h3", {
+                    className: "font-sans font-bold text-xs sm:text-sm text-white group-hover:text-[#E85A71] transition-colors line-clamp-1",
+                    children: p.name
+                  }),
+
+                  // Descriptive Subtitle
+                  v.jsx("p", {
+                    className: "text-[10.5px] sm:text-[11.5px] text-white/60 line-clamp-2 leading-snug px-1",
+                    children: p.subtitle
+                  }),
+
+                  // Star Rating in Pink (★★★★★ X reviews)
+                  v.jsxs("div", {
+                    className: "flex items-center justify-center gap-1 text-[11px] font-sans font-medium text-[#E85A71] pt-0.5",
+                    children: [
+                      v.jsx("span", { className: "tracking-wider", children: "★★★★★" }),
+                      v.jsxs("span", { className: "text-[10.5px] text-white/50 ml-0.5", children: [p.reviewsCount, " reviews"] })
+                    ]
+                  }),
+
+                  // Price: Rs. X,XXX (with crossed-out MRP)
+                  v.jsxs("div", {
+                    className: "flex items-baseline justify-center gap-2 pt-0.5",
+                    children: [
+                      v.jsxs("span", {
+                        className: "text-xs sm:text-sm font-bold text-white",
+                        children: ["Rs. ", (p.priceINR || 2499).toLocaleString("en-IN")]
+                      }),
+                      p.originalINR && v.jsxs("span", {
+                        className: "text-[11px] text-white/40 line-through",
+                        children: ["Rs. ", p.originalINR.toLocaleString("en-IN")]
+                      })
+                    ]
+                  })
+                ]
+              }),
+
+              // 3. Prominent Full-Width ADD TO CART Pill Button
+              v.jsx("button", {
+                onClick: (e) => handleAddToCart(p, e),
+                className: "w-full mt-2 py-2.5 sm:py-3 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-lg active:scale-95 cursor-pointer flex items-center justify-center gap-1.5 " +
+                  (isAdded 
+                    ? "bg-emerald-500 text-white" 
+                    : "bg-[#E85A71] hover:bg-[#d43a59] text-white hover:scale-[1.02]"),
+                children: isAdded ? "✓ ADDED" : "ADD TO CART"
+              })
+            ]
+          });
+        })
+      }),
+
+      // ── BOTTOM E-COMMERCE ASSURANCE BANNER ────────────────────────────────
       v.jsx("div", {
         className: "mt-16 sm:mt-24 pt-12 border-t border-white/10",
         children: v.jsxs("div", {
-          className: "grid grid-cols-2 lg:grid-cols-4 gap-6 text-center sm:text-left",
+          className: "grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center",
           children: [
             v.jsxs("div", {
-              className: "p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2",
+              className: "p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-1.5",
               children: [
                 v.jsx("span", { className: "text-2xl block", children: "📦" }),
-                v.jsx("h4", { className: "font-bold text-xs uppercase tracking-wider text-white", children: "100% Stealth Packaging" }),
-                v.jsx("p", { className: "text-[11px] text-white/50 leading-relaxed", children: "Plain, unbranded exterior boxes with no sensitive descriptors on invoices or labels." })
+                v.jsx("h4", { className: "font-bold text-xs uppercase tracking-wider text-white", children: "100% Plain Box Delivery" }),
+                v.jsx("p", { className: "text-[11px] text-white/50 leading-relaxed", children: "Discreet packaging with zero product descriptors on exterior." })
               ]
             }),
             v.jsxs("div", {
-              className: "p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2",
+              className: "p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-1.5",
               children: [
                 v.jsx("span", { className: "text-2xl block", children: "⚡" }),
-                v.jsx("h4", { className: "font-bold text-xs uppercase tracking-wider text-white", children: "Free Express Shipping" }),
-                v.jsx("p", { className: "text-[11px] text-white/50 leading-relaxed", children: "Fast, discreet courier dispatch across India on all orders over ₹999." })
+                v.jsx("h4", { className: "font-bold text-xs uppercase tracking-wider text-white", children: "Express Shipping Across India" }),
+                v.jsx("p", { className: "text-[11px] text-white/50 leading-relaxed", children: "Free insured courier delivery on all orders over ₹999." })
               ]
             }),
             v.jsxs("div", {
-              className: "p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2",
+              className: "p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-1.5",
               children: [
                 v.jsx("span", { className: "text-2xl block", children: "🛡️" }),
                 v.jsx("h4", { className: "font-bold text-xs uppercase tracking-wider text-white", children: "2-Year Guarantee" }),
-                v.jsx("p", { className: "text-[11px] text-white/50 leading-relaxed", children: "Unconditional replacement warranty against any motor or battery defect." })
+                v.jsx("p", { className: "text-[11px] text-white/50 leading-relaxed", children: "Unconditional replacement warranty against any defect." })
               ]
             }),
             v.jsxs("div", {
-              className: "p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2",
+              className: "p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-1.5",
               children: [
                 v.jsx("span", { className: "text-2xl block", children: "💧" }),
-                v.jsx("h4", { className: "font-bold text-xs uppercase tracking-wider text-white", children: "Body-Safe & IPX7 Waterproof" }),
-                v.jsx("p", { className: "text-[11px] text-white/50 leading-relaxed", children: "100% hypoallergenic medical liquid silicone. Safe for bath & shower rituals." })
+                v.jsx("h4", { className: "font-bold text-xs uppercase tracking-wider text-white", children: "Body-Safe Medical Silicone" }),
+                v.jsx("p", { className: "text-[11px] text-white/50 leading-relaxed", children: "100% hypoallergenic, phthalate-free and waterproof." })
               ]
             })
           ]
@@ -8067,6 +8505,16 @@ function _F(){
         },
         defaultProds
       })
+    ) : (isCollectionsView && !isPdp) ? (
+      v.jsx(PlezzyCollectionsPage, {
+        prods,
+        onSelectProduct: (p) => {
+          handleSelectProduct(p);
+        },
+        onBackToHome: handleBackToHome,
+        onAddToCart: (p, shade) => handleAdd(p, shade, 1),
+        currency
+      })
     ) : isPdp ? (
       // ═══════════════════════════════════════════════════════════════════════
       // LUXURY REDESIGNED PRODUCT DETAIL PAGE (BESPOKE PDP ARCHITECTURE)
@@ -8081,7 +8529,16 @@ function _F(){
               // Left: Back button + Breadcrumbs
               v.jsxs("div",{className:"flex items-center gap-3 sm:gap-4 shrink-0",children:[
                 v.jsxs("button",{
-                  onClick:handleBackToHome,
+                  onClick:(e) => {
+                    if (isCollectionsView || (typeof window !== "undefined" && window.location.pathname.includes("collection"))) {
+                      setSelectedProd(null);
+                      if (setProd) try { setProd(null); } catch (err) {}
+                      setIsCollectionsView(true);
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    } else {
+                      handleBackToHome(e);
+                    }
+                  },
                   className:"inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1a1a1a] hover:bg-[#b9745d] text-white text-xs font-extrabold uppercase tracking-wider transition-all hover:scale-105 active:scale-95 shadow-xs cursor-pointer",
                   style:{fontFamily:"Swiss, -apple-system, sans-serif"},
                   children:[

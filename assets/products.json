@@ -2,10 +2,10 @@
   {
     "id": "plz-pebble",
     "slug": "pocket-muse",
-    "name": "pocket muse",
-    "subtitle": "SENSORY ERGONOMIC PEBBLE • POCKET MUSE",
-    "category": "sensory essentials",
-    "badge": "",
+    "name": "Pocket Muse",
+    "subtitle": "Ultra-smooth palm-sculpted pebble with whisper acoustic dampening",
+    "category": "MASSAGERS",
+    "badge": "30% OFF",
     "role": "palm acoustic resonance & velvety tactile wellness",
     "tagline": "An ultra-smooth, palm-sculpted tactile pebble with whisper acoustic dampening and water-resistant finish.",
     "priceINR": 2499,
@@ -63,15 +63,24 @@
     ],
     "availability": "in_stock",
     "price": 2499,
-    "priceNumeric": 2499
+    "priceNumeric": 2499,
+    "categories": [
+      "ALL",
+      "FOR HER",
+      "FOR HIM",
+      "FOR COUPLES",
+      "MASSAGERS"
+    ],
+    "badgeType": "discount",
+    "originalINR": 3499
   },
   {
     "id": "plz-dual-wand",
     "slug": "cloud-kiss",
-    "name": "cloud kiss",
-    "subtitle": "DUAL HARMONIC RESONANCE WAND • CLOUD KISS",
-    "category": "harmonic resonance",
-    "badge": "",
+    "name": "Cloud Kiss",
+    "subtitle": "Frosted silicone body with floating celestial hearts & dual harmonic motors",
+    "category": "MASSAGERS",
+    "badge": "30% OFF",
     "role": "dual-point harmonic resonance with floating celestial hearts",
     "tagline": "Translucent frosted silicone body infused with floating celestial hearts and dual harmonic motors.",
     "priceINR": 3999,
@@ -129,15 +138,23 @@
     ],
     "availability": "in_stock",
     "price": 3999,
-    "priceNumeric": 3999
+    "priceNumeric": 3999,
+    "categories": [
+      "ALL",
+      "FOR HER",
+      "FOR COUPLES",
+      "MASSAGERS"
+    ],
+    "badgeType": "discount",
+    "originalINR": 4999
   },
   {
     "id": "plz-elixir",
     "slug": "banana-espresso",
     "name": "Banana Espresso",
-    "subtitle": "BOTANICAL HYDRATION ELIXIR • BANANA ESPRESSO",
-    "category": "botanical elixirs",
-    "badge": "",
+    "subtitle": "pH-balanced organic botanical intimacy serum for silky hydration",
+    "category": "ELIXIRS & LUBES",
+    "badge": "BEST SELLER",
     "role": "ultra-glide clean moisture & botanical nourishment",
     "tagline": "pH-balanced organic botanical intimacy serum formulated for silky, long-lasting hydration.",
     "priceINR": 1299,
@@ -189,15 +206,24 @@
     ],
     "availability": "in_stock",
     "price": 1299,
-    "priceNumeric": 1299
+    "priceNumeric": 1299,
+    "categories": [
+      "ALL",
+      "ELIXIRS & LUBES",
+      "FOR COUPLES",
+      "FOR HER",
+      "FOR HIM"
+    ],
+    "badgeType": "bestseller",
+    "originalINR": 1699
   },
   {
     "id": "plz-cherry-wand",
     "slug": "rose-rush",
-    "name": "rose rush",
-    "subtitle": "PRECISION CONTOURED WAND • ROSE RUSH",
-    "category": "precision resonance",
-    "badge": "",
+    "name": "Rose Rush",
+    "subtitle": "Sculptural flexible wand in frosted silicone with deep rumbly vibrations",
+    "category": "MASSAGERS",
+    "badge": "30% OFF",
     "role": "targeted acupressure & whisper-quiet sonic depth",
     "tagline": "Sculptural flexible wand in frosted silicone with deep rumbly vibrations for pinpoint release.",
     "priceINR": 3499,
@@ -255,6 +281,369 @@
     ],
     "availability": "in_stock",
     "price": 3499,
-    "priceNumeric": 3499
+    "priceNumeric": 3499,
+    "categories": [
+      "ALL",
+      "FOR HER",
+      "MASSAGERS"
+    ],
+    "badgeType": "discount",
+    "originalINR": 4299
+  },
+  {
+    "id": "plz-velvet-solstice",
+    "slug": "velvet-solstice",
+    "name": "Velvet Solstice",
+    "subtitle": "Dual-ended wave sculpture engineered with whisper-quiet low-frequency resonance",
+    "category": "MASSAGERS",
+    "categories": [
+      "ALL",
+      "FOR HER",
+      "FOR COUPLES",
+      "MASSAGERS"
+    ],
+    "badge": "NEW LAUNCH",
+    "badgeType": "new",
+    "role": "dual-ended wave sculpture & whisper-quiet low-frequency resonance",
+    "tagline": "Dual-ended wave sculpture engineered with whisper-quiet low-frequency resonance motors.",
+    "priceINR": 3799,
+    "originalINR": 4999,
+    "price": 3799,
+    "priceNumeric": 3799,
+    "priceUSD": "$46.00",
+    "rating": 4.8,
+    "reviewsCount": 194,
+    "image": "/assets/products/custom-1793272920071-velvet-solstice-wand-jpg.jpg",
+    "images": [
+      {
+        "src": "/assets/products/custom-1793272920071-velvet-solstice-wand-jpg.jpg",
+        "label": "Front Sculpture"
+      },
+      {
+        "src": "/assets/plezzy_blush_stack.jpg",
+        "label": "Studio Detail"
+      }
+    ],
+    "shades": [
+      {
+        "name": "amethyst aura",
+        "color": "#8B5CF6",
+        "desc": "deep velvety violet",
+        "badge": "signature"
+      },
+      {
+        "name": "obsidian noir",
+        "color": "#1E1B24",
+        "desc": "smoky matte shadow",
+        "badge": "core"
+      }
+    ],
+    "desc1": "Velvet Solstice is an architectural dual-ended intimacy sculpture engineered for immersive resonance. Cast in medical hypoallergenic liquid silicone, it features calibrated dual core motors with whisper acoustic dampening.",
+    "desc2": "Features 10 harmonic frequency curves and hermetic magnetic charging.",
+    "accordions": [
+      {
+        "title": "Benefits & Sensory Ritual",
+        "content": "Dual-ended acoustic resonance targets both broad contouring and pinpoint acupressure simultaneously."
+      },
+      {
+        "title": "Application & Care",
+        "content": "Long press power button for 2 seconds. Clean with warm water and gentle foam cleanser."
+      },
+      {
+        "title": "Materials & Engineering Specs",
+        "content": "100% body-safe medical silicone. IPX7 waterproof. Dual motors <28dB. Magnetic USB rapid charging."
+      },
+      {
+        "title": "Stealth Delivery & 1-Year Guarantee",
+        "content": "Delivered in plain, unbranded protective packaging. Unconditional 1-year guarantee."
+      }
+    ],
+    "availability": "in_stock"
+  },
+  {
+    "id": "plz-rose-petal",
+    "slug": "rose-petal-touch",
+    "name": "Rose Petal Touch",
+    "subtitle": "Ergonomic ribbed contouring with 10 calibrated wave rhythms for external stimulation",
+    "category": "MASSAGERS",
+    "categories": [
+      "ALL",
+      "FOR HER",
+      "MASSAGERS"
+    ],
+    "badge": "NEW LAUNCH",
+    "badgeType": "new",
+    "role": "ribbed wave contouring & pinpoint acoustic release",
+    "tagline": "Ergonomic ribbed contouring with 10 calibrated wave rhythms for gentle external stimulation.",
+    "priceINR": 2899,
+    "originalINR": 3899,
+    "price": 2899,
+    "priceNumeric": 2899,
+    "priceUSD": "$35.00",
+    "rating": 4.9,
+    "reviewsCount": 165,
+    "image": "/assets/PLEZZY_Rose_Petal_Front_Controls_View.png",
+    "images": [
+      {
+        "src": "/assets/PLEZZY_Rose_Petal_Front_Controls_View.png",
+        "label": "Front Controls View"
+      },
+      {
+        "src": "/assets/products/pocket-pebble-macro.jpg",
+        "label": "Silicone Texture"
+      }
+    ],
+    "shades": [
+      {
+        "name": "blush petal",
+        "color": "#F472B6",
+        "desc": "soft rose petal",
+        "badge": "signature"
+      }
+    ],
+    "desc1": "The Rose Petal Touch combines delicate ribbed wave ridges with deeply penetrating sonic resonance. Sculpted to cup natural body curves with zero pinch.",
+    "desc2": "IPX7 waterproof and submersible for bath and shower sensory rituals.",
+    "accordions": [
+      {
+        "title": "Benefits & Sensory Ritual",
+        "content": "Ribbed contact surfaces amplify tactile sensations while gentle acoustic motors preserve sensitivity."
+      },
+      {
+        "title": "Application & Care",
+        "content": "Simple one-touch cycle through 10 calibrated rhythm curves. Store dry."
+      },
+      {
+        "title": "Materials & Specs",
+        "content": "100% hypoallergenic silicone unibody. Magnetic rapid dock. Submersible seal."
+      },
+      {
+        "title": "Stealth Delivery",
+        "content": "100% plain packaging with no external branding."
+      }
+    ],
+    "availability": "in_stock"
+  },
+  {
+    "id": "plz-suede-pouch",
+    "slug": "suede-travel-pouch",
+    "name": "Suede Travel Pouch",
+    "subtitle": "Ultra-soft antimicrobial vegan suede pouch with hidden zip for confidential travel",
+    "category": "ACCESSORIES & CARE",
+    "categories": [
+      "ALL",
+      "ACCESSORIES & CARE",
+      "FOR HIM",
+      "FOR HER"
+    ],
+    "badge": "ESSENTIAL",
+    "badgeType": "essential",
+    "role": "antimicrobial discreet protection & confidential storage",
+    "tagline": "Ultra-soft antimicrobial vegan suede pouch with hidden zip for confidential travel.",
+    "priceINR": 899,
+    "originalINR": 1299,
+    "price": 899,
+    "priceNumeric": 899,
+    "priceUSD": "$12.00",
+    "rating": 5,
+    "reviewsCount": 210,
+    "image": "/assets/photoshoot-pouch-discrete.jpg",
+    "images": [
+      {
+        "src": "/assets/photoshoot-pouch-discrete.jpg",
+        "label": "Discrete Pouch Portrait"
+      },
+      {
+        "src": "/assets/lifestyle-flatlay.jpg",
+        "label": "Lifestyle Flatlay"
+      }
+    ],
+    "shades": [
+      {
+        "name": "burgundy suede",
+        "color": "#4A0E17",
+        "desc": "deep wine velvet",
+        "badge": "signature"
+      },
+      {
+        "name": "matte obsidian",
+        "color": "#1A1A1A",
+        "desc": "discreet black",
+        "badge": "core"
+      }
+    ],
+    "desc1": "Crafted from double-brushed antimicrobial vegan suede to protect your Plezzy wellness instruments from dust, lint, and curious eyes.",
+    "desc2": "Features an acoustic dampening inner lining and hidden silent-glide zipper.",
+    "accordions": [
+      {
+        "title": "Protection & Care",
+        "content": "Dustproof, water-resistant exterior. Hand wash cold and line dry."
+      },
+      {
+        "title": "Discreet Travel",
+        "content": "Looks like a luxury cosmetic or sunglasses case. Zero logos on outer faces."
+      }
+    ],
+    "availability": "in_stock"
+  },
+  {
+    "id": "plz-ritual-set",
+    "slug": "the-sensory-ritual-set",
+    "name": "The Sensory Ritual Set",
+    "subtitle": "Complete wellness ritual: Pocket Muse, Banana Espresso serum & travel pouch",
+    "category": "BUNDLES & GIFTING",
+    "categories": [
+      "ALL",
+      "BUNDLES & GIFTING",
+      "FOR COUPLES"
+    ],
+    "badge": "SAVE 35%",
+    "badgeType": "discount",
+    "role": "complete 3-piece introductory wellness suite",
+    "tagline": "Complete wellness ritual including Pocket Muse, Banana Espresso serum & travel pouch.",
+    "priceINR": 3999,
+    "originalINR": 5499,
+    "price": 3999,
+    "priceNumeric": 3999,
+    "priceUSD": "$49.00",
+    "rating": 5,
+    "reviewsCount": 142,
+    "image": "/assets/lifestyle-flatlay.jpg",
+    "images": [
+      {
+        "src": "/assets/lifestyle-flatlay.jpg",
+        "label": "Complete Ritual Flatlay"
+      },
+      {
+        "src": "/assets/photoshoot-pouch-discrete.jpg",
+        "label": "With Travel Pouch"
+      }
+    ],
+    "shades": [
+      {
+        "name": "curated ritual edition",
+        "color": "#F7C948",
+        "desc": "gold & saffron edition",
+        "badge": "curated"
+      }
+    ],
+    "desc1": "The complete Plezzy ritual experience bundled together in a keepsake gift box: our flagship Pocket Muse, full-size Banana Espresso organic elixir, and antimicrobial vegan suede pouch.",
+    "desc2": "Enjoy a 35% savings compared to purchasing each item individually.",
+    "accordions": [
+      {
+        "title": "Included in Ritual Set",
+        "content": "1x Pocket Muse pebble, 1x Banana Espresso botanical serum (100ml), 1x Suede Travel Pouch, 1x Magnetic Charging Cable."
+      },
+      {
+        "title": "Stealth Gift Box",
+        "content": "Packed in a neutral luxury gift box with plain outer mailer."
+      }
+    ],
+    "availability": "in_stock"
+  },
+  {
+    "id": "plz-lovers-suite",
+    "slug": "the-lovers-suite",
+    "name": "The Lovers Suite",
+    "subtitle": "The ultimate couples gift box: Cloud Kiss, Rose Rush & botanical elixir",
+    "category": "BUNDLES & GIFTING",
+    "categories": [
+      "ALL",
+      "BUNDLES & GIFTING",
+      "FOR COUPLES"
+    ],
+    "badge": "LIMITED EDITION",
+    "badgeType": "limited",
+    "role": "luxury couples dual-resonance intimate box set",
+    "tagline": "The ultimate couples gift box: Cloud Kiss, Rose Rush & botanical elixir in keepsake box.",
+    "priceINR": 6999,
+    "originalINR": 9999,
+    "price": 6999,
+    "priceNumeric": 6999,
+    "priceUSD": "$85.00",
+    "rating": 5,
+    "reviewsCount": 88,
+    "image": "/assets/plezzy_blush_stack.jpg",
+    "images": [
+      {
+        "src": "/assets/plezzy_blush_stack.jpg",
+        "label": "Luxury Gift Suite"
+      },
+      {
+        "src": "/assets/products/astral-wave-wand-main.jpg",
+        "label": "Cloud Kiss"
+      },
+      {
+        "src": "/assets/products/carmine-resonance-wand-main.jpg",
+        "label": "Rose Rush"
+      }
+    ],
+    "shades": [
+      {
+        "name": "midnight luxury suite",
+        "color": "#B82E3E",
+        "desc": "carmine & amethyst",
+        "badge": "limited"
+      }
+    ],
+    "desc1": "The premier couples collection featuring both signature wands: Cloud Kiss with translucent heart inclusions, Rose Rush with targeted flex-tip resonance, and full-size Banana Espresso elixir.",
+    "desc2": "Presented in an embossed magnetic-closure keepsake box.",
+    "accordions": [
+      {
+        "title": "Suite Contents",
+        "content": "1x Cloud Kiss dual wand, 1x Rose Rush precision wand, 1x Banana Espresso elixir (100ml), 2x Magnetic fast-chargers, 2x Travel pouches."
+      }
+    ],
+    "availability": "in_stock"
+  },
+  {
+    "id": "plz-cards-guide",
+    "slug": "midnight-play-sensory-cards",
+    "name": "Extremely Naughty Cards",
+    "subtitle": "Intimate conversation cards & sensory game prompts to elevate touch and connection",
+    "category": "DIGITAL GUIDES",
+    "categories": [
+      "ALL",
+      "DIGITAL GUIDES",
+      "FOR COUPLES"
+    ],
+    "badge": "NEW LAUNCH",
+    "badgeType": "new",
+    "role": "kinky card game & intimate sensory play prompt deck",
+    "tagline": "Intimate conversation cards & sensory game prompts to elevate touch and connection.",
+    "priceINR": 499,
+    "originalINR": 799,
+    "price": 499,
+    "priceNumeric": 499,
+    "priceUSD": "$7.00",
+    "rating": 4.9,
+    "reviewsCount": 318,
+    "image": "/assets/plezzy-energy-journal-banner.png",
+    "images": [
+      {
+        "src": "/assets/plezzy-energy-journal-banner.png",
+        "label": "Deck Box & Artwork"
+      }
+    ],
+    "shades": [
+      {
+        "name": "standard deck",
+        "color": "#E85A71",
+        "desc": "52 curated cards",
+        "badge": "core"
+      }
+    ],
+    "desc1": "52 beautifully designed intimacy prompts, tactile challenges, and deep conversation starters designed to unlock fantasy, vulnerability, and playful passion between partners.",
+    "desc2": "Features 3 progressive levels of play: Warm Touch, Deep Truth, and Midnight Play.",
+    "accordions": [
+      {
+        "title": "Game Structure",
+        "content": "52 cards printed on linen-finish 350gsm cardstock with hot-stamped gold foil accents."
+      },
+      {
+        "title": "Stealth Delivery",
+        "content": "Discreet packaging with neutral external shipping labels."
+      }
+    ],
+    "availability": "in_stock"
   }
 ]
