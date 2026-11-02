@@ -7159,7 +7159,7 @@ const allCatalogProducts = [
   }
 ];
 
-function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCart, currency }) {
+function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCart, onBuyNow, currency }) {
   const { playClickFeedback: s } = Pn();
   const [activeCategory, setActiveCategory] = G.useState("ALL");
   const [addedItems, setAddedItems] = G.useState({});
@@ -7239,8 +7239,19 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
     }, 2000);
   };
 
+  const handleBuyNow = (product, e) => {
+    if (e) e.stopPropagation();
+    try { s(); } catch (err) {}
+    const shade = (product.shades && product.shades[0]?.name) || "default";
+    if (onBuyNow) {
+      onBuyNow(product, shade);
+    } else {
+      onAddToCart(product, shade);
+    }
+  };
+
   return v.jsxs("div", {
-    className: "plezzy-collections-page w-full min-h-screen text-white pt-28 sm:pt-36 pb-24 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto select-none",
+    className: "plezzy-collections-page w-full min-h-screen text-white pt-28 sm:pt-36 pb-24 px-4 sm:px-6 md:px-8 max-w-[1360px] mx-auto select-none",
     children: [
       // ── EDITORIAL HEADER SECTION (CLASSY LUXURY INTRO) ───────────────────
       v.jsxs("div", {
@@ -7335,13 +7346,13 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
 
       // ── COMPACT 5-COLUMN PRODUCT CARDS GRID (SMALLER & REFINED) ───────────
       v.jsx("div", {
-        className: "grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-4 gap-3 sm:gap-4",
+        className: "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3.5 sm:gap-4.5",
         children: displayedProducts.map((p) => {
           const isAdded = addedItems[p.id];
 
           return v.jsxs("div", {
             key: p.id,
-            className: "group relative rounded-2xl bg-[#131118]/70 hover:bg-[#18161f]/95 backdrop-blur-md border border-white/[0.08] hover:border-[#f82793]/50 p-2 sm:p-2.5 transition-all duration-400 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/70 flex flex-col justify-between cursor-pointer",
+            className: "plezzy-collection-card group relative rounded-2xl bg-white text-black p-3 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl shadow-md border border-black/10 hover:border-[#f82793] flex flex-col justify-between cursor-pointer select-none",
             onClick: () => onSelectProduct(p),
             children: [
               // Top container: Image + Badges
@@ -7349,7 +7360,7 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
                 children: [
                   // 1. Compact Square Image with micro-badges
                   v.jsxs("div", {
-                    className: "relative w-full aspect-square rounded-xl overflow-hidden bg-[#0d0c10] border border-white/[0.06] group-hover:border-white/20 transition-all duration-300",
+                    className: "relative w-full aspect-square rounded-xl overflow-hidden bg-[#f3f3f3] border border-black/5 group-hover:border-black/15 transition-all duration-300",
                     children: [
                       v.jsx("img", {
                         src: p.image,
@@ -7358,15 +7369,15 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
                         className: "w-full h-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
                       }),
 
-                      // Badge: e.g. 30% OFF (Refined yellow pill top-left)
+                      // Badge: e.g. 30% OFF (Yellow pill top-left)
                       (p.badgeType === "discount" || p.badge === "30% OFF" || p.badge === "SAVE 35%") && v.jsx("div", {
-                        className: "absolute top-2 left-2 bg-[#f82793] text-white font-extrabold text-[8.5px] uppercase tracking-wider px-2 py-0.5 rounded-full shadow-sm pointer-events-none",
+                        className: "absolute top-2 left-2 bg-[#facc15] text-black font-extrabold text-[8.5px] uppercase tracking-wider px-2 py-0.5 rounded-full shadow-sm pointer-events-none",
                         children: p.badge || "30% OFF"
                       }),
 
                       // Badge: e.g. NEW LAUNCH (Refined black/pink badge top-right)
                       (p.badgeType === "new" || p.badge === "NEW LAUNCH") && v.jsx("div", {
-                        className: "absolute top-2 right-2 bg-black/90 text-[#f82793] border border-[#f82793]/60 font-extrabold text-[7.5px] uppercase tracking-wider px-1.5 py-0.5 rounded shadow-sm rotate-[-2deg] pointer-events-none",
+                        className: "absolute top-2 right-2 bg-black text-[#f82793] border border-[#f82793]/60 font-extrabold text-[7.5px] uppercase tracking-wider px-1.5 py-0.5 rounded shadow-sm rotate-[-2deg] pointer-events-none",
                         children: "NEW LAUNCH"
                       }),
 
@@ -7378,34 +7389,34 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
 
                       // Badge: ESSENTIAL
                       p.badge === "ESSENTIAL" && v.jsx("div", {
-                        className: "absolute top-2 left-2 bg-white/20 backdrop-blur-md text-white font-extrabold text-[8px] uppercase tracking-wider px-2 py-0.5 rounded-full shadow-sm border border-white/20 pointer-events-none",
+                        className: "absolute top-2 left-2 bg-neutral-900 text-white font-extrabold text-[8px] uppercase tracking-wider px-2 py-0.5 rounded-full shadow-sm pointer-events-none",
                         children: "ESSENTIAL"
                       })
                     ]
                   }),
 
-                  // 2. Centered Refined Metadata
+                  // 2. Centered Black Typography Metadata
                   v.jsxs("div", {
-                    className: "pt-2.5 pb-1 text-center space-y-1",
+                    className: "pt-3 pb-1 text-center space-y-1",
                     children: [
-                      // Product Title
+                      // Product Title in solid Black
                       v.jsx("h3", {
-                        className: "font-sans font-semibold text-xs sm:text-[13px] text-white group-hover:text-[#f82793] transition-colors line-clamp-1 tracking-tight",
+                        className: "font-sans font-bold text-xs sm:text-[13.5px] text-[#111111] group-hover:text-[#f82793] transition-colors line-clamp-1 tracking-tight",
                         children: p.name
                       }),
 
-                      // Subtitle
+                      // Subtitle in dark charcoal / black
                       v.jsx("p", {
-                        className: "text-[10px] sm:text-[10.5px] text-white/50 line-clamp-1 leading-snug font-light px-0.5",
+                        className: "text-[10px] sm:text-[11px] text-[#444444] line-clamp-2 leading-snug font-normal px-0.5 min-h-[26px]",
                         children: p.subtitle
                       }),
 
-                      // Star Rating (Delicate stars + reviews)
+                      // Star Rating (Pink Stars + review count)
                       v.jsxs("div", {
                         className: "flex items-center justify-center gap-1 text-[10px] font-sans font-medium text-[#f82793] pt-0.5",
                         children: [
-                          v.jsx("span", { className: "tracking-widest text-[9.5px]", children: "★★★★★" }),
-                          v.jsxs("span", { className: "text-[9.5px] text-white/40 font-mono ml-0.5", children: [p.reviewsCount] })
+                          v.jsx("span", { className: "tracking-widest text-[10px] text-[#f82793]", children: "★★★★★" }),
+                          v.jsxs("span", { className: "text-[9.5px] text-[#555555] font-sans ml-0.5", children: [p.reviewsCount || 18, " reviews"] })
                         ]
                       }),
 
@@ -7414,11 +7425,11 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
                         className: "flex items-baseline justify-center gap-1.5 pt-0.5 font-mono",
                         children: [
                           v.jsxs("span", {
-                            className: "text-xs sm:text-[12.5px] font-bold text-white",
+                            className: "text-xs sm:text-[13px] font-bold text-[#f82793]",
                             children: ["Rs. ", (p.priceINR || 2499).toLocaleString("en-IN")]
                           }),
                           p.originalINR && v.jsxs("span", {
-                            className: "text-[10px] text-white/35 line-through",
+                            className: "text-[10px] text-[#888888] line-through",
                             children: ["Rs. ", p.originalINR.toLocaleString("en-IN")]
                           })
                         ]
@@ -7428,14 +7439,24 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
                 ]
               }),
 
-              // 3. Sleek Compact ADD TO CART Pill Button
-              v.jsx("button", {
-                onClick: (e) => handleAddToCart(p, e),
-                className: "w-full mt-2 py-2 sm:py-2.5 rounded-full text-[10px] sm:text-[10.5px] font-bold uppercase tracking-[0.12em] transition-all duration-200 shadow-sm hover:shadow-md active:scale-95 cursor-pointer flex items-center justify-center gap-1 " +
-                  (isAdded 
-                    ? "bg-emerald-600 text-white" 
-                    : "bg-[#f82793] hover:bg-[#d41c7b] text-white hover:scale-[1.02]"),
-                children: isAdded ? "✓ ADDED" : "ADD TO CART"
+              // 3. Pink Action Buttons: ADD TO CART & BUY NOW
+              v.jsxs("div", {
+                className: "w-full mt-2.5 space-y-1.5",
+                children: [
+                  v.jsx("button", {
+                    onClick: (e) => handleAddToCart(p, e),
+                    className: "w-full py-2 sm:py-2.5 rounded-full text-[10px] sm:text-[10.5px] font-bold uppercase tracking-wider transition-all duration-200 shadow-sm hover:shadow-md active:scale-95 cursor-pointer flex items-center justify-center gap-1 " +
+                      (isAdded 
+                        ? "bg-emerald-600 text-white" 
+                        : "bg-[#f82793] hover:bg-[#d41c7b] text-white hover:scale-[1.01]"),
+                    children: isAdded ? "✓ ADDED" : "ADD TO CART"
+                  }),
+                  v.jsx("button", {
+                    onClick: (e) => handleBuyNow(p, e),
+                    className: "w-full py-1.5 sm:py-2 rounded-full text-[9.5px] sm:text-[10px] font-bold uppercase tracking-wider transition-all duration-200 shadow-sm hover:shadow-md active:scale-95 cursor-pointer flex items-center justify-center gap-1 bg-[#ff2a8d] hover:bg-[#e0197d] text-white border border-[#f82793]/40 hover:scale-[1.01]",
+                    children: "BUY NOW"
+                  })
+                ]
               })
             ]
           });
@@ -8565,6 +8586,10 @@ function _F(){
         },
         onBackToHome: handleBackToHome,
         onAddToCart: (p, shade) => handleAdd(p, shade, 1),
+        onBuyNow: (p, shade) => {
+          handleAdd(p, shade, 1);
+          openCart(true);
+        },
         currency
       })
     ) : isPdp ? (

@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Italiana&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261102_black_bar_grid_v6"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261102_white_card_grid_v7"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
@@ -2076,26 +2076,35 @@
       }
 
       .plezzy-collection-card {
-        transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-                    border-color 0.35s ease,
-                    box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1) !important;
-        background: rgba(18, 16, 20, 0.75) !important;
-        border: 1px solid rgba(255, 255, 255, 0.12) !important;
-        backdrop-filter: blur(24px) saturate(180%) !important;
-        -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                    border-color 0.25s ease,
+                    box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        background: #ffffff !important;
+        color: #111111 !important;
+        border: 1px solid rgba(0, 0, 0, 0.08) !important;
+        box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.08) !important;
+        border-radius: 18px !important;
       }
 
       .plezzy-collection-card:hover {
-        transform: translateY(-8px) !important;
-        border-color: rgba(248, 39, 147, 0.5) !important;
-        box-shadow: 0 24px 50px -12px rgba(0, 0, 0, 0.6), 0 0 24px rgba(248, 39, 147, 0.25) !important;
+        transform: translateY(-5px) !important;
+        border-color: #f82793 !important;
+        box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.18), 0 0 20px rgba(248, 39, 147, 0.2) !important;
+      }
+
+      .plezzy-collection-card h3 {
+        color: #111111 !important;
+      }
+
+      .plezzy-collection-card p {
+        color: #444444 !important;
       }
 
       .plezzy-collection-card img {
         transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease !important;
       }
 
-/* ══════════════════════════════════════════════════════════════
+      /* ══════════════════════════════════════════════════════════════
          PLEZZY HIGH-FASHION LIVING ANIMATIONS & PREMIUM SUITE
          ══════════════════════════════════════════════════════════════ */
 
