@@ -8223,17 +8223,17 @@ function _F(){
                 className:"hover:opacity-80 transition-opacity focus:outline-none flex items-center justify-center py-1 cursor-pointer",
                 "aria-label":"plezzy homepage",
                 children:v.jsx("span",{
-                  className:"uppercase select-none",
+                  className:"lowercase select-none tracking-tighter",
                   style:{
-                    fontFamily:"'Rektorat Heavy', 'Impact', 'Arial Black', 'Archivo Black', -apple-system, sans-serif",
-                    fontWeight:900,
-                    fontSize:"clamp(30px, 3.8vw, 44px)",
-                    letterSpacing:"-0.01em",
-                    lineHeight:"1",
+                    fontFamily:"'Swiss', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+                    fontWeight:800,
+                    fontSize:"clamp(34px, 4.4vw, 50px)",
+                    letterSpacing:"-0.05em",
+                    lineHeight:"0.95",
                     color:"#f82793",
-                    textShadow:"0 2px 16px rgba(0,0,0,0.6), 0 0 20px rgba(248,39,147,0.35)"
+                    textShadow:"0 2px 18px rgba(0,0,0,0.6), 0 0 24px rgba(248,39,147,0.45)"
                   },
-                  children:"PLEZZY"
+                  children:"plezzy"
                 })
               })
             }),
@@ -8363,8 +8363,13 @@ function _F(){
                       })
                     }),
                     v.jsx("span", {
-                      className: "font-serif font-bold text-base sm:text-xl uppercase tracking-[0.2em] text-[#f82793] transition-colors",
-                      children: "PLEZZY"
+                      style: {
+                        fontFamily: "'Swiss', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif",
+                        fontWeight: 800,
+                        letterSpacing: "-0.05em"
+                      },
+                      className: "text-2xl lowercase text-[#f82793] transition-colors tracking-tighter",
+                      children: "plezzy"
                     })
                   ]
                 }),
