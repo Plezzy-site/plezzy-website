@@ -9781,7 +9781,7 @@ function _F(){
         v.jsx("div",{className:"mx-3 sm:mx-8 my-8 rounded-[28px] bg-[#121016]/65 backdrop-blur-2xl border border-white/10 py-16 sm:py-24 px-6 text-center overflow-hidden relative select-none",children:
           v.jsxs("div",{className:"relative z-10 space-y-4",children:[
             v.jsx("h2",{className:"giant-wordmark select-none",children:"plezzy"}),
-            v.jsx("p",{className:"text-xs uppercase tracking-[0.25em] text-white/60 font-mono font-bold",children:"everyday essentials, done well."})
+            v.jsx("p",{className:"text-xs uppercase tracking-[0.25em] font-mono font-bold",style:{color:"#f82793",textShadow:"0 0 16px rgba(248,39,147,0.45)"},children:"everyday essentials, done well."})
           ]})
         })
 
