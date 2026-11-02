@@ -8240,8 +8240,8 @@ function _F(){
                     fontSize:"clamp(30px, 3.8vw, 44px)",
                     letterSpacing:"-0.01em",
                     lineHeight:"1",
-                    color:"#ffffff",
-                    textShadow:"0 2px 16px rgba(0,0,0,0.6)"
+                    color:"#f82793",
+                    textShadow:"0 2px 16px rgba(0,0,0,0.6), 0 0 20px rgba(248,39,147,0.35)"
                   },
                   children:"PLEZZY"
                 })
@@ -8389,7 +8389,7 @@ function _F(){
                       })
                     }),
                     v.jsx("span", {
-                      className: "font-serif font-bold text-base sm:text-xl uppercase tracking-[0.2em] text-white group-hover:text-[#E8FB76] transition-colors",
+                      className: "font-serif font-bold text-base sm:text-xl uppercase tracking-[0.2em] text-[#f82793] transition-colors",
                       children: "PLEZZY"
                     })
                   ]
