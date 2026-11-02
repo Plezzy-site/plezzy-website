@@ -6508,6 +6508,479 @@ function PlezzyCommunitySlideshow() {
   });
 }
 
+function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCart, currency }) {
+  const { playClickFeedback: s } = Pn();
+  const [selectedCategory, setSelectedCategory] = G.useState("all");
+  const [sortBy, setSortBy] = G.useState("featured");
+  const [searchQuery, setSearchQuery] = G.useState("");
+  const [selectedShades, setSelectedShades] = G.useState({});
+  const [addedItems, setAddedItems] = G.useState({});
+
+  // Distinct categories
+  const categories = G.useMemo(() => {
+    const set = new Set();
+    (prods || []).forEach(p => {
+      if (p.category) set.add(p.category);
+    });
+    return ["all", ...Array.from(set)];
+  }, [prods]);
+
+  // Filter and sort products
+  const filteredProducts = G.useMemo(() => {
+    let list = (prods || []).slice();
+
+    // Category filter
+    if (selectedCategory !== "all") {
+      list = list.filter(p => p.category && p.category.toLowerCase() === selectedCategory.toLowerCase());
+    }
+
+    // Search query filter
+    if (searchQuery.trim() !== "") {
+      const q = searchQuery.toLowerCase().trim();
+      list = list.filter(p => 
+        (p.name && p.name.toLowerCase().includes(q)) ||
+        (p.subtitle && p.subtitle.toLowerCase().includes(q)) ||
+        (p.category && p.category.toLowerCase().includes(q)) ||
+        (p.tagline && p.tagline.toLowerCase().includes(q))
+      );
+    }
+
+    // Sort
+    if (sortBy === "price-asc") {
+      list.sort((a, b) => (a.priceINR || a.price || 0) - (b.priceINR || b.price || 0));
+    } else if (sortBy === "price-desc") {
+      list.sort((a, b) => (b.priceINR || b.price || 0) - (a.priceINR || a.price || 0));
+    } else if (sortBy === "rating") {
+      list.sort((a, b) => (b.rating || 0) - (a.rating || 0));
+    }
+
+    return list;
+  }, [prods, selectedCategory, searchQuery, sortBy]);
+
+  const handleShadeSelect = (productId, shadeName, e) => {
+    if (e) e.stopPropagation();
+    try { s(); } catch (err) {}
+    setSelectedShades(prev => ({ ...prev, [productId]: shadeName }));
+  };
+
+  const handleQuickAdd = (product, e) => {
+    if (e) e.stopPropagation();
+    try { s(); } catch (err) {}
+    const shade = selectedShades[product.id] || (product.shades && product.shades[0]?.name) || "default";
+    onAddToCart(product, shade);
+    setAddedItems(prev => ({ ...prev, [product.id]: true }));
+    setTimeout(() => {
+      setAddedItems(prev => ({ ...prev, [product.id]: false }));
+    }, 2200);
+  };
+
+  return v.jsxs("div", {
+    className: "plezzy-collections-page w-full min-h-screen text-white pt-24 sm:pt-32 pb-20 px-4 sm:px-8 max-w-7xl mx-auto select-none",
+    children: [
+      // ── BREADCRUMB & HEADER ───────────────────────────────────────────────
+      v.jsxs("div", {
+        className: "mb-8 sm:mb-12",
+        children: [
+          // Breadcrumbs
+          v.jsxs("nav", {
+            className: "flex items-center gap-2 text-xs font-mono tracking-widest uppercase mb-4 text-white/50",
+            children: [
+              v.jsx("button", {
+                onClick: onBackToHome,
+                className: "hover:text-[#E8FB76] transition-colors cursor-pointer",
+                children: "HOME"
+              }),
+              v.jsx("span", { children: "/" }),
+              v.jsx("span", {
+                className: "text-[#E8FB76] font-bold",
+                children: "THE COLLECTION"
+              })
+            ]
+          }),
+
+          // Page Badge & Title
+          v.jsxs("div", {
+            className: "flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/10 pb-8",
+            children: [
+              v.jsxs("div", {
+                className: "space-y-3 max-w-2xl",
+                children: [
+                  v.jsx("span", {
+                    className: "inline-block px-3.5 py-1 rounded-full text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.22em] bg-white/10 text-[#E8FB76] border border-[#E8FB76]/30",
+                    children: "ARCHITECTURAL INTIMACY • 2026 CATALOG"
+                  }),
+                  v.jsx("h1", {
+                    className: "plezzy-editorial-title",
+                    style: {
+                      fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif",
+                      fontSize: "clamp(2.8rem, 6vw, 5.2rem)",
+                      lineHeight: "0.95",
+                      fontWeight: 300,
+                      textTransform: "uppercase",
+                      letterSpacing: "-0.02em",
+                      color: "#ffffff"
+                    },
+                    children: "THE COLLECTION"
+                  }),
+                  v.jsx("p", {
+                    className: "text-white/70 text-xs sm:text-sm md:text-base leading-relaxed font-sans font-light",
+                    children: "Explore Plezzy's complete portfolio of tactile sensory stones, dual-resonance wand sculptures, and botanical hydration formulations. Engineered with medical-grade hypoallergenic silicone for quiet everyday pleasure."
+                  })
+                ]
+              }),
+
+              // Live Counter & Value Props Pill Group
+              v.jsxs("div", {
+                className: "flex flex-wrap md:flex-col items-start md:items-end gap-2 text-xs font-mono text-white/60 shrink-0",
+                children: [
+                  v.jsxs("span", {
+                    className: "px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 text-[#E8FB76] font-bold text-xs",
+                    children: [filteredProducts.length, " ESSENTIALS AVAILABLE"]
+                  }),
+                  v.jsx("span", {
+                    className: "text-[11px] text-white/50 tracking-wider",
+                    children: "100% UNBRANDED DISCREET PACKAGING"
+                  })
+                ]
+              })
+            ]
+          })
+        ]
+      }),
+
+      // ── FILTER, SEARCH & SORT TOOLBAR ─────────────────────────────────────
+      v.jsxs("div", {
+        className: "sticky top-16 sm:top-20 z-30 mb-8 sm:mb-12 py-3 px-3 sm:px-5 rounded-2xl bg-[#0f0e12]/90 backdrop-blur-xl border border-white/10 shadow-2xl flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4",
+        children: [
+          // Category Pills
+          v.jsx("div", {
+            className: "flex items-center gap-2 overflow-x-auto no-scrollbar py-1",
+            children: categories.map(cat => {
+              const isActive = selectedCategory === cat;
+              return v.jsxs("button", {
+                key: cat,
+                onClick: () => {
+                  try { s(); } catch (e) {}
+                  setSelectedCategory(cat);
+                },
+                className: "px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer " +
+                  (isActive 
+                    ? "bg-[#E8FB76] text-[#121014] font-extrabold shadow-md scale-105" 
+                    : "bg-white/5 hover:bg-white/15 text-white/75 border border-white/10"),
+                children: [
+                  cat === "all" ? "ALL EDITIONS" : cat,
+                  cat === "all" && v.jsxs("span", { className: "ml-1.5 opacity-70", children: ["(", prods.length, ")"] })
+                ]
+              });
+            })
+          }),
+
+          // Search & Sort Controls
+          v.jsxs("div", {
+            className: "flex items-center gap-3 shrink-0",
+            children: [
+              // Search input
+              v.jsxs("div", {
+                className: "relative flex-1 sm:w-48 md:w-56",
+                children: [
+                  v.jsx("input", {
+                    type: "text",
+                    placeholder: "Search collection...",
+                    value: searchQuery,
+                    onChange: e => setSearchQuery(e.target.value),
+                    className: "w-full px-3.5 py-1.5 pl-8 rounded-full bg-black/60 border border-white/15 text-xs text-white placeholder-white/40 outline-none focus:border-[#E8FB76] transition-colors"
+                  }),
+                  v.jsx("span", {
+                    className: "absolute left-2.5 top-1/2 -translate-y-1/2 text-white/40 text-xs pointer-events-none",
+                    children: "🔍"
+                  }),
+                  searchQuery && v.jsx("button", {
+                    onClick: () => setSearchQuery(""),
+                    className: "absolute right-2.5 top-1/2 -translate-y-1/2 text-white/50 hover:text-white text-xs cursor-pointer",
+                    children: "✕"
+                  })
+                ]
+              }),
+
+              // Sort Select Dropdown
+              v.jsxs("div", {
+                className: "relative shrink-0",
+                children: [
+                  v.jsxs("select", {
+                    value: sortBy,
+                    onChange: e => {
+                      try { s(); } catch (err) {}
+                      setSortBy(e.target.value);
+                    },
+                    className: "appearance-none px-3.5 py-1.5 pr-8 rounded-full bg-black/60 border border-white/15 text-xs font-mono text-white outline-none cursor-pointer focus:border-[#E8FB76] transition-colors",
+                    children: [
+                      v.jsx("option", { value: "featured", className: "bg-[#16141a]", children: "Sort: Featured" }),
+                      v.jsx("option", { value: "price-asc", className: "bg-[#16141a]", children: "Price: Low to High" }),
+                      v.jsx("option", { value: "price-desc", className: "bg-[#16141a]", children: "Price: High to Low" }),
+                      v.jsx("option", { value: "rating", className: "bg-[#16141a]", children: "Highest Rated" })
+                    ]
+                  }),
+                  v.jsx("span", {
+                    className: "absolute right-3 top-1/2 -translate-y-1/2 text-white/40 pointer-events-none text-[10px]",
+                    children: "▼"
+                  })
+                ]
+              })
+            ]
+          })
+        ]
+      }),
+
+      // ── PRODUCTS GRID (OR EMPTY STATE) ────────────────────────────────────
+      filteredProducts.length === 0 ? (
+        v.jsxs("div", {
+          className: "text-center py-24 px-4 rounded-3xl bg-white/5 border border-white/10 my-8 space-y-4",
+          children: [
+            v.jsx("span", { className: "text-4xl block", children: "✧" }),
+            v.jsx("h3", {
+              className: "text-xl font-serif uppercase tracking-widest text-white",
+              children: "No Essentials Found"
+            }),
+            v.jsx("p", {
+              className: "text-xs font-sans text-white/60 max-w-sm mx-auto",
+              children: "No items match your active filters. Try searching for a different keyword or reset your filters."
+            }),
+            v.jsx("button", {
+              onClick: () => {
+                setSelectedCategory("all");
+                setSearchQuery("");
+                setSortBy("featured");
+              },
+              className: "px-5 py-2 rounded-full bg-[#E8FB76] text-black text-xs font-bold uppercase tracking-wider hover:scale-105 active:scale-95 transition-all cursor-pointer shadow-lg",
+              children: "Clear All Filters"
+            })
+          ]
+        })
+      ) : (
+        v.jsx("div", {
+          className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-7",
+          children: filteredProducts.map((p, idx) => {
+            const currentShade = selectedShades[p.id] || (p.shades && p.shades[0]?.name) || "default";
+            const isAdded = addedItems[p.id];
+            const secondaryImg = (p.images && p.images[1]?.src) || null;
+            const originalPrice = Math.round((p.priceINR || p.price || 2499) / 0.7);
+
+            return v.jsxs("div", {
+              key: p.id,
+              onClick: () => onSelectProduct(p),
+              className: "plezzy-collection-card group relative rounded-3xl overflow-hidden bg-[#121014]/80 border border-white/10 hover:border-white/30 backdrop-blur-xl shadow-xl hover:shadow-2xl flex flex-col justify-between transition-all duration-500 hover:-translate-y-2 cursor-pointer select-none",
+              style: {
+                animation: "plezzyItemSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) " + (0.05 * idx) + "s forwards",
+                opacity: 0
+              },
+              children: [
+                // Top Media Container
+                v.jsxs("div", {
+                  className: "relative w-full aspect-[4/5] bg-black/50 overflow-hidden",
+                  children: [
+                    // Primary Image
+                    v.jsx("img", {
+                      src: p.image,
+                      alt: p.name,
+                      className: "w-full h-full object-cover object-center transition-all duration-700 group-hover:scale-108 " + (secondaryImg ? "group-hover:opacity-0" : "")
+                    }),
+
+                    // Secondary Hover Crossfade Image
+                    secondaryImg && v.jsx("img", {
+                      src: secondaryImg,
+                      alt: p.name + " detail",
+                      className: "absolute inset-0 w-full h-full object-cover object-center opacity-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-108"
+                    }),
+
+                    // Top Badges
+                    v.jsxs("div", {
+                      className: "absolute top-3 inset-x-3 flex items-center justify-between pointer-events-none z-10",
+                      children: [
+                        // Left: Discount / Edition Badge
+                        v.jsx("span", {
+                          className: "px-2.5 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-[#E8FB76] text-[#121014] shadow-md",
+                          children: p.badge || "30% OFF"
+                        }),
+
+                        // Right: Rating Pill
+                        v.jsxs("span", {
+                          className: "px-2 py-0.5 rounded-full text-[10px] font-mono bg-black/60 backdrop-blur-md border border-white/20 text-white/90 flex items-center gap-1",
+                          children: [
+                            v.jsx("span", { style: { color: "#E8FB76" }, children: "★" }),
+                            p.rating || "5.0"
+                          ]
+                        })
+                      ]
+                    }),
+
+                    // Quick Add Hover Pill (Desktop)
+                    v.jsx("div", {
+                      className: "absolute bottom-3 inset-x-3 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 z-10 hidden sm:block",
+                      children: v.jsxs("button", {
+                        onClick: (e) => handleQuickAdd(p, e),
+                        className: "w-full py-2.5 px-4 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-xl flex items-center justify-center gap-2 " +
+                          (isAdded 
+                            ? "bg-emerald-500 text-white" 
+                            : "bg-white hover:bg-[#E8FB76] text-black hover:text-black"),
+                        children: [
+                          isAdded ? "✓ ADDED TO BAG" : "+ QUICK ADD"
+                        ]
+                      })
+                    })
+                  ]
+                }),
+
+                // Card Info & Controls
+                v.jsxs("div", {
+                  className: "p-4 sm:p-5 flex-1 flex flex-col justify-between gap-3 bg-gradient-to-b from-transparent to-black/40",
+                  children: [
+                    // Category & Shade Swatches
+                    v.jsxs("div", {
+                      className: "space-y-2",
+                      children: [
+                        v.jsxs("div", {
+                          className: "flex items-center justify-between gap-2",
+                          children: [
+                            v.jsx("span", {
+                              className: "text-[10px] font-mono uppercase tracking-[0.2em] text-[#E8FB76]",
+                              children: p.category || "EDITION"
+                            }),
+
+                            // Color swatches
+                            p.shades && p.shades.length > 1 && v.jsx("div", {
+                              className: "flex items-center gap-1.5",
+                              children: p.shades.map(sh => (
+                                v.jsx("button", {
+                                  key: sh.name,
+                                  onClick: (e) => handleShadeSelect(p.id, sh.name, e),
+                                  title: sh.name,
+                                  className: "w-3.5 h-3.5 rounded-full border transition-transform " + 
+                                    (currentShade === sh.name 
+                                      ? "scale-125 border-white shadow-sm ring-1 ring-white/50" 
+                                      : "border-white/30 hover:scale-110 opacity-70 hover:opacity-100"),
+                                  style: { backgroundColor: sh.color }
+                                })
+                              ))
+                            })
+                          ]
+                        }),
+
+                        // Product Title
+                        v.jsx("h3", {
+                          className: "font-serif text-lg sm:text-xl font-bold uppercase tracking-wider text-white group-hover:text-[#E8FB76] transition-colors leading-snug",
+                          children: p.name
+                        }),
+
+                        // Short tagline
+                        v.jsx("p", {
+                          className: "text-white/60 text-xs line-clamp-2 leading-relaxed font-sans font-light",
+                          children: p.tagline || p.role
+                        })
+                      ]
+                    }),
+
+                    // Pricing & CTAs Row
+                    v.jsxs("div", {
+                      className: "pt-3 border-t border-white/10 space-y-3",
+                      children: [
+                        // Price row
+                        v.jsxs("div", {
+                          className: "flex items-baseline justify-between",
+                          children: [
+                            v.jsxs("div", {
+                              className: "flex items-baseline gap-2",
+                              children: [
+                                v.jsxs("span", {
+                                  className: "text-base sm:text-lg font-bold font-mono text-white",
+                                  children: [currency === "USD" ? p.priceUSD : "₹" + (p.priceINR || p.price).toLocaleString('en-IN')]
+                                }),
+                                v.jsxs("span", {
+                                  className: "text-xs font-mono text-white/40 line-through",
+                                  children: [currency === "USD" ? "$45.00" : "₹" + originalPrice.toLocaleString('en-IN')]
+                                })
+                              ]
+                            }),
+                            v.jsx("span", {
+                              className: "text-[10px] font-mono text-emerald-400 font-bold",
+                              children: "SAVE 30%"
+                            })
+                          ]
+                        }),
+
+                        // Action Buttons Row (Mobile & Tablet)
+                        v.jsxs("div", {
+                          className: "grid grid-cols-2 gap-2",
+                          children: [
+                            v.jsx("button", {
+                              onClick: () => onSelectProduct(p),
+                              className: "py-2 px-3 rounded-xl bg-white/10 hover:bg-white/20 text-white text-[11px] font-mono uppercase tracking-wider transition-colors text-center cursor-pointer border border-white/10",
+                              children: "DETAILS →"
+                            }),
+                            v.jsx("button", {
+                              onClick: (e) => handleQuickAdd(p, e),
+                              className: "py-2 px-3 rounded-xl text-[11px] font-bold uppercase tracking-wider transition-all text-center cursor-pointer shadow-md " +
+                                (isAdded 
+                                  ? "bg-emerald-500 text-white" 
+                                  : "bg-[#E8FB76] hover:bg-white text-black"),
+                              children: isAdded ? "ADDED ✓" : "+ ADD TO BAG"
+                            })
+                          ]
+                        })
+                      ]
+                    })
+                  ]
+                })
+              ]
+            });
+          })
+        })
+      ),
+
+      // ── TRUST & E-COMMERCE VALUE PROPOSITIONS BANNER ──────────────────────
+      v.jsx("div", {
+        className: "mt-16 sm:mt-24 pt-12 border-t border-white/10",
+        children: v.jsxs("div", {
+          className: "grid grid-cols-2 lg:grid-cols-4 gap-6 text-center sm:text-left",
+          children: [
+            v.jsxs("div", {
+              className: "p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2",
+              children: [
+                v.jsx("span", { className: "text-2xl block", children: "📦" }),
+                v.jsx("h4", { className: "font-bold text-xs uppercase tracking-wider text-white", children: "100% Stealth Packaging" }),
+                v.jsx("p", { className: "text-[11px] text-white/50 leading-relaxed", children: "Plain, unbranded exterior boxes with no sensitive descriptors on invoices or labels." })
+              ]
+            }),
+            v.jsxs("div", {
+              className: "p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2",
+              children: [
+                v.jsx("span", { className: "text-2xl block", children: "⚡" }),
+                v.jsx("h4", { className: "font-bold text-xs uppercase tracking-wider text-white", children: "Free Express Shipping" }),
+                v.jsx("p", { className: "text-[11px] text-white/50 leading-relaxed", children: "Fast, discreet courier dispatch across India on all orders over ₹999." })
+              ]
+            }),
+            v.jsxs("div", {
+              className: "p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2",
+              children: [
+                v.jsx("span", { className: "text-2xl block", children: "🛡️" }),
+                v.jsx("h4", { className: "font-bold text-xs uppercase tracking-wider text-white", children: "2-Year Guarantee" }),
+                v.jsx("p", { className: "text-[11px] text-white/50 leading-relaxed", children: "Unconditional replacement warranty against any motor or battery defect." })
+              ]
+            }),
+            v.jsxs("div", {
+              className: "p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2",
+              children: [
+                v.jsx("span", { className: "text-2xl block", children: "💧" }),
+                v.jsx("h4", { className: "font-bold text-xs uppercase tracking-wider text-white", children: "Body-Safe & IPX7 Waterproof" }),
+                v.jsx("p", { className: "text-[11px] text-white/50 leading-relaxed", children: "100% hypoallergenic medical liquid silicone. Safe for bath & shower rituals." })
+              ]
+            })
+          ]
+        })
+      })
+    ]
+  });
+}
+
 function _F(){
   const{selectedProductDetail:t,setSelectedProductDetail:setProd,addToCart:i,formatPrice:r,setActiveModal:a,setIsCartOpen:openCart,totalItemsCount:totCount}=xi();
   const{playClickFeedback:s}=Pn();
@@ -6927,6 +7400,17 @@ function _F(){
     return false;
   };
   const [isAdminView, setIsAdminView] = G.useState(checkIsAdmin);
+  // Collections View URL Routing
+  const checkIsCollections = () => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("view") === "collections" || params.has("collections")) return true;
+      if (window.location.pathname === "/collections" || window.location.pathname.startsWith("/collections/")) return true;
+      if (window.location.hash === "#collections") return true;
+    } catch(e) {}
+    return false;
+  };
+  const [isCollectionsView, setIsCollectionsView] = G.useState(checkIsCollections);
 
   G.useEffect(() => {
     const handleUrlChange = () => {
@@ -7578,7 +8062,7 @@ function _F(){
                 }),
                 v.jsx("div",{className:"h-4 w-px bg-[#dedad2] hidden sm:block"}),
                 v.jsxs("div",{className:"hidden sm:flex items-center gap-2 text-xs font-bold text-[#8b8782] tracking-wider uppercase",children:[
-                  v.jsx("span",{className:"hover:text-[#1a1a1a] cursor-pointer transition-colors",onClick:handleBackToHome,children:"THE COLLECTION"}),
+                  v.jsx("span",{className:"hover:text-[#1a1a1a] cursor-pointer transition-colors",onClick:navigateToCollections,children:"THE COLLECTION"}),
                   v.jsx("span",{className:"text-[#dedad2]",children:"/"}),
                   v.jsx("span",{className:"text-[#67645e]",children:cur.category}),
                   v.jsx("span",{className:"text-[#dedad2]",children:"/"}),
