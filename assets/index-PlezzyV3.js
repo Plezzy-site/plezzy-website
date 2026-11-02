@@ -9094,114 +9094,49 @@ function _F(){
               }
             }),
 
-            // Atmospheric Contrast Vignette (Bottom subtle gradient for text contrast)
+            // Atmospheric Contrast Vignette (Subtle bottom gradient for CTA button contrast)
             v.jsx("div",{
               style:{
                 position:"absolute",
                 inset:0,
-                background:"linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.2) 32%, transparent 60%)",
+                background:"linear-gradient(to top, rgba(0,0,0,0.3) 0%, transparent 28%)",
                 zIndex:1,
                 pointerEvents:"none"
               }
             }),
 
-            // LOWER-LEFT EDITORIAL CALLOUT CARD & DUAL CTAs
-            v.jsxs("div",{
+            // LOWER-LEFT EDITORIAL CALLOUT CARD & CTA
+            v.jsx("div",{
               id:"hero-left-content",
               className:"relative z-10 p-6 sm:p-12 lg:p-16 text-left",
               style:{maxWidth:"860px"},
-              children:[
-                // Large Editorial Headline
-                v.jsxs("h1",{
+              children:v.jsx("div",{
+                className:"flex items-center gap-4",
+                children:v.jsx("button",{
+                  onClick:()=>{
+                    try { s(); } catch(e) {}
+                    window.location.href = "/collections.html";
+                  },
                   style:{
+                    display:"inline-flex",
+                    alignItems:"center",
+                    justifyContent:"center",
+                    padding:"13px 30px",
+                    backgroundColor:"#f82793",
                     color:"#ffffff",
                     fontFamily:"'Plus Jakarta Sans', -apple-system, sans-serif",
-                    fontWeight:900,
-                    fontSize:"clamp(28px, 4.4vw, 56px)",
-                    lineHeight:"1.08",
-                    letterSpacing:"-0.03em",
-                    marginBottom:"24px",
-                    textTransform:"uppercase",
-                    textShadow:"0 3px 20px rgba(0,0,0,0.7)"
+                    fontSize:"12.5px",
+                    fontWeight:800,
+                    letterSpacing:"0.06em",
+                    borderRadius:"9999px",
+                    border:"none",
+                    cursor:"pointer",
+                    boxShadow:"0 6px 24px rgba(248,39,147,0.45)"
                   },
-                  children:[
-                    "WINTER IS ",
-                    v.jsx("span",{
-                      style:{
-                        fontStyle:"italic",
-                        fontSize:"1.28em",
-                        textTransform:"none",
-                        letterSpacing:"-0.01em",
-                        display:"inline-block",
-                        paddingRight:"4px"
-                      },
-                      children:"Cuming,"
-                    }),
-                    v.jsx("br",{}),
-                    "SO SHOULD YOU."
-                  ]
-                }),
-
-                // Dual CTAs Row (SHOP PLEZZY + EXPLORE COLLECTION)
-                v.jsxs("div",{
-                  className:"flex flex-col sm:flex-row items-start sm:items-center gap-2.5 sm:gap-4",
-                  children:[
-                    // Primary CTA
-                    v.jsx("button",{
-                      onClick:()=>{
-                        try { s(); } catch(e) {}
-                        window.location.href = "/collections.html";
-                      },
-                      style:{
-                        display:"inline-flex",
-                        alignItems:"center",
-                        justifyContent:"center",
-                        padding:"12px 28px",
-                        backgroundColor:"#f82793",
-                        color:"#ffffff",
-                        fontFamily:"'Plus Jakarta Sans', -apple-system, sans-serif",
-                        fontSize:"12.5px",
-                        fontWeight:800,
-                        letterSpacing:"0.06em",
-                        borderRadius:"9999px",
-                        border:"none",
-                        cursor:"pointer",
-                        boxShadow:"0 6px 24px rgba(248,39,147,0.45)"
-                      },
-                      className:"hover:bg-[#d41c7b] hover:scale-105 active:scale-95 transition-all",
-                      children:"DISCOVER THE COLLECTION"
-                    }),
-
-                    // Secondary CTA
-                    v.jsx("button",{
-                      onClick:()=>{
-                        s();
-                        const el = document.getElementById("campaign-statement");
-                        if(el) el.scrollIntoView({behavior:"smooth"});
-                      },
-                      style:{
-                        display:"inline-flex",
-                        alignItems:"center",
-                        justifyContent:"center",
-                        padding:"11px 26px",
-                        backgroundColor:"rgba(0,0,0,0.35)",
-                        color:"#ffffff",
-                        fontFamily:"'Plus Jakarta Sans', -apple-system, sans-serif",
-                        fontSize:"12.5px",
-                        fontWeight:700,
-                        letterSpacing:"0.06em",
-                        borderRadius:"9999px",
-                        border:"1.5px solid rgba(255,255,255,0.75)",
-                        backdropFilter:"blur(8px)",
-                        cursor:"pointer"
-                      },
-                      className:"hover:bg-white/20 hover:scale-105 active:scale-95 transition-all",
-                      children:"EXPLORE EDITIONS"
-                    })
-                  ]
+                  className:"hover:bg-[#d41c7b] hover:scale-105 active:scale-95 transition-all",
+                  children:"DISCOVER THE COLLECTION"
                 })
-
-              ]
+              })
             })
 
           ]
