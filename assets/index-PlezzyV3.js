@@ -8206,15 +8206,15 @@ function _F(){
 
   return v.jsxs("div",{className:"plezzy-app-container w-full min-h-screen bg-transparent text-[#67645e] font-sans antialiased selection:bg-[#67645e] selection:text-white transition-colors duration-300 pb-28",style:{fontFamily:'"Helvetica Neue", Helvetica, Arial, sans-serif'},children:[
 
-    // 1. COMBINED FIXED HEADER (Permanent Black Glass Bar)
+    // 1. COMBINED FIXED HEADER (Glass Translucent Style)
     !isAdminView && v.jsxs("header",{
       className:"fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 header-pdp nav-scrolled",
       style:{
-        backgroundColor:"rgba(12, 10, 16, 0.92)",
-        backdropFilter:"blur(24px) saturate(190%)",
-        WebkitBackdropFilter:"blur(24px) saturate(190%)",
+        backgroundColor:"rgba(12, 10, 16, 0.45)",
+        backdropFilter:"blur(20px) saturate(180%)",
+        WebkitBackdropFilter:"blur(20px) saturate(180%)",
         borderBottom:"1px solid rgba(255, 255, 255, 0.12)",
-        boxShadow:"0 10px 32px -8px rgba(0, 0, 0, 0.65)",
+        boxShadow:"0 8px 32px 0 rgba(0, 0, 0, 0.35)",
         color:"#ffffff",
         textShadow:"0 1px 8px rgba(0,0,0,0.55)"
       },
@@ -9071,26 +9071,24 @@ function _F(){
           className:"w-full relative overflow-hidden flex flex-col justify-end select-none",
           style:{
             width:"100%",
-            aspectRatio:"16 / 9",
-            minHeight:"clamp(460px, 68vh, 880px)",
-            backgroundColor:"#e2397e",
-            background:"linear-gradient(135deg, #fbbedd 0%, #f3036e 45%, #e2397e 100%)",
+            minHeight:"clamp(540px, 82vh, 860px)",
+            backgroundColor:"#000000",
             paddingTop:"0px"
           },
           children:[
 
-            // Full-Bleed Editorial Campaign Hero Banner (Uncut 16:9 Image)
+            // Full-Bleed Editorial Campaign Hero Banner (Full Size)
             v.jsx("img",{
               id:"plezzy-hero-video-banner",
-              src:"/assets/plezzy-hero-banner-new.jpg?v=20261102_front_uncut_v1",
+              src:"/assets/plezzy-hero-banner-new.jpg?v=20261102_fullsize_v2",
               alt:"PLEZZY Everyday Essentials",
-              className:"editorial-bw-img w-full h-full object-contain select-none",
+              className:"editorial-bw-img w-full h-full object-cover select-none",
               style:{
                 position:"absolute",
                 inset:0,
                 width:"100%",
                 height:"100%",
-                objectFit:"contain",
+                objectFit:"cover",
                 objectPosition:"center center",
                 zIndex:0
               }

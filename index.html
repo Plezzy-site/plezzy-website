@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Italiana&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261102_front_uncut_v9"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261102_glass_translucent_v10"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
@@ -610,25 +610,23 @@
         }
       }
 
-      /* ── Hero Banner Styling & Framing (Uncut Full Display) ── */
+      /* ── Hero Banner Full Size Display (Seamless Edge-to-Edge) ── */
       #hero {
         position: relative !important;
         width: 100% !important;
-        aspect-ratio: 16 / 9 !important;
-        min-height: 480px !important;
-        max-height: 88vh !important;
-        background: linear-gradient(135deg, #fbbedd 0%, #f3036e 45%, #e2397e 100%) !important;
+        min-height: clamp(540px, 82vh, 860px) !important;
         overflow: hidden !important;
         display: flex !important;
         flex-direction: column !important;
         justify-content: flex-end !important;
+        background-color: #000000 !important;
       }
       #plezzy-hero-video-banner {
         position: absolute !important;
         inset: 0 !important;
         width: 100% !important;
         height: 100% !important;
-        object-fit: contain !important;
+        object-fit: cover !important;
         object-position: center center !important;
         transform: none !important;
         animation: none !important;
@@ -638,15 +636,14 @@
       }
       @media (max-width: 768px) {
         #hero {
-          aspect-ratio: 16 / 10 !important;
-          min-height: 380px !important;
-          max-height: 75vh !important;
+          min-height: 75vh !important;
+          min-height: 75dvh !important;
           padding-top: 64px !important;
         }
         #plezzy-hero-video-banner {
           transform: none !important;
           animation: none !important;
-          object-fit: contain !important;
+          object-fit: cover !important;
           object-position: center center !important;
         }
         #hero-left-content {
@@ -1332,26 +1329,26 @@
         background: transparent !important;
         background-color: transparent !important;
       }
-      /* Permanent sleek black header bar whole time across all views */
+      /* Glass translucent style header bar across all views */
       header,
       header.fixed,
       header.sticky,
       header.header-pdp,
       header.nav-scrolled {
-        background: rgba(12, 10, 16, 0.92) !important;
-        background-color: rgba(12, 10, 16, 0.92) !important;
-        backdrop-filter: blur(24px) saturate(190%) !important;
-        -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
+        background: rgba(12, 10, 16, 0.45) !important;
+        background-color: rgba(12, 10, 16, 0.45) !important;
+        backdrop-filter: blur(20px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
         border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
-        box-shadow: 0 10px 32px -8px rgba(0, 0, 0, 0.65) !important;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.35) !important;
         padding-top: env(safe-area-inset-top, 0px) !important;
         transition: all 0.25s ease !important;
       }
       .dark header,
       .dark header.nav-scrolled,
       .dark header.header-pdp {
-        background: rgba(12, 10, 16, 0.95) !important;
-        background-color: rgba(12, 10, 16, 0.95) !important;
+        background: rgba(12, 10, 16, 0.55) !important;
+        background-color: rgba(12, 10, 16, 0.55) !important;
       }
 
       /* ════════════════════════════════════════════════════════
