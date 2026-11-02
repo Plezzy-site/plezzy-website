@@ -7403,9 +7403,11 @@ function _F(){
   // Collections View URL Routing
   const checkIsCollections = () => {
     try {
+      if (typeof window !== "undefined" && window.__PLEZZY_DEFAULT_VIEW__ === "collections") return true;
+      const pathname = (typeof window !== "undefined" && window.location.pathname) ? window.location.pathname.toLowerCase() : "";
+      if (pathname.includes("collection")) return true;
       const params = new URLSearchParams(window.location.search);
       if (params.get("view") === "collections" || params.has("collections")) return true;
-      if (window.location.pathname === "/collections" || window.location.pathname.startsWith("/collections/")) return true;
       if (window.location.hash === "#collections") return true;
     } catch(e) {}
     return false;
@@ -7415,6 +7417,11 @@ function _F(){
   G.useEffect(() => {
     const handleUrlChange = () => {
       setIsAdminView(checkIsAdmin());
+      setIsCollectionsView(checkIsCollections());
+      try {
+        const p = new URLSearchParams(window.location.search).get("product");
+        setSelectedProd(p);
+      } catch(e) {}
     };
     window.addEventListener("popstate", handleUrlChange);
     window.addEventListener("hashchange", handleUrlChange);
@@ -7433,6 +7440,23 @@ function _F(){
     try { window.history.pushState({}, "", "/"); } catch(e) {}
     setIsAdminView(false);
     setSelectedProd(null);
+  };
+
+  const navigateToCollections = (e) => {
+    if (e) try { e.preventDefault(); } catch (err) {}
+    try { s(); } catch (err) {}
+    setSelectedProd(null);
+    if (setProd) try { setProd(null); } catch (err) {}
+    setIsCollectionsView(true);
+    setIsAdminView(false);
+    setIsMobileNavOpen(false);
+    try {
+      if (!window.location.pathname.includes("collection")) {
+        window.location.href = "/collections.html";
+        return;
+      }
+    } catch (err) {}
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   // Video & Newsletter Interactive State
@@ -7544,17 +7568,23 @@ function _F(){
 
   const handleBackToHome=(e)=>{
     if(e) try{ e.preventDefault(); }catch(err){}
-    s();
+    try { s(); } catch(err){}
     setSelectedProd(null);
     if(setProd) try{ setProd(null); }catch(err){}
     a(null);
-    try{
-      const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
-      window.history.pushState({path:newUrl},'',newUrl);
-    }catch(err){}
+    setIsCollectionsView(false);
+    setIsAdminView(false);
     setIsShopMenuOpen(false);
     setIsMobileNavOpen(false);
     setIsSearchOpen(false);
+    try{
+      if (window.location.pathname.includes("collection")) {
+        window.location.href = "/index.html";
+        return;
+      }
+      const newUrl = window.location.protocol + "//" + window.location.host + "/";
+      window.history.pushState({path:newUrl}, "", newUrl);
+    }catch(err){}
     window.scrollTo({top:0,behavior:"smooth"});
   };
 
@@ -7900,8 +7930,7 @@ function _F(){
                     tag: "Luxe & Standard Editions",
                     action: () => {
                       handleCloseNav(() => {
-                        if (isPdp) handleBackToHome();
-                        handleShopClick();
+                        window.location.href = "/collections.html";
                       });
                     }
                   },
@@ -8581,10 +8610,8 @@ function _F(){
                     // Primary CTA
                     v.jsx("button",{
                       onClick:()=>{
-                        s();
-                        const el = document.getElementById("plezzy-editorial-products-grid") || document.getElementById("plezzy-featured-products-shelf");
-                        if (el) el.scrollIntoView({ behavior: "smooth" });
-                        else handleShopClick();
+                        try { s(); } catch(e) {}
+                        window.location.href = "/collections.html";
                       },
                       style:{
                         display:"inline-flex",
