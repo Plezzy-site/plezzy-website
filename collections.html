@@ -23,7 +23,7 @@
     <script>
       window.__PLEZZY_DEFAULT_VIEW__ = "collections";
     </script>
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261102_pink_wordmark_v5"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261102_black_bar_grid_v6"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
@@ -1320,29 +1320,26 @@
         background: transparent !important;
         background-color: transparent !important;
       }
-      /* Fixed transparent nav – always on screen */
+      /* Permanent sleek black header bar whole time across all views */
+      header,
       header.fixed,
-      header.sticky {
-        background-color: transparent;
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
-        box-shadow: none;
-        border-bottom: none;
-        padding-top: env(safe-area-inset-top, 0px) !important;
-      }
-      /* When on PDP or scrolled, nav gets a sleek dark glass tint */
+      header.sticky,
       header.header-pdp,
       header.nav-scrolled {
-        background: rgba(12, 10, 16, 0.72) !important;
+        background: rgba(12, 10, 16, 0.92) !important;
+        background-color: rgba(12, 10, 16, 0.92) !important;
         backdrop-filter: blur(24px) saturate(190%) !important;
         -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-        box-shadow: 0 10px 32px -8px rgba(0, 0, 0, 0.6) !important;
-        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+        box-shadow: 0 10px 32px -8px rgba(0, 0, 0, 0.65) !important;
+        padding-top: env(safe-area-inset-top, 0px) !important;
+        transition: all 0.25s ease !important;
       }
+      .dark header,
       .dark header.nav-scrolled,
       .dark header.header-pdp {
-        background-color: rgba(14, 14, 14, 0.95) !important;
+        background: rgba(12, 10, 16, 0.95) !important;
+        background-color: rgba(12, 10, 16, 0.95) !important;
       }
 
       /* ════════════════════════════════════════════════════════
@@ -1468,49 +1465,68 @@
 
       .plezzy-bento-grid {
         display: grid !important;
-        grid-template-columns: repeat(12, 1fr) !important;
-        gap: 20px !important;
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: 14px !important;
         width: 100% !important;
-        margin-top: 28px !important;
+        margin-top: 24px !important;
       }
 
       .plezzy-bento-card {
         position: relative !important;
-        border-radius: 28px !important;
+        border-radius: 20px !important;
         overflow: hidden !important;
         cursor: pointer !important;
         background-color: #121010 !important;
-        border: 1px solid rgba(255, 255, 255, 0.4) !important;
-        box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.16) !important;
+        border: 1px solid rgba(255, 255, 255, 0.35) !important;
+        box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.25) !important;
         transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.45s ease !important;
         display: flex !important;
         flex-direction: column !important;
         justify-content: space-between !important;
-        min-height: 440px !important;
+        min-height: 330px !important;
+        max-height: 380px !important;
+        grid-column: span 1 / span 1 !important;
       }
 
       .plezzy-bento-card:hover {
-        transform: translateY(-5px) !important;
-        box-shadow: 0 22px 50px -12px rgba(0, 0, 0, 0.28) !important;
-        border-color: rgba(255, 255, 255, 0.75) !important;
+        transform: translateY(-4px) !important;
+        box-shadow: 0 18px 42px -10px rgba(0, 0, 0, 0.45), 0 0 30px rgba(248, 39, 147, 0.25) !important;
+        border-color: rgba(248, 39, 147, 0.6) !important;
       }
 
-      .plezzy-bento-card-5 {
-        grid-column: span 5 / span 5 !important;
-      }
-
+      .plezzy-bento-card-5,
       .plezzy-bento-card-7 {
-        grid-column: span 7 / span 7 !important;
+        grid-column: span 1 / span 1 !important;
       }
 
       @media (max-width: 900px) {
+        .plezzy-bento-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+          gap: 10px !important;
+        }
+        .plezzy-bento-card {
+          min-height: 235px !important;
+          max-height: 275px !important;
+          border-radius: 16px !important;
+          grid-column: span 1 / span 1 !important;
+        }
         .plezzy-bento-card-5,
         .plezzy-bento-card-7 {
-          grid-column: span 12 / span 12 !important;
-          min-height: 380px !important;
+          grid-column: span 1 / span 1 !important;
         }
-        .plezzy-bento-grid {
-          gap: 16px !important;
+        .plezzy-bento-bottom-panel {
+          padding: 10px 12px !important;
+        }
+        .plezzy-bento-product-name {
+          font-size: 1.05rem !important;
+          margin-bottom: 2px !important;
+        }
+        .plezzy-bento-product-desc {
+          display: none !important;
+        }
+        .plezzy-bento-add-btn {
+          font-size: 9.5px !important;
+          padding: 6px 10px !important;
         }
       }
 
@@ -2054,6 +2070,12 @@
       .plezzy-collections-page {
         position: relative;
         z-index: 10;
+        padding-top: calc(96px + env(safe-area-inset-top, 0px)) !important;
+      }
+      @media (min-width: 640px) {
+        .plezzy-collections-page {
+          padding-top: calc(116px + env(safe-area-inset-top, 0px)) !important;
+        }
       }
 
       .plezzy-collection-card {

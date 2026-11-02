@@ -7240,7 +7240,7 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
   };
 
   return v.jsxs("div", {
-    className: "plezzy-collections-page w-full min-h-screen text-white pt-20 sm:pt-24 pb-24 px-4 sm:px-6 md:px-8 max-w-[1140px] mx-auto select-none",
+    className: "plezzy-collections-page w-full min-h-screen text-white pt-28 sm:pt-36 pb-24 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto select-none",
     children: [
       // ── EDITORIAL HEADER SECTION (CLASSY LUXURY INTRO) ───────────────────
       v.jsxs("div", {
@@ -7335,7 +7335,7 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
 
       // ── COMPACT 5-COLUMN PRODUCT CARDS GRID (SMALLER & REFINED) ───────────
       v.jsx("div", {
-        className: "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-4.5",
+        className: "grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-4 gap-3 sm:gap-4",
         children: displayedProducts.map((p) => {
           const isAdded = addedItems[p.id];
 
@@ -8185,11 +8185,15 @@ function _F(){
 
   return v.jsxs("div",{className:"plezzy-app-container w-full min-h-screen bg-transparent text-[#67645e] font-sans antialiased selection:bg-[#67645e] selection:text-white transition-colors duration-300 pb-28",style:{fontFamily:'"Helvetica Neue", Helvetica, Arial, sans-serif'},children:[
 
-    // 1. COMBINED FIXED HEADER (Hidden in Admin Mode)
+    // 1. COMBINED FIXED HEADER (Permanent Black Glass Bar)
     !isAdminView && v.jsxs("header",{
-      className:"fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300" + (isPdp ? " header-pdp" : ""),
+      className:"fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 header-pdp nav-scrolled",
       style:{
-        backgroundColor: isPdp ? "rgba(14, 14, 14, 0.95)" : "transparent",
+        backgroundColor:"rgba(12, 10, 16, 0.92)",
+        backdropFilter:"blur(24px) saturate(190%)",
+        WebkitBackdropFilter:"blur(24px) saturate(190%)",
+        borderBottom:"1px solid rgba(255, 255, 255, 0.12)",
+        boxShadow:"0 10px 32px -8px rgba(0, 0, 0, 0.65)",
         color:"#ffffff",
         textShadow:"0 1px 8px rgba(0,0,0,0.55)"
       },
@@ -9279,8 +9283,8 @@ function _F(){
                   const revCount = p.reviewsCount || [348, 412, 520, 289][idx % 4];
                   const hasDiscount = (idx % 2) === 1 || (idx % 4) === 0;
 
-                  // Dynamic Bento split: Row 1 (5 & 7 cols), Row 2 (7 & 5 cols)
-                  const colClass = (idx === 0 || idx === 3) ? "plezzy-bento-card-5" : "plezzy-bento-card-7";
+                  // 4-Product Compact Grid: all 4 products visible simultaneously
+                  const colClass = "col-span-1";
 
                   return v.jsxs("div", {
                     key: p.id,
