@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Italiana&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261102_white_card_grid_v7"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261102_bento_restored_v8"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
@@ -1462,68 +1462,49 @@
 
       .plezzy-bento-grid {
         display: grid !important;
-        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-        gap: 14px !important;
+        grid-template-columns: repeat(12, 1fr) !important;
+        gap: 20px !important;
         width: 100% !important;
-        margin-top: 24px !important;
+        margin-top: 28px !important;
       }
 
       .plezzy-bento-card {
         position: relative !important;
-        border-radius: 20px !important;
+        border-radius: 28px !important;
         overflow: hidden !important;
         cursor: pointer !important;
         background-color: #121010 !important;
-        border: 1px solid rgba(255, 255, 255, 0.35) !important;
-        box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.25) !important;
+        border: 1px solid rgba(255, 255, 255, 0.4) !important;
+        box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.16) !important;
         transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.45s ease !important;
         display: flex !important;
         flex-direction: column !important;
         justify-content: space-between !important;
-        min-height: 330px !important;
-        max-height: 380px !important;
-        grid-column: span 1 / span 1 !important;
+        min-height: 440px !important;
       }
 
       .plezzy-bento-card:hover {
-        transform: translateY(-4px) !important;
-        box-shadow: 0 18px 42px -10px rgba(0, 0, 0, 0.45), 0 0 30px rgba(248, 39, 147, 0.25) !important;
-        border-color: rgba(248, 39, 147, 0.6) !important;
+        transform: translateY(-5px) !important;
+        box-shadow: 0 22px 50px -12px rgba(0, 0, 0, 0.28) !important;
+        border-color: rgba(255, 255, 255, 0.75) !important;
       }
 
-      .plezzy-bento-card-5,
+      .plezzy-bento-card-5 {
+        grid-column: span 5 / span 5 !important;
+      }
+
       .plezzy-bento-card-7 {
-        grid-column: span 1 / span 1 !important;
+        grid-column: span 7 / span 7 !important;
       }
 
       @media (max-width: 900px) {
-        .plezzy-bento-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-          gap: 10px !important;
-        }
-        .plezzy-bento-card {
-          min-height: 235px !important;
-          max-height: 275px !important;
-          border-radius: 16px !important;
-          grid-column: span 1 / span 1 !important;
-        }
         .plezzy-bento-card-5,
         .plezzy-bento-card-7 {
-          grid-column: span 1 / span 1 !important;
+          grid-column: span 12 / span 12 !important;
+          min-height: 380px !important;
         }
-        .plezzy-bento-bottom-panel {
-          padding: 10px 12px !important;
-        }
-        .plezzy-bento-product-name {
-          font-size: 1.05rem !important;
-          margin-bottom: 2px !important;
-        }
-        .plezzy-bento-product-desc {
-          display: none !important;
-        }
-        .plezzy-bento-add-btn {
-          font-size: 9.5px !important;
-          padding: 6px 10px !important;
+        .plezzy-bento-grid {
+          gap: 16px !important;
         }
       }
 

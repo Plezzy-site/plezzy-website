@@ -9308,8 +9308,8 @@ function _F(){
                   const revCount = p.reviewsCount || [348, 412, 520, 289][idx % 4];
                   const hasDiscount = (idx % 2) === 1 || (idx % 4) === 0;
 
-                  // 4-Product Compact Grid: all 4 products visible simultaneously
-                  const colClass = "col-span-1";
+                  // Dynamic Bento split: Row 1 (5 & 7 cols), Row 2 (7 & 5 cols)
+                  const colClass = (idx === 0 || idx === 3) ? "plezzy-bento-card-5" : "plezzy-bento-card-7";
 
                   return v.jsxs("div", {
                     key: p.id,
@@ -9451,7 +9451,7 @@ function _F(){
                     handleShopClick();
                   },
                   className: "plezzy-divider-btn",
-                  children: "BROWSE ALL ESSENTIALS"
+                  children: "BROWSE ALL COLLECTIONS"
                 })
               ]
             })
