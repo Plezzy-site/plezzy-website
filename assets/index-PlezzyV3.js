@@ -9778,11 +9778,33 @@ function _F(){
         // ══════════════════════════════════════════════════════════════
         // SECTION 10: GIANT TACTILE PLEZZY WORDMARK BANNER
         // ══════════════════════════════════════════════════════════════
-        v.jsx("div",{className:"mx-3 sm:mx-8 my-8 rounded-[28px] bg-[#121016]/65 backdrop-blur-2xl border border-white/10 py-16 sm:py-24 px-6 text-center overflow-hidden relative select-none",children:
-          v.jsxs("div",{className:"relative z-10 space-y-4",children:[
-            v.jsx("h2",{className:"giant-wordmark select-none",children:"plezzy"}),
-            v.jsx("p",{className:"text-xs uppercase tracking-[0.25em] font-mono font-bold",style:{color:"#f82793",textShadow:"0 0 16px rgba(248,39,147,0.45)"},children:"everyday essentials, done well."})
-          ]})
+        v.jsx("div",{
+          id:"campaign-statement",
+          style:{
+            background:"radial-gradient(circle at 50% 50%, rgba(248,39,147,0.18) 0%, rgba(14,12,18,0.92) 75%)",
+            boxShadow:"0 24px 64px -12px rgba(0,0,0,0.85), 0 0 45px rgba(248,39,147,0.22)"
+          },
+          className:"mx-3 sm:mx-8 my-12 rounded-[32px] backdrop-blur-2xl border border-white/20 py-20 sm:py-28 px-6 text-center overflow-hidden relative select-none",
+          children:
+            v.jsxs("div",{className:"relative z-10 space-y-4 max-w-4xl mx-auto",children:[
+              v.jsx("p",{
+                className:"text-base sm:text-xl font-light tracking-tight text-white/90 pb-2",
+                children:[
+                  "Why so serious? Let's make flare-ups ",
+                  v.jsx("span",{className:"font-serif italic font-normal text-[#f82793]",children:"fun instead."})
+                ]
+              }),
+              v.jsx("h2",{
+                className:"giant-wordmark select-none",
+                style:{color:"#f82793",textShadow:"0 4px 35px rgba(248,39,147,0.5), 0 0 70px rgba(248,39,147,0.3)"},
+                children:"plezzy"
+              }),
+              v.jsx("p",{
+                className:"text-xs uppercase tracking-[0.25em] font-mono font-bold",
+                style:{color:"#f82793",textShadow:"0 0 16px rgba(248,39,147,0.45)"},
+                children:"everyday essentials, done well."
+              })
+            ]})
         })
 
       ]})
