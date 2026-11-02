@@ -9449,11 +9449,12 @@ function _F(){
                     className: "plezzy-divider-line-inner"
                   })
                 }),
-                v.jsx("button", {
-                  type: "button",
-                  onClick: () => {
-                    try { s(); } catch (e) {}
-                    handleShopClick();
+                v.jsx("a", {
+                  href: "/collections.html",
+                  onClick: (e) => {
+                    e.preventDefault();
+                    try { s(); } catch (err) {}
+                    window.location.href = "/collections.html";
                   },
                   className: "plezzy-divider-btn",
                   children: "BROWSE ALL COLLECTIONS"
