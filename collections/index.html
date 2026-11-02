@@ -23,7 +23,7 @@
     <script>
       window.__PLEZZY_DEFAULT_VIEW__ = "collections";
     </script>
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261102_classy_compact"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261102_shiny_silver_v1"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
@@ -1281,8 +1281,8 @@
       }
       /* Whole website background replaced with attached iridescent fluid pearl silk image */
       html, body {
-        background-color: #d1d5db !important;
-        background-image: url('/assets/plezzy_foil_bg.jpg?v=20261029_pearl') !important;
+        background-color: #d8dde6 !important;
+        background-image: url('/assets/shiny-silver-foil-bg.jpg?v=20261102_shiny_silver') !important;
         background-size: cover !important;
         background-position: center center !important;
         background-attachment: fixed !important;
@@ -1296,7 +1296,7 @@
         height: 100%;
         min-height: 100dvh;
         z-index: 0;
-        background-image: url('/assets/plezzy_foil_bg.jpg?v=20261029_pearl');
+        background-image: url('/assets/shiny-silver-foil-bg.jpg?v=20261102_shiny_silver');
         background-size: cover;
         background-position: center center;
         background-attachment: fixed;
@@ -1765,7 +1765,7 @@
           radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.38) 0%, rgba(210, 222, 238, 0.18) 32%, transparent 65%),
           radial-gradient(circle at 15% 85%, rgba(240, 246, 255, 0.22) 0%, rgba(170, 185, 205, 0.12) 36%, transparent 60%),
           linear-gradient(135deg, rgba(245, 248, 255, 0.22) 0%, rgba(145, 158, 178, 0.18) 45%, rgba(12, 16, 24, 0.82) 100%),
-          url('/assets/plezzy_foil_bg.jpg') !important;
+          url('/assets/shiny-silver-foil-bg.jpg?v=20261102_shiny_silver') !important;
         background-size: cover, cover, cover, cover !important;
         background-position: center, center, center, center !important;
         background-attachment: fixed !important;
@@ -2100,13 +2100,13 @@
         content: '';
         position: absolute;
         inset: 0;
-        background: radial-gradient(circle 900px at 70% 30%, rgba(255, 255, 255, 0.16) 0%, rgba(240, 245, 255, 0.06) 40%, transparent 75%),
-                    linear-gradient(120deg, transparent 20%, rgba(255, 255, 255, 0.08) 50%, transparent 80%);
+        background: radial-gradient(circle 1000px at 50% 25%, rgba(255, 255, 255, 0.42) 0%, rgba(240, 245, 255, 0.18) 35%, transparent 70%),
+                    linear-gradient(115deg, transparent 20%, rgba(255, 255, 255, 0.25) 48%, rgba(255, 255, 255, 0.45) 52%, transparent 80%);
         background-size: 200% 200%;
-        animation: plezzyFoilSheen 22s ease-in-out infinite alternate;
+        animation: plezzyFoilSheen 18s ease-in-out infinite alternate;
         pointer-events: none;
         mix-blend-mode: overlay;
-        opacity: 0.85;
+        opacity: 0.9;
       }
 
       @keyframes plezzyFoilSheen {
@@ -2596,6 +2596,24 @@
         transform: translateY(-4px) !important;
       }
 
+    
+      /* Shiny Silver Foil Global Section Integration */
+      .plezzy-translucent-section-fix {}
+      #community,
+      #newsletter,
+      #the-collection-section,
+      #suede-pouch-campaign,
+      #campaign-statement {
+        background-color: transparent !important;
+        background: transparent !important;
+      }
+      footer {
+        background: rgba(14, 12, 16, 0.75) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+      }
+    
     </style>
   </head>
   <body class="text-[#67645e] antialiased selection:bg-[#67645e] selection:text-white">
