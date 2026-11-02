@@ -4468,7 +4468,7 @@ function PlezzyAdminPanel({ prods, setProds, onBackToStore, onSelectProduct, def
         : [{ src: defaultImg, label: "primary" }, { src: defaultImg, label: "detail" }],
       shades: (savedProd.shades && savedProd.shades.length > 0)
         ? savedProd.shades
-        : [{ name: "signature", color: "#b9745d", desc: "core finish", badge: "core" }],
+        : [{ name: "signature", color: "#f82793", desc: "core finish", badge: "core" }],
       rating: Number(savedProd.rating) || 5.0,
       reviewsCount: Number(savedProd.reviewsCount) || 1,
       availability: savedProd.availability || "in_stock",
@@ -4685,7 +4685,7 @@ function PlezzyAdminPanel({ prods, setProds, onBackToStore, onSelectProduct, def
                 placeholder: "Enter Passkey (default: plezzy2026)",
                 value: passkeyInput,
                 onChange: (e) => setPasskeyInput(e.target.value),
-                className: "w-full px-4 py-3 rounded-2xl border border-[#dedad2] bg-[#faf9f7] text-[#1a1a1a] focus:outline-none focus:border-[#5A0C1A] text-sm text-center font-mono tracking-widest"
+                className: "w-full px-4 py-3 rounded-2xl border border-[#dedad2] bg-[#faf9f7] text-[#1a1a1a] focus:outline-none focus:border-[#f82793] text-sm text-center font-mono tracking-widest"
               }),
               authError && v.jsx("p", {
                 className: "text-xs text-red-600 font-medium text-center",
@@ -5018,7 +5018,7 @@ function PlezzyAdminPanel({ prods, setProds, onBackToStore, onSelectProduct, def
                         placeholder: "Search order ID, customer name, phone, city...",
                         value: orderSearch,
                         onChange: (e) => setOrderSearch(e.target.value),
-                        className: "w-full pl-9 pr-4 py-2 rounded-xl border border-[#dedad2] bg-[#faf9f7] text-xs text-[#1a1a1a] outline-none focus:border-[#5A0C1A]"
+                        className: "w-full pl-9 pr-4 py-2 rounded-xl border border-[#dedad2] bg-[#faf9f7] text-xs text-[#1a1a1a] outline-none focus:border-[#f82793]"
                       })
                     ]
                   })
@@ -5267,7 +5267,7 @@ function PlezzyAdminPanel({ prods, setProds, onBackToStore, onSelectProduct, def
                                         value: ord.status,
                                         disabled: isUpdating,
                                         onChange: (e) => handleUpdateOrderStatus(ord.id, e.target.value),
-                                        className: "px-2.5 py-1 rounded-xl border border-[#dedad2] bg-white text-xs font-bold text-[#1a1a1a] outline-none cursor-pointer focus:border-[#5A0C1A]",
+                                        className: "px-2.5 py-1 rounded-xl border border-[#dedad2] bg-white text-xs font-bold text-[#1a1a1a] outline-none cursor-pointer focus:border-[#f82793]",
                                         children: [
                                           v.jsx("option", { value: "processing", children: "⏳ Processing" }),
                                           v.jsx("option", { value: "packaging", children: "📦 Packaging Stealth Box" }),
@@ -7138,7 +7138,7 @@ const allCatalogProducts = [
     "shades": [
       {
         "name": "standard deck",
-        "color": "#E85A71",
+        "color": "#f82793",
         "desc": "52 curated cards",
         "badge": "core"
       }
@@ -7247,9 +7247,9 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
         className: "text-center pt-4 pb-6 sm:pb-8 max-w-2xl mx-auto space-y-3",
         children: [
           v.jsxs("div", {
-            className: "inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[10px] font-mono uppercase tracking-[0.22em] text-[#E8FB76]",
+            className: "inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[10px] font-mono uppercase tracking-[0.22em] text-[#f82793]",
             children: [
-              v.jsx("span", { className: "w-1.5 h-1.5 rounded-full bg-[#E8FB76] animate-pulse" }),
+              v.jsx("span", { className: "w-1.5 h-1.5 rounded-full bg-[#f82793] animate-pulse" }),
               "02 • ARCHITECTURAL INTIMACY • CATALOG 2026"
             ]
           }),
@@ -7280,7 +7280,7 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
               },
               className: "px-3.5 sm:px-4 py-1.5 rounded-full text-[10.5px] sm:text-[11px] font-medium uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer " +
                 (isActive 
-                  ? "bg-[#E85A71] text-white shadow-md shadow-[#E85A71]/35 scale-102 font-bold" 
+                  ? "bg-[#f82793] text-white shadow-md shadow-[#f82793]/35 scale-102 font-bold" 
                   : "bg-transparent text-white/70 hover:text-white hover:bg-white/[0.08]"),
               children: tab
             });
@@ -7298,7 +7298,7 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
             children: [
               v.jsx("button", {
                 onClick: onBackToHome,
-                className: "hover:text-[#E8FB76] transition-colors cursor-pointer",
+                className: "hover:text-[#f82793] transition-colors cursor-pointer",
                 children: "Home"
               }),
               v.jsx("span", { children: "/" }),
@@ -7341,7 +7341,7 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
 
           return v.jsxs("div", {
             key: p.id,
-            className: "group relative rounded-2xl bg-[#131118]/70 hover:bg-[#18161f]/95 backdrop-blur-md border border-white/[0.08] hover:border-[#E85A71]/50 p-2 sm:p-2.5 transition-all duration-400 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/70 flex flex-col justify-between cursor-pointer",
+            className: "group relative rounded-2xl bg-[#131118]/70 hover:bg-[#18161f]/95 backdrop-blur-md border border-white/[0.08] hover:border-[#f82793]/50 p-2 sm:p-2.5 transition-all duration-400 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/70 flex flex-col justify-between cursor-pointer",
             onClick: () => onSelectProduct(p),
             children: [
               // Top container: Image + Badges
@@ -7360,19 +7360,19 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
 
                       // Badge: e.g. 30% OFF (Refined yellow pill top-left)
                       (p.badgeType === "discount" || p.badge === "30% OFF" || p.badge === "SAVE 35%") && v.jsx("div", {
-                        className: "absolute top-2 left-2 bg-[#E8FB76] text-black font-extrabold text-[8.5px] uppercase tracking-wider px-2 py-0.5 rounded-full shadow-sm pointer-events-none",
+                        className: "absolute top-2 left-2 bg-[#f82793] text-white font-extrabold text-[8.5px] uppercase tracking-wider px-2 py-0.5 rounded-full shadow-sm pointer-events-none",
                         children: p.badge || "30% OFF"
                       }),
 
                       // Badge: e.g. NEW LAUNCH (Refined black/pink badge top-right)
                       (p.badgeType === "new" || p.badge === "NEW LAUNCH") && v.jsx("div", {
-                        className: "absolute top-2 right-2 bg-black/90 text-[#E85A71] border border-[#E85A71]/60 font-extrabold text-[7.5px] uppercase tracking-wider px-1.5 py-0.5 rounded shadow-sm rotate-[-2deg] pointer-events-none",
+                        className: "absolute top-2 right-2 bg-black/90 text-[#f82793] border border-[#f82793]/60 font-extrabold text-[7.5px] uppercase tracking-wider px-1.5 py-0.5 rounded shadow-sm rotate-[-2deg] pointer-events-none",
                         children: "NEW LAUNCH"
                       }),
 
                       // Badge: e.g. BEST SELLER or LIMITED EDITION
                       (p.badgeType === "bestseller" || p.badgeType === "limited" || p.badge === "BEST SELLER" || p.badge === "LIMITED EDITION") && v.jsx("div", {
-                        className: "absolute top-2 left-2 bg-[#E85A71] text-white font-extrabold text-[8px] uppercase tracking-wider px-2 py-0.5 rounded-full shadow-sm pointer-events-none",
+                        className: "absolute top-2 left-2 bg-[#f82793] text-white font-extrabold text-[8px] uppercase tracking-wider px-2 py-0.5 rounded-full shadow-sm pointer-events-none",
                         children: p.badge
                       }),
 
@@ -7390,7 +7390,7 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
                     children: [
                       // Product Title
                       v.jsx("h3", {
-                        className: "font-sans font-semibold text-xs sm:text-[13px] text-white group-hover:text-[#E85A71] transition-colors line-clamp-1 tracking-tight",
+                        className: "font-sans font-semibold text-xs sm:text-[13px] text-white group-hover:text-[#f82793] transition-colors line-clamp-1 tracking-tight",
                         children: p.name
                       }),
 
@@ -7402,7 +7402,7 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
 
                       // Star Rating (Delicate stars + reviews)
                       v.jsxs("div", {
-                        className: "flex items-center justify-center gap-1 text-[10px] font-sans font-medium text-[#E85A71] pt-0.5",
+                        className: "flex items-center justify-center gap-1 text-[10px] font-sans font-medium text-[#f82793] pt-0.5",
                         children: [
                           v.jsx("span", { className: "tracking-widest text-[9.5px]", children: "★★★★★" }),
                           v.jsxs("span", { className: "text-[9.5px] text-white/40 font-mono ml-0.5", children: [p.reviewsCount] })
@@ -7434,7 +7434,7 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
                 className: "w-full mt-2 py-2 sm:py-2.5 rounded-full text-[10px] sm:text-[10.5px] font-bold uppercase tracking-[0.12em] transition-all duration-200 shadow-sm hover:shadow-md active:scale-95 cursor-pointer flex items-center justify-center gap-1 " +
                   (isAdded 
                     ? "bg-emerald-600 text-white" 
-                    : "bg-[#E85A71] hover:bg-[#d43a59] text-white hover:scale-[1.02]"),
+                    : "bg-[#f82793] hover:bg-[#d41c7b] text-white hover:scale-[1.02]"),
                 children: isAdded ? "✓ ADDED" : "ADD TO CART"
               })
             ]
@@ -8328,7 +8328,7 @@ function _F(){
                       v.jsx("path",{d:"M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"})
                     ]
                   }),
-                  totCount > 0 && v.jsx("span",{style:{fontFamily:"Swiss, -apple-system, sans-serif",fontSize:"11px",fontWeight:900,color:"#ffffff"},children:totCount})
+                  totCount > 0 && v.jsx("span",{style:{fontFamily:"Swiss, -apple-system, sans-serif",fontSize:"10px",fontWeight:900,color:"#ffffff",backgroundColor:"#f82793",borderRadius:"9999px",padding:"1px 6px",marginLeft:"2px"},children:totCount})
                 ]
               })
             ]})
@@ -8381,7 +8381,7 @@ function _F(){
                   className: "flex items-center gap-2.5 sm:gap-3.5 cursor-pointer group",
                   children: [
                     v.jsx("div", {
-                      className: "w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-white/20 p-1 flex items-center justify-center bg-black/70 shadow-lg group-hover:border-[#E8FB76] transition-colors",
+                      className: "w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-white/20 p-1 flex items-center justify-center bg-black/70 shadow-lg group-hover:border-[#f82793] transition-colors",
                       children: v.jsx("img", {
                         src: "/assets/plezzy-brand-logo-transparent.png",
                         alt: "PLEZZY Crest",
@@ -8399,7 +8399,7 @@ function _F(){
                 v.jsxs("button", {
                   onClick: () => handleCloseNav(),
                   "aria-label": "Close Menu",
-                  className: "plezzy-menu-close-btn flex items-center gap-2 group p-2 text-white hover:text-[#E8FB76] transition-colors cursor-pointer",
+                  className: "plezzy-menu-close-btn flex items-center gap-2 group p-2 text-white hover:text-[#f82793] transition-colors cursor-pointer",
                   children: [
                     v.jsx("span", {
                       style: { fontFamily: "monospace", fontSize: "11px", fontWeight: "700", letterSpacing: "0.22em", textTransform: "uppercase" },
@@ -8540,10 +8540,10 @@ function _F(){
                       href: "https://www.instagram.com/plezzy",
                       target: "_blank",
                       rel: "noopener noreferrer",
-                      className: "hover:text-[#E8FB76] transition-colors flex items-center gap-1.5 font-bold text-white/70",
+                      className: "hover:text-[#f82793] transition-colors flex items-center gap-1.5 font-bold text-white/70",
                       children: [
                         v.jsx("span", { children: "Instagram" }),
-                        v.jsx("span", { style: { fontSize: "10px", color: "#E8FB76" }, children: "(@plezzy)" })
+                        v.jsx("span", { style: { fontSize: "10px", color:"#f82793" }, children: "(@plezzy)" })
                       ]
                     }),
                     v.jsx("button", {
@@ -8608,7 +8608,7 @@ function _F(){
                       handleBackToHome(e);
                     }
                   },
-                  className:"inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1a1a1a] hover:bg-[#b9745d] text-white text-xs font-extrabold uppercase tracking-wider transition-all hover:scale-105 active:scale-95 shadow-xs cursor-pointer",
+                  className:"inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1a1a1a] hover:bg-[#f82793] text-white text-xs font-extrabold uppercase tracking-wider transition-all hover:scale-105 active:scale-95 shadow-xs cursor-pointer",
                   style:{fontFamily:"Swiss, -apple-system, sans-serif"},
                   children:[
                     v.jsx("span",{className:"text-sm",children:"←"}),
@@ -8657,14 +8657,14 @@ function _F(){
                   v.jsx("div",{className:"absolute top-4 left-4 z-20",children:
                     v.jsx("span",{
                       className:"px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-[0.2em] shadow-xs backdrop-blur-md " + 
-                        (cur.badge==="limited edition" ? "bg-[#b9745d] text-white" : cur.badge==="award winner" ? "bg-[#4A0E17] text-white" : "bg-[#1a1a1a] text-white"),
+                        (cur.badge==="limited edition" ? "bg-[#f82793] text-white shadow-md shadow-[#f82793]/40" : cur.badge==="award winner" ? "bg-[#f82793] text-white shadow-md shadow-[#f82793]/40" : "bg-[#1a1a1a] text-white"),
                       children:cur.badge || "CORE ESSENTIAL"
                     })
                   }),
 
                   // Rating pill top-right
                   v.jsxs("div",{className:"absolute top-4 right-4 z-20 flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/80 backdrop-blur-md border border-[#dedad2] text-[11px] font-bold text-[#1a1a1a] shadow-2xs",children:[
-                    v.jsx("span",{className:"text-[#b9745d]",children:"★"}),
+                    v.jsx("span",{className:"text-[#f82793]",children:"★"}),
                     v.jsx("span",{children:(cur.rating || 4.9).toFixed(1)}),
                     v.jsx("span",{className:"text-[#8b8782] font-normal",children:"(" + (cur.reviewsCount || 840) + ")"})
                   ]}),
@@ -8707,7 +8707,7 @@ function _F(){
 
                 // Category & Badge line
                 v.jsxs("div",{className:"flex items-center justify-between",children:[
-                  v.jsx("span",{className:"text-[11px] font-extrabold uppercase tracking-[0.2em] text-[#b9745d]",children:cur.category}),
+                  v.jsx("span",{className:"text-[11px] font-extrabold uppercase tracking-[0.2em] text-[#f82793]",children:cur.category}),
                   v.jsx("span",{className:"text-[10px] font-bold uppercase tracking-wider text-[#22c55e] flex items-center gap-1",children:[
                     v.jsx("span",{className:"w-2 h-2 rounded-full bg-[#22c55e] animate-pulse"}),
                     "IN STOCK • READY TO SHIP"
@@ -8784,7 +8784,7 @@ function _F(){
                     onClick:()=>cur.availability!=="sold_out" && handleAdd(cur,selectedColor,1),
                     disabled:cur.availability==="sold_out",
                     className:"w-full py-4 px-8 rounded-full text-white font-extrabold text-xs sm:text-sm tracking-wider uppercase transition-all shadow-md flex items-center justify-center gap-2 " + 
-                      (cur.availability==="sold_out" ? "bg-[#dedad2] text-[#67645e] cursor-not-allowed" : "bg-[#1a1a1a] hover:bg-[#b9745d] cursor-pointer hover:shadow-lg active:scale-[0.99]"),
+                      (cur.availability==="sold_out" ? "bg-[#dedad2] text-[#67645e] cursor-not-allowed" : "bg-[#f82793] hover:bg-[#d41c7b] text-white shadow-lg shadow-[#f82793]/35 cursor-pointer hover:shadow-lg active:scale-[0.99]"),
                     style:{fontFamily:"Swiss, -apple-system, sans-serif"},
                     children:cur.availability==="sold_out" ? "SOLD OUT — NOTIFY ME" : (added ? "ADDED TO BAG ✓" : ("ADD TO BAG • " + (cur.priceUSD || ("$" + (cur.priceINR/100).toFixed(2)))))
                   }),
@@ -8808,7 +8808,7 @@ function _F(){
                   (cur.accordions || []).map((acc,idx)=>v.jsxs("div",{key:idx,className:"border-b border-[#dedad2] py-2.5 text-left",children:[
                     v.jsxs("button",{
                       onClick:()=>setOpenAccordion(openAccordion===idx?null:idx),
-                      className:"w-full flex items-center justify-between text-xs sm:text-sm font-bold text-[#1a1a1a] hover:text-[#b9745d] transition-colors py-1 cursor-pointer",
+                      className:"w-full flex items-center justify-between text-xs sm:text-sm font-bold text-[#1a1a1a] hover:text-[#f82793] transition-colors py-1 cursor-pointer",
                       style:{fontFamily:"Swiss, -apple-system, sans-serif"},
                       children:[
                         v.jsx("span",{children:acc.title}),
@@ -8987,7 +8987,7 @@ function _F(){
         v.jsx("div",{className:"max-w-7xl mx-auto px-4 sm:px-8 py-8 sm:py-12 border-t border-[#dedad2]/80",children:
           v.jsxs("div",{className:"space-y-6 text-center",children:[
             v.jsxs("div",{className:"space-y-1.5",children:[
-              v.jsx("span",{className:"text-[10px] font-extrabold uppercase tracking-[0.25em] text-[#b9745d]",children:"ENGINEERED FOR MODERN INTIMACY"}),
+              v.jsx("span",{className:"text-[10px] font-extrabold uppercase tracking-[0.25em] text-[#f82793]",children:"ENGINEERED FOR MODERN INTIMACY"}),
               v.jsx("h3",{className:"text-2xl sm:text-3xl font-extrabold lowercase text-[#1a1a1a]",style:{fontFamily:"'Rektorat Heavy', Swiss, sans-serif"},children:"thoughtful by design."})
             ]}),
             v.jsxs("div",{className:"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 text-left pt-3",children:[
@@ -9041,7 +9041,7 @@ function _F(){
               disabled:cur.availability==="sold_out",
               onClick:()=>cur.availability!=="sold_out" && handleAdd(cur,selectedColor,1),
               className:"px-6 py-2.5 rounded-full text-white font-extrabold text-xs uppercase tracking-wider shadow-md transition-all shrink-0 " + 
-                (cur.availability==="sold_out" ? "bg-[#dedad2] text-[#67645e] cursor-not-allowed" : "bg-[#1a1a1a] hover:bg-[#b9745d] cursor-pointer hover:shadow-lg active:scale-95"),
+                (cur.availability==="sold_out" ? "bg-[#dedad2] text-[#67645e] cursor-not-allowed" : "bg-[#f82793] hover:bg-[#d41c7b] text-white shadow-lg shadow-[#f82793]/35 cursor-pointer hover:shadow-lg active:scale-95"),
               style:{fontFamily:"Swiss, -apple-system, sans-serif"},
               children:cur.availability==="sold_out" ? "SOLD OUT" : (added ? "ADDED ✓" : ("ADD TO BAG • ₹" + (cur.priceINR ? cur.priceINR.toLocaleString('en-IN') : "2,999")))
             })
@@ -9144,8 +9144,8 @@ function _F(){
                         alignItems:"center",
                         justifyContent:"center",
                         padding:"12px 28px",
-                        backgroundColor:"#ffffff",
-                        color:"#000000",
+                        backgroundColor:"#f82793",
+                        color:"#ffffff",
                         fontFamily:"'Plus Jakarta Sans', -apple-system, sans-serif",
                         fontSize:"12.5px",
                         fontWeight:800,
@@ -9153,9 +9153,9 @@ function _F(){
                         borderRadius:"9999px",
                         border:"none",
                         cursor:"pointer",
-                        boxShadow:"0 6px 20px rgba(0,0,0,0.4)"
+                        boxShadow:"0 6px 24px rgba(248,39,147,0.45)"
                       },
-                      className:"hover:bg-neutral-200 hover:scale-105 active:scale-95 transition-all",
+                      className:"hover:bg-[#d41c7b] hover:scale-105 active:scale-95 transition-all",
                       children:"DISCOVER THE COLLECTION"
                     }),
 
@@ -9509,7 +9509,7 @@ function _F(){
                       // Subtitle / Collection Tag
                       v.jsx("div",{children:
                         v.jsx("span",{
-                          className:"inline-flex items-center px-2.5 py-0.5 rounded-full bg-black/60 text-[#E8FB76] border border-white/15 backdrop-blur-xs text-[10px] sm:text-[11px] font-extrabold uppercase tracking-[0.22em]",
+                          className:"inline-flex items-center px-2.5 py-0.5 rounded-full bg-black/60 text-[#f82793] border border-white/15 backdrop-blur-xs text-[10px] sm:text-[11px] font-extrabold uppercase tracking-[0.22em]",
                           children:"THE INDULGENT COLLECTION"
                         })
                       }),
@@ -9538,7 +9538,7 @@ function _F(){
                       v.jsx("div",{
                         className:"pt-3",
                         children: v.jsxs("span",{
-                          className:"text-xs sm:text-[13px] font-extrabold uppercase tracking-[0.18em] text-white inline-flex items-center gap-2 pb-1 border-b border-white/40 group-hover:border-[#E8FB76] group-hover:text-[#E8FB76] transition-all duration-300",
+                          className:"text-xs sm:text-[13px] font-extrabold uppercase tracking-[0.18em] text-white inline-flex items-center gap-2 pb-1 border-b border-white/40 group-hover:border-[#f82793] group-hover:text-[#f82793] transition-all duration-300",
                           style:{textShadow:"0 1px 8px rgba(0,0,0,0.8)"},
                           children:[
                             "SHOP LUXE",
@@ -9590,7 +9590,7 @@ function _F(){
                       // Subtitle / Collection Tag
                       v.jsx("div",{children:
                         v.jsx("span",{
-                          className:"inline-flex items-center px-2.5 py-0.5 rounded-full bg-black/60 text-[#E8FB76] border border-white/15 backdrop-blur-xs text-[10px] sm:text-[11px] font-extrabold uppercase tracking-[0.22em]",
+                          className:"inline-flex items-center px-2.5 py-0.5 rounded-full bg-black/60 text-[#f82793] border border-white/15 backdrop-blur-xs text-[10px] sm:text-[11px] font-extrabold uppercase tracking-[0.22em]",
                           children:"THE EVERYDAY COLLECTION"
                         })
                       }),
@@ -9619,7 +9619,7 @@ function _F(){
                       v.jsx("div",{
                         className:"pt-3",
                         children: v.jsxs("span",{
-                          className:"text-xs sm:text-[13px] font-extrabold uppercase tracking-[0.18em] text-white inline-flex items-center gap-2 pb-1 border-b border-white/40 group-hover:border-[#E8FB76] group-hover:text-[#E8FB76] transition-all duration-300",
+                          className:"text-xs sm:text-[13px] font-extrabold uppercase tracking-[0.18em] text-white inline-flex items-center gap-2 pb-1 border-b border-white/40 group-hover:border-[#f82793] group-hover:text-[#f82793] transition-all duration-300",
                           style:{textShadow:"0 1px 8px rgba(0,0,0,0.8)"},
                           children:[
                             "SHOP STANDARD",
@@ -9870,7 +9870,7 @@ function _F(){
               v.jsx("li",{children:v.jsx("a",{href:"https://instagram.com",target:"_blank",rel:"noopener noreferrer",className:"hover:text-[#1a1a1a] transition-colors",children:"instagram"})}),
               v.jsx("li",{children:v.jsx("a",{href:"https://tiktok.com",target:"_blank",rel:"noopener noreferrer",className:"hover:text-[#1a1a1a] transition-colors",children:"tiktok"})}),
               v.jsx("li",{children:v.jsx("a",{href:"https://youtube.com",target:"_blank",rel:"noopener noreferrer",className:"hover:text-[#1a1a1a] transition-colors",children:"youtube"})}),
-              v.jsx("li",{children:v.jsx("button",{onClick:navigateToAdmin,className:"hover:text-[#5A0C1A] text-[#5A0C1A] font-bold transition-colors cursor-pointer",children:"admin portal →"})})
+              v.jsx("li",{children:v.jsx("button",{onClick:navigateToAdmin,className:"hover:text-[#f82793] text-[#f82793] font-bold transition-colors cursor-pointer",children:"admin portal →"})})
             ]})
           ]}),
 
@@ -10319,7 +10319,7 @@ function wF() {
                 // Checkout Button
                 v.jsxs("button", {
                   onClick: handleCheckout,
-                  className: "w-full py-3.5 px-6 rounded-full bg-white text-black hover:bg-neutral-200 active:scale-98 transition-all font-extrabold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-2xl cursor-pointer",
+                  className: "w-full py-3.5 px-6 rounded-full bg-[#f82793] text-white hover:bg-[#d41c7b] shadow-xl shadow-[#f82793]/35 active:scale-98 transition-all font-extrabold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-2xl cursor-pointer",
                   children: [
                     "Proceed To Checkout",
                     v.jsx("span", { className: "font-bold font-mono", children: `• ${p(d)}` }),
@@ -10507,7 +10507,7 @@ function SF(){const n=document.createElement("canvas");n.style.position="fixed",
                       placeholder: "e.g. Aanya Sharma",
                       value: p.fullName,
                       onChange: (w) => x({ ...p, fullName: w.target.value }),
-                      className: "mt-1 w-full rounded-2xl border border-[#dddedc] dark:border-[#2d2c29] bg-white dark:bg-[#1f1e1c] px-4 py-2.5 text-xs text-[#1a1a1a] dark:text-white outline-none focus:border-[#5A0C1A]"
+                      className: "mt-1 w-full rounded-2xl border border-[#dddedc] dark:border-[#2d2c29] bg-white dark:bg-[#1f1e1c] px-4 py-2.5 text-xs text-[#1a1a1a] dark:text-white outline-none focus:border-[#f82793]"
                     })
                   ]
                 }),
@@ -10523,7 +10523,7 @@ function SF(){const n=document.createElement("canvas");n.style.position="fixed",
                       placeholder: "e.g. +91 98201 44521",
                       value: p.phone,
                       onChange: (w) => x({ ...p, phone: w.target.value }),
-                      className: "mt-1 w-full rounded-2xl border border-[#dddedc] dark:border-[#2d2c29] bg-white dark:bg-[#1f1e1c] px-4 py-2.5 text-xs text-[#1a1a1a] dark:text-white outline-none focus:border-[#5A0C1A]"
+                      className: "mt-1 w-full rounded-2xl border border-[#dddedc] dark:border-[#2d2c29] bg-white dark:bg-[#1f1e1c] px-4 py-2.5 text-xs text-[#1a1a1a] dark:text-white outline-none focus:border-[#f82793]"
                     })
                   ]
                 })
@@ -10542,7 +10542,7 @@ function SF(){const n=document.createElement("canvas");n.style.position="fixed",
                   placeholder: "e.g. your.email@example.com",
                   value: p.email,
                   onChange: (w) => x({ ...p, email: w.target.value }),
-                  className: "mt-1 w-full rounded-2xl border border-[#dddedc] dark:border-[#2d2c29] bg-white dark:bg-[#1f1e1c] px-4 py-2.5 text-xs text-[#1a1a1a] dark:text-white outline-none focus:border-[#5A0C1A]"
+                  className: "mt-1 w-full rounded-2xl border border-[#dddedc] dark:border-[#2d2c29] bg-white dark:bg-[#1f1e1c] px-4 py-2.5 text-xs text-[#1a1a1a] dark:text-white outline-none focus:border-[#f82793]"
                 })
               ]
             }),
@@ -10562,7 +10562,7 @@ function SF(){const n=document.createElement("canvas");n.style.position="fixed",
                       placeholder: "e.g. Flat 802, Horizon Greens, Linking Road",
                       value: p.address,
                       onChange: (w) => x({ ...p, address: w.target.value }),
-                      className: "mt-1 w-full rounded-2xl border border-[#dddedc] dark:border-[#2d2c29] bg-white dark:bg-[#1f1e1c] px-4 py-2.5 text-xs text-[#1a1a1a] dark:text-white outline-none focus:border-[#5A0C1A]"
+                      className: "mt-1 w-full rounded-2xl border border-[#dddedc] dark:border-[#2d2c29] bg-white dark:bg-[#1f1e1c] px-4 py-2.5 text-xs text-[#1a1a1a] dark:text-white outline-none focus:border-[#f82793]"
                     })
                   ]
                 }),
@@ -10577,7 +10577,7 @@ function SF(){const n=document.createElement("canvas");n.style.position="fixed",
                       placeholder: "e.g. Tower B, Near Starbucks",
                       value: p.apartment || "",
                       onChange: (w) => x({ ...p, apartment: w.target.value }),
-                      className: "mt-1 w-full rounded-2xl border border-[#dddedc] dark:border-[#2d2c29] bg-white dark:bg-[#1f1e1c] px-4 py-2.5 text-xs text-[#1a1a1a] dark:text-white outline-none focus:border-[#5A0C1A]"
+                      className: "mt-1 w-full rounded-2xl border border-[#dddedc] dark:border-[#2d2c29] bg-white dark:bg-[#1f1e1c] px-4 py-2.5 text-xs text-[#1a1a1a] dark:text-white outline-none focus:border-[#f82793]"
                     })
                   ]
                 })
@@ -10599,7 +10599,7 @@ function SF(){const n=document.createElement("canvas");n.style.position="fixed",
                       placeholder: "e.g. Mumbai",
                       value: p.city,
                       onChange: (w) => x({ ...p, city: w.target.value }),
-                      className: "mt-1 w-full rounded-2xl border border-[#dddedc] dark:border-[#2d2c29] bg-white dark:bg-[#1f1e1c] px-4 py-2.5 text-xs text-[#1a1a1a] dark:text-white outline-none focus:border-[#5A0C1A]"
+                      className: "mt-1 w-full rounded-2xl border border-[#dddedc] dark:border-[#2d2c29] bg-white dark:bg-[#1f1e1c] px-4 py-2.5 text-xs text-[#1a1a1a] dark:text-white outline-none focus:border-[#f82793]"
                     })
                   ]
                 }),
@@ -10615,7 +10615,7 @@ function SF(){const n=document.createElement("canvas");n.style.position="fixed",
                       placeholder: "e.g. Maharashtra",
                       value: p.state || "",
                       onChange: (w) => x({ ...p, state: w.target.value }),
-                      className: "mt-1 w-full rounded-2xl border border-[#dddedc] dark:border-[#2d2c29] bg-white dark:bg-[#1f1e1c] px-4 py-2.5 text-xs text-[#1a1a1a] dark:text-white outline-none focus:border-[#5A0C1A]"
+                      className: "mt-1 w-full rounded-2xl border border-[#dddedc] dark:border-[#2d2c29] bg-white dark:bg-[#1f1e1c] px-4 py-2.5 text-xs text-[#1a1a1a] dark:text-white outline-none focus:border-[#f82793]"
                     })
                   ]
                 }),
@@ -10631,7 +10631,7 @@ function SF(){const n=document.createElement("canvas");n.style.position="fixed",
                       placeholder: "e.g. 400050",
                       value: p.pincode,
                       onChange: (w) => x({ ...p, pincode: w.target.value }),
-                      className: "mt-1 w-full rounded-2xl border border-[#dddedc] dark:border-[#2d2c29] bg-white dark:bg-[#1f1e1c] px-4 py-2.5 text-xs text-[#1a1a1a] dark:text-white outline-none focus:border-[#5A0C1A]"
+                      className: "mt-1 w-full rounded-2xl border border-[#dddedc] dark:border-[#2d2c29] bg-white dark:bg-[#1f1e1c] px-4 py-2.5 text-xs text-[#1a1a1a] dark:text-white outline-none focus:border-[#f82793]"
                     })
                   ]
                 })
@@ -10649,7 +10649,7 @@ function SF(){const n=document.createElement("canvas");n.style.position="fixed",
                   placeholder: "e.g. Leave with security / do not ring bell / plain box only",
                   value: p.stealthInstructions,
                   onChange: (w) => x({ ...p, stealthInstructions: w.target.value }),
-                  className: "mt-1 w-full rounded-2xl border border-[#dddedc] dark:border-[#2d2c29] bg-white dark:bg-[#1f1e1c] px-4 py-2.5 text-xs text-[#1a1a1a] dark:text-white outline-none focus:border-[#5A0C1A]"
+                  className: "mt-1 w-full rounded-2xl border border-[#dddedc] dark:border-[#2d2c29] bg-white dark:bg-[#1f1e1c] px-4 py-2.5 text-xs text-[#1a1a1a] dark:text-white outline-none focus:border-[#f82793]"
                 })
               ]
             }),
@@ -10795,7 +10795,7 @@ function SF(){const n=document.createElement("canvas");n.style.position="fixed",
                       className: "flex justify-between text-base font-bold text-[#1a1a1a] dark:text-white pt-1",
                       children: [
                         v.jsx("span", { children: "total payable:" }),
-                        v.jsx("span", { className: "text-[#5A0C1A] dark:text-rose-400 font-mono", children: r(i) })
+                        v.jsx("span", { className: "text-[#f82793] font-mono", children: r(i) })
                       ]
                     })
                   ]
