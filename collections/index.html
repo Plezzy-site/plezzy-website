@@ -23,7 +23,7 @@
     <script>
       window.__PLEZZY_DEFAULT_VIEW__ = "collections";
     </script>
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261103_white_bg_add_to_cart_v16"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261103_pink_qty_pill_v17"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
@@ -2778,7 +2778,50 @@
         border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
       }
     
-    </style>
+    
+      /* Pink Quantity Selector Pill (- 1 +) matching user reference */
+      .plezzy-qty-pill {
+        background-color: #f82793 !important;
+        background: #f82793 !important;
+        color: #ffffff !important;
+        border-radius: 12px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        box-shadow: 0 4px 12px rgba(248, 39, 147, 0.35) !important;
+        transition: all 0.2s ease !important;
+      }
+      .plezzy-qty-pill button {
+        color: #ffffff !important;
+        border: none !important;
+        background: transparent !important;
+        min-height: 28px !important;
+        width: 28px !important;
+        height: 28px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        cursor: pointer !important;
+        line-height: 1 !important;
+        font-size: 17px !important;
+        font-weight: 900 !important;
+        border-radius: 8px !important;
+        transition: background-color 0.15s ease, transform 0.1s ease !important;
+      }
+      .plezzy-qty-pill button:hover {
+        background-color: rgba(0, 0, 0, 0.18) !important;
+      }
+      .plezzy-qty-pill button:active {
+        transform: scale(0.9) !important;
+      }
+      .plezzy-qty-pill span {
+        color: #ffffff !important;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+        font-weight: 900 !important;
+        font-size: 14px !important;
+        line-height: 1 !important;
+      }
+</style>
   </head>
   <body class="text-[#67645e] antialiased selection:bg-[#f82793] selection:text-white selection:text-white">
     <div id="plezzy-fixed-foil-bg"></div>
