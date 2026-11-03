@@ -10438,20 +10438,20 @@ function _F(){
           children:
             v.jsxs("div",{className:"relative z-10 space-y-4 max-w-4xl mx-auto",children:[
               v.jsx("p",{
-                className:"text-base sm:text-xl font-light tracking-tight text-white/90 pb-2",
+                className:"text-base sm:text-xl font-light tracking-tight text-[#6a5459] pb-2",
                 children:[
                   "Why so serious? Let's make flare-ups ",
-                  v.jsx("span",{className:"font-serif italic font-normal text-[#f82793]",children:"fun instead."})
+                  v.jsx("span",{className:"font-serif italic font-normal text-[#d66b7d]",children:"fun instead."})
                 ]
               }),
               v.jsx("h2",{
                 className:"giant-wordmark select-none",
-                style:{color:"#ffffff",textShadow:"0 4px 40px rgba(255,255,255,0.45), 0 0 80px rgba(255,255,255,0.25)"},
+                style:{color:"#d66b7d",textShadow:"0 4px 30px rgba(214, 107, 125, 0.32), 0 0 60px rgba(214, 107, 125, 0.18)"},
                 children:"plezzy"
               }),
               v.jsx("p",{
                 className:"text-sm sm:text-base md:text-lg uppercase tracking-[0.28em] font-mono font-bold",
-                style:{color:"#ffffff",textShadow:"0 2px 14px rgba(0,0,0,0.85), 0 0 20px rgba(255,255,255,0.4)"},
+                style:{color:"#b85d6e",textShadow:"0 1px 6px rgba(184, 93, 110, 0.15)"},
                 children:"everyday essentials, done well."
               })
             ]})
