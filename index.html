@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Italiana&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261103_clean_product_name_v14"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261103_cart_checkout_v15"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
@@ -1221,14 +1221,14 @@
         object-position: center !important;
       }
 
-      /* Giant Rhode Architectural Wordmark */
+      /* Giant Rhode Architectural Wordmark (Plezzy White) */
       .giant-wordmark {
         font-size: clamp(2.75rem, 13.5vw, 11.5rem) !important;
         line-height: 0.88 !important;
         font-weight: 800 !important;
         letter-spacing: -0.05em !important;
-        color: #f82793 !important;
-        text-shadow: 0 4px 35px rgba(248, 39, 147, 0.5), 0 0 70px rgba(248, 39, 147, 0.28) !important;
+        color: #ffffff !important;
+        text-shadow: 0 4px 40px rgba(255, 255, 255, 0.45), 0 0 80px rgba(255, 255, 255, 0.25) !important;
         text-transform: lowercase !important;
         display: block !important;
         width: 100% !important;
@@ -1236,8 +1236,8 @@
         transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
       }
       .giant-wordmark:hover {
-        color: #ff3da3 !important;
-        text-shadow: 0 6px 45px rgba(248, 39, 147, 0.75), 0 0 90px rgba(248, 39, 147, 0.45) !important;
+        color: #ffffff !important;
+        text-shadow: 0 6px 50px rgba(255, 255, 255, 0.7), 0 0 100px rgba(255, 255, 255, 0.4) !important;
         transform: scale(1.015);
       }
 
@@ -2055,6 +2055,43 @@
       }
 
       
+            /* ══════════════════════════════════════════════════════════════
+         PLEZZY CART PAGE LUXURY STYLING
+         ══════════════════════════════════════════════════════════════ */
+      .plezzy-cart-page {
+        position: relative;
+        z-index: 10;
+        max-width: 1240px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding-top: calc(88px + env(safe-area-inset-top, 0px)) !important;
+      }
+      @media (min-width: 640px) {
+        .plezzy-cart-page {
+          padding-top: calc(108px + env(safe-area-inset-top, 0px)) !important;
+        }
+      }
+      .plezzy-cart-item-card {
+        background: rgba(22, 20, 26, 0.75) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        border-radius: 18px !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+        transition: border-color 0.2s ease, transform 0.2s ease !important;
+      }
+      .plezzy-cart-item-card:hover {
+        border-color: rgba(248, 39, 147, 0.45) !important;
+      }
+      .plezzy-cart-summary-box {
+        background: rgba(18, 16, 22, 0.92) !important;
+        backdrop-filter: blur(28px) !important;
+        -webkit-backdrop-filter: blur(28px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.14) !important;
+        border-radius: 24px !important;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6) !important;
+      }
+
       /* ══════════════════════════════════════════════════════════════
          PLEZZY THE COLLECTIONS E-COMMERCE CATALOG STYLING (COMPACT 4-COL)
          ══════════════════════════════════════════════════════════════ */
