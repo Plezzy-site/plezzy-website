@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Italiana&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261102_clean_hero_v12"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261103_compact_grid_v13"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
@@ -2056,46 +2056,165 @@
 
       
       /* ══════════════════════════════════════════════════════════════
-         PLEZZY THE COLLECTIONS E-COMMERCE CATALOG STYLING
+         PLEZZY THE COLLECTIONS E-COMMERCE CATALOG STYLING (COMPACT 4-COL)
          ══════════════════════════════════════════════════════════════ */
       .plezzy-collections-page {
         position: relative;
         z-index: 10;
-        padding-top: calc(96px + env(safe-area-inset-top, 0px)) !important;
+        max-width: 1240px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding-top: calc(88px + env(safe-area-inset-top, 0px)) !important;
       }
       @media (min-width: 640px) {
         .plezzy-collections-page {
-          padding-top: calc(116px + env(safe-area-inset-top, 0px)) !important;
+          padding-top: calc(108px + env(safe-area-inset-top, 0px)) !important;
         }
       }
 
+      /* Compact 4-column grid (4 items per row matching reference) */
+      .plezzy-collections-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: 16px !important;
+        width: 100% !important;
+      }
+      @media (max-width: 1100px) {
+        .plezzy-collections-grid {
+          grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+          gap: 12px !important;
+        }
+      }
+      @media (max-width: 860px) {
+        .plezzy-collections-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+          gap: 12px !important;
+        }
+      }
+      @media (max-width: 600px) {
+        .plezzy-collections-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+          gap: 10px !important;
+        }
+      }
+
+      /* Compact White Product Card */
       .plezzy-collection-card {
-        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-                    border-color 0.25s ease,
-                    box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                    border-color 0.2s ease,
+                    box-shadow 0.25s ease !important;
         background: #ffffff !important;
         color: #111111 !important;
         border: 1px solid rgba(0, 0, 0, 0.08) !important;
-        box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.08) !important;
-        border-radius: 18px !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04) !important;
+        border-radius: 14px !important;
+        padding: 10px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        cursor: pointer !important;
+        overflow: hidden !important;
+        width: 100% !important;
+        max-width: 100% !important;
       }
 
       .plezzy-collection-card:hover {
-        transform: translateY(-5px) !important;
+        transform: translateY(-3px) !important;
         border-color: #f82793 !important;
-        box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.18), 0 0 20px rgba(248, 39, 147, 0.2) !important;
+        box-shadow: 0 10px 24px -4px rgba(0, 0, 0, 0.12), 0 0 16px rgba(248, 39, 147, 0.18) !important;
+      }
+
+      /* Controlled Image Frame (Stops cards from ballooning in height) */
+      .plezzy-collection-card .plezzy-card-img-wrap {
+        position: relative !important;
+        width: 100% !important;
+        height: 195px !important;
+        max-height: 195px !important;
+        background-color: #f8f8f8 !important;
+        border-radius: 10px !important;
+        overflow: hidden !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+      @media (max-width: 1100px) {
+        .plezzy-collection-card .plezzy-card-img-wrap {
+          height: 175px !important;
+          max-height: 175px !important;
+        }
+      }
+      @media (max-width: 600px) {
+        .plezzy-collection-card .plezzy-card-img-wrap {
+          height: 145px !important;
+          max-height: 145px !important;
+        }
+      }
+
+      .plezzy-collection-card .plezzy-card-img-wrap img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center center !important;
+        transition: transform 0.4s ease !important;
+      }
+      .plezzy-collection-card:hover .plezzy-card-img-wrap img {
+        transform: scale(1.04) !important;
       }
 
       .plezzy-collection-card h3 {
+        font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
         color: #111111 !important;
+        font-size: 13px !important;
+        font-weight: 700 !important;
+        line-height: 1.25 !important;
+        margin: 6px 0 2px 0 !important;
+      }
+      .plezzy-collection-card:hover h3 {
+        color: #f82793 !important;
       }
 
-      .plezzy-collection-card p {
-        color: #444444 !important;
+      .plezzy-collection-card p.plezzy-card-sub {
+        color: #555555 !important;
+        font-size: 10.5px !important;
+        line-height: 1.35 !important;
       }
 
-      .plezzy-collection-card img {
-        transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease !important;
+      .plezzy-collection-card .plezzy-card-rating {
+        font-size: 10px !important;
+        color: #f82793 !important;
+      }
+
+      .plezzy-collection-card .plezzy-card-price {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+        color: #f82793 !important;
+        font-weight: 800 !important;
+        font-size: 13px !important;
+      }
+      .plezzy-collection-card .plezzy-card-price .orig-price {
+        color: #888888 !important;
+        font-size: 10px !important;
+        text-decoration: line-through !important;
+        font-weight: 400 !important;
+      }
+
+      .plezzy-collection-card .plezzy-card-btn-cart {
+        background-color: #f82793 !important;
+        color: #ffffff !important;
+        font-family: 'Plus Jakarta Sans', sans-serif !important;
+        font-weight: 800 !important;
+        box-shadow: 0 2px 8px rgba(248, 39, 147, 0.3) !important;
+      }
+      .plezzy-collection-card .plezzy-card-btn-cart:hover {
+        background-color: #d41c7b !important;
+      }
+      .plezzy-collection-card .plezzy-card-btn-buy {
+        background-color: #ff2a8d !important;
+        color: #ffffff !important;
+        font-family: 'Plus Jakarta Sans', sans-serif !important;
+        font-weight: 800 !important;
+      }
+      .plezzy-collection-card .plezzy-card-btn-buy:hover {
+        background-color: #e0197d !important;
       }
 
       /* ══════════════════════════════════════════════════════════════
