@@ -7360,63 +7360,32 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
                 className: "w-full",
                 children: [
                   // 1. Compact Image with micro-badges
-                  v.jsxs("div", {
+                  // 1. Compact Image without badge overlays
+                  v.jsx("div", {
                     className: "plezzy-card-img-wrap",
-                    children: [
-                      v.jsx("img", {
-                        src: p.image,
-                        alt: p.name,
-                        loading: "lazy"
-                      }),
-
-                      // Badge: e.g. 30% OFF (Yellow pill top-left)
-                      (p.badgeType === "discount" || p.badge === "30% OFF" || p.badge === "SAVE 35%") && v.jsx("div", {
-                        className: "absolute top-2 left-2 bg-[#facc15] text-black font-extrabold text-[8px] uppercase tracking-wider px-2 py-0.5 rounded-full shadow-sm pointer-events-none z-10",
-                        children: p.badge || "30% OFF"
-                      }),
-
-                      // Badge: e.g. NEW LAUNCH (Refined black/pink badge top-right)
-                      (p.badgeType === "new" || p.badge === "NEW LAUNCH") && v.jsx("div", {
-                        className: "absolute top-2 right-2 bg-black text-[#f82793] border border-[#f82793]/60 font-extrabold text-[7.5px] uppercase tracking-wider px-1.5 py-0.5 rounded shadow-sm rotate-[-2deg] pointer-events-none z-10",
-                        children: "NEW LAUNCH"
-                      }),
-
-                      // Badge: e.g. BEST SELLER or LIMITED EDITION
-                      (p.badgeType === "bestseller" || p.badgeType === "limited" || p.badge === "BEST SELLER" || p.badge === "LIMITED EDITION") && v.jsx("div", {
-                        className: "absolute top-2 left-2 bg-[#f82793] text-white font-extrabold text-[8px] uppercase tracking-wider px-2 py-0.5 rounded-full shadow-sm pointer-events-none z-10",
-                        children: p.badge
-                      }),
-
-                      // Badge: ESSENTIAL
-                      p.badge === "ESSENTIAL" && v.jsx("div", {
-                        className: "absolute top-2 left-2 bg-neutral-900 text-white font-extrabold text-[8px] uppercase tracking-wider px-2 py-0.5 rounded-full shadow-sm pointer-events-none z-10",
-                        children: "ESSENTIAL"
-                      })
-                    ]
+                    children: v.jsx("img", {
+                      src: p.image,
+                      alt: p.name,
+                      loading: "lazy"
+                    })
                   }),
 
-                  // 2. Centered Black Typography Metadata
+                  // 2. Centered Black Typography Metadata (Enlarged Product Title & Removed Description)
                   v.jsxs("div", {
-                    className: "pt-2.5 pb-1 text-center space-y-1",
+                    className: "pt-2.5 pb-1 text-center space-y-1.5",
                     children: [
-                      // Product Title in solid Black
+                      // Product Title in solid Black (Enlarged)
                       v.jsx("h3", {
-                        className: "font-sans font-bold text-[13px] text-[#111111] group-hover:text-[#f82793] transition-colors line-clamp-1 tracking-tight",
+                        className: "font-sans font-extrabold text-[15px] sm:text-[16px] text-[#111111] group-hover:text-[#f82793] transition-colors line-clamp-1 tracking-tight leading-tight",
                         children: p.name
-                      }),
-
-                      // Subtitle in dark charcoal / black
-                      v.jsx("p", {
-                        className: "plezzy-card-sub text-[10px] sm:text-[10.5px] text-[#555555] line-clamp-2 leading-snug font-normal px-0.5 min-h-[26px]",
-                        children: p.subtitle
                       }),
 
                       // Star Rating (Pink Stars + review count)
                       v.jsxs("div", {
-                        className: "plezzy-card-rating flex items-center justify-center gap-1 text-[9.5px] font-sans font-medium text-[#f82793] pt-0.5",
+                        className: "plezzy-card-rating flex items-center justify-center gap-1 text-[10px] font-sans font-medium text-[#f82793] pt-0.5",
                         children: [
-                          v.jsx("span", { className: "tracking-widest text-[9.5px] text-[#f82793]", children: "★★★★★" }),
-                          v.jsxs("span", { className: "text-[9px] text-[#555555] font-sans ml-0.5", children: [p.reviewsCount || 18, " reviews"] })
+                          v.jsx("span", { className: "tracking-widest text-[10px] text-[#f82793]", children: "★★★★★" }),
+                          v.jsxs("span", { className: "text-[9.5px] text-[#555555] font-sans ml-0.5", children: [p.reviewsCount || 18, " reviews"] })
                         ]
                       }),
 
@@ -7425,7 +7394,7 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
                         className: "plezzy-card-price flex items-baseline justify-center gap-1.5 pt-0.5 font-mono",
                         children: [
                           v.jsxs("span", {
-                            className: "text-[13px] font-bold text-[#f82793]",
+                            className: "text-[13.5px] sm:text-[14px] font-extrabold text-[#f82793]",
                             children: ["Rs. ", (p.priceINR || 2499).toLocaleString("en-IN")]
                           }),
                           p.originalINR && v.jsxs("span", {

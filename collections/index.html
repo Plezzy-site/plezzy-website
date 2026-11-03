@@ -23,7 +23,7 @@
     <script>
       window.__PLEZZY_DEFAULT_VIEW__ = "collections";
     </script>
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261103_compact_grid_v13"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261103_clean_product_name_v14"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
@@ -2167,10 +2167,16 @@
       .plezzy-collection-card h3 {
         font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
         color: #111111 !important;
-        font-size: 13px !important;
-        font-weight: 700 !important;
+        font-size: 15.5px !important;
+        font-weight: 800 !important;
         line-height: 1.25 !important;
-        margin: 6px 0 2px 0 !important;
+        margin: 7px 0 3px 0 !important;
+        letter-spacing: -0.01em !important;
+      }
+      @media (max-width: 600px) {
+        .plezzy-collection-card h3 {
+          font-size: 14px !important;
+        }
       }
       .plezzy-collection-card:hover h3 {
         color: #f82793 !important;
