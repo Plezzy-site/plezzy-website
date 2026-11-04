@@ -8893,34 +8893,18 @@ function _F(){
               })
             }),
 
-            // Right Links: Globe + USD, SEARCH, SIGN IN, Modern Frosted Cart Capsule
-            v.jsxs("div",{className:"flex items-center gap-2 sm:gap-3 z-10 text-xs font-bold uppercase tracking-wider text-white",children:[
-              // Currency Indicator
-              v.jsxs("button",{
-                onClick:()=>{setCurrency(prev=>prev==="USD"?"INR":"USD")},
-                className:"hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.08] hover:bg-white/[0.16] border border-white/15 hover:border-white/30 text-white/90 hover:text-white transition-all text-xs font-bold cursor-pointer backdrop-blur-xs",
-                title:"Change Currency",
-                children:[
-                  v.jsxs("svg",{width:"13",height:"13",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",children:[
-                    v.jsx("circle",{cx:"12",cy:"12",r:"10"}),
-                    v.jsx("line",{x1:"2",y1:"12",x2:"22",y2:"12"}),
-                    v.jsx("path",{d:"M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"})
-                  ]}),
-                  "₹ INR"
-                ]
-              }),
-              // Search: Icon on mobile, text on desktop
-              v.jsxs("button",{
+            // Right Links: SEARCH, SIGN IN, Modern Frosted Cart Capsule (INR removed per user request)
+            v.jsxs("div",{className:"flex items-center gap-2 sm:gap-3.5 z-10 text-xs font-bold uppercase tracking-wider text-white",children:[
+              // Search: Enlarged icon button
+              v.jsx("button",{
+                id:"plezzy-header-search-btn",
                 onClick:()=>{s();setIsSearchOpen(!isSearchOpen)},
-                className:"flex items-center justify-center gap-1.5 p-2 sm:px-3 sm:py-1.5 rounded-full bg-white/[0.08] hover:bg-white/[0.16] border border-white/15 hover:border-white/30 text-white/90 hover:text-white transition-all focus:outline-none cursor-pointer backdrop-blur-xs",
+                className:"plezzy-header-search-btn flex items-center justify-center rounded-full transition-all focus:outline-none cursor-pointer",
                 "aria-label":"Search",
-                children:[
-                  v.jsxs("svg",{width:"15",height:"15",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2.2",strokeLinecap:"round",strokeLinejoin:"round",children:[
-                    v.jsx("circle",{cx:"11",cy:"11",r:"8"}),
-                    v.jsx("line",{x1:"21",y1:"21",x2:"16.65",y2:"16.65"})
-                  ]}),
-                  v.jsx("span",{className:"hidden sm:inline text-xs font-bold tracking-wider",children:"SEARCH"})
-                ]
+                children:v.jsxs("svg",{width:"22",height:"22",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2.2",strokeLinecap:"round",strokeLinejoin:"round",children:[
+                  v.jsx("circle",{cx:"11",cy:"11",r:"8"}),
+                  v.jsx("line",{x1:"21",y1:"21",x2:"16.65",y2:"16.65"})
+                ]})
               }),
               v.jsxs("button",{
                 onClick:()=>{s();a("auth")},
@@ -8933,16 +8917,16 @@ function _F(){
                   "SIGN IN"
                 ]
               }),
-              // Luxury Frosted Glass Cart Button with Shopping Cart Icon
+              // Luxury Frosted Glass Cart Button with Enlarged Shopping Cart Icon
               v.jsxs("button",{
                 id:"plezzy-header-cart-btn",
                 onClick:()=>{s();window.location.href = "/cart.html";},
-                className:"plezzy-header-cart-btn flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-full backdrop-blur-md transition-all duration-200 cursor-pointer shadow-sm hover:scale-105 active:scale-95 h-[36px]",
+                className:"plezzy-header-cart-btn flex items-center justify-center gap-1.5 rounded-full transition-all duration-200 cursor-pointer shadow-sm hover:scale-105 active:scale-95",
                 "aria-label":"Open cart",
                 children:[
                   v.jsxs("svg",{
-                    width:"16",
-                    height:"16",
+                    width:"22",
+                    height:"22",
                     viewBox:"0 0 24 24",
                     fill:"none",
                     stroke:"currentColor",
@@ -9789,20 +9773,19 @@ function _F(){
         // ══════════════════════════════════════════════════════════════
         v.jsx("div", {
           id: "plezzy-ticker-marquee-bar",
-          className: "w-full overflow-hidden border-y border-white/10 select-none py-3.5 relative z-10",
+          className: "w-full overflow-hidden border-y border-white/30 select-none py-3.5 relative z-10",
           style: {
-            background: "rgba(12, 10, 16, 0.72)",
-            backdropFilter: "blur(20px)",
-            WebkitBackdropFilter: "blur(20px)"
+            background: "linear-gradient(135deg, #eaebed 0%, #ffffff 32%, #cfd3d8 68%, #f4f5f7 100%)",
+            boxShadow: "0 4px 18px rgba(0, 0, 0, 0.22), inset 0 1px 2px rgba(255, 255, 255, 0.95)"
           },
           children: v.jsx("div", {
             className: "flex w-max items-center whitespace-nowrap",
             style: {
-              animation: "marquee 12s linear infinite"
+              animation: "marquee 11s linear infinite"
             },
             children: [0, 1, 2, 3].map((loopIdx) => v.jsxs("div", {
               key: loopIdx,
-              className: "flex items-center gap-8 sm:gap-14 px-4 shrink-0 font-mono font-bold text-[13px] sm:text-[15px] md:text-[16px] tracking-[0.16em] uppercase text-white/95",
+              className: "flex items-center gap-8 sm:gap-14 px-4 shrink-0 font-mono font-extrabold text-[14.5px] sm:text-[16.5px] md:text-[17.5px] tracking-[0.16em] uppercase text-[#f82793]",
               children: [
                 v.jsxs("div", {
                   className: "flex items-center gap-2.5",
@@ -9843,34 +9826,19 @@ function _F(){
           id: "plezzy-editorial-products-grid",
           className: "plezzy-editorial-grid-section select-none",
           children: [
-            // Editorial Header (Styled after reference "OUR COCKTAILS" / "OUR ESSENTIALS")
-            v.jsxs("div", {
+            // Editorial Header: "Must-Haves" (Subtitle removed per user request)
+            v.jsx("div", {
               className: "text-center mb-6 sm:mb-10",
-              children: [
-                v.jsx("div", {
-                  className: "plezzy-editorial-header",
-                  children: [
-                    v.jsx("h2", {
-                      className: "plezzy-editorial-title",
-                      style: { color: "#f82793", textShadow: "none" },
-                      children: "ESSENTIALS"
-                    })
-                  ]
-                }),
-                v.jsx("p", {
-                  style: {
-                    fontFamily: "'Plus Jakarta Sans', sans-serif",
-                    fontSize: "clamp(12px, 1.4vw, 14px)",
-                    color: "#67645e",
-                    opacity: 0.95,
-                    fontWeight: 600,
-                    letterSpacing: "0.04em",
-                    margin: "0 auto",
-                    maxWidth: "520px"
-                  },
-                  children: "Thoughtfully designed everyday essentials for modern intimacy."
-                })
-              ]
+              children: v.jsx("div", {
+                className: "plezzy-editorial-header",
+                children: [
+                  v.jsx("h2", {
+                    className: "plezzy-editorial-title",
+                    style: { color: "#f82793", textShadow: "none" },
+                    children: "Must-Haves"
+                  })
+                ]
+              })
             }),
 
             // Bento Grid Container
