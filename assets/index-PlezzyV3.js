@@ -9004,12 +9004,21 @@ function _F(){
               className: "plezzy-menu-header w-full max-w-screen-xl mx-auto px-5 sm:px-12 py-7 sm:py-9 min-h-[92px] sm:min-h-[110px] flex items-center justify-between border-b border-white/10",
               children: [
                 // Left: Brand Logo Wordmark (Pink - Larger)
-                v.jsx("div", {
-                  onClick: () => {
-                    handleCloseNav(() => {
+                v.jsx("a", {
+                  href: "/",
+                  onClick: (e) => {
+                    if (e) try { e.preventDefault(); } catch (err) {}
+                    try { s(); } catch (err) {}
+                    setIsMobileNavOpen(false);
+                    setIsNavClosing(false);
+                    if (window.location.pathname !== "/" && window.location.pathname !== "/index.html") {
+                      window.location.href = "/";
+                    } else if (window.location.hash || window.location.search) {
+                      window.location.href = "/";
+                    } else {
                       if (isPdp) handleBackToHome();
                       window.scrollTo({ top: 0, behavior: "smooth" });
-                    });
+                    }
                   },
                   className: "flex items-center cursor-pointer group",
                   children: v.jsx("span", {
@@ -9048,82 +9057,119 @@ function _F(){
                     num: "01",
                     label: "Home",
                     tag: "The Entry",
-                    action: () => {
-                      handleCloseNav(() => {
+                    href: "/",
+                    action: (e) => {
+                      if (e) try { e.preventDefault(); } catch (err) {}
+                      try { s(); } catch (err) {}
+                      setIsMobileNavOpen(false);
+                      setIsNavClosing(false);
+                      if (window.location.pathname !== "/" && window.location.pathname !== "/index.html") {
+                        window.location.href = "/";
+                      } else if (window.location.hash || window.location.search) {
+                        window.location.href = "/";
+                      } else {
                         if (isPdp) handleBackToHome();
                         window.scrollTo({ top: 0, behavior: "smooth" });
-                      });
+                      }
                     }
                   },
                   {
                     num: "02",
                     label: "The Collection",
                     tag: "Luxe & Standard Editions",
-                    action: () => {
-                      handleCloseNav(() => {
-                        window.location.href = "/collections.html";
-                      });
+                    href: "/collections.html",
+                    action: (e) => {
+                      if (e) try { e.preventDefault(); } catch (err) {}
+                      try { s(); } catch (err) {}
+                      setIsMobileNavOpen(false);
+                      setIsNavClosing(false);
+                      window.location.href = "/collections.html";
                     }
                   },
                   {
                     num: "03",
                     label: "Best Sellers",
                     tag: "Curated Essentials",
-                    action: () => {
-                      handleCloseNav(() => {
+                    href: "/#plezzy-editorial-products-grid",
+                    action: (e) => {
+                      if (e) try { e.preventDefault(); } catch (err) {}
+                      try { s(); } catch (err) {}
+                      setIsMobileNavOpen(false);
+                      setIsNavClosing(false);
+                      if (window.location.pathname !== "/" && window.location.pathname !== "/index.html") {
+                        window.location.href = "/#plezzy-editorial-products-grid";
+                      } else {
                         if (isPdp) handleBackToHome();
                         setTimeout(() => {
                           const el = document.getElementById("plezzy-editorial-products-grid");
                           if (el) el.scrollIntoView({ behavior: "smooth" });
                         }, 50);
-                      });
+                      }
                     }
                   },
                   {
                     num: "04",
                     label: "Sensory Ritual",
                     tag: "Wellness & Intimacy",
-                    action: () => {
-                      handleCloseNav(() => {
+                    href: "/#editorial-collection-split",
+                    action: (e) => {
+                      if (e) try { e.preventDefault(); } catch (err) {}
+                      try { s(); } catch (err) {}
+                      setIsMobileNavOpen(false);
+                      setIsNavClosing(false);
+                      if (window.location.pathname !== "/" && window.location.pathname !== "/index.html") {
+                        window.location.href = "/#editorial-collection-split";
+                      } else {
                         if (isPdp) handleBackToHome();
                         setTimeout(() => {
                           const el = document.getElementById("editorial-collection-split") || document.getElementById("campaign-video");
                           if (el) el.scrollIntoView({ behavior: "smooth" });
                         }, 50);
-                      });
+                      }
                     }
                   },
                   {
                     num: "05",
                     label: "Our Story",
                     tag: "Modern Intimacy",
-                    action: () => {
-                      handleCloseNav(() => {
+                    href: "/#campaign-video",
+                    action: (e) => {
+                      if (e) try { e.preventDefault(); } catch (err) {}
+                      try { s(); } catch (err) {}
+                      setIsMobileNavOpen(false);
+                      setIsNavClosing(false);
+                      if (window.location.pathname !== "/" && window.location.pathname !== "/index.html") {
+                        window.location.href = "/#campaign-video";
+                      } else {
                         if (isPdp) handleBackToHome();
                         setTimeout(() => {
                           const el = document.getElementById("campaign-video");
                           if (el) el.scrollIntoView({ behavior: "smooth" });
                         }, 50);
-                      });
+                      }
                     }
                   },
                   {
                     num: "06",
                     label: "My Account",
                     tag: "Orders & Profile",
-                    action: () => {
-                      handleCloseNav(() => {
-                        a("auth");
-                      });
+                    href: "#",
+                    action: (e) => {
+                      if (e) try { e.preventDefault(); } catch (err) {}
+                      try { s(); } catch (err) {}
+                      setIsMobileNavOpen(false);
+                      setIsNavClosing(false);
+                      a("auth");
                     }
                   }
                 ].map((item) =>
                   v.jsx("li", {
                     key: item.num,
                     className: "plezzy-menu-item w-full",
-                    children: v.jsxs("button", {
-                      onClick: item.action,
-                      className: "plezzy-menu-nav-link group w-full flex items-center justify-between",
+                    children: v.jsxs("a", {
+                      href: item.href || "#",
+                      onClick: (e) => item.action(e),
+                      className: "plezzy-menu-nav-link group w-full flex items-center justify-between cursor-pointer",
                       children: [
                         v.jsxs("div", {
                           className: "plezzy-menu-nav-left flex items-center gap-3.5 sm:gap-6 text-left",
@@ -9926,11 +9972,6 @@ function _F(){
                           v.jsx("h3", {
                             className: "plezzy-bento-product-name",
                             children: p.name
-                          }),
-
-                          v.jsx("p", {
-                            className: "plezzy-bento-product-desc",
-                            children: p.tagline || p.subtitle || p.role || "Elevated wellness crafted with hypoallergenic medical-grade silicone."
                           }),
 
                           v.jsxs("div", {
