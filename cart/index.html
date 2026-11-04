@@ -23,7 +23,7 @@
     <script>
       window.__PLEZZY_DEFAULT_VIEW__ = "cart";
     </script>
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261104_mobile_nav_search_v41"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261104_marquee_dolphin_v42"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
@@ -3531,7 +3531,7 @@
         padding: 14px 0 !important;
       }
       #plezzy-ticker-marquee-bar .whitespace-nowrap {
-        animation: marquee 12s linear infinite !important;
+        animation: marquee 8s linear infinite !important;
       }
       #plezzy-ticker-marquee-bar div {
         font-size: 14.5px !important;
@@ -3564,7 +3564,7 @@
           padding: 12px 0 !important;
         }
         #plezzy-ticker-marquee-bar .whitespace-nowrap {
-          animation: marquee 12s linear infinite !important;
+          animation: marquee 7s linear infinite !important;
         }
         #plezzy-ticker-marquee-bar div {
           font-size: 13.5px !important;
@@ -3640,7 +3640,7 @@
       }
 
       /* ══════════════════════════════════════════════════════════════
-         COD MOVING BAR: SILVER BACKGROUND & PINK ENLARGED TEXT
+         COD MOVING BAR: SILVER BACKGROUND & PINK ENLARGED TEXT & DOLPHIN
          ══════════════════════════════════════════════════════════════ */
       #plezzy-ticker-marquee-bar {
         background: linear-gradient(135deg, #eaebed 0%, #ffffff 32%, #cfd3d8 68%, #f4f5f7 100%) !important;
@@ -3651,7 +3651,7 @@
         padding: 15px 0 !important;
       }
       #plezzy-ticker-marquee-bar .whitespace-nowrap {
-        animation: marquee 14s linear infinite !important;
+        animation: marquee 8s linear infinite !important;
       }
       #plezzy-ticker-marquee-bar div,
       #plezzy-ticker-marquee-bar span {
@@ -3662,6 +3662,18 @@
       #plezzy-ticker-marquee-bar span {
         font-size: 16px !important;
         letter-spacing: 0.16em !important;
+      }
+
+      /* Leaping Pink Dolphin Separator in Marquee */
+      .plezzy-marquee-dolphin {
+        height: 22px !important;
+        width: auto !important;
+        display: inline-block !important;
+        vertical-align: middle !important;
+        object-fit: contain !important;
+        filter: drop-shadow(0 1px 2px rgba(248, 39, 147, 0.35)) !important;
+        user-select: none !important;
+        pointer-events: none !important;
       }
 
       @media (max-width: 768px) {
@@ -3700,9 +3712,15 @@
         #plezzy-ticker-marquee-bar {
           padding: 13px 0 !important;
         }
+        #plezzy-ticker-marquee-bar .whitespace-nowrap {
+          animation: marquee 7s linear infinite !important;
+        }
         #plezzy-ticker-marquee-bar div,
         #plezzy-ticker-marquee-bar span {
           font-size: 14.5px !important;
+        }
+        .plezzy-marquee-dolphin {
+          height: 19px !important;
         }
       }
 
@@ -3732,6 +3750,9 @@
         .plezzy-header-cart-btn svg {
           width: 18px !important;
           height: 18px !important;
+        }
+        .plezzy-marquee-dolphin {
+          height: 17px !important;
         }
       }
 

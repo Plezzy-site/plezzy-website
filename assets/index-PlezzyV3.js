@@ -9793,13 +9793,17 @@ function _F(){
           children: v.jsx("div", {
             className: "flex w-max items-center whitespace-nowrap",
             style: {
-              animation: "marquee 14s linear infinite"
+              animation: "marquee 8s linear infinite"
             },
             children: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((loopIdx) => v.jsxs("div", {
               key: loopIdx,
               className: "flex items-center gap-4 sm:gap-6 px-4 sm:px-6 shrink-0 font-mono font-extrabold text-[14.5px] sm:text-[16.5px] md:text-[17.5px] tracking-[0.16em] uppercase text-[#f82793]",
               children: [
-                v.jsx("span", { className: "text-[#f82793] text-base sm:text-lg font-black", children: "✦" }),
+                v.jsx("img", {
+                  src: "/assets/pink-dolphin.png",
+                  alt: "dolphin",
+                  className: "plezzy-marquee-dolphin h-5 sm:h-6 w-auto inline-block object-contain shrink-0 select-none pointer-events-none"
+                }),
                 v.jsx("span", { className: "font-black tracking-[0.16em]", children: "COD & Discreet Delivery" })
               ]
             }))
