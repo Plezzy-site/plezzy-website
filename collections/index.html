@@ -23,7 +23,7 @@
     <script>
       window.__PLEZZY_DEFAULT_VIEW__ = "collections";
     </script>
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261104_bento_separate_card_section_v39"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261104_bento_mobile_rect_btn_v40"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
@@ -3212,17 +3212,17 @@
           width: 100% !important;
           background-color: #0c0a0e !important;
           border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
-          padding: 8px 8px 10px 8px !important;
+          padding: 10px 10px 12px 10px !important;
           display: flex !important;
           flex-direction: column !important;
-          gap: 4px !important;
+          gap: 6px !important;
           box-sizing: border-box !important;
         }
         .plezzy-bento-product-tag {
           display: none !important;
         }
         .plezzy-bento-product-name {
-          font-size: clamp(12px, 3.4vw, 14.5px) !important;
+          font-size: clamp(12.5px, 3.5vw, 15px) !important;
           font-weight: 800 !important;
           line-height: 1.2 !important;
           margin: 0 !important;
@@ -3237,47 +3237,63 @@
         }
         .plezzy-bento-footer-row {
           display: flex !important;
-          align-items: center !important;
-          justify-content: space-between !important;
-          gap: 4px !important;
-          padding-top: 5px !important;
-          border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
-          margin-top: 2px !important;
+          flex-direction: column !important;
+          align-items: stretch !important;
+          gap: 8px !important;
+          border-top: none !important;
+          padding-top: 0 !important;
+          margin-top: 0 !important;
         }
         .plezzy-bento-pricing {
           display: flex !important;
           align-items: baseline !important;
-          gap: 3px !important;
-          white-space: nowrap !important;
+          gap: 6px !important;
+          width: 100% !important;
         }
         .plezzy-bento-price {
-          font-size: 11.5px !important;
+          font-size: 13px !important;
           font-weight: 800 !important;
           line-height: 1 !important;
+          color: #ffffff !important;
         }
         .plezzy-bento-compare {
-          font-size: 9px !important;
+          font-size: 10.5px !important;
           font-weight: 500 !important;
           color: rgba(255, 255, 255, 0.45) !important;
           text-decoration: line-through !important;
           line-height: 1 !important;
         }
         .plezzy-bento-add-btn {
-          height: 24px !important;
-          padding: 0 8px !important;
-          font-size: 8.5px !important;
-          letter-spacing: 0.04em !important;
+          width: 100% !important;
+          height: 34px !important;
+          min-height: 34px !important;
+          padding: 0 10px !important;
+          font-size: 10.5px !important;
+          letter-spacing: 0.06em !important;
           font-weight: 800 !important;
-          display: inline-flex !important;
+          display: flex !important;
           align-items: center !important;
           justify-content: center !important;
-          border-radius: 9999px !important;
+          border-radius: 8px !important; /* Slightly rounded rectangle */
           white-space: nowrap !important;
-          gap: 3px !important;
+          gap: 6px !important;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25) !important;
+          box-sizing: border-box !important;
         }
         .plezzy-bento-add-btn svg {
-          width: 9px !important;
-          height: 9px !important;
+          width: 12px !important;
+          height: 12px !important;
+        }
+        .plezzy-qty-pill {
+          width: 100% !important;
+          height: 34px !important;
+          min-height: 34px !important;
+          border-radius: 8px !important; /* Slightly rounded rectangle */
+          padding: 0 12px !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: space-between !important;
+          box-sizing: border-box !important;
         }
 
         /* 5. Divider CTA ("BROWSE ALL COLLECTIONS") */
@@ -3526,15 +3542,18 @@
           min-height: 44px !important;
         }
         .plezzy-bento-add-btn {
-          height: 28px !important;
+          width: 100% !important;
+          height: 34px !important;
+          min-height: 34px !important;
+          border-radius: 8px !important;
           padding: 0 10px !important;
-          font-size: 9px !important;
-          letter-spacing: 0.05em !important;
-          gap: 3px !important;
+          font-size: 10.5px !important;
+          letter-spacing: 0.06em !important;
+          gap: 6px !important;
         }
         .plezzy-bento-add-btn svg {
-          width: 10px !important;
-          height: 10px !important;
+          width: 12px !important;
+          height: 12px !important;
         }
         #plezzy-ticker-marquee-bar {
           padding: 12px 0 !important;
