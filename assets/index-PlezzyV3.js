@@ -4327,7 +4327,7 @@ function PlezzyAdminPanel({ prods, setProds, onBackToStore, onSelectProduct, def
   const saveCatalog = (updated) => {
     setProds(updated);
     try {
-      localStorage.setItem("plezzy_catalog", JSON.stringify(updated));
+      localStorage.setItem("plezzy_catalog_v31", JSON.stringify(updated));
       localStorage.setItem("plezzy_catalog_modified", "true");
     } catch(e) {}
   };
@@ -4453,7 +4453,7 @@ function PlezzyAdminPanel({ prods, setProds, onBackToStore, onSelectProduct, def
       : (savedProd.name ? savedProd.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') : ("plz-" + Date.now().toString().slice(-4)));
 
     const numPrice = Number(savedProd.priceINR) || 2499;
-    const defaultImg = savedProd.image || "/assets/products/pocket-pebble-main.jpg";
+    const defaultImg = savedProd.image || "/assets/products/pocket-pebble-main.jpg?v=20261104_bento_new_images_v31";
 
     const finalized = {
       ...savedProd,
@@ -6523,10 +6523,10 @@ const allCatalogProducts = [
     "priceUSD": "$30.00",
     "rating": 4.9,
     "reviewsCount": 348,
-    "image": "/assets/products/pocket-pebble-main.jpg",
+    "image": "/assets/products/pocket-pebble-main.jpg?v=20261104_bento_new_images_v31",
     "images": [
       {
-        "src": "/assets/products/pocket-pebble-main.jpg",
+        "src": "/assets/products/pocket-pebble-main.jpg?v=20261104_bento_new_images_v31",
         "label": "Studio Portrait with Hibiscus"
       },
       {
@@ -6598,10 +6598,10 @@ const allCatalogProducts = [
     "priceUSD": "$48.00",
     "rating": 5,
     "reviewsCount": 412,
-    "image": "/assets/products/astral-wave-wand-main.jpg",
+    "image": "/assets/products/astral-wave-wand-main.jpg?v=20261104_bento_new_images_v31",
     "images": [
       {
-        "src": "/assets/products/astral-wave-wand-main.jpg",
+        "src": "/assets/products/astral-wave-wand-main.jpg?v=20261104_bento_new_images_v31",
         "label": "Translucent Dual Silhouette"
       },
       {
@@ -6672,10 +6672,10 @@ const allCatalogProducts = [
     "priceUSD": "$16.00",
     "rating": 4.9,
     "reviewsCount": 520,
-    "image": "/assets/products/nectar-elixir-main.jpg",
+    "image": "/assets/products/nectar-elixir-main.jpg?v=20261104_bento_new_images_v31",
     "images": [
       {
-        "src": "/assets/products/nectar-elixir-main.jpg",
+        "src": "/assets/products/nectar-elixir-main.jpg?v=20261104_bento_new_images_v31",
         "label": "Canister with Dripping Viscous Drop"
       },
       {
@@ -6741,10 +6741,10 @@ const allCatalogProducts = [
     "priceUSD": "$42.00",
     "rating": 4.9,
     "reviewsCount": 289,
-    "image": "/assets/products/carmine-resonance-wand-main.jpg",
+    "image": "/assets/products/carmine-resonance-wand-main.jpg?v=20261104_bento_new_images_v31",
     "images": [
       {
-        "src": "/assets/products/carmine-resonance-wand-main.jpg",
+        "src": "/assets/products/carmine-resonance-wand-main.jpg?v=20261104_bento_new_images_v31",
         "label": "Sculptural Silhouette & Dripping Carmine Glaze"
       },
       {
@@ -7080,11 +7080,11 @@ const allCatalogProducts = [
         "label": "Luxury Gift Suite"
       },
       {
-        "src": "/assets/products/astral-wave-wand-main.jpg",
+        "src": "/assets/products/astral-wave-wand-main.jpg?v=20261104_bento_new_images_v31",
         "label": "Cloud Kiss"
       },
       {
-        "src": "/assets/products/carmine-resonance-wand-main.jpg",
+        "src": "/assets/products/carmine-resonance-wand-main.jpg?v=20261104_bento_new_images_v31",
         "label": "Rose Rush"
       }
     ],
@@ -8223,10 +8223,10 @@ function _F(){
     "priceUSD": "$30.00",
     "rating": 4.9,
     "reviewsCount": 348,
-    "image": "/assets/products/pocket-pebble-main.jpg",
+    "image": "/assets/products/pocket-pebble-main.jpg?v=20261104_bento_new_images_v31",
     "images": [
       {
-        "src": "/assets/products/pocket-pebble-main.jpg",
+        "src": "/assets/products/pocket-pebble-main.jpg?v=20261104_bento_new_images_v31",
         "label": "Studio Portrait with Hibiscus"
       },
       {
@@ -8289,10 +8289,10 @@ function _F(){
     "priceUSD": "$48.00",
     "rating": 5.0,
     "reviewsCount": 412,
-    "image": "/assets/products/astral-wave-wand-main.jpg",
+    "image": "/assets/products/astral-wave-wand-main.jpg?v=20261104_bento_new_images_v31",
     "images": [
       {
-        "src": "/assets/products/astral-wave-wand-main.jpg",
+        "src": "/assets/products/astral-wave-wand-main.jpg?v=20261104_bento_new_images_v31",
         "label": "Translucent Dual Silhouette"
       },
       {
@@ -8355,10 +8355,10 @@ function _F(){
     "priceUSD": "$16.00",
     "rating": 4.9,
     "reviewsCount": 520,
-    "image": "/assets/products/nectar-elixir-main.jpg",
+    "image": "/assets/products/nectar-elixir-main.jpg?v=20261104_bento_new_images_v31",
     "images": [
       {
-        "src": "/assets/products/nectar-elixir-main.jpg",
+        "src": "/assets/products/nectar-elixir-main.jpg?v=20261104_bento_new_images_v31",
         "label": "Canister with Dripping Viscous Drop"
       },
       {
@@ -8415,10 +8415,10 @@ function _F(){
     "priceUSD": "$42.00",
     "rating": 4.9,
     "reviewsCount": 289,
-    "image": "/assets/products/carmine-resonance-wand-main.jpg",
+    "image": "/assets/products/carmine-resonance-wand-main.jpg?v=20261104_bento_new_images_v31",
     "images": [
       {
-        "src": "/assets/products/carmine-resonance-wand-main.jpg",
+        "src": "/assets/products/carmine-resonance-wand-main.jpg?v=20261104_bento_new_images_v31",
         "label": "Sculptural Silhouette & Dripping Carmine Glaze"
       },
       {
@@ -8473,11 +8473,11 @@ function _F(){
     // Dynamic Catalog State (LocalStorage + Remote /assets/products.json)
   const getInitialCatalog = () => {
     try {
-      const saved = localStorage.getItem("plezzy_catalog");
+      const saved = localStorage.getItem("plezzy_catalog_v31");
       if (saved) {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0 && parsed.some(p => p.id && p.id.startsWith("plz-"))) return parsed;
-        else localStorage.removeItem("plezzy_catalog");
+        else localStorage.removeItem("plezzy_catalog_v31");
       }
     } catch(e) {}
     return defaultProds;
@@ -8491,7 +8491,7 @@ function _F(){
       .then(data => {
         if (data && data.success && Array.isArray(data.products) && data.products.length > 0) {
           setProds(data.products);
-          try { localStorage.setItem("plezzy_catalog", JSON.stringify(data.products)); } catch(e) {}
+          try { localStorage.setItem("plezzy_catalog_v31", JSON.stringify(data.products)); } catch(e) {}
         }
       })
       .catch(() => {
@@ -8500,7 +8500,7 @@ function _F(){
           .then(data => {
             if (Array.isArray(data) && data.length > 0) {
               setProds(data);
-              try { localStorage.setItem("plezzy_catalog", JSON.stringify(data)); } catch(e) {}
+              try { localStorage.setItem("plezzy_catalog_v31", JSON.stringify(data)); } catch(e) {}
             }
           })
           .catch(() => {});
@@ -8834,7 +8834,7 @@ function _F(){
 
   const filteredSearchProducts = searchQuery.trim() === "" ? prods : prods.filter(p=>p.name.toLowerCase().includes(searchQuery.toLowerCase())||p.subtitle.toLowerCase().includes(searchQuery.toLowerCase())||p.category.toLowerCase().includes(searchQuery.toLowerCase()));
 
-  return v.jsxs("div",{className:"plezzy-app-container w-full min-h-screen bg-transparent text-[#67645e] font-sans antialiased selection:bg-[#67645e] selection:text-white transition-colors duration-300 pb-28",style:{fontFamily:'"Helvetica Neue", Helvetica, Arial, sans-serif'},children:[
+  return v.jsxs("div",{className:"plezzy-app-container w-full min-h-screen bg-white text-[#67645e] font-sans antialiased selection:bg-[#67645e] selection:text-white transition-colors duration-300 pb-28",style:{fontFamily:'"Helvetica Neue", Helvetica, Arial, sans-serif',backgroundColor:"#ffffff"},children:[
 
     // 1. COMBINED FIXED HEADER (Glass Translucent Style)
     !isAdminView && v.jsxs("header",{
@@ -9850,7 +9850,7 @@ function _F(){
               children: (() => {
                 const baseProds = prods.slice(0, 4);
                 return baseProds.map((p, idx) => {
-                  const mainImg = (p.images && p.images[0]?.src) || p.image || "/assets/products/pocket-pebble-main.jpg";
+                  const mainImg = (p.images && p.images[0]?.src) || p.image || "/assets/products/pocket-pebble-main.jpg?v=20261104_bento_new_images_v31";
                   const comparePrices = [3499, 4999, 1899, 4299];
                   const compPrice = comparePrices[idx % comparePrices.length];
                   const priceStr = "Rs. " + (p.priceINR || 2499).toLocaleString("en-IN");

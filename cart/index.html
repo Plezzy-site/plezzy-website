@@ -23,7 +23,7 @@
     <script>
       window.__PLEZZY_DEFAULT_VIEW__ = "cart";
     </script>
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261104_cart_pink_button_v31"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261104_grid_images_white_bg_v32"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
@@ -660,7 +660,7 @@
           overflow: hidden !important;
         }
         #plezzy-hero-video-banner {
-          content: url('/assets/plezzy-hero-banner-tall.jpg?v=20261104_cart_pink_button_v31') !important;
+          content: url('/assets/plezzy-hero-banner-tall.jpg?v=20261104_grid_images_white_bg_v32') !important;
           position: absolute !important;
           inset: 0 !important;
           width: 100% !important;
@@ -1341,17 +1341,18 @@
       }
       #the-collection-section,
       #suede-pouch-campaign,
-      #campaign-statement {
-        background-color: transparent !important;
-        background: transparent !important;
-      }
+      #campaign-statement,
+      #plezzy-editorial-products-grid,
+      .plezzy-editorial-grid-section,
+      .plezzy-bento-grid,
       #root,
       .plezzy-app-container {
         position: relative;
         z-index: 1;
         isolation: isolate;
-        background: transparent !important;
-        background-color: transparent !important;
+        background-color: #ffffff !important;
+        background: #ffffff !important;
+        background-image: none !important;
       }
       /* Glass translucent style header bar across all views */
       header,
@@ -2982,6 +2983,11 @@
          ════════════════════════════════════════════════════════════ */
       @media (max-width: 768px) {
         /* Global Mobile Foundation & Touch Optimizations */
+        html, body, #root, .plezzy-app-container, #plezzy-editorial-products-grid, .plezzy-editorial-grid-section, .plezzy-bento-grid {
+          background-color: #ffffff !important;
+          background: #ffffff !important;
+          background-image: none !important;
+        }
         html, body {
           overflow-x: hidden !important;
           width: 100% !important;
@@ -3071,7 +3077,7 @@
           overflow: hidden !important;
         }
         #plezzy-hero-video-banner {
-          content: url('/assets/plezzy-hero-banner-tall.jpg?v=20261104_cart_pink_button_v31') !important;
+          content: url('/assets/plezzy-hero-banner-tall.jpg?v=20261104_grid_images_white_bg_v32') !important;
           position: absolute !important;
           inset: 0 !important;
           width: 100% !important;

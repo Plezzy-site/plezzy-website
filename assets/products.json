@@ -12,10 +12,10 @@
     "priceUSD": "$30.00",
     "rating": 4.9,
     "reviewsCount": 348,
-    "image": "/assets/products/pocket-pebble-main.jpg",
+    "image": "/assets/products/pocket-pebble-main.jpg?v=20261104_bento_new_images_v31",
     "images": [
       {
-        "src": "/assets/products/pocket-pebble-main.jpg",
+        "src": "/assets/products/pocket-pebble-main.jpg?v=20261104_bento_new_images_v31",
         "label": "Studio Portrait with Hibiscus"
       },
       {
@@ -87,10 +87,10 @@
     "priceUSD": "$48.00",
     "rating": 5,
     "reviewsCount": 412,
-    "image": "/assets/products/astral-wave-wand-main.jpg",
+    "image": "/assets/products/astral-wave-wand-main.jpg?v=20261104_bento_new_images_v31",
     "images": [
       {
-        "src": "/assets/products/astral-wave-wand-main.jpg",
+        "src": "/assets/products/astral-wave-wand-main.jpg?v=20261104_bento_new_images_v31",
         "label": "Translucent Dual Silhouette"
       },
       {
@@ -161,10 +161,10 @@
     "priceUSD": "$16.00",
     "rating": 4.9,
     "reviewsCount": 520,
-    "image": "/assets/products/nectar-elixir-main.jpg",
+    "image": "/assets/products/nectar-elixir-main.jpg?v=20261104_bento_new_images_v31",
     "images": [
       {
-        "src": "/assets/products/nectar-elixir-main.jpg",
+        "src": "/assets/products/nectar-elixir-main.jpg?v=20261104_bento_new_images_v31",
         "label": "Canister with Dripping Viscous Drop"
       },
       {
@@ -185,7 +185,7 @@
       }
     ],
     "desc1": "Banana Espresso is a water-soluble, clean botanical formulation that provides an effortless, frictionless glide with skin-soothing hydration. Packaged in a contemporary airtight pump dispenser featuring signature graphic artwork.",
-    "desc2": "Formulated to match the body's natural chemistry with a balanced pH of 3.9–4.2. Safe with natural rubber latex and all silicone wellness objects.",
+    "desc2": "Formulated to match the body's natural chemistry with a balanced pH of 3.9\u20134.2. Safe with natural rubber latex and all silicone wellness objects.",
     "accordions": [
       {
         "title": "Benefits & Sensory Ritual",
@@ -193,7 +193,7 @@
       },
       {
         "title": "Application & Care",
-        "content": "Dispense 2–3 pumps into palms and warm gently before applying. Compatible with all silicone devices, condoms, and natural touch rituals."
+        "content": "Dispense 2\u20133 pumps into palms and warm gently before applying. Compatible with all silicone devices, condoms, and natural touch rituals."
       },
       {
         "title": "Materials & Ingredients",
@@ -230,10 +230,10 @@
     "priceUSD": "$42.00",
     "rating": 4.9,
     "reviewsCount": 289,
-    "image": "/assets/products/carmine-resonance-wand-main.jpg",
+    "image": "/assets/products/carmine-resonance-wand-main.jpg?v=20261104_bento_new_images_v31",
     "images": [
       {
-        "src": "/assets/products/carmine-resonance-wand-main.jpg",
+        "src": "/assets/products/carmine-resonance-wand-main.jpg?v=20261104_bento_new_images_v31",
         "label": "Sculptural Silhouette & Dripping Carmine Glaze"
       },
       {
