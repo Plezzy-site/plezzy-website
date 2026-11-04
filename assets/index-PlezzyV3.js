@@ -7299,7 +7299,7 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
   };
 
   return v.jsxs("div", {
-    className: "plezzy-collections-page w-full min-h-screen text-[#111111] pt-28 sm:pt-36 pb-24 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto select-none",
+    className: "plezzy-collections-page w-full min-h-screen text-white pt-28 sm:pt-36 pb-24 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto select-none",
     children: [
       // ── EDITORIAL HEADER SECTION (CLASSY LUXURY INTRO) ───────────────────
       v.jsxs("div", {
@@ -7313,12 +7313,12 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
             ]
           }),
           v.jsx("h1", {
-            className: "text-3xl sm:text-4xl md:text-5xl font-light tracking-[-0.02em] text-[#111111] uppercase",
+            className: "text-3xl sm:text-4xl md:text-5xl font-light tracking-[-0.02em] text-white uppercase",
             style: { fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif" },
             children: "The Collection"
           }),
           v.jsx("p", {
-            className: "text-[#555555] text-xs sm:text-[13px] font-light leading-relaxed max-w-lg mx-auto",
+            className: "text-neutral-400 text-xs sm:text-[13px] font-light leading-relaxed max-w-lg mx-auto",
             children: "Tactile sensory stones, dual-resonance wand sculptures, and botanical hydration formulations. Engineered with body-safe liquid silicone for quiet everyday pleasure."
           })
         ]
@@ -7353,7 +7353,7 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
 
       // ── SUBTLE BREADCRUMB & SORT TOOLBAR ──────────────────────────────────
       v.jsxs("div", {
-        className: "flex items-center justify-between gap-3 text-xs font-mono text-[#666666] tracking-wider mb-5 sm:mb-6 px-1 border-b border-black/[0.08] pb-3",
+        className: "flex items-center justify-between gap-3 text-xs font-mono text-neutral-400 tracking-wider mb-5 sm:mb-6 px-1 border-b border-white/10 pb-3",
         children: [
           // Breadcrumbs
           v.jsxs("div", {
@@ -7383,7 +7383,7 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
                   try { s(); } catch (err) {}
                   setSortBy(e.target.value);
                 },
-                className: "bg-white border border-black/15 rounded-lg px-2 py-1 text-[10.5px] font-mono text-[#222222] outline-none cursor-pointer hover:border-black/30 transition-colors",
+                className: "bg-[#0c0a0e] border border-white/20 rounded-lg px-2 py-1 text-[10.5px] font-mono text-white outline-none cursor-pointer hover:border-white/40 transition-colors",
                 children: [
                   v.jsx("option", { value: "featured", className: "bg-white text-[#111111]", children: "Featured" }),
                   v.jsx("option", { value: "price-low", className: "bg-white text-[#111111]", children: "Price: Low to High" }),
@@ -7396,64 +7396,61 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
         ]
       }),
 
-      // ── COMPACT 4-COLUMN PRODUCT CARDS GRID (MATCHING REFERENCE SIZE) ───────────
+      // ── PLEZZY BENTO-STYLE PRODUCT GRID (MATCHING HOMEPAGE REFERENCE) ───────────
       v.jsx("div", {
         className: "plezzy-collections-grid",
-        children: displayedProducts.map((p) => {
+        children: displayedProducts.map((p, idx) => {
+          const mainImg = (p.images && p.images[0]?.src) || p.image || "/assets/products/pocket-pebble-main.jpg?v=20261104_bento_new_images_v31";
           const cartItem = (cart || []).find(it => it.id === p.id || it.productId === p.id || it.slug === p.slug || it.slug === p.id);
           const qtyInCart = cartItem ? (cartItem.quantity || 1) : 0;
+          const priceStr = "Rs. " + (p.priceINR || p.price || 2499).toLocaleString("en-IN");
+          const originalPrice = p.originalINR || Math.round((p.priceINR || p.price || 2499) / 0.7);
+          const compStr = "Rs. " + originalPrice.toLocaleString("en-IN");
+          const revCount = p.reviewsCount || [348, 412, 520, 289, 318, 465, 198, 380, 290, 410][idx % 10];
+          const badgeText = p.badge || "30% OFF";
 
           return v.jsxs("div", {
             key: p.id,
-            className: "plezzy-collection-card group",
-            onClick: () => onSelectProduct(p),
+            onClick: () => {
+              try { s(); } catch (e) {}
+              onSelectProduct(p);
+            },
+            className: "plezzy-bento-card group",
+            role: "button",
+            tabIndex: 0,
+            onKeyDown: (e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                onSelectProduct(p);
+              }
+            },
             children: [
-              // Top container: Image + Badges
+              // 1. Upper Image Section (Unobstructed photo with top badges)
               v.jsxs("div", {
-                className: "w-full",
+                className: "plezzy-bento-image-wrap",
                 children: [
-                  // 1. Compact Image with micro-badges
-                  // 1. Compact Image without badge overlays
-                  v.jsx("div", {
-                    className: "plezzy-card-img-wrap",
-                    children: v.jsx("img", {
-                      src: p.image,
-                      alt: p.name,
-                      loading: "lazy"
-                    })
+                  v.jsx("img", {
+                    src: mainImg,
+                    alt: p.name,
+                    loading: "lazy",
+                    className: "plezzy-bento-bg-img"
                   }),
 
-                  // 2. Centered Black Typography Metadata (Enlarged Product Title & Removed Description)
+                  // Top Row: Badges & Ratings (Overlaid only at top)
                   v.jsxs("div", {
-                    className: "pt-2.5 pb-1 text-center space-y-1.5",
+                    className: "plezzy-bento-top-bar",
                     children: [
-                      // Product Title in solid Black (Enlarged)
-                      v.jsx("h3", {
-                        className: "font-sans font-extrabold text-[15px] sm:text-[16px] text-[#111111] group-hover:text-[#f82793] transition-colors line-clamp-1 tracking-tight leading-tight",
-                        children: p.name
+                      v.jsx("span", {
+                        className: "plezzy-bento-badge",
+                        children: badgeText
                       }),
 
-                      // Star Rating (Pink Stars + review count)
                       v.jsxs("div", {
-                        className: "plezzy-card-rating flex items-center justify-center gap-1 text-[10px] font-sans font-medium text-[#f82793] pt-0.5",
+                        className: "plezzy-bento-rating",
                         children: [
-                          v.jsx("span", { className: "tracking-widest text-[10px] text-[#f82793]", children: "★★★★★" }),
-                          v.jsxs("span", { className: "text-[9.5px] text-[#555555] font-sans ml-0.5", children: [p.reviewsCount || 18, " reviews"] })
-                        ]
-                      }),
-
-                      // Price Row
-                      v.jsxs("div", {
-                        className: "plezzy-card-price flex items-baseline justify-center gap-1.5 pt-0.5 font-mono",
-                        children: [
-                          v.jsxs("span", {
-                            className: "text-[13.5px] sm:text-[14px] font-extrabold text-[#f82793]",
-                            children: ["Rs. ", (p.priceINR || 2499).toLocaleString("en-IN")]
-                          }),
-                          p.originalINR && v.jsxs("span", {
-                            className: "orig-price text-[10px] text-[#888888] line-through",
-                            children: ["Rs. ", p.originalINR.toLocaleString("en-IN")]
-                          })
+                          v.jsx("span", { style: { color: "#f82793", fontSize: "12px" }, children: "★" }),
+                          v.jsx("span", { children: (p.rating || 4.9).toFixed(1) }),
+                          v.jsxs("span", { style: { opacity: 0.75, fontSize: "10px" }, children: ["(", revCount, ")"] })
                         ]
                       })
                     ]
@@ -7461,76 +7458,111 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
                 ]
               }),
 
-              // 3. Pink Action Buttons: - [qty] + Quantity Pill & BUY NOW
+              // 2. Small Separate Section Below the Image (No overlay on the image!)
               v.jsxs("div", {
-                className: "w-full mt-2 space-y-1.5",
+                className: "plezzy-bento-bottom-panel",
                 children: [
-                  qtyInCart > 0 ? (
-                    // Pink Quantity Pill: [ -  qty  + ] matching user reference
-                    v.jsxs("div", {
-                      onClick: (e) => e.stopPropagation(),
-                      className: "plezzy-qty-pill w-full h-[34px] sm:h-[36px] rounded-xl bg-[#f82793] text-white flex items-center justify-between px-2.5 sm:px-3 select-none shadow-md shadow-[#f82793]/35 transition-all",
-                      children: [
-                        v.jsx("button", {
-                          type: "button",
-                          onClick: (e) => {
-                            e.stopPropagation();
-                            try { s(); } catch (err) {}
-                            if (qtyInCart > 1) {
-                              updateQuantity(cartItem.cartItemId || cartItem.id, qtyInCart - 1);
-                            } else {
-                              removeFromCart(cartItem.cartItemId || cartItem.id);
-                            }
-                          },
-                          className: "w-8 h-8 flex items-center justify-center rounded-lg hover:bg-black/20 active:scale-90 text-white font-extrabold text-lg cursor-pointer transition-transform leading-none",
-                          "aria-label": "Decrease quantity",
-                          children: "−"
-                        }),
-                        v.jsx("span", {
-                          className: "font-mono font-black text-sm text-white tracking-wider px-2",
-                          children: qtyInCart
-                        }),
-                        v.jsx("button", {
-                          type: "button",
-                          onClick: (e) => {
-                            e.stopPropagation();
-                            try { s(); } catch (err) {}
-                            updateQuantity(cartItem.cartItemId || cartItem.id, qtyInCart + 1);
-                          },
-                          className: "w-8 h-8 flex items-center justify-center rounded-lg hover:bg-black/20 active:scale-90 text-white font-extrabold text-lg cursor-pointer transition-transform leading-none",
-                          "aria-label": "Increase quantity",
-                          children: "+"
-                        })
-                      ]
-                    })
-                  ) : (
-                    // Initial ADD TO CART Button
-                    v.jsx("button", {
-                      type: "button",
-                      onClick: (e) => {
-                        e.stopPropagation();
-                        try { s(); } catch (err) {}
-                        const shade = (p.shades && p.shades[0]?.name) || "default";
-                        addToCart({
-                          id: p.id,
-                          slug: p.slug || p.id,
-                          name: p.name,
-                          price: p.priceINR || 2499,
-                          priceINR: p.priceINR || 2499,
-                          priceUSD: "$30.00",
-                          image: p.image,
-                          colorways: p.shades || []
-                        }, shade, 1);
-                      },
-                      className: "plezzy-card-btn-cart w-full h-[34px] sm:h-[36px] rounded-xl text-[10.5px] font-bold uppercase tracking-wider transition-all duration-200 active:scale-95 cursor-pointer flex items-center justify-center gap-1 bg-[#f82793] hover:bg-[#d41c7b] text-white shadow-md shadow-[#f82793]/30",
-                      children: "ADD TO CART"
-                    })
-                  ),
-                  v.jsx("button", {
-                    type: "button",
-                    onClick: (e) => handleBuyNow(p, e),
-                    className: "plezzy-card-btn-buy w-full h-[30px] sm:h-[32px] rounded-xl text-[9.5px] font-bold uppercase tracking-wider transition-all duration-200 active:scale-95 cursor-pointer flex items-center justify-center gap-1",
-                    children: "BUY NOW"
+                  v.jsx("h3", {
+                    className: "plezzy-bento-product-name",
+                    children: p.name
+                  }),
+
+                  v.jsxs("div", {
+                    className: "plezzy-bento-footer-row",
+                    children: [
+                      v.jsxs("div", {
+                        className: "plezzy-bento-pricing",
+                        children: [
+                          v.jsx("span", {
+                            className: "plezzy-bento-price",
+                            children: priceStr
+                          }),
+                          v.jsx("span", {
+                            className: "plezzy-bento-compare",
+                            children: compStr
+                          })
+                        ]
+                      }),
+
+                      (() => {
+                        return qtyInCart > 0 ? (
+                          v.jsxs("div", {
+                            onClick: (e) => e.stopPropagation(),
+                            className: "plezzy-qty-pill rounded-full bg-[#f82793] text-white flex items-center justify-between px-3 py-1.5 gap-2.5 shadow-md shadow-[#f82793]/40 select-none",
+                            children: [
+                              v.jsx("button", {
+                                type: "button",
+                                onClick: (e) => {
+                                  e.stopPropagation();
+                                  try { s(); } catch (err) {}
+                                  if (qtyInCart > 1) {
+                                    updateQuantity(cartItem.cartItemId || cartItem.id, qtyInCart - 1);
+                                  } else {
+                                    removeFromCart(cartItem.cartItemId || cartItem.id);
+                                  }
+                                },
+                                className: "w-5 h-5 flex items-center justify-center rounded hover:bg-black/20 text-white font-extrabold text-sm cursor-pointer",
+                                "aria-label": "Decrease",
+                                children: "−"
+                              }),
+                              v.jsx("span", {
+                                className: "font-mono font-black text-xs text-white px-1",
+                                children: qtyInCart
+                              }),
+                              v.jsx("button", {
+                                type: "button",
+                                onClick: (e) => {
+                                  e.stopPropagation();
+                                  try { s(); } catch (err) {}
+                                  updateQuantity(cartItem.cartItemId || cartItem.id, qtyInCart + 1);
+                                },
+                                className: "w-5 h-5 flex items-center justify-center rounded hover:bg-black/20 text-white font-extrabold text-sm cursor-pointer",
+                                "aria-label": "Increase",
+                                children: "+"
+                              })
+                            ]
+                          })
+                        ) : (
+                          v.jsxs("button", {
+                            type: "button",
+                            onClick: (e) => {
+                              e.stopPropagation();
+                              try { s(); } catch (err) {}
+                              const shade = (p.shades && p.shades[0]?.name) || "signature";
+                              onAddToCart({
+                                id: p.id,
+                                slug: p.slug || p.id,
+                                name: p.name,
+                                price: p.priceINR || 2499,
+                                priceINR: p.priceINR || 2499,
+                                priceUSD: "$30.00",
+                                image: mainImg,
+                                colorways: p.shades || []
+                              }, shade, 1);
+                              setAddedItems(prev => ({ ...prev, [p.id]: true }));
+                              setTimeout(() => {
+                                setAddedItems(prev => ({ ...prev, [p.id]: false }));
+                              }, 2000);
+                            },
+                            className: "plezzy-bento-add-btn",
+                            "aria-label": `Add ${p.name} to Cart`,
+                            children: [
+                              v.jsx("svg", {
+                                viewBox: "0 0 24 24",
+                                fill: "none",
+                                stroke: "currentColor",
+                                strokeWidth: "2.2",
+                                style: { width: "13px", height: "13px" },
+                                children: v.jsx("path", {
+                                  d: "M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                                })
+                              }),
+                              "ADD TO CART"
+                            ]
+                          })
+                        );
+                      })()
+                    ]
                   })
                 ]
               })
@@ -7541,40 +7573,40 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
 
       // ── REFINED E-COMMERCE ASSURANCE BANNER ───────────────────────────────
       v.jsx("div", {
-        className: "mt-16 sm:mt-20 pt-10 border-t border-black/10",
+        className: "mt-16 sm:mt-20 pt-10 border-t border-white/10",
         children: v.jsxs("div", {
           className: "grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 text-center",
           children: [
             v.jsxs("div", {
-              className: "p-3.5 sm:p-4 rounded-xl bg-[#f8f8fa] border border-black/[0.06] space-y-1",
+              className: "p-3.5 sm:p-4 rounded-xl bg-[#0c0a0e] border border-white/10 space-y-1",
               children: [
                 v.jsx("span", { className: "text-xl block", children: "📦" }),
-                v.jsx("h4", { className: "font-bold text-[11px] uppercase tracking-wider text-[#111111]", children: "100% Stealth Box" }),
-                v.jsx("p", { className: "text-[10px] text-[#666666] leading-relaxed", children: "Plain outer box with zero product markers." })
+                v.jsx("h4", { className: "font-bold text-[11px] uppercase tracking-wider text-white", children: "100% Stealth Box" }),
+                v.jsx("p", { className: "text-[10px] text-neutral-400 leading-relaxed", children: "Plain outer box with zero product markers." })
               ]
             }),
             v.jsxs("div", {
-              className: "p-3.5 sm:p-4 rounded-xl bg-[#f8f8fa] border border-black/[0.06] space-y-1",
+              className: "p-3.5 sm:p-4 rounded-xl bg-[#0c0a0e] border border-white/10 space-y-1",
               children: [
                 v.jsx("span", { className: "text-xl block", children: "⚡" }),
-                v.jsx("h4", { className: "font-bold text-[11px] uppercase tracking-wider text-[#111111]", children: "Express Shipping" }),
-                v.jsx("p", { className: "text-[10px] text-[#666666] leading-relaxed", children: "Complimentary courier on orders over ₹999." })
+                v.jsx("h4", { className: "font-bold text-[11px] uppercase tracking-wider text-white", children: "Express Shipping" }),
+                v.jsx("p", { className: "text-[10px] text-neutral-400 leading-relaxed", children: "Complimentary courier on orders over ₹999." })
               ]
             }),
             v.jsxs("div", {
-              className: "p-3.5 sm:p-4 rounded-xl bg-[#f8f8fa] border border-black/[0.06] space-y-1",
+              className: "p-3.5 sm:p-4 rounded-xl bg-[#0c0a0e] border border-white/10 space-y-1",
               children: [
                 v.jsx("span", { className: "text-xl block", children: "🛡️" }),
-                v.jsx("h4", { className: "font-bold text-[11px] uppercase tracking-wider text-[#111111]", children: "2-Year Guarantee" }),
-                v.jsx("p", { className: "text-[10px] text-[#666666] leading-relaxed", children: "Unconditional replacement against defect." })
+                v.jsx("h4", { className: "font-bold text-[11px] uppercase tracking-wider text-white", children: "2-Year Guarantee" }),
+                v.jsx("p", { className: "text-[10px] text-neutral-400 leading-relaxed", children: "Unconditional replacement against defect." })
               ]
             }),
             v.jsxs("div", {
-              className: "p-3.5 sm:p-4 rounded-xl bg-[#f8f8fa] border border-black/[0.06] space-y-1",
+              className: "p-3.5 sm:p-4 rounded-xl bg-[#0c0a0e] border border-white/10 space-y-1",
               children: [
                 v.jsx("span", { className: "text-xl block", children: "💧" }),
-                v.jsx("h4", { className: "font-bold text-[11px] uppercase tracking-wider text-[#111111]", children: "Medical Silicone" }),
-                v.jsx("p", { className: "text-[10px] text-[#666666] leading-relaxed", children: "100% hypoallergenic, phthalate-free." })
+                v.jsx("h4", { className: "font-bold text-[11px] uppercase tracking-wider text-white", children: "Medical Silicone" }),
+                v.jsx("p", { className: "text-[10px] text-neutral-400 leading-relaxed", children: "100% hypoallergenic, phthalate-free." })
               ]
             })
           ]
@@ -7726,7 +7758,7 @@ function PlezzyCartPage({ onBackToHome, onNavigateToCollections, onSelectProduct
                 ]
               }),
               v.jsx("h1", {
-                className: "text-3xl sm:text-4xl md:text-5xl font-light tracking-[-0.02em] text-[#111111] uppercase",
+                className: "text-3xl sm:text-4xl md:text-5xl font-light tracking-[-0.02em] text-white uppercase",
                 style: { fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif" },
                 children: "Your Bag"
               })
