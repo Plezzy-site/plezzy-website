@@ -8876,7 +8876,7 @@ function _F(){
                     letterSpacing:"-0.05em",
                     lineHeight:"0.95",
                     color:"#f82793",
-                    textShadow:"0 2px 18px rgba(0,0,0,0.6), 0 0 24px rgba(248,39,147,0.45)"
+                    textShadow:"none"
                   },
                   children:"plezzy"
                 })
@@ -9709,7 +9709,7 @@ function _F(){
           style:{
             width:"100%",
             minHeight:"clamp(540px, 82vh, 860px)",
-            backgroundColor:"#000000",
+            backgroundColor:"#f5bbd4",
             paddingTop:"0px"
           },
           children:[
@@ -9717,7 +9717,7 @@ function _F(){
             // Full-Bleed Editorial Campaign Hero Banner (Full Size)
             v.jsx("img",{
               id:"plezzy-hero-video-banner",
-              src:"/assets/plezzy-hero-banner-new.jpg?v=20261102_fullsize_v2",
+              src:"/assets/plezzy-hero-banner-new.jpg?v=20261104_hero_onesize_v20",
               alt:"PLEZZY Everyday Essentials",
               className:"editorial-bw-img w-full h-full object-cover select-none",
               style:{
@@ -9736,7 +9736,7 @@ function _F(){
               style:{
                 position:"absolute",
                 inset:0,
-                background:"linear-gradient(to top, rgba(0,0,0,0.3) 0%, transparent 28%)",
+                background:"linear-gradient(to top, rgba(0,0,0,0.18) 0%, transparent 24%)",
                 zIndex:1,
                 pointerEvents:"none"
               }
@@ -9745,7 +9745,7 @@ function _F(){
             // LOWER-LEFT EDITORIAL CALLOUT CARD & CTA
             v.jsx("div",{
               id:"hero-left-content",
-              className:"relative z-10 p-6 sm:p-12 lg:p-16 text-left",
+              className:"relative z-10 p-4 sm:p-12 lg:p-16 text-center sm:text-left flex justify-center sm:justify-start",
               style:{maxWidth:"860px"},
               children:v.jsx("div",{
                 className:"flex items-center gap-4",

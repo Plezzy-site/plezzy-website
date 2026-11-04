@@ -23,7 +23,7 @@
     <script>
       window.__PLEZZY_DEFAULT_VIEW__ = "collections";
     </script>
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261104_main_pink_essentials_v19"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261104_mobile_hero_opt_v20"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
@@ -2816,6 +2816,277 @@
         font-size: 14px !important;
         line-height: 1 !important;
       }
+
+      /* ════════════════════════════════════════════════════════════
+         MOBILE-FIRST ARCHITECTURE & ALIGNMENT OVERRIDES (≤ 768px)
+         ════════════════════════════════════════════════════════════ */
+      @media (max-width: 768px) {
+        /* Global Mobile Foundation & Touch Optimizations */
+        html, body {
+          overflow-x: hidden !important;
+          width: 100% !important;
+          max-width: 100vw !important;
+          position: relative !important;
+          -webkit-text-size-adjust: 100% !important;
+          -webkit-tap-highlight-color: transparent !important;
+        }
+
+        /* 1. Header & Navigation */
+        header.header-pdp,
+        header.nav-scrolled,
+        header {
+          height: 60px !important;
+          background-color: rgba(255, 255, 255, 0.92) !important;
+          backdrop-filter: blur(20px) saturate(180%) !important;
+          -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+        }
+        header nav {
+          height: 60px !important;
+          padding-left: 14px !important;
+          padding-right: 14px !important;
+        }
+        .plezzy-hamburger-btn {
+          padding: 8px !important;
+        }
+        .plezzy-bar {
+          background-color: #111111 !important;
+        }
+        header span[style*="f82793"] {
+          font-size: 32px !important;
+          text-shadow: none !important;
+        }
+
+        /* 2. Hero Section & Mobile Hero Image */
+        #hero {
+          min-height: 78vh !important;
+          min-height: 78dvh !important;
+          max-height: 85vh !important;
+          background-color: #f5bbd4 !important;
+          padding-top: 60px !important;
+          display: flex !important;
+          flex-direction: column !important;
+          justify-content: flex-end !important;
+          align-items: center !important;
+        }
+        #plezzy-hero-video-banner {
+          object-fit: cover !important;
+          object-position: center center !important;
+        }
+        #hero-left-content {
+          width: 100% !important;
+          max-width: 100% !important;
+          padding: 16px 20px 28px 20px !important;
+          text-align: center !important;
+          display: flex !important;
+          justify-content: center !important;
+        }
+        #hero-left-content button {
+          width: 100% !important;
+          max-width: 320px !important;
+          height: 48px !important;
+          font-size: 13px !important;
+          letter-spacing: 0.08em !important;
+          font-weight: 800 !important;
+          border-radius: 9999px !important;
+          box-shadow: 0 8px 24px rgba(248, 39, 147, 0.5) !important;
+        }
+
+        /* 3. Infinite Ticker Marquee Bar */
+        #plezzy-ticker-marquee-bar {
+          padding: 10px 0 !important;
+          font-size: 11px !important;
+        }
+
+        /* 4. Section: ESSENTIALS & Bento Grid */
+        .plezzy-editorial-grid-section {
+          padding: 32px 14px 44px 14px !important;
+          width: 100% !important;
+        }
+        .plezzy-editorial-title {
+          font-size: clamp(2rem, 9.5vw, 3.4rem) !important;
+          line-height: 0.95 !important;
+          letter-spacing: -0.04em !important;
+          text-align: center !important;
+          margin-bottom: 8px !important;
+        }
+        .plezzy-editorial-grid-section p {
+          font-size: 13px !important;
+          padding: 0 12px !important;
+          text-align: center !important;
+          color: #67645e !important;
+        }
+
+        /* Bento Grid: Clean Vertical Stack on Mobile */
+        .plezzy-bento-grid {
+          display: flex !important;
+          flex-direction: column !important;
+          gap: 16px !important;
+          margin-top: 20px !important;
+          width: 100% !important;
+        }
+        .plezzy-bento-card,
+        .plezzy-bento-card-5,
+        .plezzy-bento-card-7 {
+          width: 100% !important;
+          min-height: 400px !important;
+          max-height: 460px !important;
+          border-radius: 22px !important;
+          grid-column: auto !important;
+        }
+        .plezzy-bento-top-bar {
+          padding: 14px 16px !important;
+        }
+        .plezzy-bento-bottom-panel {
+          padding: 16px 18px !important;
+        }
+        .plezzy-bento-product-name {
+          font-size: 20px !important;
+          line-height: 1.2 !important;
+        }
+        .plezzy-bento-product-desc {
+          font-size: 12px !important;
+          margin-bottom: 10px !important;
+          -webkit-line-clamp: 2 !important;
+        }
+        .plezzy-bento-price {
+          font-size: 16px !important;
+        }
+        .plezzy-bento-add-btn {
+          padding: 8px 16px !important;
+          font-size: 11px !important;
+          height: 36px !important;
+        }
+
+        /* 5. Divider CTA ("BROWSE ALL COLLECTIONS") */
+        .plezzy-divider-cta-wrap {
+          margin-top: 32px !important;
+          padding: 0 16px !important;
+        }
+        .plezzy-divider-cta-btn {
+          width: 100% !important;
+          max-width: 290px !important;
+          height: 46px !important;
+          font-size: 12px !important;
+        }
+
+        /* 6. Two-Column Category Split (Luxe & Standard) */
+        #editorial-collection-split {
+          margin-bottom: 36px !important;
+        }
+        .split-grid-container {
+          grid-template-columns: 1fr !important;
+          gap: 14px !important;
+          padding: 0 14px !important;
+        }
+        .split-panel-editorial {
+          min-height: 380px !important;
+          border-radius: 20px !important;
+          padding: 24px 20px !important;
+          overflow: hidden !important;
+        }
+        .split-content h3 {
+          font-size: 24px !important;
+          line-height: 1.15 !important;
+        }
+
+        /* 7. Campaign Video */
+        #campaign-video-frame,
+        .campaign-video-wrapper {
+          border-radius: 18px !important;
+          margin: 0 14px !important;
+          width: calc(100% - 28px) !important;
+        }
+
+        /* 8. Newsletter Section */
+        #newsletter {
+          padding: 24px 14px !important;
+          width: 100% !important;
+        }
+        #newsletter > div {
+          padding: 28px 18px !important;
+          border-radius: 22px !important;
+        }
+        #newsletter form {
+          flex-direction: column !important;
+          gap: 10px !important;
+        }
+        #newsletter input {
+          width: 100% !important;
+          height: 48px !important;
+          font-size: 14px !important;
+          text-align: center !important;
+        }
+        #newsletter button {
+          width: 100% !important;
+          height: 46px !important;
+        }
+
+        /* 9. Giant Wordmark Banner */
+        #campaign-statement {
+          margin: 20px 14px !important;
+          padding: 36px 14px !important;
+          border-radius: 22px !important;
+        }
+        .giant-wordmark {
+          font-size: clamp(2.4rem, 14.5vw, 5.2rem) !important;
+          line-height: 0.9 !important;
+          letter-spacing: -0.04em !important;
+        }
+        #campaign-statement p {
+          font-size: 11px !important;
+          letter-spacing: 0.16em !important;
+          line-height: 1.4 !important;
+          padding: 0 8px !important;
+        }
+
+        /* 10. Footer on Mobile */
+        footer {
+          padding: 36px 16px 40px 16px !important;
+          padding-bottom: max(36px, env(safe-area-inset-bottom)) !important;
+        }
+        #footer-nav-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+          gap: 24px 16px !important;
+        }
+
+        /* 11. Collections Page & Sticky Bar */
+        .plezzy-collections-page {
+          padding-top: 76px !important;
+          padding-left: 12px !important;
+          padding-right: 12px !important;
+        }
+        .plezzy-collections-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+          gap: 10px !important;
+        }
+        .plezzy-collection-card {
+          padding: 8px !important;
+          border-radius: 14px !important;
+        }
+        .plezzy-collection-card .plezzy-card-img-wrap {
+          height: 140px !important;
+          max-height: 140px !important;
+          border-radius: 10px !important;
+        }
+        .plezzy-collection-card h3 {
+          font-size: 13.5px !important;
+          line-height: 1.2 !important;
+        }
+
+        /* 12. Cart Page & Checkout on Mobile */
+        .plezzy-cart-page {
+          padding-top: 76px !important;
+          padding-left: 14px !important;
+          padding-right: 14px !important;
+          padding-bottom: 80px !important;
+        }
+        .plezzy-qty-pill {
+          height: 34px !important;
+        }
+      }
+
 </style>
   </head>
   <body class="text-[#67645e] antialiased selection:bg-[#f82793] selection:text-white selection:text-white">
