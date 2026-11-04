@@ -9826,16 +9826,16 @@ function _F(){
           id: "plezzy-editorial-products-grid",
           className: "plezzy-editorial-grid-section select-none",
           children: [
-            // Editorial Header: "Must-Haves" (Subtitle removed per user request)
+            // Editorial Header: "Temptations💦" (Scaled smaller than header logo plezzy)
             v.jsx("div", {
-              className: "text-center mb-6 sm:mb-10",
+              className: "text-center mb-5 sm:mb-8",
               children: v.jsx("div", {
                 className: "plezzy-editorial-header",
                 children: [
                   v.jsx("h2", {
                     className: "plezzy-editorial-title",
                     style: { color: "#f82793", textShadow: "none" },
-                    children: "Must-Haves"
+                    children: "Temptations💦"
                   })
                 ]
               })

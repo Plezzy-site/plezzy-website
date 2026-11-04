@@ -23,7 +23,7 @@
     <script>
       window.__PLEZZY_DEFAULT_VIEW__ = "collections";
     </script>
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261104_silver_ticker_must_haves_v36"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261104_temptations_butter_yellow_v37"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
@@ -3625,6 +3625,66 @@
         }
         #plezzy-ticker-marquee-bar div {
           font-size: 14.5px !important;
+        }
+      }
+
+    
+      /* ══════════════════════════════════════════════════════════════
+         TEMPTATIONS TITLE (SMALLER THAN HEADER LOGO PLEZZY)
+         & 30% BAR IN BUTTER YELLOW (ENLARGED)
+         ══════════════════════════════════════════════════════════════ */
+      .plezzy-editorial-title {
+        font-family: 'Rektorat Heavy', 'Plus Jakarta Sans', -apple-system, sans-serif !important;
+        font-size: clamp(20px, 2.8vw, 34px) !important;
+        font-weight: 800 !important;
+        text-transform: none !important;
+        letter-spacing: -0.02em !important;
+        color: #f82793 !important;
+        line-height: 1.1 !important;
+        margin: 0 !important;
+        text-shadow: none !important;
+      }
+
+      .plezzy-bento-badge {
+        background: linear-gradient(135deg, #FFF6A5 0%, #FEE871 50%, #F5D742 100%) !important;
+        background-color: #FEE871 !important;
+        color: #111111 !important;
+        border: 1px solid rgba(254, 240, 138, 0.95) !important;
+        font-family: 'Plus Jakarta Sans', sans-serif !important;
+        font-size: 13.5px !important;
+        font-weight: 900 !important;
+        letter-spacing: 0.08em !important;
+        padding: 7px 16px !important;
+        border-radius: 9999px !important;
+        box-shadow: 0 4px 14px rgba(254, 232, 113, 0.5), 0 1px 3px rgba(0, 0, 0, 0.25) !important;
+        text-shadow: none !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        line-height: 1.1 !important;
+        white-space: nowrap !important;
+      }
+
+      @keyframes plezzyBadgeBreathe {
+        0% {
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), 0 0 0 rgba(254, 232, 113, 0);
+        }
+        100% {
+          box-shadow: 0 6px 16px rgba(254, 232, 113, 0.65), 0 0 12px rgba(254, 240, 138, 0.45);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .plezzy-editorial-title {
+          font-size: clamp(19px, 5.2vw, 26px) !important;
+        }
+        .plezzy-bento-badge {
+          font-size: 10.5px !important;
+          font-weight: 900 !important;
+          letter-spacing: 0.06em !important;
+          padding: 5px 12px !important;
+          border-radius: 9999px !important;
+          line-height: 1.1 !important;
         }
       }
 
