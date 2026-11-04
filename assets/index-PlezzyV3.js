@@ -8993,7 +8993,7 @@ function _F(){
             v.jsxs("div", {
               className: "plezzy-menu-header w-full max-w-screen-xl mx-auto px-5 sm:px-12 py-5 sm:py-7 flex items-center justify-between border-b border-white/10",
               children: [
-                // Left: Brand Logo Wordmark
+                // Left: Brand Logo Wordmark (Pink)
                 v.jsx("div", {
                   onClick: () => {
                     handleCloseNav(() => {
@@ -9006,9 +9006,10 @@ function _F(){
                     style: {
                       fontFamily: "'Swiss', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif",
                       fontWeight: 800,
-                      letterSpacing: "-0.05em"
+                      letterSpacing: "-0.05em",
+                      color: "#f82793"
                     },
-                    className: "text-2xl sm:text-3xl lowercase text-[#f82793] transition-colors tracking-tighter select-none",
+                    className: "plezzy-menu-logo-text text-2xl sm:text-3xl lowercase text-[#f82793] transition-colors tracking-tighter select-none",
                     children: "plezzy"
                   })
                 }),
@@ -9120,26 +9121,21 @@ function _F(){
                       className: "plezzy-menu-nav-link group w-full flex items-center justify-between",
                       children: [
                         v.jsxs("div", {
-                          className: "plezzy-menu-nav-left flex items-start sm:items-center gap-3 sm:gap-5 text-left",
+                          className: "plezzy-menu-nav-left flex items-center gap-3.5 sm:gap-6 text-left",
                           children: [
                             v.jsx("span", {
-                              className: "plezzy-menu-num font-mono text-xs sm:text-sm font-semibold text-white/40 tracking-wider shrink-0 text-left pt-1 sm:pt-0",
+                              className: "plezzy-menu-num font-mono text-xs sm:text-sm font-semibold text-white/50 tracking-wider shrink-0 text-left",
                               style: { minWidth: "24px" },
                               children: item.num
                             }),
-                            v.jsxs("div", {
-                              className: "plezzy-menu-nav-text-col flex flex-col text-left",
-                              children: [
-                                v.jsx("span", {
-                                  className: "plezzy-menu-nav-label font-serif font-light text-2xl sm:text-3xl md:text-4xl text-white group-hover:text-[#f82793] transition-colors leading-tight whitespace-nowrap",
-                                  style: { fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif" },
-                                  children: item.label
-                                }),
-                                v.jsx("span", {
-                                  className: "plezzy-menu-nav-tag text-[9.5px] sm:text-[10.5px] font-mono tracking-[0.18em] uppercase text-white/45 group-hover:text-[#f82793]/80 transition-colors mt-0.5 whitespace-nowrap",
-                                  children: item.tag
-                                })
-                              ]
+                            v.jsx("span", {
+                              className: "plezzy-menu-nav-label font-serif font-bold text-2xl sm:text-3xl md:text-5xl text-white group-hover:text-[#f82793] transition-all leading-tight whitespace-nowrap",
+                              style: {
+                                fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif",
+                                fontWeight: 700,
+                                textShadow: "0 4px 18px rgba(0, 0, 0, 0.85), 0 2px 6px rgba(0, 0, 0, 0.95)"
+                              },
+                              children: item.label
                             })
                           ]
                         }),
@@ -9152,40 +9148,6 @@ function _F(){
                   })
                 )
               })
-            }),
-
-            // ── Footer Row inside Menu ───────────────────────────
-            v.jsxs("div", {
-              className: "plezzy-menu-footer w-full max-w-screen-xl mx-auto px-6 sm:px-16 py-6 sm:py-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/50",
-              children: [
-                v.jsx("span", {
-                  style: { fontFamily: "monospace", letterSpacing: "0.2em", textTransform: "uppercase", fontSize: "10.5px", fontWeight: "700", color: "#CBD5E1" },
-                  children: "PLEZZY ESSENTIALS • 100% BODY-SAFE & DISCREETLY DELIVERED"
-                }),
-                v.jsxs("div", {
-                  className: "flex gap-6 font-mono text-xs uppercase tracking-wider",
-                  children: [
-                    v.jsxs("a", {
-                      href: "https://www.instagram.com/plezzy",
-                      target: "_blank",
-                      rel: "noopener noreferrer",
-                      className: "hover:text-[#f82793] transition-colors flex items-center gap-1.5 font-bold text-white/70",
-                      children: [
-                        v.jsx("span", { children: "Instagram" }),
-                        v.jsx("span", { style: { fontSize: "10px", color:"#f82793" }, children: "(@plezzy)" })
-                      ]
-                    }),
-                    v.jsx("button", {
-                      onClick: () => {
-                        try { s(); } catch (e) {}
-                        setCurrency(prev => prev === "USD" ? "INR" : "USD");
-                      },
-                      className: "hover:text-white transition-colors cursor-pointer text-white/70 font-bold",
-                      children: "Currency: ₹ INR"
-                    })
-                  ]
-                })
-              ]
             })
           ]
         })
@@ -9719,7 +9681,7 @@ function _F(){
             // Full-Bleed Editorial Campaign Hero Banner (Full Size)
             v.jsx("img",{
               id:"plezzy-hero-video-banner",
-              src:"/assets/plezzy-hero-banner-new.jpg?v=20261104_explore_now_menu_v23",
+              src:"/assets/plezzy-hero-banner-new.jpg?v=20261104_menu_bold_pink_v24",
               alt:"PLEZZY Everyday Essentials",
               className:"editorial-bw-img w-full h-full select-none",
               style:{
