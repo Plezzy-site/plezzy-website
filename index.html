@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Italiana&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261104_hero_longer_v28"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261104_menu_header_longer_v29"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
@@ -657,7 +657,7 @@
           overflow: hidden !important;
         }
         #plezzy-hero-video-banner {
-          content: url('/assets/plezzy-hero-banner-tall.jpg?v=20261104_hero_longer_v28') !important;
+          content: url('/assets/plezzy-hero-banner-tall.jpg?v=20261104_menu_header_longer_v29') !important;
           position: absolute !important;
           inset: 0 !important;
           width: 100% !important;
@@ -1829,8 +1829,38 @@
       }
 
       .plezzy-menu-header {
+        padding-top: 28px !important;
+        padding-bottom: 28px !important;
+        min-height: 92px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
         animation: plezzyHeaderIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
         will-change: opacity, transform;
+      }
+
+      @media (min-width: 640px) {
+        .plezzy-menu-header {
+          padding-top: 36px !important;
+          padding-bottom: 36px !important;
+          min-height: 110px !important;
+        }
+      }
+
+      .plezzy-menu-nav-container {
+        padding-top: 20px !important;
+        padding-bottom: 36px !important;
+        justify-content: flex-start !important;
+        display: flex !important;
+        flex-direction: column !important;
+      }
+
+      @media (min-width: 640px) {
+        .plezzy-menu-nav-container {
+          padding-top: 28px !important;
+          padding-bottom: 44px !important;
+          justify-content: flex-start !important;
+        }
       }
 
       .plezzy-menu-closing .plezzy-menu-header {
@@ -2932,7 +2962,7 @@
           overflow: hidden !important;
         }
         #plezzy-hero-video-banner {
-          content: url('/assets/plezzy-hero-banner-tall.jpg?v=20261104_hero_longer_v28') !important;
+          content: url('/assets/plezzy-hero-banner-tall.jpg?v=20261104_menu_header_longer_v29') !important;
           position: absolute !important;
           inset: 0 !important;
           width: 100% !important;

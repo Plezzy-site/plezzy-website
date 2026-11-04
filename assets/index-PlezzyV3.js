@@ -8991,7 +8991,7 @@ function _F(){
           children: [
             // ── Top Header Row inside Menu ───────────────────────────
             v.jsxs("div", {
-              className: "plezzy-menu-header w-full max-w-screen-xl mx-auto px-5 sm:px-12 py-5 sm:py-7 flex items-center justify-between border-b border-white/10",
+              className: "plezzy-menu-header w-full max-w-screen-xl mx-auto px-5 sm:px-12 py-7 sm:py-9 min-h-[92px] sm:min-h-[110px] flex items-center justify-between border-b border-white/10",
               children: [
                 // Left: Brand Logo Wordmark (Pink)
                 v.jsx("div", {
@@ -9035,9 +9035,9 @@ function _F(){
 
             // ── Clean Navigation Links (Numbered Editorial Hierarchy) ────
             v.jsx("div", {
-              className: "w-full max-w-screen-xl mx-auto px-6 sm:px-16 py-10 sm:py-16 flex-1 flex flex-col justify-center",
+              className: "plezzy-menu-nav-container w-full max-w-screen-xl mx-auto px-6 sm:px-16 pt-5 sm:pt-7 pb-10 flex-1 flex flex-col justify-start",
               children: v.jsx("ul", {
-                className: "flex flex-col gap-5 sm:gap-8 max-w-4xl",
+                className: "flex flex-col gap-4 sm:gap-6 max-w-4xl w-full",
                 children: [
                   {
                     num: "01",
