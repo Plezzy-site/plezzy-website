@@ -8906,16 +8906,17 @@ function _F(){
                   v.jsx("line",{x1:"21",y1:"21",x2:"16.65",y2:"16.65"})
                 ]})
               }),
-              v.jsxs("button",{
+              // Account: Dedicated circular icon button (All screens, mobile + desktop)
+              v.jsx("button",{
+                id:"plezzy-header-account-btn",
                 onClick:()=>{s();a("auth")},
-                className:"hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.08] hover:bg-white/[0.16] border border-white/15 hover:border-white/30 text-white/90 hover:text-white transition-all cursor-pointer text-xs font-bold uppercase tracking-wider backdrop-blur-xs",
-                children:[
-                  v.jsxs("svg",{width:"14",height:"14",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2.2",strokeLinecap:"round",strokeLinejoin:"round",children:[
-                    v.jsx("path",{d:"M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"}),
-                    v.jsx("circle",{cx:"12",cy:"7",r:"4"})
-                  ]}),
-                  "SIGN IN"
-                ]
+                className:"plezzy-header-account-btn flex items-center justify-center rounded-full transition-all focus:outline-none cursor-pointer",
+                "aria-label":"Account",
+                title:"Account",
+                children:v.jsxs("svg",{width:"22",height:"22",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2.2",strokeLinecap:"round",strokeLinejoin:"round",children:[
+                  v.jsx("path",{d:"M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"}),
+                  v.jsx("circle",{cx:"12",cy:"7",r:"4"})
+                ]})
               }),
               // Luxury Frosted Glass Cart Button with Enlarged Shopping Cart Icon
               v.jsxs("button",{
@@ -9769,7 +9770,7 @@ function _F(){
         }),
 
         // ══════════════════════════════════════════════════════════════
-        // SECTION 1.5: ANIMATED INFINITE TICKER MARQUEE (Frosted Dark Glass)
+        // SECTION 1.5: ANIMATED INFINITE TICKER MARQUEE (Silver Metallic Bar)
         // ══════════════════════════════════════════════════════════════
         v.jsx("div", {
           id: "plezzy-ticker-marquee-bar",
@@ -9781,40 +9782,14 @@ function _F(){
           children: v.jsx("div", {
             className: "flex w-max items-center whitespace-nowrap",
             style: {
-              animation: "marquee 11s linear infinite"
+              animation: "marquee 14s linear infinite"
             },
-            children: [0, 1, 2, 3].map((loopIdx) => v.jsxs("div", {
+            children: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((loopIdx) => v.jsxs("div", {
               key: loopIdx,
-              className: "flex items-center gap-8 sm:gap-14 px-4 shrink-0 font-mono font-extrabold text-[14.5px] sm:text-[16.5px] md:text-[17.5px] tracking-[0.16em] uppercase text-[#f82793]",
+              className: "flex items-center gap-4 sm:gap-6 px-4 sm:px-6 shrink-0 font-mono font-extrabold text-[14.5px] sm:text-[16.5px] md:text-[17.5px] tracking-[0.16em] uppercase text-[#f82793]",
               children: [
-                v.jsxs("div", {
-                  className: "flex items-center gap-2.5",
-                  children: [
-                    v.jsx("span", { className: "text-[#f82793] text-base sm:text-lg font-black", children: "✦" }),
-                    v.jsx("span", { children: "COD & EMI Available Across India" })
-                  ]
-                }),
-                v.jsxs("div", {
-                  className: "flex items-center gap-2.5",
-                  children: [
-                    v.jsx("span", { className: "text-[#f82793] text-base sm:text-lg font-black", children: "✦" }),
-                    v.jsx("span", { children: "Free & 100% Discreet Shipping Over ₹999" })
-                  ]
-                }),
-                v.jsxs("div", {
-                  className: "flex items-center gap-2.5",
-                  children: [
-                    v.jsx("span", { className: "text-[#f82793] text-base sm:text-lg font-black", children: "✦" }),
-                    v.jsx("span", { children: "Body-Safe Medical Grade Silicone" })
-                  ]
-                }),
-                v.jsxs("div", {
-                  className: "flex items-center gap-2.5",
-                  children: [
-                    v.jsx("span", { className: "text-[#f82793] text-base sm:text-lg font-black", children: "✦" }),
-                    v.jsx("span", { children: "Unbranded Stealth Delivery Packaging" })
-                  ]
-                })
+                v.jsx("span", { className: "text-[#f82793] text-base sm:text-lg font-black", children: "✦" }),
+                v.jsx("span", { className: "font-black tracking-[0.16em]", children: "COD & Discreet Delivery" })
               ]
             }))
           })
