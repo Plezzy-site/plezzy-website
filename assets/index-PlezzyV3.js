@@ -9132,8 +9132,7 @@ function _F(){
                               className: "plezzy-menu-nav-label font-serif font-bold text-2xl sm:text-3xl md:text-5xl text-white group-hover:text-[#f82793] transition-all leading-tight whitespace-nowrap",
                               style: {
                                 fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif",
-                                fontWeight: 700,
-                                textShadow: "0 4px 18px rgba(0, 0, 0, 0.85), 0 2px 6px rgba(0, 0, 0, 0.95)"
+                                fontWeight: 700
                               },
                               children: item.label
                             })
@@ -9681,7 +9680,7 @@ function _F(){
             // Full-Bleed Editorial Campaign Hero Banner (Full Size)
             v.jsx("img",{
               id:"plezzy-hero-video-banner",
-              src:"/assets/plezzy-hero-banner-new.jpg?v=20261104_menu_bold_pink_v24",
+              src:"/assets/plezzy-hero-banner-new.jpg?v=20261104_menu_clean_bold_v25",
               alt:"PLEZZY Everyday Essentials",
               className:"editorial-bw-img w-full h-full select-none",
               style:{
