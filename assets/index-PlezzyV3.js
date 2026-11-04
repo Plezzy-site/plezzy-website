@@ -8993,34 +8993,24 @@ function _F(){
             v.jsxs("div", {
               className: "plezzy-menu-header w-full max-w-screen-xl mx-auto px-5 sm:px-12 py-5 sm:py-7 flex items-center justify-between border-b border-white/10",
               children: [
-                // Left: Brand Logo & Title
-                v.jsxs("div", {
+                // Left: Brand Logo Wordmark
+                v.jsx("div", {
                   onClick: () => {
                     handleCloseNav(() => {
                       if (isPdp) handleBackToHome();
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     });
                   },
-                  className: "flex items-center gap-2.5 sm:gap-3.5 cursor-pointer group",
-                  children: [
-                    v.jsx("div", {
-                      className: "w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-white/20 p-1 flex items-center justify-center bg-black/70 shadow-lg group-hover:border-[#f82793] transition-colors",
-                      children: v.jsx("img", {
-                        src: "/assets/plezzy-brand-logo-transparent.png",
-                        alt: "PLEZZY Crest",
-                        className: "w-full h-full object-contain filter drop-shadow"
-                      })
-                    }),
-                    v.jsx("span", {
-                      style: {
-                        fontFamily: "'Swiss', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif",
-                        fontWeight: 800,
-                        letterSpacing: "-0.05em"
-                      },
-                      className: "text-2xl lowercase text-[#f82793] transition-colors tracking-tighter",
-                      children: "plezzy"
-                    })
-                  ]
+                  className: "flex items-center cursor-pointer group",
+                  children: v.jsx("span", {
+                    style: {
+                      fontFamily: "'Swiss', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif",
+                      fontWeight: 800,
+                      letterSpacing: "-0.05em"
+                    },
+                    className: "text-2xl sm:text-3xl lowercase text-[#f82793] transition-colors tracking-tighter select-none",
+                    children: "plezzy"
+                  })
                 }),
 
                 // Right: CLOSE ✕ Button (Exact Style from Reference)
@@ -9127,24 +9117,35 @@ function _F(){
                     className: "plezzy-menu-item w-full",
                     children: v.jsxs("button", {
                       onClick: item.action,
-                      className: "plezzy-menu-nav-link group",
+                      className: "plezzy-menu-nav-link group w-full flex items-center justify-between",
                       children: [
                         v.jsxs("div", {
-                          className: "plezzy-menu-nav-left",
+                          className: "plezzy-menu-nav-left flex items-start sm:items-center gap-3 sm:gap-5 text-left",
                           children: [
                             v.jsx("span", {
-                              className: "plezzy-menu-num",
+                              className: "plezzy-menu-num font-mono text-xs sm:text-sm font-semibold text-white/40 tracking-wider shrink-0 text-left pt-1 sm:pt-0",
+                              style: { minWidth: "24px" },
                               children: item.num
                             }),
-                            v.jsx("span", {
-                              className: "plezzy-menu-nav-label",
-                              children: item.label
+                            v.jsxs("div", {
+                              className: "plezzy-menu-nav-text-col flex flex-col text-left",
+                              children: [
+                                v.jsx("span", {
+                                  className: "plezzy-menu-nav-label font-serif font-light text-2xl sm:text-3xl md:text-4xl text-white group-hover:text-[#f82793] transition-colors leading-tight whitespace-nowrap",
+                                  style: { fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif" },
+                                  children: item.label
+                                }),
+                                v.jsx("span", {
+                                  className: "plezzy-menu-nav-tag text-[9.5px] sm:text-[10.5px] font-mono tracking-[0.18em] uppercase text-white/45 group-hover:text-[#f82793]/80 transition-colors mt-0.5 whitespace-nowrap",
+                                  children: item.tag
+                                })
+                              ]
                             })
                           ]
                         }),
                         v.jsx("span", {
-                          className: "plezzy-menu-nav-tag",
-                          children: item.tag
+                          className: "plezzy-menu-nav-arrow text-white/30 group-hover:text-[#f82793] group-hover:translate-x-1 transition-all text-sm sm:text-base font-mono pl-3 shrink-0",
+                          children: "→"
                         })
                       ]
                     })
@@ -9718,7 +9719,7 @@ function _F(){
             // Full-Bleed Editorial Campaign Hero Banner (Full Size)
             v.jsx("img",{
               id:"plezzy-hero-video-banner",
-              src:"/assets/plezzy-hero-banner-new.jpg?v=20261104_hero_full_v22",
+              src:"/assets/plezzy-hero-banner-new.jpg?v=20261104_explore_now_menu_v23",
               alt:"PLEZZY Everyday Essentials",
               className:"editorial-bw-img w-full h-full select-none",
               style:{
@@ -9743,37 +9744,36 @@ function _F(){
               }
             }),
 
-            // LOWER-LEFT EDITORIAL CALLOUT CARD & CTA
+            // LOWER-LEFT EDITORIAL CTA BUTTON (EXPLORE NOW)
             v.jsx("div",{
               id:"hero-left-content",
-              className:"relative z-10 p-3 sm:p-8 lg:p-10 text-center sm:text-left flex justify-center sm:justify-start",
-              style:{maxWidth:"860px"},
-              children:v.jsx("div",{
-                className:"flex items-center justify-center sm:justify-start gap-4 w-full sm:w-auto",
-                children:v.jsx("button",{
-                  onClick:()=>{
-                    try { s(); } catch(e) {}
-                    window.location.href = "/collections.html";
-                  },
-                  style:{
-                    display:"inline-flex",
-                    alignItems:"center",
-                    justifyContent:"center",
-                    padding:"10px 24px",
-                    backgroundColor:"#f82793",
-                    color:"#ffffff",
-                    fontFamily:"'Plus Jakarta Sans', -apple-system, sans-serif",
-                    fontSize:"12px",
-                    fontWeight:800,
-                    letterSpacing:"0.06em",
-                    borderRadius:"9999px",
-                    border:"none",
-                    cursor:"pointer",
-                    boxShadow:"0 6px 20px rgba(248,39,147,0.45)"
-                  },
-                  className:"hover:bg-[#d41c7b] hover:scale-105 active:scale-95 transition-all",
-                  children:"DISCOVER THE COLLECTION"
-                })
+              className:"absolute bottom-3.5 sm:bottom-6 lg:bottom-8 left-3.5 sm:left-6 lg:left-8 z-10 text-left pointer-events-auto",
+              children:v.jsx("button",{
+                id:"hero-explore-btn",
+                onClick:()=>{
+                  try { s(); } catch(e) {}
+                  window.location.href = "/collections.html";
+                },
+                style:{
+                  display:"inline-flex",
+                  alignItems:"center",
+                  justifyContent:"center",
+                  padding:"9px 20px",
+                  backgroundColor:"#f82793",
+                  color:"#ffffff",
+                  fontFamily:"'Plus Jakarta Sans', -apple-system, sans-serif",
+                  fontSize:"11.5px",
+                  fontWeight:800,
+                  letterSpacing:"0.06em",
+                  textTransform:"uppercase",
+                  borderRadius:"9999px",
+                  border:"none",
+                  cursor:"pointer",
+                  boxShadow:"0 4px 16px rgba(248,39,147,0.45)",
+                  whiteSpace:"nowrap"
+                },
+                className:"hover:bg-[#d41c7b] hover:scale-105 active:scale-95 transition-all shadow-lg",
+                children:"Explore Now"
               })
             })
 
