@@ -9849,52 +9849,43 @@ function _F(){
                       }
                     },
                     children: [
-                      // High-res Background Image
-                      v.jsx("img", {
-                        src: mainImg,
-                        alt: p.name,
-                        loading: "lazy",
-                        className: "plezzy-bento-bg-img"
-                      }),
-
-                      // Cinematic Soft Gradient Overlay
-                      v.jsx("div", {
-                        className: "plezzy-bento-overlay"
-                      }),
-
-                      // Top Row: Badges & Ratings
+                      // 1. Upper Image Section (Unobstructed photo with top badges)
                       v.jsxs("div", {
-                        className: "plezzy-bento-top-bar",
+                        className: "plezzy-bento-image-wrap",
                         children: [
-                          hasDiscount ? v.jsx("span", {
-                            className: "plezzy-bento-badge",
-                            children: "30% OFF"
-                          }) : v.jsx("span", {
-                            className: "plezzy-bento-badge",
-                            style: { backgroundColor: "#ffffff", color: "#111111" },
-                            children: "SIGNATURE"
+                          v.jsx("img", {
+                            src: mainImg,
+                            alt: p.name,
+                            loading: "lazy",
+                            className: "plezzy-bento-bg-img"
                           }),
 
+                          // Top Row: Badges & Ratings (Overlaid only at top)
                           v.jsxs("div", {
-                            className: "plezzy-bento-rating",
+                            className: "plezzy-bento-top-bar",
                             children: [
-                              v.jsx("span", { style: { color: "#f82793", fontSize: "12px" }, children: "★" }),
-                              v.jsx("span", { children: (p.rating || 4.9).toFixed(1) }),
-                              v.jsxs("span", { style: { opacity: 0.75, fontSize: "10px" }, children: ["(", revCount, ")"] })
+                              v.jsx("span", {
+                                className: "plezzy-bento-badge",
+                                children: "30% OFF"
+                              }),
+
+                              v.jsxs("div", {
+                                className: "plezzy-bento-rating",
+                                children: [
+                                  v.jsx("span", { style: { color: "#f82793", fontSize: "12px" }, children: "★" }),
+                                  v.jsx("span", { children: (p.rating || 4.9).toFixed(1) }),
+                                  v.jsxs("span", { style: { opacity: 0.75, fontSize: "10px" }, children: ["(", revCount, ")"] })
+                                ]
+                              })
                             ]
                           })
                         ]
                       }),
 
-                      // Bottom Panel: Details & Quick Add
+                      // 2. Small Separate Section Below the Image (No overlay on the image!)
                       v.jsxs("div", {
                         className: "plezzy-bento-bottom-panel",
                         children: [
-                          v.jsx("span", {
-                            className: "plezzy-bento-product-tag",
-                            children: p.category || "Sensory Essentials"
-                          }),
-
                           v.jsx("h3", {
                             className: "plezzy-bento-product-name",
                             children: p.name

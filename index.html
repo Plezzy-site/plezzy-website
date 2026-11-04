@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Italiana&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261104_account_icon_cod_v38"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261104_bento_separate_card_section_v39"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
@@ -1499,23 +1499,22 @@
 
       .plezzy-bento-card {
         position: relative !important;
-        border-radius: 28px !important;
+        border-radius: 24px !important;
         overflow: hidden !important;
         cursor: pointer !important;
-        background-color: #121010 !important;
-        border: 1px solid rgba(255, 255, 255, 0.4) !important;
-        box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.16) !important;
+        background-color: #0c0a0e !important;
+        border: 1px solid rgba(255, 255, 255, 0.22) !important;
+        box-shadow: 0 12px 36px -10px rgba(0, 0, 0, 0.45) !important;
         transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.45s ease !important;
         display: flex !important;
         flex-direction: column !important;
-        justify-content: space-between !important;
-        min-height: 440px !important;
+        justify-content: flex-start !important;
       }
 
       .plezzy-bento-card:hover {
         transform: translateY(-5px) !important;
-        box-shadow: 0 22px 50px -12px rgba(0, 0, 0, 0.28) !important;
-        border-color: rgba(255, 255, 255, 0.75) !important;
+        box-shadow: 0 22px 50px -12px rgba(0, 0, 0, 0.55), 0 0 20px rgba(248, 39, 147, 0.18) !important;
+        border-color: rgba(248, 39, 147, 0.5) !important;
       }
 
       .plezzy-bento-card-5 {
@@ -1526,13 +1525,12 @@
         grid-column: span 7 / span 7 !important;
       }
 
-      @media (max-width: 900px) {
-        .plezzy-bento-grid {
-          gap: 12px !important;
-        }
-        .plezzy-bento-card {
-          min-height: 360px !important;
-        }
+      .plezzy-bento-image-wrap {
+        position: relative !important;
+        width: 100% !important;
+        height: 340px !important;
+        background-color: #111111 !important;
+        overflow: hidden !important;
       }
 
       .plezzy-bento-bg-img {
@@ -1551,39 +1549,38 @@
       }
 
       .plezzy-bento-overlay {
-        position: absolute !important;
-        inset: 0 !important;
-        background: linear-gradient(to top, rgba(14, 4, 8, 0.94) 0%, rgba(20, 6, 12, 0.6) 38%, rgba(0, 0, 0, 0.12) 65%, transparent 100%) !important;
-        z-index: 2 !important;
-        pointer-events: none !important;
+        display: none !important;
       }
 
       .plezzy-bento-top-bar {
-        position: relative !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
         z-index: 3 !important;
         display: flex !important;
         align-items: center !important;
         justify-content: space-between !important;
-        padding: 18px 20px !important;
+        padding: 16px 18px !important;
       }
 
       .plezzy-bento-badge {
-        background-color: #f82793 !important;
-        color: #ffffff !important;
-        font-family: 'Plus Jakarta Sans', sans-serif !important;
-        font-size: 11px !important;
+        background-color: #FEE871 !important;
+        color: #111111 !important;
+        font-family: 'Swiss', 'Plus Jakarta Sans', sans-serif !important;
+        font-size: 12.5px !important;
         font-weight: 800 !important;
         letter-spacing: 0.05em !important;
-        padding: 4px 10px !important;
+        padding: 6px 14px !important;
         border-radius: 9999px !important;
-        box-shadow: 0 2px 10px rgba(248, 39, 147, 0.4) !important;
+        box-shadow: 0 2px 12px rgba(254, 232, 113, 0.45) !important;
       }
 
       .plezzy-bento-rating {
-        background: rgba(0, 0, 0, 0.5) !important;
+        background: rgba(0, 0, 0, 0.55) !important;
         backdrop-filter: blur(12px) !important;
         -webkit-backdrop-filter: blur(12px) !important;
-        border: 1px solid rgba(255, 255, 255, 0.18) !important;
+        border: 1px solid rgba(255, 255, 255, 0.22) !important;
         border-radius: 9999px !important;
         padding: 4px 10px !important;
         display: flex !important;
@@ -1597,30 +1594,33 @@
 
       .plezzy-bento-bottom-panel {
         position: relative !important;
-        z-index: 3 !important;
-        padding: 20px 24px !important;
+        z-index: 2 !important;
+        width: 100% !important;
+        background-color: #0c0a0e !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+        padding: 14px 18px 16px 18px !important;
         color: #ffffff !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 8px !important;
       }
 
       .plezzy-bento-product-tag {
-        font-size: 11px !important;
-        font-weight: 700 !important;
-        letter-spacing: 0.16em !important;
-        text-transform: none !important;
-        color: #f82793 !important;
-        margin-bottom: 4px !important;
-        display: block !important;
+        display: none !important;
       }
 
       .plezzy-bento-product-name {
         font-family: 'Swiss', 'Plus Jakarta Sans', sans-serif !important;
-        font-size: clamp(1.35rem, 2.2vw, 1.85rem) !important;
+        font-size: 18px !important;
         font-weight: 800 !important;
         color: #ffffff !important;
-        text-transform: capitalize !important;
-        margin: 0 0 6px 0 !important;
-        line-height: 1.15 !important;
-        text-shadow: 0 2px 10px rgba(0,0,0,0.8) !important;
+        line-height: 1.2 !important;
+        margin: 0 !important;
+        text-shadow: none !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
       }
 
       .plezzy-bento-product-desc {
@@ -1631,28 +1631,31 @@
         display: flex !important;
         align-items: center !important;
         justify-content: space-between !important;
-        gap: 12px !important;
-        border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
-        padding-top: 12px !important;
+        gap: 10px !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+        padding-top: 10px !important;
+        margin-top: 2px !important;
       }
 
       .plezzy-bento-pricing {
         display: flex !important;
         align-items: baseline !important;
-        gap: 8px !important;
+        gap: 6px !important;
       }
 
       .plezzy-bento-price {
         color: #ffffff !important;
         font-weight: 800 !important;
-        font-size: 17px !important;
-        font-family: 'Plus Jakarta Sans', sans-serif !important;
+        font-size: 16px !important;
+        font-family: 'Swiss', 'Plus Jakarta Sans', sans-serif !important;
       }
 
       .plezzy-bento-compare {
-        color: rgba(255, 255, 255, 0.5) !important;
+        color: rgba(255, 255, 255, 0.45) !important;
+        font-size: 12.5px !important;
         text-decoration: line-through !important;
-        font-size: 13px !important;
+        font-family: 'Plus Jakarta Sans', sans-serif !important;
+      }
         font-family: 'Plus Jakarta Sans', sans-serif !important;
       }
 
@@ -3145,14 +3148,24 @@
         .plezzy-bento-card-7 {
           grid-column: span 1 / span 1 !important;
           width: 100% !important;
-          aspect-ratio: 1 / 1 !important;
+          aspect-ratio: auto !important;
           min-height: unset !important;
           max-height: unset !important;
           border-radius: 16px !important;
           display: flex !important;
           flex-direction: column !important;
-          justify-content: space-between !important;
+          justify-content: flex-start !important;
           position: relative !important;
+          overflow: hidden !important;
+          background-color: #0c0a0e !important;
+          border: 1px solid rgba(255, 255, 255, 0.18) !important;
+        }
+        .plezzy-bento-image-wrap {
+          position: relative !important;
+          width: 100% !important;
+          aspect-ratio: 1 / 1 !important;
+          height: auto !important;
+          background-color: #111111 !important;
           overflow: hidden !important;
         }
         .plezzy-bento-bg-img {
@@ -3164,12 +3177,13 @@
           object-position: center !important;
         }
         .plezzy-bento-overlay {
-          position: absolute !important;
-          inset: 0 !important;
-          background: linear-gradient(to top, rgba(14, 4, 8, 0.95) 0%, rgba(20, 6, 12, 0.72) 48%, rgba(0, 0, 0, 0.15) 75%, transparent 100%) !important;
+          display: none !important;
         }
         .plezzy-bento-top-bar {
-          position: relative !important;
+          position: absolute !important;
+          top: 0 !important;
+          left: 0 !important;
+          right: 0 !important;
           z-index: 3 !important;
           display: flex !important;
           align-items: center !important;
@@ -3177,9 +3191,9 @@
           padding: 8px 8px !important;
         }
         .plezzy-bento-badge {
-          font-size: 8px !important;
+          font-size: 8.5px !important;
           font-weight: 800 !important;
-          padding: 2px 6px !important;
+          padding: 3px 7px !important;
           border-radius: 9999px !important;
           line-height: 1.2 !important;
         }
@@ -3191,23 +3205,29 @@
         }
         .plezzy-bento-bottom-panel {
           position: relative !important;
-          z-index: 3 !important;
-          padding: 6px 8px 8px 8px !important;
+          z-index: 2 !important;
+          width: 100% !important;
+          background-color: #0c0a0e !important;
+          border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+          padding: 8px 8px 10px 8px !important;
+          display: flex !important;
+          flex-direction: column !important;
+          gap: 4px !important;
+          box-sizing: border-box !important;
         }
         .plezzy-bento-product-tag {
-          font-size: 7.5px !important;
-          letter-spacing: 0.1em !important;
-          margin-bottom: 1px !important;
-          line-height: 1 !important;
+          display: none !important;
         }
         .plezzy-bento-product-name {
-          font-size: clamp(12px, 3.4vw, 15px) !important;
+          font-size: clamp(12px, 3.4vw, 14.5px) !important;
           font-weight: 800 !important;
-          line-height: 1.15 !important;
-          margin: 0 0 2px 0 !important;
+          line-height: 1.2 !important;
+          margin: 0 !important;
           white-space: nowrap !important;
           overflow: hidden !important;
           text-overflow: ellipsis !important;
+          color: #ffffff !important;
+          text-shadow: none !important;
         }
         .plezzy-bento-product-desc {
           display: none !important;
@@ -3218,13 +3238,13 @@
           justify-content: space-between !important;
           gap: 4px !important;
           padding-top: 5px !important;
-          border-top: 1px solid rgba(255, 255, 255, 0.14) !important;
+          border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
           margin-top: 2px !important;
         }
         .plezzy-bento-pricing {
           display: flex !important;
           align-items: baseline !important;
-          gap: 4px !important;
+          gap: 3px !important;
           white-space: nowrap !important;
         }
         .plezzy-bento-price {
@@ -3233,7 +3253,10 @@
           line-height: 1 !important;
         }
         .plezzy-bento-compare {
-          font-size: 9.5px !important;
+          font-size: 9px !important;
+          font-weight: 500 !important;
+          color: rgba(255, 255, 255, 0.45) !important;
+          text-decoration: line-through !important;
           line-height: 1 !important;
         }
         .plezzy-bento-add-btn {
