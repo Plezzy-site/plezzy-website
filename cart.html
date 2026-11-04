@@ -23,7 +23,7 @@
     <script>
       window.__PLEZZY_DEFAULT_VIEW__ = "cart";
     </script>
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261104_hero_wide_v21"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261104_hero_full_v22"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
@@ -617,20 +617,25 @@
       #hero {
         position: relative !important;
         width: 100% !important;
-        min-height: clamp(540px, 82vh, 860px) !important;
+        margin-top: 80px !important;
+        padding-top: 0 !important;
+        aspect-ratio: 1024 / 388 !important;
+        height: auto !important;
+        min-height: auto !important;
+        max-height: none !important;
         overflow: hidden !important;
         display: flex !important;
         flex-direction: column !important;
         justify-content: flex-end !important;
-        background-color: #000000 !important;
+        background-color: #f3acce !important;
       }
       #plezzy-hero-video-banner {
         position: absolute !important;
         inset: 0 !important;
         width: 100% !important;
         height: 100% !important;
-        object-fit: cover !important;
-        object-position: center center !important;
+        object-fit: contain !important;
+        object-position: top center !important;
         transform: none !important;
         animation: none !important;
         z-index: 0 !important;
@@ -639,15 +644,24 @@
       }
       @media (max-width: 768px) {
         #hero {
-          min-height: 75vh !important;
-          min-height: 75dvh !important;
-          padding-top: 64px !important;
+          margin-top: 60px !important;
+          padding-top: 0 !important;
+          width: 100% !important;
+          aspect-ratio: 1024 / 388 !important;
+          height: auto !important;
+          min-height: auto !important;
+          max-height: none !important;
+          background-color: #f3acce !important;
+          display: flex !important;
+          flex-direction: column !important;
+          justify-content: flex-end !important;
+          align-items: center !important;
         }
         #plezzy-hero-video-banner {
           transform: none !important;
           animation: none !important;
-          object-fit: cover !important;
-          object-position: center center !important;
+          object-fit: contain !important;
+          object-position: top center !important;
         }
         #hero-left-content {
           padding: 1.25rem 1.25rem 1.75rem 1.25rem !important;
@@ -2858,20 +2872,24 @@
           text-shadow: none !important;
         }
 
-        /* 2. Hero Section & Mobile Hero Image (Proportional for Wide Panoramic Banner) */
+        /* 2. Hero Section & Mobile Hero Image (Full Panoramic Banner - No Crop) */
         #hero {
-          min-height: clamp(320px, 48vh, 460px) !important;
-          min-height: clamp(320px, 48dvh, 460px) !important;
+          margin-top: 60px !important;
+          padding-top: 0 !important;
+          width: 100% !important;
+          aspect-ratio: 1024 / 388 !important;
+          height: auto !important;
+          min-height: auto !important;
+          max-height: none !important;
           background-color: #f3acce !important;
-          padding-top: 60px !important;
           display: flex !important;
           flex-direction: column !important;
           justify-content: flex-end !important;
           align-items: center !important;
         }
         #plezzy-hero-video-banner {
-          object-fit: cover !important;
-          object-position: center center !important;
+          object-fit: contain !important;
+          object-position: top center !important;
         }
         #hero-left-content {
           width: 100% !important;

@@ -9708,7 +9708,8 @@ function _F(){
           className:"w-full relative overflow-hidden flex flex-col justify-end select-none",
           style:{
             width:"100%",
-            minHeight:"clamp(460px, 58vh, 680px)",
+            marginTop:"80px",
+            aspectRatio:"1024 / 388",
             backgroundColor:"#f3acce",
             paddingTop:"0px"
           },
@@ -9717,16 +9718,16 @@ function _F(){
             // Full-Bleed Editorial Campaign Hero Banner (Full Size)
             v.jsx("img",{
               id:"plezzy-hero-video-banner",
-              src:"/assets/plezzy-hero-banner-new.jpg?v=20261104_hero_wide_v21",
+              src:"/assets/plezzy-hero-banner-new.jpg?v=20261104_hero_full_v22",
               alt:"PLEZZY Everyday Essentials",
-              className:"editorial-bw-img w-full h-full object-cover select-none",
+              className:"editorial-bw-img w-full h-full select-none",
               style:{
                 position:"absolute",
                 inset:0,
                 width:"100%",
                 height:"100%",
-                objectFit:"cover",
-                objectPosition:"center center",
+                objectFit:"contain",
+                objectPosition:"top center",
                 zIndex:0
               }
             }),
@@ -9736,7 +9737,7 @@ function _F(){
               style:{
                 position:"absolute",
                 inset:0,
-                background:"linear-gradient(to top, rgba(0,0,0,0.18) 0%, transparent 24%)",
+                background:"linear-gradient(to top, rgba(0,0,0,0.12) 0%, transparent 22%)",
                 zIndex:1,
                 pointerEvents:"none"
               }
@@ -9745,10 +9746,10 @@ function _F(){
             // LOWER-LEFT EDITORIAL CALLOUT CARD & CTA
             v.jsx("div",{
               id:"hero-left-content",
-              className:"relative z-10 p-4 sm:p-12 lg:p-16 text-center sm:text-left flex justify-center sm:justify-start",
+              className:"relative z-10 p-3 sm:p-8 lg:p-10 text-center sm:text-left flex justify-center sm:justify-start",
               style:{maxWidth:"860px"},
               children:v.jsx("div",{
-                className:"flex items-center gap-4",
+                className:"flex items-center justify-center sm:justify-start gap-4 w-full sm:w-auto",
                 children:v.jsx("button",{
                   onClick:()=>{
                     try { s(); } catch(e) {}
@@ -9758,17 +9759,17 @@ function _F(){
                     display:"inline-flex",
                     alignItems:"center",
                     justifyContent:"center",
-                    padding:"13px 30px",
+                    padding:"10px 24px",
                     backgroundColor:"#f82793",
                     color:"#ffffff",
                     fontFamily:"'Plus Jakarta Sans', -apple-system, sans-serif",
-                    fontSize:"12.5px",
+                    fontSize:"12px",
                     fontWeight:800,
                     letterSpacing:"0.06em",
                     borderRadius:"9999px",
                     border:"none",
                     cursor:"pointer",
-                    boxShadow:"0 6px 24px rgba(248,39,147,0.45)"
+                    boxShadow:"0 6px 20px rgba(248,39,147,0.45)"
                   },
                   className:"hover:bg-[#d41c7b] hover:scale-105 active:scale-95 transition-all",
                   children:"DISCOVER THE COLLECTION"
