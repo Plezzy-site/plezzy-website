@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Italiana&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261104_bento_mobile_rect_btn_v40"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261104_mobile_nav_search_v41"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
@@ -1831,16 +1831,15 @@
         height: 100vh !important;
         height: 100dvh !important;
         z-index: 9999 !important;
-        background-color: rgba(16, 20, 28, 0.75) !important;
+        background: rgba(255, 255, 255, 0.88) !important;
+        background-color: rgba(255, 255, 255, 0.88) !important;
         background-image: 
-          radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.38) 0%, rgba(210, 222, 238, 0.18) 32%, transparent 65%),
-          radial-gradient(circle at 15% 85%, rgba(240, 246, 255, 0.22) 0%, rgba(170, 185, 205, 0.12) 36%, transparent 60%),
-          linear-gradient(135deg, rgba(245, 248, 255, 0.22) 0%, rgba(145, 158, 178, 0.18) 45%, rgba(12, 16, 24, 0.82) 100%),
-          url('/assets/shiny-silver-foil-bg.jpg?v=20261102_sculptural_chrome_v4') !important;
-        background-size: cover, cover, cover, cover !important;
-        background-position: center, center, center, center !important;
-        background-attachment: fixed !important;
-        box-shadow: inset 0 0 140px rgba(255, 255, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.45) !important;
+          radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.96) 0%, rgba(245, 245, 250, 0.75) 50%, rgba(235, 238, 245, 0.6) 100%),
+          radial-gradient(circle at 15% 85%, rgba(255, 255, 255, 0.95) 0%, rgba(240, 243, 248, 0.7) 50%, rgba(230, 235, 245, 0.5) 100%) !important;
+        backdrop-filter: blur(32px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(32px) saturate(180%) !important;
+        box-shadow: inset 0 0 120px rgba(255, 255, 255, 0.7) !important;
+        color: #111111 !important;
         will-change: opacity, transform, backdrop-filter;
       }
 
@@ -1877,6 +1876,7 @@
       }
 
       .plezzy-menu-header {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
         padding-top: 28px !important;
         padding-bottom: 28px !important;
         min-height: 92px !important;
@@ -1928,6 +1928,9 @@
         width: 36px !important;
         height: 36px !important;
         font-size: 15px !important;
+        border: 1px solid rgba(0, 0, 0, 0.22) !important;
+        background-color: rgba(0, 0, 0, 0.05) !important;
+        color: #111111 !important;
         transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
                     border-color 0.3s ease,
                     background-color 0.3s ease,
@@ -1946,6 +1949,7 @@
         transform: rotate(90deg) scale(1.1) !important;
         border-color: #f82793 !important;
         background-color: rgba(248, 39, 147, 0.15) !important;
+        color: #f82793 !important;
         box-shadow: 0 0 16px rgba(248, 39, 147, 0.45) !important;
       }
 
@@ -2014,7 +2018,7 @@
         padding: 14px 0 !important;
         text-decoration: none !important;
         cursor: pointer !important;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
         transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
       }
 
@@ -2045,7 +2049,7 @@
         font-family: monospace !important;
         font-size: 13px !important;
         font-weight: 600 !important;
-        color: rgba(255, 255, 255, 0.5) !important;
+        color: rgba(0, 0, 0, 0.5) !important;
         letter-spacing: 0.08em !important;
         min-width: 24px !important;
         padding-top: 0 !important;
@@ -2057,7 +2061,7 @@
         font-style: normal !important;
         font-size: clamp(1.75rem, 6vw, 3.2rem) !important;
         font-weight: 700 !important;
-        color: #ffffff !important;
+        color: #111111 !important;
         line-height: 1.15 !important;
         white-space: nowrap !important;
         text-shadow: none !important;
@@ -2080,7 +2084,7 @@
       .plezzy-menu-nav-arrow {
         font-family: monospace !important;
         font-size: 18px !important;
-        color: rgba(255, 255, 255, 0.3) !important;
+        color: rgba(0, 0, 0, 0.35) !important;
         transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
         margin-left: auto !important;
         align-self: center !important;
@@ -2989,28 +2993,29 @@
           -webkit-tap-highlight-color: transparent !important;
         }
 
-        /* 1. Header & Navigation */
+        /* 1. Header & Navigation - Black Translucent (Matching Desktop) */
         header.header-pdp,
         header.nav-scrolled,
         header {
           height: 60px !important;
-          background-color: rgba(255, 255, 255, 0.92) !important;
-          backdrop-filter: blur(20px) saturate(180%) !important;
-          -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
-          border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+          background: rgba(15, 14, 18, 0.88) !important;
+          background-color: rgba(15, 14, 18, 0.88) !important;
+          backdrop-filter: blur(24px) saturate(180%) !important;
+          -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+          box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.35) !important;
         }
         header nav {
           height: 60px !important;
-          padding-left: 16px !important;
-          padding-right: 16px !important;
+          padding-left: 14px !important;
+          padding-right: 14px !important;
           display: flex !important;
           align-items: center !important;
           justify-content: space-between !important;
         }
         .plezzy-hamburger-btn {
-          width: 44px !important;
-          height: 44px !important;
+          width: 38px !important;
+          height: 38px !important;
           padding: 0 !important;
           margin: 0 !important;
           display: flex !important;
@@ -3025,26 +3030,26 @@
         }
         .plezzy-bar {
           height: 2.5px !important;
-          background-color: #111111 !important;
+          background-color: #ffffff !important;
           border-radius: 2px !important;
-          box-shadow: none !important;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
           transform-origin: left center !important;
           transition: all 0.25s ease !important;
         }
         .plezzy-bar-1,
         .plezzy-bar-2,
         .plezzy-bar-3 {
-          width: 24px !important;
-          background-color: #111111 !important;
-          box-shadow: none !important;
+          width: 22px !important;
+          background-color: #ffffff !important;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
           transform: none !important;
         }
         .plezzy-hamburger-btn:hover .plezzy-bar,
         .plezzy-hamburger-btn:active .plezzy-bar {
           background-color: #f82793 !important;
-          width: 24px !important;
+          width: 22px !important;
           transform: none !important;
-          box-shadow: none !important;
+          box-shadow: 0 0 10px rgba(248, 39, 147, 0.6) !important;
         }
         header span[style*="f82793"] {
           font-size: 32px !important;
@@ -3568,6 +3573,7 @@
          HEADER ACTION ICONS (ENLARGED SEARCH, ACCOUNT & CART, NO INR)
          ══════════════════════════════════════════════════════════════ */
       #plezzy-header-search-btn,
+      #plezzy-header-search-btn-mobile,
       .plezzy-header-search-btn,
       #plezzy-header-account-btn,
       .plezzy-header-account-btn {
@@ -3587,6 +3593,7 @@
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25) !important;
       }
       #plezzy-header-search-btn svg,
+      #plezzy-header-search-btn-mobile svg,
       .plezzy-header-search-btn svg,
       #plezzy-header-account-btn svg,
       .plezzy-header-account-btn svg {
@@ -3595,6 +3602,7 @@
         stroke: currentColor !important;
       }
       #plezzy-header-search-btn:hover,
+      #plezzy-header-search-btn-mobile:hover,
       .plezzy-header-search-btn:hover,
       #plezzy-header-account-btn:hover,
       .plezzy-header-account-btn:hover {
@@ -3603,6 +3611,14 @@
         color: #ffffff !important;
         transform: scale(1.08) !important;
         box-shadow: 0 4px 20px rgba(248, 39, 147, 0.5) !important;
+      }
+
+      /* Desktop vs Mobile Search button positioning */
+      .plezzy-header-search-mobile {
+        display: none !important;
+      }
+      .plezzy-header-search-desktop {
+        display: inline-flex !important;
       }
 
       .plezzy-header-cart-btn {
@@ -3646,7 +3662,14 @@
       }
 
       @media (max-width: 768px) {
+        .plezzy-header-search-mobile {
+          display: inline-flex !important;
+        }
+        .plezzy-header-search-desktop {
+          display: none !important;
+        }
         #plezzy-header-search-btn,
+        #plezzy-header-search-btn-mobile,
         .plezzy-header-search-btn,
         #plezzy-header-account-btn,
         .plezzy-header-account-btn {
@@ -3655,6 +3678,7 @@
           min-width: 40px !important;
         }
         #plezzy-header-search-btn svg,
+        #plezzy-header-search-btn-mobile svg,
         .plezzy-header-search-btn svg,
         #plezzy-header-account-btn svg,
         .plezzy-header-account-btn svg {
@@ -3681,6 +3705,7 @@
 
       @media (max-width: 390px) {
         #plezzy-header-search-btn,
+        #plezzy-header-search-btn-mobile,
         .plezzy-header-search-btn,
         #plezzy-header-account-btn,
         .plezzy-header-account-btn {
@@ -3689,6 +3714,7 @@
           min-width: 36px !important;
         }
         #plezzy-header-search-btn svg,
+        #plezzy-header-search-btn-mobile svg,
         .plezzy-header-search-btn svg,
         #plezzy-header-account-btn svg,
         .plezzy-header-account-btn svg {

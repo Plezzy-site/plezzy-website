@@ -8856,8 +8856,8 @@ function _F(){
           className:"w-full px-4 sm:px-8 lg:px-12 h-16 sm:h-20 relative flex items-center justify-between",
           children:[
 
-            // Left Container: Three-Line Navigation Bar (All Devices)
-            v.jsx("div",{className:"flex items-center z-10",children:
+            // Left Container: Three-Line Navigation Bar (All Devices) + Mobile Search Button
+            v.jsxs("div",{className:"flex items-center gap-2 sm:gap-3.5 z-10",children:[
               v.jsxs("button",{
                 onClick:handleOpenNav,
                 className:"plezzy-hamburger-btn text-white flex flex-col justify-center items-start gap-[5px] cursor-pointer bg-transparent border-0 outline-none focus:outline-none",
@@ -8868,8 +8868,19 @@ function _F(){
                   v.jsx("span",{className:"plezzy-bar plezzy-bar-2"}),
                   v.jsx("span",{className:"plezzy-bar plezzy-bar-3"})
                 ]
+              }),
+              // Mobile Search: Brought from right to left on mobile (< 768px / sm:hidden)
+              v.jsx("button",{
+                id:"plezzy-header-search-btn-mobile",
+                onClick:()=>{s();setIsSearchOpen(!isSearchOpen)},
+                className:"plezzy-header-search-btn plezzy-header-search-mobile flex sm:hidden items-center justify-center rounded-full transition-all focus:outline-none cursor-pointer",
+                "aria-label":"Search",
+                children:v.jsxs("svg",{width:"20",height:"20",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2.2",strokeLinecap:"round",strokeLinejoin:"round",children:[
+                  v.jsx("circle",{cx:"11",cy:"11",r:"8"}),
+                  v.jsx("line",{x1:"21",y1:"21",x2:"16.65",y2:"16.65"})
+                ]})
               })
-            }),
+            ]}),
 
             // Center Brand Logo: Topicals Bold Header Typography
             v.jsx("div",{className:"absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-auto z-20 flex items-center justify-center",children:
@@ -8893,13 +8904,13 @@ function _F(){
               })
             }),
 
-            // Right Links: SEARCH, SIGN IN, Modern Frosted Cart Capsule (INR removed per user request)
+            // Right Links: SEARCH (desktop only), SIGN IN, Modern Frosted Cart Capsule (INR removed per user request)
             v.jsxs("div",{className:"flex items-center gap-2 sm:gap-3.5 z-10 text-xs font-bold uppercase tracking-wider text-white",children:[
-              // Search: Enlarged icon button
+              // Search: Enlarged icon button (Desktop only, hidden on mobile since moved to left)
               v.jsx("button",{
                 id:"plezzy-header-search-btn",
                 onClick:()=>{s();setIsSearchOpen(!isSearchOpen)},
-                className:"plezzy-header-search-btn flex items-center justify-center rounded-full transition-all focus:outline-none cursor-pointer",
+                className:"plezzy-header-search-btn plezzy-header-search-desktop hidden sm:flex items-center justify-center rounded-full transition-all focus:outline-none cursor-pointer",
                 "aria-label":"Search",
                 children:v.jsxs("svg",{width:"22",height:"22",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2.2",strokeLinecap:"round",strokeLinejoin:"round",children:[
                   v.jsx("circle",{cx:"11",cy:"11",r:"8"}),
@@ -8954,11 +8965,11 @@ function _F(){
 
           ]}),
 
-        // Search Drawer
-        isSearchOpen&&v.jsx("div",{className:"w-full border-b p-4 sm:p-6 shadow-2xl animate-in fade-in duration-150 relative z-30",style:{backgroundColor:"#181818",borderColor:"#2a2a2a",color:"#ffffff"},children:
+        // Search Drawer (Black Translucent Style)
+        isSearchOpen&&v.jsx("div",{className:"w-full border-b p-4 sm:p-6 shadow-2xl animate-in fade-in duration-150 relative z-30 plezzy-search-drawer",style:{backgroundColor:"rgba(18, 16, 22, 0.95)",backdropFilter:"blur(24px)",WebkitBackdropFilter:"blur(24px)",borderColor:"rgba(255, 255, 255, 0.12)",color:"#ffffff"},children:
           v.jsxs("div",{className:"max-w-3xl mx-auto space-y-4",children:[
             v.jsxs("div",{className:"flex items-center justify-between gap-3",children:[
-              v.jsx("input",{type:"text",value:searchQuery,onChange:e=>setSearchQuery(e.target.value),placeholder:"search essentials, textures, shades...",autoFocus:true,className:"flex-1 rounded-full px-5 py-2.5 text-xs focus:outline-none",style:{backgroundColor:"#222222",borderColor:"#3a3a3a",color:"#ffffff",border:"1px solid #444"}}),
+              v.jsx("input",{type:"text",value:searchQuery,onChange:e=>setSearchQuery(e.target.value),placeholder:"search essentials, textures, shades...",autoFocus:true,className:"flex-1 rounded-full px-5 py-2.5 text-xs focus:outline-none",style:{backgroundColor:"rgba(255, 255, 255, 0.08)",borderColor:"rgba(255, 255, 255, 0.25)",color:"#ffffff",border:"1px solid rgba(255, 255, 255, 0.25)"}}),
               v.jsx("button",{onClick:()=>setIsSearchOpen(false),className:"text-xs font-bold uppercase tracking-wider cursor-pointer",style:{color:"#aaaaaa"},children:"CLOSE"})
             ]}),
             v.jsx("div",{className:"grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 max-h-60 overflow-y-auto no-scrollbar",children:
@@ -8977,17 +8988,17 @@ function _F(){
         }),
 
         // ══════════════════════════════════════════════════════════════
-        // FULLSCREEN LUXURY EDITORIAL MENU OVERLAY (MATCHING REFERENCE)
+        // FULLSCREEN LUXURY EDITORIAL MENU OVERLAY (TRANSLUCENT WHITE)
         // ══════════════════════════════════════════════════════════════
         isMobileNavOpen && v.jsxs("div", {
-          className: `plezzy-menu-overlay ${isNavClosing ? "plezzy-menu-closing" : "plezzy-menu-opening"} fixed inset-0 z-[120] text-white flex flex-col justify-between overflow-y-auto select-none`,
+          className: `plezzy-menu-overlay ${isNavClosing ? "plezzy-menu-closing" : "plezzy-menu-opening"} fixed inset-0 z-[120] text-neutral-900 flex flex-col justify-between overflow-y-auto select-none`,
           onClick: (e) => {
             if (e.target === e.currentTarget) handleCloseNav();
           },
           children: [
             // ── Top Header Row inside Menu ───────────────────────────
             v.jsxs("div", {
-              className: "plezzy-menu-header w-full max-w-screen-xl mx-auto px-5 sm:px-12 py-7 sm:py-9 min-h-[92px] sm:min-h-[110px] flex items-center justify-between border-b border-white/10",
+              className: "plezzy-menu-header w-full max-w-screen-xl mx-auto px-5 sm:px-12 py-7 sm:py-9 min-h-[92px] sm:min-h-[110px] flex items-center justify-between border-b border-black/10",
               children: [
                 // Left: Brand Logo Wordmark (Pink - Larger)
                 v.jsx("a", {
@@ -9020,13 +9031,13 @@ function _F(){
                   })
                 }),
 
-                // Right: Close ✕ Button (Clean Circular - Text Removed)
+                // Right: Close ✕ Button (Clean Circular - Translucent White Theme)
                 v.jsx("button", {
                   onClick: () => handleCloseNav(),
                   "aria-label": "Close Menu",
-                  className: "plezzy-menu-close-btn flex items-center justify-center group p-2 text-white hover:text-[#f82793] transition-colors cursor-pointer",
+                  className: "plezzy-menu-close-btn flex items-center justify-center group p-2 text-neutral-800 hover:text-[#f82793] transition-colors cursor-pointer",
                   children: v.jsx("div", {
-                    className: "plezzy-close-circle w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-white/30 flex items-center justify-center font-bold text-sm bg-white/10 text-white group-hover:text-[#f82793] group-hover:border-[#f82793] transition-colors",
+                    className: "plezzy-close-circle w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-black/20 flex items-center justify-center font-bold text-sm bg-black/5 text-neutral-800 group-hover:text-[#f82793] group-hover:border-[#f82793] transition-colors",
                     children: "✕"
                   })
                 })
@@ -9161,12 +9172,12 @@ function _F(){
                           className: "plezzy-menu-nav-left flex items-center gap-3.5 sm:gap-6 text-left",
                           children: [
                             v.jsx("span", {
-                              className: "plezzy-menu-num font-mono text-xs sm:text-sm font-semibold text-white/50 tracking-wider shrink-0 text-left",
+                              className: "plezzy-menu-num font-mono text-xs sm:text-sm font-semibold text-neutral-500 tracking-wider shrink-0 text-left",
                               style: { minWidth: "24px" },
                               children: item.num
                             }),
                             v.jsx("span", {
-                              className: "plezzy-menu-nav-label font-serif font-bold text-2xl sm:text-3xl md:text-5xl text-white group-hover:text-[#f82793] transition-all leading-tight whitespace-nowrap",
+                              className: "plezzy-menu-nav-label font-serif font-bold text-2xl sm:text-3xl md:text-5xl text-neutral-900 group-hover:text-[#f82793] transition-all leading-tight whitespace-nowrap",
                               style: {
                                 fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif",
                                 fontWeight: 700
@@ -9176,7 +9187,7 @@ function _F(){
                           ]
                         }),
                         v.jsx("span", {
-                          className: "plezzy-menu-nav-arrow text-white/30 group-hover:text-[#f82793] group-hover:translate-x-1 transition-all text-sm sm:text-base font-mono pl-3 shrink-0",
+                          className: "plezzy-menu-nav-arrow text-neutral-400 group-hover:text-[#f82793] group-hover:translate-x-1 transition-all text-sm sm:text-base font-mono pl-3 shrink-0",
                           children: "→"
                         })
                       ]
