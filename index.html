@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Italiana&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261104_menu_logo_corner_v30"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261104_cart_pink_button_v31"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
@@ -657,7 +657,7 @@
           overflow: hidden !important;
         }
         #plezzy-hero-video-banner {
-          content: url('/assets/plezzy-hero-banner-tall.jpg?v=20261104_menu_logo_corner_v30') !important;
+          content: url('/assets/plezzy-hero-banner-tall.jpg?v=20261104_cart_pink_button_v31') !important;
           position: absolute !important;
           inset: 0 !important;
           width: 100% !important;
@@ -1774,6 +1774,58 @@
           -webkit-backdrop-filter: blur(0px) saturate(100%);
           transform: scale(0.985);
         }
+      }
+
+      /* Global Arbitrary Tailwind Support for Plezzy Pink #f82793 */
+      .bg-\[\#f82793\],
+      [class*="bg-[#f82793]"] {
+        background-color: #f82793 !important;
+        background: #f82793 !important;
+        color: #ffffff !important;
+      }
+      .hover\:bg-\[\#d41c7b\]:hover,
+      [class*="hover:bg-[#d41c7b]"]:hover {
+        background-color: #d41c7b !important;
+        background: #d41c7b !important;
+        color: #ffffff !important;
+      }
+      .text-\[\#f82793\],
+      [class*="text-[#f82793]"] {
+        color: #f82793 !important;
+      }
+      .border-\[\#f82793\],
+      [class*="border-[#f82793]"] {
+        border-color: #f82793 !important;
+      }
+
+      /* Cart Page Buttons */
+      .plezzy-cart-empty-btn,
+      a.plezzy-cart-empty-btn,
+      .plezzy-cart-checkout-btn,
+      button.plezzy-cart-checkout-btn {
+        background-color: #f82793 !important;
+        background: #f82793 !important;
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+        font-weight: 800 !important;
+        box-shadow: 0 10px 25px -4px rgba(248, 39, 147, 0.45) !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-decoration: none !important;
+        cursor: pointer !important;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      }
+
+      .plezzy-cart-empty-btn:hover,
+      a.plezzy-cart-empty-btn:hover,
+      .plezzy-cart-checkout-btn:hover,
+      button.plezzy-cart-checkout-btn:hover {
+        background-color: #d41c7b !important;
+        background: #d41c7b !important;
+        color: #ffffff !important;
+        transform: scale(1.03) !important;
+        box-shadow: 0 12px 28px -4px rgba(212, 28, 123, 0.55) !important;
       }
 
       .plezzy-menu-overlay {
@@ -3016,7 +3068,7 @@
           overflow: hidden !important;
         }
         #plezzy-hero-video-banner {
-          content: url('/assets/plezzy-hero-banner-tall.jpg?v=20261104_menu_logo_corner_v30') !important;
+          content: url('/assets/plezzy-hero-banner-tall.jpg?v=20261104_cart_pink_button_v31') !important;
           position: absolute !important;
           inset: 0 !important;
           width: 100% !important;

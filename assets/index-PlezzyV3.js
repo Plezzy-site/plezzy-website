@@ -7724,7 +7724,12 @@ function PlezzyCartPage({ onBackToHome, onNavigateToCollections, onSelectProduct
                   onNavigateToCollections();
                 }
               },
-              className: "inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#f82793] hover:bg-[#d41c7b] text-white font-extrabold text-xs uppercase tracking-wider shadow-lg shadow-[#f82793]/40 transition-all hover:scale-105 active:scale-95 cursor-pointer",
+              style: {
+                backgroundColor: "#f82793",
+                color: "#ffffff",
+                boxShadow: "0 10px 25px -4px rgba(248, 39, 147, 0.45)"
+              },
+              className: "plezzy-cart-empty-btn inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#f82793] hover:bg-[#d41c7b] text-white font-extrabold text-xs uppercase tracking-wider shadow-lg transition-all hover:scale-105 active:scale-95 cursor-pointer select-none",
               children: "Explore The Collection →"
             })
           ]
@@ -8058,7 +8063,12 @@ function PlezzyCartPage({ onBackToHome, onNavigateToCollections, onSelectProduct
                     v.jsxs("button", {
                       type: "button",
                       onClick: handleCheckout,
-                      className: "w-full py-4 px-6 rounded-full bg-[#f82793] hover:bg-[#d41c7b] text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider shadow-xl shadow-[#f82793]/40 hover:scale-[1.02] active:scale-98 transition-all flex items-center justify-center gap-2 cursor-pointer",
+                      style: {
+                        backgroundColor: "#f82793",
+                        color: "#ffffff",
+                        boxShadow: "0 10px 25px -4px rgba(248, 39, 147, 0.45)"
+                      },
+                      className: "plezzy-cart-checkout-btn w-full py-4 px-6 rounded-full bg-[#f82793] hover:bg-[#d41c7b] text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider shadow-xl hover:scale-[1.02] active:scale-98 transition-all flex items-center justify-center gap-2 cursor-pointer select-none",
                       children: [
                         v.jsx("span", { children: "Proceed To Checkout" }),
                         v.jsx("span", { children: "→" })
