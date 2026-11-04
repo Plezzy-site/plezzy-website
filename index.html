@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Italiana&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261104_marquee_dolphin_v42"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261104_shop_luxe_silver_v43"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
@@ -3433,11 +3433,13 @@
          1. Hero "Explore Now" button (#hero-explore-btn)
          2. Header Cart capsule button (.plezzy-header-cart-btn)
          3. Bento Grid "Add to Cart" button (.plezzy-bento-add-btn)
+         4. Split Panels "Shop Luxe" & "Shop Standard" buttons (.plezzy-split-shop-btn)
          ══════════════════════════════════════════════════════════════ */
       #hero-explore-btn,
       #hero-left-content button,
       .plezzy-header-cart-btn,
-      .plezzy-bento-add-btn {
+      .plezzy-bento-add-btn,
+      .plezzy-split-shop-btn {
         background: linear-gradient(135deg, #eaebed 0%, #ffffff 32%, #cfd3d8 68%, #f4f5f7 100%) !important;
         background-color: #eaebed !important;
         color: #111111 !important;
@@ -3458,7 +3460,9 @@
       #hero-explore-btn:hover,
       #hero-left-content button:hover,
       .plezzy-header-cart-btn:hover,
-      .plezzy-bento-add-btn:hover {
+      .plezzy-bento-add-btn:hover,
+      .plezzy-split-shop-btn:hover,
+      .split-panel-editorial:hover .plezzy-split-shop-btn {
         background: #f82793 !important;
         background-color: #f82793 !important;
         color: #ffffff !important;
@@ -3475,7 +3479,8 @@
       #hero-explore-btn:active,
       #hero-left-content button:active,
       .plezzy-header-cart-btn:active,
-      .plezzy-bento-add-btn:active {
+      .plezzy-bento-add-btn:active,
+      .plezzy-split-shop-btn:active {
         transform: scale(0.96) !important;
       }
 
@@ -3496,6 +3501,39 @@
         align-items: center !important;
         justify-content: center !important;
         min-height: 48px !important;
+      }
+
+      /* Split Editorial Shop Luxe & Shop Standard Silver Capsule Buttons */
+      .plezzy-split-shop-btn {
+        width: auto !important;
+        max-width: none !important;
+        height: auto !important;
+        padding: 13px 30px !important;
+        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+        font-size: 13px !important;
+        font-weight: 800 !important;
+        letter-spacing: 0.12em !important;
+        text-transform: uppercase !important;
+        border-radius: 9999px !important;
+        white-space: nowrap !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        min-height: 44px !important;
+        text-decoration: none !important;
+        position: relative !important;
+        z-index: 20 !important;
+      }
+      .plezzy-split-shop-btn .plezzy-split-btn-arrow {
+        font-size: 15px !important;
+        line-height: 1 !important;
+        display: inline-block !important;
+      }
+
+      /* Ensure removal of Collection Tag pills */
+      .split-panel-editorial .split-content span.rounded-full {
+        display: none !important;
       }
 
       /* Bento Add to Cart Button (Desktop) */
@@ -3718,6 +3756,11 @@
         }
         .plezzy-marquee-dolphin {
           height: 19px !important;
+        }
+        .plezzy-split-shop-btn {
+          padding: 11px 24px !important;
+          font-size: 12px !important;
+          min-height: 40px !important;
         }
       }
 

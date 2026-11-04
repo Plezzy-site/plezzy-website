@@ -10068,14 +10068,6 @@ function _F(){
                   v.jsxs("div",{
                     className:"split-content relative z-10 space-y-3.5 transition-transform duration-500 ease-out group-hover:-translate-y-1.5 text-left max-w-lg",
                     children:[
-                      // Subtitle / Collection Tag
-                      v.jsx("div",{children:
-                        v.jsx("span",{
-                          className:"inline-flex items-center px-2.5 py-0.5 rounded-full bg-black/60 text-[#f82793] border border-white/15 backdrop-blur-xs text-[10px] sm:text-[11px] font-extrabold uppercase tracking-[0.22em]",
-                          children:"THE INDULGENT COLLECTION"
-                        })
-                      }),
-
                       // Category Title
                       v.jsx("h2",{
                         className:"font-black uppercase tracking-tight text-white m-0",
@@ -10096,16 +10088,17 @@ function _F(){
                         children:"Elevated essentials for a more indulgent experience."
                       }),
 
-                      // Minimal Luxury CTA
+                      // Luxury Silver CTA Button (Turns Pink on Hover)
                       v.jsx("div",{
-                        className:"pt-3",
-                        children: v.jsxs("span",{
-                          className:"text-xs sm:text-[13px] font-extrabold uppercase tracking-[0.18em] text-white inline-flex items-center gap-2 pb-1 border-b border-white/40 group-hover:border-[#f82793] group-hover:text-[#f82793] transition-all duration-300",
-                          style:{textShadow:"0 1px 8px rgba(0,0,0,0.8)"},
+                        className:"pt-2 sm:pt-3",
+                        children: v.jsxs("button",{
+                          type:"button",
+                          onClick:(e)=>{ e.stopPropagation(); handleCategoryNavigation("luxe"); },
+                          className:"plezzy-split-shop-btn",
                           children:[
                             "SHOP LUXE",
                             v.jsx("span",{
-                              className:"inline-block transition-transform duration-300 group-hover:translate-x-1.5",
+                              className:"plezzy-split-btn-arrow inline-block transition-transform duration-300 group-hover:translate-x-1.5",
                               children:"→"
                             })
                           ]
@@ -10149,14 +10142,6 @@ function _F(){
                   v.jsxs("div",{
                     className:"split-content relative z-10 space-y-3.5 transition-transform duration-500 ease-out group-hover:-translate-y-1.5 text-left max-w-lg",
                     children:[
-                      // Subtitle / Collection Tag
-                      v.jsx("div",{children:
-                        v.jsx("span",{
-                          className:"inline-flex items-center px-2.5 py-0.5 rounded-full bg-black/60 text-[#f82793] border border-white/15 backdrop-blur-xs text-[10px] sm:text-[11px] font-extrabold uppercase tracking-[0.22em]",
-                          children:"THE EVERYDAY COLLECTION"
-                        })
-                      }),
-
                       // Category Title
                       v.jsx("h2",{
                         className:"font-black uppercase tracking-tight text-white m-0",
@@ -10177,16 +10162,17 @@ function _F(){
                         children:"Everyday essentials, done well."
                       }),
 
-                      // Minimal Luxury CTA
+                      // Luxury Silver CTA Button (Turns Pink on Hover)
                       v.jsx("div",{
-                        className:"pt-3",
-                        children: v.jsxs("span",{
-                          className:"text-xs sm:text-[13px] font-extrabold uppercase tracking-[0.18em] text-white inline-flex items-center gap-2 pb-1 border-b border-white/40 group-hover:border-[#f82793] group-hover:text-[#f82793] transition-all duration-300",
-                          style:{textShadow:"0 1px 8px rgba(0,0,0,0.8)"},
+                        className:"pt-2 sm:pt-3",
+                        children: v.jsxs("button",{
+                          type:"button",
+                          onClick:(e)=>{ e.stopPropagation(); handleCategoryNavigation("standard"); },
+                          className:"plezzy-split-shop-btn",
                           children:[
                             "SHOP STANDARD",
                             v.jsx("span",{
-                              className:"inline-block transition-transform duration-300 group-hover:translate-x-1.5",
+                              className:"plezzy-split-btn-arrow inline-block transition-transform duration-300 group-hover:translate-x-1.5",
                               children:"→"
                             })
                           ]
