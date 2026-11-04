@@ -4,7 +4,7 @@
     "slug": "pocket-muse",
     "name": "Pocket Muse",
     "subtitle": "Ultra-smooth palm-sculpted pebble with whisper acoustic dampening",
-    "category": "MASSAGERS",
+    "category": "STANDARD",
     "badge": "30% OFF",
     "role": "palm acoustic resonance & velvety tactile wellness",
     "tagline": "An ultra-smooth, palm-sculpted tactile pebble with whisper acoustic dampening and water-resistant finish.",
@@ -65,11 +65,9 @@
     "price": 2499,
     "priceNumeric": 2499,
     "categories": [
-      "ALL",
-      "FOR HER",
-      "FOR HIM",
-      "FOR COUPLES",
-      "MASSAGERS"
+      "STANDARD",
+      "HIM",
+      "HER"
     ],
     "badgeType": "discount",
     "originalINR": 3499
@@ -79,7 +77,7 @@
     "slug": "cloud-kiss",
     "name": "Cloud Kiss",
     "subtitle": "Frosted silicone body with floating celestial hearts & dual harmonic motors",
-    "category": "MASSAGERS",
+    "category": "LUX",
     "badge": "30% OFF",
     "role": "dual-point harmonic resonance with floating celestial hearts",
     "tagline": "Translucent frosted silicone body infused with floating celestial hearts and dual harmonic motors.",
@@ -140,10 +138,8 @@
     "price": 3999,
     "priceNumeric": 3999,
     "categories": [
-      "ALL",
-      "FOR HER",
-      "FOR COUPLES",
-      "MASSAGERS"
+      "LUX",
+      "HER"
     ],
     "badgeType": "discount",
     "originalINR": 4999
@@ -153,7 +149,7 @@
     "slug": "banana-espresso",
     "name": "Banana Espresso",
     "subtitle": "pH-balanced organic botanical intimacy serum for silky hydration",
-    "category": "ELIXIRS & LUBES",
+    "category": "LUBES",
     "badge": "BEST SELLER",
     "role": "ultra-glide clean moisture & botanical nourishment",
     "tagline": "pH-balanced organic botanical intimacy serum formulated for silky, long-lasting hydration.",
@@ -208,11 +204,10 @@
     "price": 1299,
     "priceNumeric": 1299,
     "categories": [
-      "ALL",
-      "ELIXIRS & LUBES",
-      "FOR COUPLES",
-      "FOR HER",
-      "FOR HIM"
+      "STANDARD",
+      "HIM",
+      "HER",
+      "LUBES"
     ],
     "badgeType": "bestseller",
     "originalINR": 1699
@@ -222,7 +217,7 @@
     "slug": "rose-rush",
     "name": "Rose Rush",
     "subtitle": "Sculptural flexible wand in frosted silicone with deep rumbly vibrations",
-    "category": "MASSAGERS",
+    "category": "LUX",
     "badge": "30% OFF",
     "role": "targeted acupressure & whisper-quiet sonic depth",
     "tagline": "Sculptural flexible wand in frosted silicone with deep rumbly vibrations for pinpoint release.",
@@ -283,9 +278,8 @@
     "price": 3499,
     "priceNumeric": 3499,
     "categories": [
-      "ALL",
-      "FOR HER",
-      "MASSAGERS"
+      "LUX",
+      "HER"
     ],
     "badgeType": "discount",
     "originalINR": 4299
@@ -295,12 +289,10 @@
     "slug": "velvet-solstice",
     "name": "Velvet Solstice",
     "subtitle": "Dual-ended wave sculpture engineered with whisper-quiet low-frequency resonance",
-    "category": "MASSAGERS",
+    "category": "LUX",
     "categories": [
-      "ALL",
-      "FOR HER",
-      "FOR COUPLES",
-      "MASSAGERS"
+      "LUX",
+      "HER"
     ],
     "badge": "NEW LAUNCH",
     "badgeType": "new",
@@ -365,11 +357,10 @@
     "slug": "rose-petal-touch",
     "name": "Rose Petal Touch",
     "subtitle": "Ergonomic ribbed contouring with 10 calibrated wave rhythms for external stimulation",
-    "category": "MASSAGERS",
+    "category": "LUX",
     "categories": [
-      "ALL",
-      "FOR HER",
-      "MASSAGERS"
+      "LUX",
+      "HER"
     ],
     "badge": "NEW LAUNCH",
     "badgeType": "new",
@@ -428,12 +419,11 @@
     "slug": "suede-travel-pouch",
     "name": "Suede Travel Pouch",
     "subtitle": "Ultra-soft antimicrobial vegan suede pouch with hidden zip for confidential travel",
-    "category": "ACCESSORIES & CARE",
+    "category": "STANDARD",
     "categories": [
-      "ALL",
-      "ACCESSORIES & CARE",
-      "FOR HIM",
-      "FOR HER"
+      "STANDARD",
+      "HIM",
+      "HER"
     ],
     "badge": "ESSENTIAL",
     "badgeType": "essential",
@@ -490,11 +480,12 @@
     "slug": "the-sensory-ritual-set",
     "name": "The Sensory Ritual Set",
     "subtitle": "Complete wellness ritual: Pocket Muse, Banana Espresso serum & travel pouch",
-    "category": "BUNDLES & GIFTING",
+    "category": "LUX",
     "categories": [
-      "ALL",
-      "BUNDLES & GIFTING",
-      "FOR COUPLES"
+      "LUX",
+      "HER",
+      "HIM",
+      "LUBES"
     ],
     "badge": "SAVE 35%",
     "badgeType": "discount",
@@ -545,11 +536,12 @@
     "slug": "the-lovers-suite",
     "name": "The Lovers Suite",
     "subtitle": "The ultimate couples gift box: Cloud Kiss, Rose Rush & botanical elixir",
-    "category": "BUNDLES & GIFTING",
+    "category": "LUX",
     "categories": [
-      "ALL",
-      "BUNDLES & GIFTING",
-      "FOR COUPLES"
+      "LUX",
+      "HER",
+      "HIM",
+      "LUBES"
     ],
     "badge": "LIMITED EDITION",
     "badgeType": "limited",
@@ -600,11 +592,11 @@
     "slug": "midnight-play-sensory-cards",
     "name": "Extremely Naughty Cards",
     "subtitle": "Intimate conversation cards & sensory game prompts to elevate touch and connection",
-    "category": "DIGITAL GUIDES",
+    "category": "STANDARD",
     "categories": [
-      "ALL",
-      "DIGITAL GUIDES",
-      "FOR COUPLES"
+      "STANDARD",
+      "HIM",
+      "HER"
     ],
     "badge": "NEW LAUNCH",
     "badgeType": "new",

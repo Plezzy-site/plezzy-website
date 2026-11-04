@@ -4327,7 +4327,7 @@ function PlezzyAdminPanel({ prods, setProds, onBackToStore, onSelectProduct, def
   const saveCatalog = (updated) => {
     setProds(updated);
     try {
-      localStorage.setItem("plezzy_catalog_v31", JSON.stringify(updated));
+      localStorage.setItem("plezzy_catalog_v44", JSON.stringify(updated));
       localStorage.setItem("plezzy_catalog_modified", "true");
     } catch(e) {}
   };
@@ -7162,21 +7162,41 @@ const allCatalogProducts = [
 function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCart, onBuyNow, currency }) {
   const { playClickFeedback: s } = Pn();
   const { cart, addToCart, removeFromCart, updateQuantity, totalItemsCount, totalAmountINR, formatPrice } = xi();
-  const [activeCategory, setActiveCategory] = G.useState("ALL");
+  const filterTabs = [
+    "LUX",
+    "STANDARD",
+    "HIM",
+    "HER",
+    "LUBES"
+  ];
+
+  const [activeCategory, setActiveCategory] = G.useState(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const col = (params.get("collection") || "").toUpperCase();
+      if (col === "STANDARD") return "STANDARD";
+      if (col === "HIM" || col === "FOR HIM") return "HIM";
+      if (col === "HER" || col === "FOR HER") return "HER";
+      if (col === "LUBES" || col === "LUBE" || col === "ELIXIRS") return "LUBES";
+      if (col === "LUX" || col === "LUXE") return "LUX";
+    } catch(e) {}
+    return "LUX";
+  });
+
+  G.useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const col = (params.get("collection") || "").toUpperCase();
+      if (col === "STANDARD") setActiveCategory("STANDARD");
+      else if (col === "HIM" || col === "FOR HIM") setActiveCategory("HIM");
+      else if (col === "HER" || col === "FOR HER") setActiveCategory("HER");
+      else if (col === "LUBES" || col === "LUBE" || col === "ELIXIRS") setActiveCategory("LUBES");
+      else if (col === "LUX" || col === "LUXE") setActiveCategory("LUX");
+    } catch(e) {}
+  }, []);
+
   const [addedItems, setAddedItems] = G.useState({});
   const [sortBy, setSortBy] = G.useState("featured");
-
-  const filterTabs = [
-    "ALL",
-    "FOR HIM",
-    "FOR HER",
-    "DIGITAL GUIDES",
-    "FOR COUPLES",
-    "MASSAGERS",
-    "BUNDLES & GIFTING",
-    "ELIXIRS & LUBES",
-    "ACCESSORIES & CARE"
-  ];
 
   // Merge dynamic prods with full catalog
   const catalogList = G.useMemo(() => {
@@ -7209,15 +7229,42 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
     return list;
   }, [prods]);
 
+  const matchesCategory = (p, cat) => {
+    if (!cat) return true;
+    const c = String(cat).toUpperCase();
+    const pCats = Array.isArray(p.categories) ? p.categories.map(x => String(x).toUpperCase()) : [];
+    const pCat = String(p.category || "").toUpperCase();
+    const pid = String(p.id || "").toLowerCase();
+
+    if (c === "LUX" || c === "LUXE") {
+      return pCats.includes("LUX") || pCats.includes("LUXE") || pCat === "LUX" || pCat === "LUXE" ||
+             ['plz-lovers-suite', 'plz-ritual-set', 'plz-dual-wand', 'plz-velvet-solstice', 'plz-cherry-wand', 'plz-rose-petal'].includes(pid) ||
+             (p.priceINR || p.price || 0) >= 2800;
+    }
+    if (c === "STANDARD") {
+      return pCats.includes("STANDARD") || pCat === "STANDARD" ||
+             ['plz-pebble', 'plz-elixir', 'plz-suede-pouch', 'plz-cards-guide'].includes(pid) ||
+             (p.priceINR || p.price || 0) < 2800;
+    }
+    if (c === "HIM") {
+      return pCats.includes("HIM") || pCats.includes("FOR HIM") || pCat.includes("HIM") ||
+             ['plz-pebble', 'plz-elixir', 'plz-suede-pouch', 'plz-cards-guide', 'plz-lovers-suite', 'plz-ritual-set'].includes(pid);
+    }
+    if (c === "HER") {
+      return pCats.includes("HER") || pCats.includes("FOR HER") || pCat.includes("HER") ||
+             ['plz-dual-wand', 'plz-cherry-wand', 'plz-velvet-solstice', 'plz-rose-petal', 'plz-pebble', 'plz-elixir', 'plz-suede-pouch', 'plz-lovers-suite'].includes(pid);
+    }
+    if (c === "LUBES") {
+      return pCats.includes("LUBES") || pCats.includes("ELIXIRS & LUBES") || pCats.includes("LUBE") ||
+             pCat.includes("LUBE") || pCat.includes("ELIXIR") ||
+             ['plz-elixir', 'plz-ritual-set', 'plz-lovers-suite'].includes(pid);
+    }
+    return pCats.includes(c) || pCat === c;
+  };
+
   // Filtered by active tab and sort order
   const displayedProducts = G.useMemo(() => {
-    let list = activeCategory === "ALL" 
-      ? [...catalogList]
-      : catalogList.filter(p => {
-          if (p.category && p.category.toUpperCase() === activeCategory) return true;
-          if (p.categories && p.categories.some(c => c.toUpperCase() === activeCategory)) return true;
-          return false;
-        });
+    let list = catalogList.filter(p => matchesCategory(p, activeCategory));
 
     if (sortBy === "price-low") {
       list.sort((a, b) => (a.priceINR || 0) - (b.priceINR || 0));
@@ -7289,6 +7336,10 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
               onClick: () => {
                 try { s(); } catch (e) {}
                 setActiveCategory(tab);
+                try {
+                  const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + "?collection=" + tab.toLowerCase();
+                  window.history.replaceState({ collection: tab.toLowerCase() }, '', newUrl);
+                } catch(e) {}
               },
               className: "px-3.5 sm:px-4 py-1.5 rounded-full text-[10.5px] sm:text-[11px] font-medium uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer " +
                 (isActive 
@@ -7316,7 +7367,7 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
               v.jsx("span", { children: "/" }),
               v.jsxs("span", {
                 className: "text-[#111111] font-medium",
-                children: [activeCategory === "ALL" ? "All products" : activeCategory.toLowerCase(), " (", displayedProducts.length, ")"]
+                children: [activeCategory.toUpperCase(), " (", displayedProducts.length, ")"]
               })
             ]
           }),
@@ -8473,11 +8524,11 @@ function _F(){
     // Dynamic Catalog State (LocalStorage + Remote /assets/products.json)
   const getInitialCatalog = () => {
     try {
-      const saved = localStorage.getItem("plezzy_catalog_v31");
+      const saved = localStorage.getItem("plezzy_catalog_v44");
       if (saved) {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0 && parsed.some(p => p.id && p.id.startsWith("plz-"))) return parsed;
-        else localStorage.removeItem("plezzy_catalog_v31");
+        else localStorage.removeItem("plezzy_catalog_v44");
       }
     } catch(e) {}
     return defaultProds;
@@ -8491,7 +8542,7 @@ function _F(){
       .then(data => {
         if (data && data.success && Array.isArray(data.products) && data.products.length > 0) {
           setProds(data.products);
-          try { localStorage.setItem("plezzy_catalog_v31", JSON.stringify(data.products)); } catch(e) {}
+          try { localStorage.setItem("plezzy_catalog_v44", JSON.stringify(data.products)); } catch(e) {}
         }
       })
       .catch(() => {
@@ -8500,7 +8551,7 @@ function _F(){
           .then(data => {
             if (Array.isArray(data) && data.length > 0) {
               setProds(data);
-              try { localStorage.setItem("plezzy_catalog_v31", JSON.stringify(data)); } catch(e) {}
+              try { localStorage.setItem("plezzy_catalog_v44", JSON.stringify(data)); } catch(e) {}
             }
           })
           .catch(() => {});
@@ -8764,18 +8815,7 @@ function _F(){
     if(e) try{ e.stopPropagation(); }catch(err){}
     try{ s(); }catch(err){}
     const cat = (category || "").toLowerCase();
-    try{
-      const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + "?collection=" + cat;
-      window.history.pushState({ collection: cat }, '', newUrl);
-    }catch(err){}
-
-    const targetProd = prods.find(p => (p.category && p.category.toLowerCase().includes(cat)) || (p.slug && p.slug.includes(cat))) || prods[0];
-
-    if(targetProd){
-      handleSelectProduct(targetProd);
-    } else {
-      handleShopClick();
-    }
+    window.location.href = "/collections.html?collection=" + encodeURIComponent(cat);
   };
 
   // Dynamic Alternating Cards for Meet The Product
