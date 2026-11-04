@@ -9842,15 +9842,12 @@ function _F(){
             v.jsxs("div", {
               className: "text-center mb-6 sm:mb-10",
               children: [
-                v.jsxs("div", {
+                v.jsx("div", {
                   className: "plezzy-editorial-header",
                   children: [
-                    v.jsx("span", {
-                      className: "plezzy-editorial-tag",
-                      children: "OUR"
-                    }),
                     v.jsx("h2", {
                       className: "plezzy-editorial-title",
+                      style: { color: "#f82793", textShadow: "none" },
                       children: "ESSENTIALS"
                     })
                   ]
@@ -9859,7 +9856,7 @@ function _F(){
                   style: {
                     fontFamily: "'Plus Jakarta Sans', sans-serif",
                     fontSize: "clamp(12px, 1.4vw, 14px)",
-                    color: "rgba(255, 255, 255, 0.75)",
+                    color: "#67645e",
                     opacity: 0.95,
                     fontWeight: 600,
                     letterSpacing: "0.04em",
@@ -10438,20 +10435,20 @@ function _F(){
           children:
             v.jsxs("div",{className:"relative z-10 space-y-4 max-w-4xl mx-auto",children:[
               v.jsx("p",{
-                className:"text-base sm:text-xl font-light tracking-tight text-[#6a5459] pb-2",
+                className:"text-base sm:text-xl font-light tracking-tight text-[#67645e] pb-2",
                 children:[
                   "Why so serious? Let's make flare-ups ",
-                  v.jsx("span",{className:"font-serif italic font-normal text-[#d66b7d]",children:"fun instead."})
+                  v.jsx("span",{className:"font-serif italic font-normal text-[#f82793]",children:"fun instead."})
                 ]
               }),
               v.jsx("h2",{
                 className:"giant-wordmark select-none",
-                style:{color:"#d66b7d",textShadow:"0 4px 30px rgba(214, 107, 125, 0.32), 0 0 60px rgba(214, 107, 125, 0.18)"},
+                style:{color:"#f82793",textShadow:"none"},
                 children:"plezzy"
               }),
               v.jsx("p",{
                 className:"text-sm sm:text-base md:text-lg uppercase tracking-[0.28em] font-mono font-bold",
-                style:{color:"#b85d6e",textShadow:"0 1px 6px rgba(184, 93, 110, 0.15)"},
+                style:{color:"#f82793",textShadow:"none"},
                 children:"everyday essentials, done well."
               })
             ]})
