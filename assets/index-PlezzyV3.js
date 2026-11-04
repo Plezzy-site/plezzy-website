@@ -8850,7 +8850,7 @@ function _F(){
             v.jsx("div",{className:"flex items-center z-10",children:
               v.jsxs("button",{
                 onClick:handleOpenNav,
-                className:"plezzy-hamburger-btn p-2 -ml-2 text-white flex flex-col justify-center items-start gap-[5px] cursor-pointer bg-transparent border-0 outline-none focus:outline-none",
+                className:"plezzy-hamburger-btn text-white flex flex-col justify-center items-start gap-[5px] cursor-pointer bg-transparent border-0 outline-none focus:outline-none",
                 "aria-label":"Open Navigation Menu",
                 title:"Open Menu",
                 children:[
@@ -8993,7 +8993,7 @@ function _F(){
             v.jsxs("div", {
               className: "plezzy-menu-header w-full max-w-screen-xl mx-auto px-5 sm:px-12 py-7 sm:py-9 min-h-[92px] sm:min-h-[110px] flex items-center justify-between border-b border-white/10",
               children: [
-                // Left: Brand Logo Wordmark (Pink)
+                // Left: Brand Logo Wordmark (Pink - Larger)
                 v.jsx("div", {
                   onClick: () => {
                     handleCloseNav(() => {
@@ -9007,28 +9007,23 @@ function _F(){
                       fontFamily: "'Swiss', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif",
                       fontWeight: 800,
                       letterSpacing: "-0.05em",
+                      lineHeight: "1",
                       color: "#f82793"
                     },
-                    className: "plezzy-menu-logo-text text-2xl sm:text-3xl lowercase text-[#f82793] transition-colors tracking-tighter select-none",
+                    className: "plezzy-menu-logo-text text-3xl sm:text-4xl md:text-5xl lowercase text-[#f82793] transition-colors tracking-tighter select-none font-extrabold",
                     children: "plezzy"
                   })
                 }),
 
-                // Right: CLOSE ✕ Button (Exact Style from Reference)
-                v.jsxs("button", {
+                // Right: Close ✕ Button (Clean Circular - Text Removed)
+                v.jsx("button", {
                   onClick: () => handleCloseNav(),
                   "aria-label": "Close Menu",
-                  className: "plezzy-menu-close-btn flex items-center gap-2 group p-2 text-white hover:text-[#f82793] transition-colors cursor-pointer",
-                  children: [
-                    v.jsx("span", {
-                      style: { fontFamily: "monospace", fontSize: "11px", fontWeight: "700", letterSpacing: "0.22em", textTransform: "uppercase" },
-                      children: "CLOSE"
-                    }),
-                    v.jsx("div", {
-                      className: "plezzy-close-circle w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-white/25 flex items-center justify-center font-bold text-xs bg-white/5",
-                      children: "✕"
-                    })
-                  ]
+                  className: "plezzy-menu-close-btn flex items-center justify-center group p-2 text-white hover:text-[#f82793] transition-colors cursor-pointer",
+                  children: v.jsx("div", {
+                    className: "plezzy-close-circle w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-white/30 flex items-center justify-center font-bold text-sm bg-white/10 text-white group-hover:text-[#f82793] group-hover:border-[#f82793] transition-colors",
+                    children: "✕"
+                  })
                 })
               ]
             }),

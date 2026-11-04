@@ -23,7 +23,7 @@
     <script>
       window.__PLEZZY_DEFAULT_VIEW__ = "cart";
     </script>
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261104_menu_header_longer_v29"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261104_menu_logo_corner_v30"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
@@ -660,7 +660,7 @@
           overflow: hidden !important;
         }
         #plezzy-hero-video-banner {
-          content: url('/assets/plezzy-hero-banner-tall.jpg?v=20261104_menu_header_longer_v29') !important;
+          content: url('/assets/plezzy-hero-banner-tall.jpg?v=20261104_menu_logo_corner_v30') !important;
           position: absolute !important;
           inset: 0 !important;
           width: 100% !important;
@@ -1875,11 +1875,26 @@
         transition: color 0.3s ease !important;
       }
 
+      .plezzy-menu-close-btn span:first-child:not(.plezzy-close-circle) {
+        display: none !important;
+      }
+
       .plezzy-close-circle {
+        width: 36px !important;
+        height: 36px !important;
+        font-size: 15px !important;
         transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
                     border-color 0.3s ease,
                     background-color 0.3s ease,
                     box-shadow 0.3s ease !important;
+      }
+
+      @media (min-width: 640px) {
+        .plezzy-close-circle {
+          width: 42px !important;
+          height: 42px !important;
+          font-size: 17px !important;
+        }
       }
 
       .plezzy-menu-close-btn:hover .plezzy-close-circle {
@@ -1938,6 +1953,10 @@
       .plezzy-menu-logo-text,
       .plezzy-menu-header span.plezzy-menu-logo-text,
       .plezzy-menu-header span:first-child {
+        font-size: clamp(2.3rem, 7.5vw, 3.5rem) !important;
+        line-height: 1 !important;
+        font-weight: 800 !important;
+        letter-spacing: -0.05em !important;
         color: #f82793 !important;
         -webkit-text-fill-color: #f82793 !important;
       }
@@ -2933,14 +2952,49 @@
         }
         header nav {
           height: 60px !important;
-          padding-left: 14px !important;
-          padding-right: 14px !important;
+          padding-left: 16px !important;
+          padding-right: 16px !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: space-between !important;
         }
         .plezzy-hamburger-btn {
-          padding: 8px !important;
+          width: 44px !important;
+          height: 44px !important;
+          padding: 0 !important;
+          margin: 0 !important;
+          display: flex !important;
+          flex-direction: column !important;
+          justify-content: center !important;
+          align-items: flex-start !important;
+          gap: 5px !important;
+          cursor: pointer !important;
+          background: transparent !important;
+          border: none !important;
+          box-shadow: none !important;
         }
         .plezzy-bar {
+          height: 2.5px !important;
           background-color: #111111 !important;
+          border-radius: 2px !important;
+          box-shadow: none !important;
+          transform-origin: left center !important;
+          transition: all 0.25s ease !important;
+        }
+        .plezzy-bar-1,
+        .plezzy-bar-2,
+        .plezzy-bar-3 {
+          width: 24px !important;
+          background-color: #111111 !important;
+          box-shadow: none !important;
+          transform: none !important;
+        }
+        .plezzy-hamburger-btn:hover .plezzy-bar,
+        .plezzy-hamburger-btn:active .plezzy-bar {
+          background-color: #f82793 !important;
+          width: 24px !important;
+          transform: none !important;
+          box-shadow: none !important;
         }
         header span[style*="f82793"] {
           font-size: 32px !important;
@@ -2965,7 +3019,7 @@
           overflow: hidden !important;
         }
         #plezzy-hero-video-banner {
-          content: url('/assets/plezzy-hero-banner-tall.jpg?v=20261104_menu_header_longer_v29') !important;
+          content: url('/assets/plezzy-hero-banner-tall.jpg?v=20261104_menu_logo_corner_v30') !important;
           position: absolute !important;
           inset: 0 !important;
           width: 100% !important;
