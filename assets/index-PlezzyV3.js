@@ -8935,16 +8935,17 @@ function _F(){
               }),
               // Luxury Frosted Glass Cart Button with Shopping Cart Icon
               v.jsxs("button",{
+                id:"plezzy-header-cart-btn",
                 onClick:()=>{s();window.location.href = "/cart.html";},
-                className:"flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.08] hover:bg-white/[0.18] border border-white/20 hover:border-white/40 backdrop-blur-md transition-all duration-200 cursor-pointer shadow-sm hover:scale-105 active:scale-95 text-white h-[34px]",
+                className:"plezzy-header-cart-btn flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-full backdrop-blur-md transition-all duration-200 cursor-pointer shadow-sm hover:scale-105 active:scale-95 h-[36px]",
                 "aria-label":"Open cart",
                 children:[
                   v.jsxs("svg",{
-                    width:"15",
-                    height:"15",
+                    width:"16",
+                    height:"16",
                     viewBox:"0 0 24 24",
                     fill:"none",
-                    stroke:"#ffffff",
+                    stroke:"currentColor",
                     strokeWidth:"2.2",
                     strokeLinecap:"round",
                     strokeLinejoin:"round",
@@ -9775,25 +9776,7 @@ function _F(){
                   try { s(); } catch(e) {}
                   window.location.href = "/collections.html";
                 },
-                style:{
-                  display:"inline-flex",
-                  alignItems:"center",
-                  justifyContent:"center",
-                  padding:"9px 20px",
-                  backgroundColor:"#f82793",
-                  color:"#ffffff",
-                  fontFamily:"'Plus Jakarta Sans', -apple-system, sans-serif",
-                  fontSize:"11.5px",
-                  fontWeight:800,
-                  letterSpacing:"0.06em",
-                  textTransform:"uppercase",
-                  borderRadius:"9999px",
-                  border:"none",
-                  cursor:"pointer",
-                  boxShadow:"0 4px 16px rgba(248,39,147,0.45)",
-                  whiteSpace:"nowrap"
-                },
-                className:"hover:bg-[#d41c7b] hover:scale-105 active:scale-95 transition-all shadow-lg",
+                className:"hover:scale-105 active:scale-95 transition-all",
                 children:"Explore Now"
               })
             })
@@ -9815,37 +9798,37 @@ function _F(){
           children: v.jsx("div", {
             className: "flex w-max items-center whitespace-nowrap",
             style: {
-              animation: "marquee 26s linear infinite"
+              animation: "marquee 12s linear infinite"
             },
             children: [0, 1, 2, 3].map((loopIdx) => v.jsxs("div", {
               key: loopIdx,
-              className: "flex items-center gap-8 sm:gap-14 px-4 shrink-0 font-mono font-semibold text-[11px] sm:text-xs tracking-[0.2em] uppercase text-white/90",
+              className: "flex items-center gap-8 sm:gap-14 px-4 shrink-0 font-mono font-bold text-[13px] sm:text-[15px] md:text-[16px] tracking-[0.16em] uppercase text-white/95",
               children: [
                 v.jsxs("div", {
                   className: "flex items-center gap-2.5",
                   children: [
-                    v.jsx("span", { className: "text-[#f82793] text-sm", children: "✦" }),
+                    v.jsx("span", { className: "text-[#f82793] text-base sm:text-lg font-black", children: "✦" }),
                     v.jsx("span", { children: "COD & EMI Available Across India" })
                   ]
                 }),
                 v.jsxs("div", {
                   className: "flex items-center gap-2.5",
                   children: [
-                    v.jsx("span", { className: "text-[#f82793] text-sm", children: "✦" }),
+                    v.jsx("span", { className: "text-[#f82793] text-base sm:text-lg font-black", children: "✦" }),
                     v.jsx("span", { children: "Free & 100% Discreet Shipping Over ₹999" })
                   ]
                 }),
                 v.jsxs("div", {
                   className: "flex items-center gap-2.5",
                   children: [
-                    v.jsx("span", { className: "text-[#f82793] text-sm", children: "✦" }),
+                    v.jsx("span", { className: "text-[#f82793] text-base sm:text-lg font-black", children: "✦" }),
                     v.jsx("span", { children: "Body-Safe Medical Grade Silicone" })
                   ]
                 }),
                 v.jsxs("div", {
                   className: "flex items-center gap-2.5",
                   children: [
-                    v.jsx("span", { className: "text-[#f82793] text-sm", children: "✦" }),
+                    v.jsx("span", { className: "text-[#f82793] text-base sm:text-lg font-black", children: "✦" }),
                     v.jsx("span", { children: "Unbranded Stealth Delivery Packaging" })
                   ]
                 })

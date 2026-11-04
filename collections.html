@@ -23,7 +23,7 @@
     <script>
       window.__PLEZZY_DEFAULT_VIEW__ = "collections";
     </script>
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261104_black_bg_v34"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261104_silver_buttons_ticker_v35"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
@@ -3386,6 +3386,144 @@
       }
 
   .plezzy-bento-product-desc { display: none !important; }
+    
+      /* ══════════════════════════════════════════════════════════════
+         LUXURY SILVER STYLE BUTTONS WITH PINK HOVER
+         1. Hero "Explore Now" button (#hero-explore-btn)
+         2. Header Cart capsule button (.plezzy-header-cart-btn)
+         3. Bento Grid "Add to Cart" button (.plezzy-bento-add-btn)
+         ══════════════════════════════════════════════════════════════ */
+      #hero-explore-btn,
+      #hero-left-content button,
+      .plezzy-header-cart-btn,
+      .plezzy-bento-add-btn {
+        background: linear-gradient(135deg, #eaebed 0%, #ffffff 32%, #cfd3d8 68%, #f4f5f7 100%) !important;
+        background-color: #eaebed !important;
+        color: #111111 !important;
+        border: 1px solid rgba(255, 255, 255, 0.9) !important;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35), 0 1px 3px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(255, 255, 255, 0.95) !important;
+        text-shadow: none !important;
+        transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        cursor: pointer !important;
+      }
+
+      .plezzy-header-cart-btn svg,
+      .plezzy-bento-add-btn svg {
+        stroke: #111111 !important;
+        transition: stroke 0.25s ease !important;
+      }
+
+      /* Hover: Vibrant Pink with Radiant Glow */
+      #hero-explore-btn:hover,
+      #hero-left-content button:hover,
+      .plezzy-header-cart-btn:hover,
+      .plezzy-bento-add-btn:hover {
+        background: #f82793 !important;
+        background-color: #f82793 !important;
+        color: #ffffff !important;
+        border-color: #f82793 !important;
+        box-shadow: 0 8px 28px rgba(248, 39, 147, 0.7), 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+        transform: translateY(-2px) scale(1.05) !important;
+      }
+
+      .plezzy-header-cart-btn:hover svg,
+      .plezzy-bento-add-btn:hover svg {
+        stroke: #ffffff !important;
+      }
+
+      #hero-explore-btn:active,
+      #hero-left-content button:active,
+      .plezzy-header-cart-btn:active,
+      .plezzy-bento-add-btn:active {
+        transform: scale(0.96) !important;
+      }
+
+      /* Increased Size for Explore Now Button */
+      #hero-left-content button,
+      #hero-explore-btn {
+        width: auto !important;
+        max-width: none !important;
+        height: auto !important;
+        padding: 14px 34px !important;
+        font-size: 14px !important;
+        font-weight: 800 !important;
+        letter-spacing: 0.1em !important;
+        text-transform: uppercase !important;
+        border-radius: 9999px !important;
+        white-space: nowrap !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        min-height: 48px !important;
+      }
+
+      /* Bento Add to Cart Button (Desktop) */
+      .plezzy-bento-add-btn {
+        border-radius: 9999px !important;
+        padding: 9px 20px !important;
+        font-size: 11.5px !important;
+        font-weight: 800 !important;
+        letter-spacing: 0.08em !important;
+        text-transform: uppercase !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 6px !important;
+      }
+
+      /* Header Cart Capsule */
+      .plezzy-header-cart-btn {
+        height: 38px !important;
+        padding: 0 14px !important;
+        border-radius: 9999px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 6px !important;
+      }
+
+      /* COD / Marquee Moving Strip: Bigger & Faster */
+      #plezzy-ticker-marquee-bar {
+        padding: 14px 0 !important;
+      }
+      #plezzy-ticker-marquee-bar .whitespace-nowrap {
+        animation: marquee 12s linear infinite !important;
+      }
+      #plezzy-ticker-marquee-bar div {
+        font-size: 14.5px !important;
+        letter-spacing: 0.16em !important;
+      }
+
+      @media (max-width: 768px) {
+        #hero-left-content button,
+        #hero-explore-btn {
+          padding: 12px 28px !important;
+          font-size: 13px !important;
+          letter-spacing: 0.08em !important;
+          min-height: 44px !important;
+        }
+        .plezzy-bento-add-btn {
+          height: 28px !important;
+          padding: 0 10px !important;
+          font-size: 9px !important;
+          letter-spacing: 0.05em !important;
+          gap: 3px !important;
+        }
+        .plezzy-bento-add-btn svg {
+          width: 10px !important;
+          height: 10px !important;
+        }
+        #plezzy-ticker-marquee-bar {
+          padding: 12px 0 !important;
+        }
+        #plezzy-ticker-marquee-bar .whitespace-nowrap {
+          animation: marquee 12s linear infinite !important;
+        }
+        #plezzy-ticker-marquee-bar div {
+          font-size: 13.5px !important;
+        }
+      }
+
     </style>
   </head>
   <body class="text-[#67645e] antialiased selection:bg-[#f82793] selection:text-white selection:text-white">
