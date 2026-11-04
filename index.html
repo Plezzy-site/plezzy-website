@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Italiana&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261104_mobile_hero_opt_v20"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261104_hero_wide_v21"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
@@ -2855,12 +2855,11 @@
           text-shadow: none !important;
         }
 
-        /* 2. Hero Section & Mobile Hero Image */
+        /* 2. Hero Section & Mobile Hero Image (Proportional for Wide Panoramic Banner) */
         #hero {
-          min-height: 78vh !important;
-          min-height: 78dvh !important;
-          max-height: 85vh !important;
-          background-color: #f5bbd4 !important;
+          min-height: clamp(320px, 48vh, 460px) !important;
+          min-height: clamp(320px, 48dvh, 460px) !important;
+          background-color: #f3acce !important;
           padding-top: 60px !important;
           display: flex !important;
           flex-direction: column !important;

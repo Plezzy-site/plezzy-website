@@ -23,7 +23,7 @@
     <script>
       window.__PLEZZY_DEFAULT_VIEW__ = "cart";
     </script>
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261104_mobile_hero_opt_v20"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261104_hero_wide_v21"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
@@ -2858,12 +2858,11 @@
           text-shadow: none !important;
         }
 
-        /* 2. Hero Section & Mobile Hero Image */
+        /* 2. Hero Section & Mobile Hero Image (Proportional for Wide Panoramic Banner) */
         #hero {
-          min-height: 78vh !important;
-          min-height: 78dvh !important;
-          max-height: 85vh !important;
-          background-color: #f5bbd4 !important;
+          min-height: clamp(320px, 48vh, 460px) !important;
+          min-height: clamp(320px, 48dvh, 460px) !important;
+          background-color: #f3acce !important;
           padding-top: 60px !important;
           display: flex !important;
           flex-direction: column !important;
