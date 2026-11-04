@@ -23,7 +23,7 @@
     <script>
       window.__PLEZZY_DEFAULT_VIEW__ = "cart";
     </script>
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261104_menu_clean_bold_v25"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261104_bento_grid_mobile_v26"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
@@ -1522,13 +1522,11 @@
       }
 
       @media (max-width: 900px) {
-        .plezzy-bento-card-5,
-        .plezzy-bento-card-7 {
-          grid-column: span 12 / span 12 !important;
-          min-height: 380px !important;
-        }
         .plezzy-bento-grid {
-          gap: 16px !important;
+          gap: 12px !important;
+        }
+        .plezzy-bento-card {
+          min-height: 360px !important;
         }
       }
 
@@ -2989,45 +2987,89 @@
           color: #67645e !important;
         }
 
-        /* Bento Grid: Clean Vertical Stack on Mobile */
+        /* Bento Product Grid: Preserved 2x2 Bento Grid on Mobile */
         .plezzy-bento-grid {
+          display: grid !important;
+          grid-template-columns: repeat(12, 1fr) !important;
+          gap: 10px !important;
+          margin-top: 18px !important;
+          width: 100% !important;
+        }
+        .plezzy-bento-card {
+          width: 100% !important;
+          min-height: 310px !important;
+          max-height: 390px !important;
+          border-radius: 18px !important;
           display: flex !important;
           flex-direction: column !important;
-          gap: 16px !important;
-          margin-top: 20px !important;
-          width: 100% !important;
+          justify-content: space-between !important;
         }
-        .plezzy-bento-card,
-        .plezzy-bento-card-5,
+        .plezzy-bento-card-5 {
+          grid-column: span 5 / span 5 !important;
+        }
         .plezzy-bento-card-7 {
-          width: 100% !important;
-          min-height: 400px !important;
-          max-height: 460px !important;
-          border-radius: 22px !important;
-          grid-column: auto !important;
+          grid-column: span 7 / span 7 !important;
         }
         .plezzy-bento-top-bar {
-          padding: 14px 16px !important;
+          padding: 10px 10px !important;
+        }
+        .plezzy-bento-badge {
+          font-size: 9px !important;
+          padding: 2.5px 7px !important;
+        }
+        .plezzy-bento-rating {
+          font-size: 9px !important;
+          padding: 2px 6px !important;
+          gap: 3px !important;
         }
         .plezzy-bento-bottom-panel {
-          padding: 16px 18px !important;
+          padding: 10px 10px 12px 10px !important;
+        }
+        .plezzy-bento-product-tag {
+          font-size: 8.5px !important;
+          letter-spacing: 0.12em !important;
+          margin-bottom: 2px !important;
         }
         .plezzy-bento-product-name {
-          font-size: 20px !important;
-          line-height: 1.2 !important;
+          font-size: clamp(13px, 3.8vw, 17px) !important;
+          line-height: 1.15 !important;
+          margin: 0 0 3px 0 !important;
         }
         .plezzy-bento-product-desc {
-          font-size: 12px !important;
-          margin-bottom: 10px !important;
+          font-size: 10px !important;
+          line-height: 1.3 !important;
+          margin-bottom: 8px !important;
           -webkit-line-clamp: 2 !important;
         }
+        .plezzy-bento-footer-row {
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: stretch !important;
+          gap: 6px !important;
+          padding-top: 8px !important;
+          border-top: 1px solid rgba(255, 255, 255, 0.14) !important;
+        }
+        .plezzy-bento-pricing {
+          display: flex !important;
+          align-items: baseline !important;
+          gap: 5px !important;
+        }
         .plezzy-bento-price {
-          font-size: 16px !important;
+          font-size: 13.5px !important;
+          font-weight: 800 !important;
+        }
+        .plezzy-bento-compare {
+          font-size: 11px !important;
         }
         .plezzy-bento-add-btn {
-          padding: 8px 16px !important;
-          font-size: 11px !important;
-          height: 36px !important;
+          width: 100% !important;
+          height: 30px !important;
+          padding: 0 8px !important;
+          font-size: 9.5px !important;
+          letter-spacing: 0.05em !important;
+          font-weight: 800 !important;
+          justify-content: center !important;
+          border-radius: 9999px !important;
         }
 
         /* 5. Divider CTA ("BROWSE ALL COLLECTIONS") */

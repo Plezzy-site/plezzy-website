@@ -9680,7 +9680,7 @@ function _F(){
             // Full-Bleed Editorial Campaign Hero Banner (Full Size)
             v.jsx("img",{
               id:"plezzy-hero-video-banner",
-              src:"/assets/plezzy-hero-banner-new.jpg?v=20261104_menu_clean_bold_v25",
+              src:"/assets/plezzy-hero-banner-new.jpg?v=20261104_bento_grid_mobile_v26",
               alt:"PLEZZY Everyday Essentials",
               className:"editorial-bw-img w-full h-full select-none",
               style:{
