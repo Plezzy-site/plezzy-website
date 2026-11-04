@@ -9677,21 +9677,30 @@ function _F(){
           },
           children:[
 
-            // Full-Bleed Editorial Campaign Hero Banner (Full Size)
-            v.jsx("img",{
-              id:"plezzy-hero-video-banner",
-              src:"/assets/plezzy-hero-banner-new.jpg?v=20261104_bento_squares_mobile_v27",
-              alt:"PLEZZY Everyday Essentials",
-              className:"editorial-bw-img w-full h-full select-none",
-              style:{
-                position:"absolute",
-                inset:0,
-                width:"100%",
-                height:"100%",
-                objectFit:"contain",
-                objectPosition:"top center",
-                zIndex:0
-              }
+            // Full-Bleed Editorial Campaign Hero Banner
+            v.jsxs("picture",{
+              className:"w-full h-full block absolute inset-0",
+              children:[
+                v.jsx("source",{
+                  media:"(max-width: 768px)",
+                  srcSet:"/assets/plezzy-hero-banner-tall.jpg?v=20261104_hero_longer_v28"
+                }),
+                v.jsx("img",{
+                  id:"plezzy-hero-video-banner",
+                  src:"/assets/plezzy-hero-banner-new.jpg?v=20261104_hero_longer_v28",
+                  alt:"PLEZZY Everyday Essentials",
+                  className:"editorial-bw-img w-full h-full select-none",
+                  style:{
+                    position:"absolute",
+                    inset:0,
+                    width:"100%",
+                    height:"100%",
+                    objectFit:"contain",
+                    objectPosition:"top center",
+                    zIndex:0
+                  }
+                })
+              ]
             }),
 
             // Atmospheric Contrast Vignette (Subtle bottom gradient for CTA button contrast)
