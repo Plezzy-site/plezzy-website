@@ -8834,7 +8834,7 @@ function _F(){
 
   const filteredSearchProducts = searchQuery.trim() === "" ? prods : prods.filter(p=>p.name.toLowerCase().includes(searchQuery.toLowerCase())||p.subtitle.toLowerCase().includes(searchQuery.toLowerCase())||p.category.toLowerCase().includes(searchQuery.toLowerCase()));
 
-  return v.jsxs("div",{className:"plezzy-app-container w-full min-h-screen bg-white text-[#67645e] font-sans antialiased selection:bg-[#67645e] selection:text-white transition-colors duration-300 pb-28",style:{fontFamily:'"Helvetica Neue", Helvetica, Arial, sans-serif',backgroundColor:"#ffffff"},children:[
+  return v.jsxs("div",{className:"plezzy-app-container w-full min-h-screen bg-black text-[#67645e] font-sans antialiased selection:bg-[#67645e] selection:text-white transition-colors duration-300 pb-28",style:{fontFamily:'"Helvetica Neue", Helvetica, Arial, sans-serif',backgroundColor:"#000000"},children:[
 
     // 1. COMBINED FIXED HEADER (Glass Translucent Style)
     !isAdminView && v.jsxs("header",{
