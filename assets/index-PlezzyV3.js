@@ -7483,10 +7483,11 @@ function PlezzyGuaranteeSection({ className = "" }) {
   return v.jsx("div", {
     className: "w-full " + (className || ""),
     children: v.jsxs("div", {
-      className: "plezzy-guarantee-card w-full max-w-6xl mx-auto rounded-3xl bg-[#121016]/90 backdrop-blur-2xl border border-white/12 p-6 sm:p-10 md:p-12 shadow-2xl relative overflow-hidden select-none",
+      className: "plezzy-guarantee-card w-full max-w-6xl mx-auto rounded-3xl bg-[#121016]/90 backdrop-blur-2xl p-6 sm:p-10 md:p-12 shadow-2xl relative overflow-hidden select-none",
       style: {
         borderRadius: "32px",
         overflow: "hidden",
+        border: "none",
         background: "radial-gradient(circle at 50% 0%, rgba(248,39,147,0.12) 0%, rgba(18,16,22,0.95) 70%)",
         boxShadow: "0 24px 60px -12px rgba(0,0,0,0.85), 0 0 40px rgba(248,39,147,0.15)"
       },
@@ -7512,7 +7513,7 @@ function PlezzyGuaranteeSection({ className = "" }) {
           ]
         }),
 
-        // 4 Bento Trust Cards (2 cols mobile, 4 cols desktop) - LUXURY SILVER BARS
+        // 4 Bento Trust Cards (2 cols mobile, 4 cols desktop) - BORDERLESS LUMINOUS TILES
         v.jsx("div", {
           className: "plezzy-guarantee-grid text-center relative z-10",
           children: items.map(item => v.jsxs("div", {
@@ -7520,25 +7521,25 @@ function PlezzyGuaranteeSection({ className = "" }) {
             className: "plezzy-guarantee-inner-card flex flex-col items-center p-4 sm:p-6 rounded-2xl transition-all duration-300 group shadow-md",
             style: {
               borderRadius: "24px",
-              border: "1.5px solid #d4d8e0",
-              background: "linear-gradient(135deg, rgba(234, 235, 237, 0.12) 0%, rgba(255, 255, 255, 0.22) 40%, rgba(207, 211, 216, 0.08) 75%, rgba(244, 245, 247, 0.16) 100%)",
-              boxShadow: "0 8px 24px -4px rgba(0, 0, 0, 0.45), 0 0 16px rgba(220, 225, 235, 0.22), inset 0 1px 2px rgba(255, 255, 255, 0.3)",
-              backdropFilter: "blur(12px)",
+              border: "none",
+              background: "linear-gradient(145deg, rgba(255, 255, 255, 0.16) 0%, rgba(225, 230, 240, 0.22) 40%, rgba(200, 205, 220, 0.12) 75%, rgba(255, 255, 255, 0.20) 100%)",
+              boxShadow: "0 10px 32px -4px rgba(0, 0, 0, 0.6), 0 0 20px rgba(220, 225, 235, 0.15), inset 0 1px 2px rgba(255, 255, 255, 0.4)",
+              backdropFilter: "blur(20px)",
               color: "#ffffff"
             },
             children: [
               v.jsx("div", {
-                className: "plezzy-guarantee-icon-wrap w-18 h-18 sm:w-22 sm:h-22 md:w-24 md:h-24 rounded-full flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-105 transition-all duration-300 shadow-inner",
+                className: "plezzy-guarantee-icon-wrap w-18 h-18 sm:w-22 sm:h-22 md:w-24 md:h-24 rounded-full flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-105 transition-all duration-300",
                 style: {
                   borderRadius: "9999px",
-                  border: "1.5px solid #d4d8e0",
-                  background: "rgba(255, 255, 255, 0.08)",
-                  boxShadow: "0 0 12px rgba(212, 216, 224, 0.2), inset 0 1px 2px rgba(255, 255, 255, 0.4)"
+                  border: "none",
+                  background: "rgba(255, 255, 255, 0.14)",
+                  boxShadow: "0 4px 16px rgba(0, 0, 0, 0.3), 0 0 12px rgba(255, 255, 255, 0.15), inset 0 1px 2px rgba(255, 255, 255, 0.4)"
                 },
                 children: item.icon
               }),
               v.jsx("h4", {
-                className: "plezzy-guarantee-title text-xs sm:text-sm md:text-base font-bold leading-snug tracking-tight max-w-[170px]",
+                className: "plezzy-guarantee-title text-xs sm:text-sm md:text-base font-extrabold leading-snug tracking-tight max-w-[170px]",
                 style: {
                   color: "#ffffff"
                 },
@@ -7547,7 +7548,7 @@ function PlezzyGuaranteeSection({ className = "" }) {
               v.jsx("span", {
                 className: "plezzy-guarantee-desc text-[10px] sm:text-[11px] md:text-xs tracking-wide mt-1.5 sm:mt-2",
                 style: {
-                  color: "rgba(220, 225, 235, 0.7)"
+                  color: "rgba(255, 255, 255, 0.88)"
                 },
                 children: item.desc
               })
@@ -7987,7 +7988,7 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
 
       // ── TRUST & ASSURANCE GUARANTEE SECTION ("Plezzy's Guarantee") ──────
       v.jsx(PlezzyGuaranteeSection, {
-        className: "mt-14 sm:mt-18 pt-6 border-t border-white/10 flex justify-center"
+        className: "mt-14 sm:mt-18 pt-6 flex justify-center"
       }),
 
       // ── GLITCH-FREE LUXURY FILTER & SORT MODAL / BOTTOM SHEET ─────────────
