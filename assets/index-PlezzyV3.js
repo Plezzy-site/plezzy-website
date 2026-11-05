@@ -9951,539 +9951,668 @@ function _F() {
         })
       ) : isPdp ? (
         // ═══════════════════════════════════════════════════════════════════════
-        // LUXURY REDESIGNED PRODUCT DETAIL PAGE (BESPOKE PDP ARCHITECTURE)
+        // SLEEK LUXURY SILVER PRODUCT DETAIL PAGE (BESPOKE OBSIDIAN & SILVER)
         // ═══════════════════════════════════════════════════════════════════════
         v.jsxs("div", {
-          className: "w-full animate-in fade-in duration-300 pt-28 sm:pt-36", children: [
+          className: "w-full min-h-screen bg-[#0a0810] text-white animate-in fade-in duration-300 pt-24 sm:pt-32 pb-24 relative overflow-hidden select-none",
+          children: [
+            // Ambient luxury lighting
+            v.jsx("div", {
+              className: "absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[450px] bg-gradient-to-b from-[#f82793]/12 via-white/[0.04] to-transparent blur-3xl pointer-events-none rounded-full"
+            }),
+            v.jsx("div", {
+              className: "absolute top-1/3 -left-48 w-96 h-96 bg-[#f82793]/10 blur-[130px] rounded-full pointer-events-none"
+            }),
+            v.jsx("div", {
+              className: "absolute top-2/3 -right-48 w-96 h-96 bg-white/[0.06] blur-[130px] rounded-full pointer-events-none"
+            }),
 
             // ── TOP LUXURY NAVIGATION & PRODUCT SWITCHER BAR ─────────────────────
             v.jsx("div", {
-              className: "max-w-7xl mx-auto px-4 sm:px-8 mb-6 sm:mb-8", children:
-                v.jsxs("div", {
-                  className: "flex flex-col md:flex-row md:items-center justify-between gap-3 p-3.5 sm:px-6 sm:py-3.5 bg-white/85 backdrop-blur-xl border border-[#dedad2] rounded-2xl shadow-xs",
-                  children: [
-                    // Left: Back button + Breadcrumbs
-                    v.jsxs("div", {
-                      className: "flex items-center gap-3 sm:gap-4 shrink-0", children: [
-                        v.jsxs("button", {
-                          onClick: (e) => {
-                            if (isCollectionsView || (typeof window !== "undefined" && window.location.pathname.includes("collection"))) {
-                              setSelectedProd(null);
-                              if (setProd) try { setProd(null); } catch (err) { }
-                              setIsCollectionsView(true);
-                              window.scrollTo({ top: 0, behavior: "smooth" });
-                            } else {
-                              handleBackToHome(e);
-                            }
-                          },
-                          className: "inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1a1a1a] hover:bg-[#f82793] text-white text-xs font-extrabold uppercase tracking-wider transition-all hover:scale-105 active:scale-95 shadow-xs cursor-pointer",
-                          style: { fontFamily: "Swiss, -apple-system, sans-serif" },
-                          children: [
-                            v.jsx("span", { className: "text-sm", children: "←" }),
-                            "ALL PRODUCTS"
-                          ]
-                        }),
-                        v.jsx("div", { className: "h-4 w-px bg-[#dedad2] hidden sm:block" }),
-                        v.jsxs("div", {
-                          className: "hidden sm:flex items-center gap-2 text-xs font-bold text-[#8b8782] tracking-wider uppercase", children: [
-                            v.jsx("span", { className: "hover:text-[#1a1a1a] cursor-pointer transition-colors", onClick: navigateToCollections, children: "THE COLLECTION" }),
-                            v.jsx("span", { className: "text-[#dedad2]", children: "/" }),
-                            v.jsx("span", { className: "text-[#67645e]", children: cur.category }),
-                            v.jsx("span", { className: "text-[#dedad2]", children: "/" }),
-                            v.jsx("span", { className: "font-extrabold text-[#1a1a1a]", children: cur.name })
-                          ]
-                        })
-                      ]
-                    }),
+              className: "max-w-7xl mx-auto px-4 sm:px-8 mb-6 sm:mb-8 relative z-10",
+              children: v.jsxs("div", {
+                className: "flex flex-col md:flex-row md:items-center justify-between gap-3 p-3 sm:px-5 sm:py-3 rounded-2xl",
+                style: {
+                  background: "linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(220, 225, 235, 0.03) 100%)",
+                  backdropFilter: "blur(20px)",
+                  WebkitBackdropFilter: "blur(20px)",
+                  border: "1px solid rgba(255, 255, 255, 0.12)",
+                  boxShadow: "0 8px 32px -4px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.25)"
+                },
+                children: [
+                  // Left: Back button + Breadcrumbs
+                  v.jsxs("div", {
+                    className: "flex items-center gap-3 sm:gap-4 shrink-0",
+                    children: [
+                      v.jsxs("button", {
+                        onClick: (e) => {
+                          try { s(); } catch (err) { }
+                          if (isCollectionsView || (typeof window !== "undefined" && window.location.pathname.includes("collection"))) {
+                            setSelectedProd(null);
+                            if (setProd) try { setProd(null); } catch (err) { }
+                            setIsCollectionsView(true);
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                          } else {
+                            handleBackToHome(e);
+                          }
+                        },
+                        className: "inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 hover:bg-[#f82793] text-white text-xs font-extrabold uppercase tracking-wider transition-all hover:scale-105 active:scale-95 shadow-md cursor-pointer",
+                        style: { fontFamily: "Swiss, -apple-system, sans-serif" },
+                        children: [
+                          v.jsx("span", { className: "text-sm", children: "←" }),
+                          "ALL PRODUCTS"
+                        ]
+                      }),
+                      v.jsx("div", { className: "h-4 w-px bg-white/15 hidden sm:block" }),
+                      v.jsxs("div", {
+                        className: "hidden sm:flex items-center gap-2 text-xs font-bold text-white/50 tracking-wider uppercase",
+                        children: [
+                          v.jsx("span", {
+                            className: "hover:text-white cursor-pointer transition-colors",
+                            onClick: navigateToCollections,
+                            children: "THE COLLECTION"
+                          }),
+                          v.jsx("span", { className: "text-white/20", children: "/" }),
+                          v.jsx("span", { className: "text-white/70", children: cur.category }),
+                          v.jsx("span", { className: "text-white/20", children: "/" }),
+                          v.jsx("span", { className: "font-extrabold text-white", children: cur.name })
+                        ]
+                      })
+                    ]
+                  }),
 
-                    // Right: Switch Product Tabs
-                    v.jsxs("div", {
-                      className: "flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5", children: [
-                        v.jsx("span", { className: "hidden lg:inline-block text-[11px] font-extrabold uppercase tracking-wider text-[#8b8782] pr-1", children: "SELECT:" }),
-                        prods.map(p => v.jsx("button", {
-                          key: p.id,
-                          onClick: () => handleSelectProduct(p),
-                          className: "px-3.5 py-1.5 rounded-full text-xs font-bold lowercase whitespace-nowrap transition-all cursor-pointer " +
-                            (p.id === cur.id
-                              ? "bg-[#1a1a1a] text-white shadow-sm scale-105"
-                              : "bg-[#f5f3ee] text-[#5e5b56] hover:bg-neutral-200 hover:text-[#1a1a1a] border border-[#dedad2]/60"),
-                          style: { fontFamily: "Swiss, -apple-system, sans-serif" },
-                          children: p.name
-                        }))
-                      ]
-                    })
-                  ]
-                })
+                  // Right: Switch Product Pills
+                  v.jsxs("div", {
+                    className: "flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5",
+                    children: [
+                      v.jsx("span", {
+                        className: "hidden lg:inline-block text-[11px] font-extrabold uppercase tracking-wider text-white/40 pr-1",
+                        children: "SELECT:"
+                      }),
+                      prods.map(p => v.jsx("button", {
+                        key: p.id,
+                        onClick: () => handleSelectProduct(p),
+                        className: "px-3.5 py-1.5 rounded-full text-xs font-bold lowercase whitespace-nowrap transition-all cursor-pointer " +
+                          (p.id === cur.id
+                            ? "bg-[#f82793] text-white shadow-md shadow-[#f82793]/40 scale-105"
+                            : "bg-white/5 text-white/70 hover:bg-white/15 hover:text-white border border-white/10"),
+                        style: { fontFamily: "Swiss, -apple-system, sans-serif" },
+                        children: p.name
+                      }))
+                    ]
+                  })
+                ]
+              })
             }),
 
-            // ── FRAME 1 & 2: MAIN 2-COLUMN HERO SECTION (GALLERY & BUY BOX) ──────
+            // ── FRAME 1: MAIN 2-COLUMN HERO (GALLERY & SLEEK SILVER BUY BOX) ──────
             v.jsx("div", {
-              className: "max-w-7xl mx-auto px-4 sm:px-8 py-4 sm:py-6", children:
-                v.jsxs("div", {
-                  className: "grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start", children: [
+              className: "max-w-7xl mx-auto px-4 sm:px-8 py-2 sm:py-4 relative z-10",
+              children: v.jsxs("div", {
+                className: "grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start",
+                children: [
 
-                    // FRAME 1: Luxury Interactive Product Gallery
-                    v.jsxs("div", {
-                      className: "lg:col-span-7 space-y-4", children: [
-                        // Main High-Res Hero Display Frame
-                        v.jsxs("div", {
-                          className: "plezzy-box-frame relative w-full aspect-square sm:aspect-[4/3] lg:aspect-square flex items-center justify-center overflow-hidden bg-radial from-white via-[#f5f3ee] to-[#e8e4dc] p-6 sm:p-10 group",
-                          children: [
-                            // Floating Badge Tag
-                            v.jsx("div", {
-                              className: "absolute top-4 left-4 z-20", children:
-                                v.jsx("span", {
-                                  className: "px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-[0.2em] shadow-xs backdrop-blur-md " +
-                                    (cur.badge === "limited edition" ? "bg-[#f82793] text-white shadow-md shadow-[#f82793]/40" : cur.badge === "award winner" ? "bg-[#f82793] text-white shadow-md shadow-[#f82793]/40" : "bg-[#1a1a1a] text-white"),
-                                  children: cur.badge || "CORE ESSENTIAL"
-                                })
-                            }),
-
-                            // Rating pill top-right
-                            v.jsxs("div", {
-                              className: "absolute top-4 right-4 z-20 flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/80 backdrop-blur-md border border-[#dedad2] text-[11px] font-bold text-[#1a1a1a] shadow-2xs", children: [
-                                v.jsx("span", { className: "text-[#f82793]", children: "★" }),
-                                v.jsx("span", { children: (cur.rating || 4.9).toFixed(1) }),
-                                v.jsx("span", { className: "text-[#8b8782] font-normal", children: "(" + (cur.reviewsCount || 840) + ")" })
-                              ]
-                            }),
-
-                            // Hero Product Image with Drop Shadow & Smooth Zoom
-                            v.jsx("img", {
-                              src: activeImgUrl,
-                              alt: cur.name,
-                              className: "editorial-bw-img w-full h-full object-contain filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.15)] group-hover:scale-105 transition-all duration-500 select-none",
-                              style: { maxHeight: "520px" }
-                            }),
-
-                            // Floating Thumbnails Navigation Bar (Lower Edge)
-                            v.jsx("div", {
-                              className: "absolute bottom-4 inset-x-4 z-20 flex items-center justify-center gap-2 overflow-x-auto py-1", children:
-                                cur.images.map((img, idx) => v.jsx("button", {
-                                  key: idx,
-                                  onClick: () => { try { s(); } catch (e) { } setActiveThumb(idx); },
-                                  className: "relative w-12 h-12 sm:w-14 sm:h-14 rounded-xl overflow-hidden border-2 transition-all p-1 bg-white/90 backdrop-blur-md cursor-pointer shrink-0 " +
-                                    (activeThumb === idx ? "border-[#1a1a1a] shadow-md scale-110 -translate-y-1" : "border-white/60 hover:border-[#1a1a1a]/40 opacity-80 hover:opacity-100"),
-                                  "aria-label": img.label || ("View angle " + (idx + 1)),
-                                  children: v.jsx("img", {
-                                    src: img.src,
-                                    alt: img.label || cur.name,
-                                    className: "editorial-bw-img w-full h-full object-cover rounded-lg"
-                                  })
-                                }))
+                  // ── LEFT: LUXURY GALLERY SHOWCASE (7 Cols) ─────────────
+                  v.jsxs("div", {
+                    className: "lg:col-span-7 space-y-4",
+                    children: [
+                      // Main Display Frame
+                      v.jsxs("div", {
+                        className: "relative w-full aspect-square sm:aspect-[4/3] lg:aspect-square flex items-center justify-center overflow-hidden rounded-[32px] p-6 sm:p-10 group",
+                        style: {
+                          background: "radial-gradient(circle at 50% 35%, rgba(255, 255, 255, 0.08) 0%, rgba(248, 39, 147, 0.06) 40%, rgba(14, 12, 18, 0.95) 90%)",
+                          border: "1px solid rgba(255, 255, 255, 0.14)",
+                          boxShadow: "0 24px 60px -12px rgba(0, 0, 0, 0.8), inset 0 1px 2px rgba(255, 255, 255, 0.25)",
+                          backdropFilter: "blur(24px)",
+                          WebkitBackdropFilter: "blur(24px)"
+                        },
+                        children: [
+                          // Floating Top Badge
+                          v.jsx("div", {
+                            className: "absolute top-5 left-5 z-20",
+                            children: v.jsx("span", {
+                              className: "px-3.5 py-1.5 rounded-full text-[10.5px] font-extrabold uppercase tracking-[0.2em] shadow-lg shadow-[#f82793]/40 bg-[#f82793] text-white",
+                              children: cur.badge || "CORE ESSENTIAL"
                             })
-                          ]
-                        }),
+                          }),
 
-                        // Gallery Helper Caption
-                        v.jsxs("p", {
-                          className: "text-center text-[11px] text-[#8b8782] tracking-wider uppercase", children: [
-                            "IMAGE ", activeThumb + 1, " OF ", cur.images.length, " • ", (cur.images[activeThumb]?.label || cur.name)
-                          ]
-                        })
-                      ]
-                    }),
+                          // Floating Star Rating Pill
+                          v.jsxs("div", {
+                            className: "absolute top-5 right-5 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-xs font-bold text-white shadow-md",
+                            children: [
+                              v.jsx("span", { style: { color: "#FEE871" }, children: "★" }),
+                              v.jsx("span", { children: (cur.rating || 4.9).toFixed(1) }),
+                              v.jsx("span", { className: "text-white/60 font-normal text-[11px]", children: "(" + (cur.reviewsCount || 348) + ")" })
+                            ]
+                          }),
 
-                    // FRAME 2: The Editorial Buy Box & Product Configuration Frame
-                    v.jsxs("div", {
-                      className: "lg:col-span-5 text-left space-y-4 lg:sticky lg:top-24", children: [
-                        v.jsxs("div", {
-                          className: "plezzy-pdp-card p-6 sm:p-8 space-y-4 text-left border border-[#dedad2] shadow-lg bg-white/70 backdrop-blur-xl rounded-[28px]", children: [
+                          // Hero Image with Drop Shadow & Smooth Zoom
+                          v.jsx("img", {
+                            src: activeImgUrl,
+                            alt: cur.name,
+                            className: "w-full h-full object-contain filter drop-shadow-[0_24px_48px_rgba(0,0,0,0.65)] group-hover:scale-105 transition-all duration-500 select-none",
+                            style: { maxHeight: "500px" }
+                          }),
 
-                            // Category & Badge line
-                            v.jsxs("div", {
-                              className: "flex items-center justify-between", children: [
-                                v.jsx("span", { className: "text-[11px] font-extrabold uppercase tracking-[0.2em] text-[#f82793]", children: cur.category }),
-                                v.jsx("span", {
-                                  className: "text-[10px] font-bold uppercase tracking-wider text-[#22c55e] flex items-center gap-1", children: [
-                                    v.jsx("span", { className: "w-2 h-2 rounded-full bg-[#22c55e] animate-pulse" }),
-                                    "IN STOCK • READY TO SHIP"
+                          // Floating Thumbnails Navigation Bar (Lower Edge)
+                          v.jsx("div", {
+                            className: "absolute bottom-5 inset-x-5 z-20 flex items-center justify-center gap-2.5 overflow-x-auto py-1",
+                            children: cur.images.map((img, idx) => v.jsx("button", {
+                              key: idx,
+                              onClick: () => { try { s(); } catch (e) { } setActiveThumb(idx); },
+                              className: "relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl overflow-hidden p-1 transition-all cursor-pointer shrink-0 " +
+                                (activeThumb === idx
+                                  ? "border-2 border-white ring-2 ring-[#f82793]/60 bg-white/20 shadow-xl scale-105 -translate-y-1"
+                                  : "border border-white/15 bg-black/50 hover:border-white/40 opacity-70 hover:opacity-100"),
+                              "aria-label": img.label || ("View angle " + (idx + 1)),
+                              children: v.jsx("img", {
+                                src: img.src,
+                                alt: img.label || cur.name,
+                                className: "w-full h-full object-cover rounded-xl"
+                              })
+                            }))
+                          })
+                        ]
+                      }),
+
+                      // Caption
+                      v.jsxs("p", {
+                        className: "text-center text-[11px] font-mono tracking-[0.2em] uppercase text-white/50",
+                        children: [
+                          "ANGLE ", activeThumb + 1, " OF ", cur.images.length, " • ", (cur.images[activeThumb]?.label || cur.name)
+                        ]
+                      })
+                    ]
+                  }),
+
+                  // ── RIGHT: SLEEK SILVER BUY BOX (5 Cols, Sticky) ─────────────
+                  v.jsxs("div", {
+                    className: "lg:col-span-5 text-left space-y-4 lg:sticky lg:top-24",
+                    children: [
+                      v.jsxs("div", {
+                        className: "rounded-[32px] p-6 sm:p-8 space-y-4 text-left relative overflow-hidden",
+                        style: {
+                          background: "linear-gradient(145deg, rgba(255, 255, 255, 0.09) 0%, rgba(220, 225, 235, 0.04) 50%, rgba(14, 12, 18, 0.96) 100%)",
+                          border: "1px solid rgba(255, 255, 255, 0.15)",
+                          boxShadow: "0 24px 60px -12px rgba(0, 0, 0, 0.85), inset 0 1px 2px rgba(255, 255, 255, 0.35)",
+                          backdropFilter: "blur(28px)",
+                          WebkitBackdropFilter: "blur(28px)"
+                        },
+                        children: [
+
+                          // Category & Live Stock line
+                          v.jsxs("div", {
+                            className: "flex items-center justify-between",
+                            children: [
+                              v.jsx("span", {
+                                className: "text-[11px] font-extrabold uppercase tracking-[0.22em] text-[#f82793]",
+                                children: cur.category
+                              }),
+                              v.jsxs("span", {
+                                className: "text-[10.5px] font-bold uppercase tracking-wider text-[#22c55e] flex items-center gap-1.5",
+                                children: [
+                                  v.jsx("span", { className: "w-2 h-2 rounded-full bg-[#22c55e] animate-pulse" }),
+                                  "IN STOCK • READY TO SHIP"
+                                ]
+                              })
+                            ]
+                          }),
+
+                          // Title: Heavy Luxury Typography
+                          v.jsx("h1", {
+                            className: "text-3xl sm:text-4xl lg:text-[42px] text-white tracking-tight leading-none lowercase",
+                            style: { fontFamily: "'Rektorat Heavy', Swiss, -apple-system, sans-serif", fontWeight: 800 },
+                            children: cur.name
+                          }),
+
+                          // Subtitle
+                          v.jsx("p", {
+                            className: "text-xs sm:text-[12.5px] font-bold tracking-[0.14em] text-white/70 uppercase leading-snug pt-0.5",
+                            style: { fontFamily: "Swiss, -apple-system, sans-serif" },
+                            children: cur.subtitle
+                          }),
+
+                          // Rating Social Proof
+                          v.jsxs("div", {
+                            className: "flex items-center gap-2 pt-0.5",
+                            children: [
+                              v.jsx("div", {
+                                className: "flex text-[#FEE871] text-xs",
+                                children: "★★★★★"
+                              }),
+                              v.jsxs("span", {
+                                className: "text-xs text-white/60 font-medium",
+                                children: [
+                                  (cur.rating || 4.9).toFixed(1),
+                                  " • 348+ verified rituals"
+                                ]
+                              })
+                            ]
+                          }),
+
+                          // Pricing Row (Indian Rupee INR with 30% Savings)
+                          v.jsxs("div", {
+                            className: "flex flex-wrap items-baseline gap-3 pt-1",
+                            children: [
+                              v.jsxs("span", {
+                                className: "text-3xl sm:text-4xl font-extrabold text-white tracking-tight",
+                                style: { fontFamily: "'Rektorat Heavy', Swiss, sans-serif" },
+                                children: [
+                                  "₹",
+                                  (cur.priceINR ? cur.priceINR.toLocaleString('en-IN') : "2,499")
+                                ]
+                              }),
+                              v.jsxs("span", {
+                                className: "text-base font-normal text-white/40 line-through",
+                                children: [
+                                  "₹",
+                                  Math.round((cur.priceINR || 2499) / 0.7).toLocaleString('en-IN')
+                                ]
+                              }),
+                              v.jsx("span", {
+                                className: "px-2.5 py-0.5 rounded-full text-[10.5px] font-extrabold uppercase tracking-wider bg-[#f82793]/20 border border-[#f82793]/40 text-[#f82793]",
+                                children: "SAVE 30%"
+                              }),
+                              v.jsx("span", {
+                                className: "w-full text-xs font-semibold text-[#22c55e] flex items-center gap-1 mt-0.5",
+                                children: "⚡ Tax Inclusive • Free Discreet Express Delivery"
+                              })
+                            ]
+                          }),
+
+                          // Description Paragraphs
+                          v.jsxs("div", {
+                            className: "space-y-2 text-[13px] text-white/80 leading-relaxed pt-1",
+                            style: { fontFamily: "Swiss, -apple-system, sans-serif" },
+                            children: [
+                              v.jsx("p", { children: cur.desc1 }),
+                              cur.desc2 && v.jsx("p", { className: "text-xs text-white/60", children: cur.desc2 })
+                            ]
+                          }),
+
+                          // 4 Quick Value Bento Micro-Pills
+                          v.jsxs("div", {
+                            className: "grid grid-cols-2 gap-2 pt-1",
+                            children: [
+                              v.jsxs("div", {
+                                className: "flex items-center gap-1.5 p-2 rounded-xl bg-white/[0.05] border border-white/10 text-[11px] text-white/80",
+                                children: [
+                                  v.jsx("span", { className: "text-[#FEE871]", children: "🔇" }),
+                                  v.jsx("span", { className: "font-semibold truncate", children: "<28dB Whisper Core" })
+                                ]
+                              }),
+                              v.jsxs("div", {
+                                className: "flex items-center gap-1.5 p-2 rounded-xl bg-white/[0.05] border border-white/10 text-[11px] text-white/80",
+                                children: [
+                                  v.jsx("span", { className: "text-[#38bdf8]", children: "💧" }),
+                                  v.jsx("span", { className: "font-semibold truncate", children: "IPX7 100% Waterproof" })
+                                ]
+                              }),
+                              v.jsxs("div", {
+                                className: "flex items-center gap-1.5 p-2 rounded-xl bg-white/[0.05] border border-white/10 text-[11px] text-white/80",
+                                children: [
+                                  v.jsx("span", { className: "text-[#f82793]", children: "✨" }),
+                                  v.jsx("span", { className: "font-semibold truncate", children: "Medical Liquid Silicone" })
+                                ]
+                              }),
+                              v.jsxs("div", {
+                                className: "flex items-center gap-1.5 p-2 rounded-xl bg-white/[0.05] border border-white/10 text-[11px] text-white/80",
+                                children: [
+                                  v.jsx("span", { className: "text-[#a855f7]", children: "⚡" }),
+                                  v.jsx("span", { className: "font-semibold truncate", children: "Magnetic Rapid USB" })
+                                ]
+                              })
+                            ]
+                          }),
+
+                          // Divider
+                          v.jsx("div", { className: "border-b border-white/10 my-2" }),
+
+                          // Color / Shade Selector
+                          cur.shades && cur.shades.length > 0 && v.jsxs("div", {
+                            className: "space-y-2",
+                            children: [
+                              v.jsxs("div", {
+                                className: "flex items-center justify-between text-xs sm:text-sm text-white",
+                                style: { fontFamily: "Swiss, -apple-system, sans-serif" },
+                                children: [
+                                  v.jsxs("div", {
+                                    className: "flex items-center gap-1.5",
+                                    children: [
+                                      v.jsx("span", { className: "text-white/60", children: "Finish / Shade:" }),
+                                      v.jsx("span", {
+                                        className: "font-bold text-white border-b border-[#f82793] pb-0.5",
+                                        children: currentShadeObj.name + (currentShadeObj.desc ? " — " + currentShadeObj.desc : "")
+                                      })
+                                    ]
+                                  }),
+                                  currentShadeObj.badge && v.jsx("span", {
+                                    className: "text-[10px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full bg-white/10 text-white border border-white/15",
+                                    children: currentShadeObj.badge
+                                  })
+                                ]
+                              }),
+
+                              // Swatches Row
+                              v.jsx("div", {
+                                className: "flex items-center gap-3 pt-1 pb-1",
+                                children: cur.shades.map(sh => v.jsxs("button", {
+                                  key: sh.name,
+                                  onClick: () => { try { s(); } catch (e) { } setSelectedColor(sh.name); },
+                                  className: "rounded-full transition-all cursor-pointer relative overflow-hidden flex items-center justify-center " +
+                                    (selectedColor === sh.name
+                                      ? "ring-2 ring-offset-2 ring-offset-[#0e0c12] ring-white scale-110 shadow-lg shadow-white/20"
+                                      : "border border-white/30 hover:scale-105 opacity-80 hover:opacity-100"),
+                                  style: { width: "32px", height: "32px", minWidth: "32px", minHeight: "32px", backgroundColor: sh.color },
+                                  title: sh.name + " - " + sh.desc,
+                                  children: [
+                                    sh.badge === "sold out" && v.jsx("div", { className: "absolute w-full h-[1.5px] bg-white rotate-45" })
                                   ]
+                                }))
+                              })
+                            ]
+                          }),
+
+                          // Quantity Stepper + Add to Bag CTA Row
+                          v.jsxs("div", {
+                            className: "pt-2 space-y-2.5",
+                            children: [
+                              v.jsxs("div", {
+                                className: "flex items-center gap-3",
+                                children: [
+                                  // Quantity Pill Stepper
+                                  v.jsxs("div", {
+                                    className: "flex items-center justify-between rounded-full bg-white/10 border border-white/15 px-3 py-2 w-32 shrink-0 select-none shadow-sm",
+                                    children: [
+                                      v.jsx("button", {
+                                        type: "button",
+                                        onClick: () => { try { s(); } catch (e) { } setQty(Math.max(1, qty - 1)); },
+                                        className: "w-6 h-6 flex items-center justify-center rounded-full text-white/80 hover:text-white hover:bg-white/10 text-base font-bold cursor-pointer transition-colors",
+                                        children: "−"
+                                      }),
+                                      v.jsx("span", {
+                                        className: "font-mono font-bold text-sm text-white",
+                                        children: qty
+                                      }),
+                                      v.jsx("button", {
+                                        type: "button",
+                                        onClick: () => { try { s(); } catch (e) { } setQty(qty + 1); },
+                                        className: "w-6 h-6 flex items-center justify-center rounded-full text-white/80 hover:text-white hover:bg-white/10 text-base font-bold cursor-pointer transition-colors",
+                                        children: "+"
+                                      })
+                                    ]
+                                  }),
+
+                                  // Primary Button: ADD TO BAG
+                                  v.jsx("button", {
+                                    onClick: () => cur.availability !== "sold_out" && handleAdd(cur, selectedColor, qty),
+                                    disabled: cur.availability === "sold_out",
+                                    className: "flex-1 py-3.5 px-6 rounded-full text-white font-extrabold text-xs sm:text-sm tracking-wider uppercase transition-all shadow-xl flex items-center justify-center gap-2 " +
+                                      (cur.availability === "sold_out"
+                                        ? "bg-white/10 text-white/40 cursor-not-allowed"
+                                        : "bg-[#f82793] hover:bg-[#ff3b9e] text-white shadow-[#f82793]/40 cursor-pointer hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98]"),
+                                    style: { fontFamily: "Swiss, -apple-system, sans-serif" },
+                                    children: cur.availability === "sold_out"
+                                      ? "SOLD OUT — NOTIFY ME"
+                                      : (added
+                                        ? "ADDED TO BAG ✓"
+                                        : ("ADD TO BAG • ₹" + ((cur.priceINR || 2499) * qty).toLocaleString('en-IN')))
+                                  })
+                                ]
+                              }),
+
+                              // Secondary Instant Buy Button
+                              v.jsx("button", {
+                                onClick: () => {
+                                  try { s(); } catch (e) { }
+                                  if (cur.availability !== "sold_out") {
+                                    handleAdd(cur, selectedColor, qty);
+                                    if (openCart) openCart(true);
+                                  }
+                                },
+                                disabled: cur.availability === "sold_out",
+                                className: "w-full py-3 px-6 rounded-full text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 cursor-pointer shadow-md hover:scale-[1.01] active:scale-[0.99]",
+                                style: { fontFamily: "Swiss, -apple-system, sans-serif" },
+                                children: "⚡ INSTANT CHECKOUT • BUY NOW"
+                              }),
+
+                              // Discreet Shipping & Guarantee Notice
+                              v.jsx("div", {
+                                className: "p-3 rounded-2xl bg-white/[0.04] border border-white/10 text-center",
+                                children: v.jsx("p", {
+                                  className: "text-[11px] text-white/70 font-medium leading-relaxed",
+                                  children: "🔒 100% Plain Unbranded Box • Zero External Markers • 30-Day Guarantee • Free Replacement"
                                 })
-                              ]
-                            }),
+                              })
+                            ]
+                          }),
 
-                            // Title: Heavy Luxury Typography
-                            v.jsx("h1", {
-                              className: "text-3xl sm:text-4xl lg:text-[44px] text-[#1a1a1a] tracking-tight leading-none lowercase",
-                              style: { fontFamily: "'Rektorat Heavy', Swiss, -apple-system, sans-serif", fontWeight: 800 },
-                              children: cur.name
-                            }),
-
-                            // Subtitle
-                            v.jsx("p", {
-                              className: "text-xs sm:text-[13px] font-bold tracking-[0.14em] text-[#67645e] uppercase pt-0.5",
-                              style: { fontFamily: "Swiss, -apple-system, sans-serif" },
-                              children: cur.subtitle
-                            }),
-
-                            // Pricing Row (Indian Rupee INR)
-                            v.jsxs("div", {
-                              className: "flex items-baseline gap-3 pt-1", children: [
-                                v.jsx("span", {
-                                  className: "text-2xl sm:text-3xl font-extrabold text-[#1a1a1a]",
-                                  style: { fontFamily: "'Rektorat Heavy', Swiss, sans-serif" },
-                                  children: "₹" + (cur.priceINR ? cur.priceINR.toLocaleString('en-IN') : "2,999")
-                                }),
-                                v.jsx("span", {
-                                  className: "text-xs font-bold text-[#22c55e] uppercase tracking-wider",
-                                  children: "Tax Inclusive • Free Delivery"
-                                })
-                              ]
-                            }),
-
-                            // Description Paragraphs
-                            v.jsxs("div", {
-                              className: "space-y-2.5 text-[13px] text-[#3d3a36] leading-relaxed pt-1", style: { fontFamily: "Swiss, -apple-system, sans-serif" }, children: [
-                                v.jsx("p", { children: cur.desc1 }),
-                                cur.desc2 && v.jsx("p", { className: "text-xs text-[#67645e]", children: cur.desc2 })
-                              ]
-                            }),
-
-                            // Divider
-                            v.jsx("div", { className: "border-b border-[#dedad2] my-3" }),
-
-                            // Color / Shade Selector
-                            cur.shades && cur.shades.length > 0 && v.jsxs("div", {
-                              className: "space-y-2.5", children: [
-                                v.jsxs("div", {
-                                  className: "flex items-center justify-between text-xs sm:text-sm text-[#1a1a1a]", style: { fontFamily: "Swiss, -apple-system, sans-serif" }, children: [
-                                    v.jsxs("div", {
-                                      className: "flex items-center gap-1.5", children: [
-                                        v.jsx("span", { className: "text-[#67645e]", children: "Finish / Shade:" }),
-                                        v.jsx("span", {
-                                          className: "font-bold border-b border-[#1a1a1a] pb-0.5", children:
-                                            currentShadeObj.name + (currentShadeObj.desc ? " — " + currentShadeObj.desc : "")
-                                        })
-                                      ]
-                                    }),
-                                    currentShadeObj.badge && v.jsx("span", { className: "text-[10px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#f1f0ed] text-[#1a1a1a]", children: currentShadeObj.badge })
-                                  ]
-                                }),
-
-                                // Swatches Row
-                                v.jsx("div", {
-                                  className: "flex items-center gap-3 pt-1 pb-1", children:
-                                    cur.shades.map(sh => v.jsxs("button", {
-                                      key: sh.name,
-                                      onClick: () => { try { s(); } catch (e) { } setSelectedColor(sh.name); },
-                                      className: "rounded-full transition-all cursor-pointer relative overflow-hidden flex items-center justify-center " +
-                                        (selectedColor === sh.name ? "ring-2 ring-offset-2 ring-[#1a1a1a] scale-110 shadow-md" : "border border-black/20 hover:scale-105 opacity-85 hover:opacity-100"),
-                                      style: { width: "32px", height: "32px", minWidth: "32px", minHeight: "32px", backgroundColor: sh.color },
-                                      title: sh.name + " - " + sh.desc,
-                                      children: [
-                                        sh.badge === "sold out" && v.jsx("div", { className: "absolute w-full h-[1.5px] bg-[#1a1a1a] rotate-45" })
-                                      ]
-                                    }))
-                                })
-                              ]
-                            }),
-
-                            // CTA Section (Add To Bag + Afterpay)
-                            v.jsxs("div", {
-                              className: "pt-2 space-y-2.5", children: [
-                                v.jsx("button", {
-                                  onClick: () => cur.availability !== "sold_out" && handleAdd(cur, selectedColor, 1),
-                                  disabled: cur.availability === "sold_out",
-                                  className: "w-full py-4 px-8 rounded-full text-white font-extrabold text-xs sm:text-sm tracking-wider uppercase transition-all shadow-md flex items-center justify-center gap-2 " +
-                                    (cur.availability === "sold_out" ? "bg-[#dedad2] text-[#67645e] cursor-not-allowed" : "bg-[#f82793] hover:bg-[#d41c7b] text-white shadow-lg shadow-[#f82793]/35 cursor-pointer hover:shadow-lg active:scale-[0.99]"),
+                          // Collapsible Silver Product Accordions
+                          v.jsx("div", {
+                            className: "pt-2 border-t border-white/10 space-y-1",
+                            children: (cur.accordions || [
+                              { title: "Sensory Acoustics & Vibration Modes", content: "Engineered with whisper-quiet multi-tonal resonance (<28dB) across 10 rhythmic speeds, offering deep cellular relaxation without sensory fatigue." },
+                              { title: "Material Purity & Medical Liquid Silicone", content: "100% hypoallergenic, phthalate-free, medical-grade liquid silicone that quickly warms to body temperature. Velvet-touch and effortlessly body-safe." },
+                              { title: "Magnetic Rapid Charging & Battery Life", content: "Hermetically sealed gold-plated magnetic dock provides 90+ minutes of continuous ritual on a 60-minute charge. Global USB compatible." },
+                              { title: "Discreet Delivery & 30-Day Guarantee", content: "Shipped in plain unbranded cardboard packaging with zero product keywords on label. Protected by Plezzy's unconditional 30-day warranty." }
+                            ]).map((acc, idx) => v.jsxs("div", {
+                              key: idx,
+                              className: "border-b border-white/10 py-2.5 text-left",
+                              children: [
+                                v.jsxs("button", {
+                                  onClick: () => setOpenAccordion(openAccordion === idx ? null : idx),
+                                  className: "w-full flex items-center justify-between text-xs sm:text-[13px] font-bold text-white hover:text-[#f82793] transition-colors py-1 cursor-pointer",
                                   style: { fontFamily: "Swiss, -apple-system, sans-serif" },
-                                  children: cur.availability === "sold_out" ? "SOLD OUT — NOTIFY ME" : (added ? "ADDED TO BAG ✓" : ("ADD TO BAG • " + (cur.priceUSD || ("$" + (cur.priceINR / 100).toFixed(2)))))
-                                }),
-
-                                // Installments & Discreet Shipping Notice
-                                v.jsxs("div", {
-                                  className: "space-y-1 pt-1", children: [
-                                    v.jsxs("p", {
-                                      className: "text-[11px] text-[#67645e] text-center flex items-center justify-center gap-1", style: { fontFamily: "Swiss, -apple-system, sans-serif" }, children: [
-                                        v.jsx("span", { children: "or 4 interest-free payments of $" + (parseFloat((cur.priceUSD || "$16.00").replace(/[^0-9.]/g, "")) / 4).toFixed(2) + " with" }),
-                                        v.jsxs("span", {
-                                          className: "inline-flex items-center gap-0.5 font-bold text-black", children: [
-                                            v.jsx("span", { className: "bg-black text-white text-[9px] font-black px-1 rounded-xs", children: "S" }),
-                                            "Afterpay"
-                                          ]
-                                        }),
-                                        v.jsx("span", { className: "text-[10px] text-[#67645e] cursor-pointer", children: "ⓘ" })
-                                      ]
-                                    }),
-                                    v.jsx("p", { className: "text-[10px] text-[#8b8782] text-center font-medium", children: "🔒 100% Plain Unbranded Box • Free Shipping Over $40 • 1-Year Warranty" })
-                                  ]
-                                })
-                              ]
-                            }),
-
-                            // Collapsible Product Accordions
-                            v.jsx("div", {
-                              className: "pt-3 border-t border-[#dedad2] space-y-1", children:
-                                (cur.accordions || []).map((acc, idx) => v.jsxs("div", {
-                                  key: idx, className: "border-b border-[#dedad2] py-2.5 text-left", children: [
-                                    v.jsxs("button", {
-                                      onClick: () => setOpenAccordion(openAccordion === idx ? null : idx),
-                                      className: "w-full flex items-center justify-between text-xs sm:text-sm font-bold text-[#1a1a1a] hover:text-[#f82793] transition-colors py-1 cursor-pointer",
-                                      style: { fontFamily: "Swiss, -apple-system, sans-serif" },
-                                      children: [
-                                        v.jsx("span", { children: acc.title }),
-                                        v.jsx("span", { className: "text-base font-normal", children: openAccordion === idx ? "−" : "+" })
-                                      ]
-                                    }),
-                                    openAccordion === idx && v.jsx("p", {
-                                      className: "text-xs text-[#5e5b56] leading-relaxed pt-1.5 pb-2 animate-in fade-in duration-150",
-                                      style: { fontFamily: "Swiss, -apple-system, sans-serif" },
-                                      children: acc.content
+                                  children: [
+                                    v.jsx("span", { children: acc.title }),
+                                    v.jsx("span", {
+                                      className: "text-base font-normal text-white/50",
+                                      children: openAccordion === idx ? "−" : "+"
                                     })
                                   ]
-                                }))
-                            })
-
-                          ]
-                        })
-                      ]
-                    })
-
-                  ]
-                })
-            }),
-
-            // ── FRAME 3: BESPOKE SENSORY ANATOMY & SPECS TABLE (ACCURATE FRAME 3) ─
-            v.jsx("div", {
-              className: "max-w-7xl mx-auto px-4 sm:px-8 py-8 sm:py-12 border-t border-[#dedad2]/80", children:
-                v.jsxs("div", {
-                  className: "grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch", children: [
-
-                    // Left: Structured Specs Table Card
-                    v.jsxs("div", {
-                      className: "lg:col-span-6 plezzy-split-frame p-8 sm:p-12 flex flex-col justify-between text-left bg-white/70 backdrop-blur-xl border border-[#dedad2] rounded-[28px] shadow-sm", children: [
-                        v.jsx("h2", {
-                          className: "text-2xl sm:text-3xl lg:text-[32px] font-medium text-[#1a1a1a] leading-snug mb-6 sm:mb-8",
-                          style: { fontFamily: "Swiss, -apple-system, sans-serif" },
-                          children: cur.id === "plz-pebble" ? (
-                            v.jsxs("span", {
-                              children: [
-                                "An ergonomic palm pebble for ",
-                                v.jsx("strong", { className: "font-black uppercase text-[#1a1a1a]", children: "DEEP CALM" }),
-                                v.jsx("br", {}),
-                                "+ ",
-                                v.jsx("strong", { className: "font-black uppercase text-[#1a1a1a]", children: "VELVET" }),
-                                " touch."
-                              ]
-                            })
-                          ) : cur.id === "plz-dual-wand" ? (
-                            v.jsxs("span", {
-                              children: [
-                                "A dual-resonance wand for ",
-                                v.jsx("strong", { className: "font-black uppercase text-[#1a1a1a]", children: "HARMONIC" }),
-                                " depth",
-                                v.jsx("br", {}),
-                                "+ ",
-                                v.jsx("strong", { className: "font-black uppercase text-[#1a1a1a]", children: "CELESTIAL" }),
-                                " pleasure."
-                              ]
-                            })
-                          ) : cur.id === "plz-elixir" ? (
-                            v.jsxs("span", {
-                              children: [
-                                "A clean botanical elixir for ",
-                                v.jsx("strong", { className: "font-black uppercase text-[#1a1a1a]", children: "SILKY" }),
-                                " glide",
-                                v.jsx("br", {}),
-                                "+ ",
-                                v.jsx("strong", { className: "font-black uppercase text-[#1a1a1a]", children: "PLANT" }),
-                                " hydration."
-                              ]
-                            })
-                          ) : (
-                            v.jsxs("span", {
-                              children: [
-                                "A contoured precision wand for ",
-                                v.jsx("strong", { className: "font-black uppercase text-[#1a1a1a]", children: "TARGETED" }),
-                                " release",
-                                v.jsx("br", {}),
-                                "+ ",
-                                v.jsx("strong", { className: "font-black uppercase text-[#1a1a1a]", children: "SONIC" }),
-                                " depth."
-                              ]
-                            })
-                          )
-                        }),
-
-                        // Structured Spec Rows (100% accurate per product)
-                        v.jsxs("div", {
-                          className: "space-y-0 text-left", children:
-                            (cur.id === "plz-pebble" ? [
-                              { label: "GOOD FOR:", val: "Everyday mindful sensory unwinding & discreet palm wellness" },
-                              { label: "FEELS LIKE:", val: "Velvety medical-grade liquid silicone • body-temperature warmth" },
-                              { label: "LOOKS LIKE:", val: "Sculpted palm pebble with reflective water-resistant finish" },
-                              { label: "ACOUSTICS:", val: "Ultra-quiet acoustic whisper core below 28dB (<28dB)" },
-                              { label: "FYI:", val: "IPX7 Submersible Waterproof • Rapid USB Magnetic Dock • 100% Body-Safe" }
-                            ] : cur.id === "plz-dual-wand" ? [
-                              { label: "GOOD FOR:", val: "Dual-zone simultaneous stimulation & full-body harmonic resonance" },
-                              { label: "FEELS LIKE:", val: "Frosted liquid silicone with micro-particle floating elements" },
-                              { label: "LOOKS LIKE:", val: "Sculptural dual-ended curved wand infused with celestial hearts" },
-                              { label: "ACOUSTICS:", val: "Dual independent harmonic motors (<29dB)" },
-                              { label: "FYI:", val: "IPX7 Waterproof • Magnetic Hermetic Charging • 10 Resonance Modes" }
-                            ] : cur.id === "plz-elixir" ? [
-                              { label: "GOOD FOR:", val: "Restorative, frictionless moisture for skin & intimate wellness" },
-                              { label: "FEELS LIKE:", val: "Silky, featherlight botanical serum that never turns sticky" },
-                              { label: "LOOKS LIKE:", val: "Contemporary canary-yellow pump dispenser with pop-art graphic" },
-                              { label: "FORMULA:", val: "Purified Aqua, Plant Hyaluronic Acid & Organic Aloe" },
-                              { label: "FYI:", val: "100% Vegan • Cruelty-Free • pH-Balanced 3.9–4.2 • Condom & Silicone Safe" }
-                            ] : [
-                              { label: "GOOD FOR:", val: "Pinpoint acupressure, deep tissue resonance & targeted tension release" },
-                              { label: "FEELS LIKE:", val: "Ultra-soft flexible silicone contour with satin-smooth glide" },
-                              { label: "LOOKS LIKE:", val: "Ergonomic flexible wand with rich translucent carmine glaze" },
-                              { label: "ACOUSTICS:", val: "Sub-26dB whisper-quiet high-torque magnetic motor" },
-                              { label: "FYI:", val: "IPX7 Submersible Waterproof • Rapid Magnetic Charge • 10 Frequencies" }
-                            ]).map((row, idx) => v.jsxs("div", {
-                              key: idx,
-                              className: "border-t border-[#dedad2] py-3.5 flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 sm:gap-4",
-                              children: [
-                                v.jsx("span", { className: "text-[10.5px] sm:text-[11px] font-bold tracking-[0.12em] uppercase text-[#1a1a1a] shrink-0", style: { fontFamily: "Swiss, -apple-system, sans-serif" }, children: row.label }),
-                                v.jsx("span", { className: "text-xs sm:text-[13px] text-[#4a4742] sm:text-right leading-relaxed whitespace-pre-line font-medium", style: { fontFamily: "Swiss, -apple-system, sans-serif" }, children: row.val })
+                                }),
+                                openAccordion === idx && v.jsx("p", {
+                                  className: "text-xs text-white/70 leading-relaxed pt-1.5 pb-2 animate-in fade-in duration-150",
+                                  style: { fontFamily: "Swiss, -apple-system, sans-serif" },
+                                  children: acc.content
+                                })
                               ]
                             }))
-                        })
-                      ]
-                    }),
+                          })
 
-                    // Right: Product Sculptural Shot Frame with Hover-to-Color
-                    v.jsx("div", {
-                      className: "lg:col-span-6 plezzy-split-frame bg-white/70 backdrop-blur-xl border border-[#dedad2] rounded-[28px] flex items-center justify-center overflow-hidden min-h-[380px] sm:min-h-[460px] group shadow-sm p-4", children:
-                        v.jsx("img", {
-                          src: (cur.images && cur.images[1] ? cur.images[1].src : cur.image),
-                          alt: cur.name,
-                          className: "editorial-bw-img w-full h-full object-contain max-h-[440px] group-hover:scale-105 transition-all duration-500"
-                        })
-                    })
+                        ]
+                      })
+                    ]
+                  })
 
-                  ]
-                })
+                ]
+              })
             }),
 
-            // ── FRAME 4: MATERIALS SPOTLIGHT ("MADE WITH" OVAL GRAPHIC) ──────────
+            // ── FRAME 2: ARCHITECTURAL PERFORMANCE PILLARS (4 SLEEK SILVER BENTO TILES) ──────
             v.jsx("div", {
-              className: "max-w-7xl mx-auto px-4 sm:px-8 py-6 sm:py-8", children:
-                v.jsxs("div", {
-                  className: "grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch", children: [
+              className: "max-w-7xl mx-auto px-4 sm:px-8 py-10 sm:py-16 relative z-10",
+              children: v.jsxs("div", {
+                className: "space-y-8 text-center",
+                children: [
+                  v.jsxs("div", {
+                    className: "space-y-2",
+                    children: [
+                      v.jsx("span", {
+                        className: "text-[11px] font-extrabold uppercase tracking-[0.28em] text-[#f82793]",
+                        children: "ENGINEERED FOR MODERN INTIMACY"
+                      }),
+                      v.jsx("h3", {
+                        className: "text-2xl sm:text-3xl md:text-4xl font-extrabold lowercase text-white tracking-tight",
+                        style: { fontFamily: "'Rektorat Heavy', Swiss, sans-serif" },
+                        children: "thoughtful by design."
+                      })
+                    ]
+                  }),
+                  v.jsx("div", {
+                    className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 text-left pt-2",
+                    children: [
+                      {
+                        icon: "🔇",
+                        title: "Sub-28dB Acoustic Core",
+                        desc: "Whisper-quiet acoustic dampening engineered for total personal discretion and peaceful unwinding."
+                      },
+                      {
+                        icon: "💧",
+                        title: "100% IPX7 Waterproof",
+                        desc: "Hermetically sealed seamless unibody fully submersible up to 1 meter for bath and shower rituals."
+                      },
+                      {
+                        icon: "✨",
+                        title: "Medical-Grade Silicone",
+                        desc: "100% hypoallergenic, non-porous liquid silicone with silky velvet-touch warmth against skin."
+                      },
+                      {
+                        icon: "⚡",
+                        title: "Magnetic Rapid Dock",
+                        desc: "Hermetic gold-plated contact charging delivering 90+ minutes of continuous uninterrupted ritual."
+                      }
+                    ].map((feat, idx) => v.jsxs("div", {
+                      key: idx,
+                      className: "p-6 rounded-3xl space-y-2.5 transition-all duration-300 hover:-translate-y-1.5 shadow-xl group",
+                      style: {
+                        background: "linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(220, 225, 235, 0.03) 100%)",
+                        backdropFilter: "blur(20px)",
+                        WebkitBackdropFilter: "blur(20px)",
+                        border: "1px solid rgba(255, 255, 255, 0.12)",
+                        boxShadow: "0 14px 36px -4px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.25)"
+                      },
+                      children: [
+                        v.jsx("span", { className: "text-3xl inline-block group-hover:scale-110 transition-transform", children: feat.icon }),
+                        v.jsx("h4", { className: "text-sm font-extrabold uppercase tracking-wider text-white pt-1", children: feat.title }),
+                        v.jsx("p", { className: "text-xs text-white/70 leading-relaxed", children: feat.desc })
+                      ]
+                    }))
+                  })
+                ]
+              })
+            }),
 
-                    // Left: High-Res Tactile Detail Photo with Hover-to-Color
-                    v.jsx("div", {
-                      className: "lg:col-span-6 plezzy-split-frame overflow-hidden min-h-[380px] sm:min-h-[460px] relative bg-white/70 backdrop-blur-xl border border-[#dedad2] rounded-[28px] shadow-sm flex items-center justify-center p-4 group", children:
-                        v.jsx("img", {
-                          src: (cur.images && cur.images[2] ? cur.images[2].src : cur.image),
-                          alt: cur.name + " texture and material detail",
-                          className: "editorial-bw-img w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-all duration-500"
-                        })
-                    }),
-
-                    // Right: Handcrafted "MADE WITH" Graphic Oval Frame
-                    v.jsxs("div", {
-                      className: "lg:col-span-6 plezzy-split-frame bg-white/70 backdrop-blur-xl border border-[#dedad2] rounded-[28px] flex flex-col items-center justify-center p-8 sm:p-14 text-center min-h-[380px] sm:min-h-[460px] shadow-sm", children: [
-                        v.jsx("p", {
-                          className: "text-xs font-bold uppercase tracking-[0.25em] text-[#5e5b56] mb-5 sm:mb-7",
-                          style: { fontFamily: "Swiss, -apple-system, sans-serif" },
-                          children: "MADE WITH INTENTION"
-                        }),
+            // ── FRAME 3: VERIFIED CLIENT EXPERIENCES (CUSTOMER REVIEWS BENTO) ──────
+            v.jsx("div", {
+              className: "max-w-7xl mx-auto px-4 sm:px-8 py-8 sm:py-12 relative z-10",
+              children: v.jsxs("div", {
+                className: "space-y-8 text-center",
+                children: [
+                  v.jsxs("div", {
+                    className: "space-y-2",
+                    children: [
+                      v.jsx("span", {
+                        className: "text-[11px] font-extrabold uppercase tracking-[0.28em] text-[#f82793]",
+                        children: "VERIFIED CLIENT RITUALS"
+                      }),
+                      v.jsx("h3", {
+                        className: "text-2xl sm:text-3xl md:text-4xl font-extrabold lowercase text-white tracking-tight",
+                        style: { fontFamily: "'Rektorat Heavy', Swiss, sans-serif" },
+                        children: "what intimacy feels like."
+                      })
+                    ]
+                  }),
+                  v.jsx("div", {
+                    className: "grid grid-cols-1 md:grid-cols-3 gap-5 text-left",
+                    children: reviews.map(rev => v.jsxs("div", {
+                      key: rev.id,
+                      className: "p-6 rounded-3xl space-y-3 shadow-lg",
+                      style: {
+                        background: "linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(220, 225, 235, 0.03) 100%)",
+                        backdropFilter: "blur(20px)",
+                        WebkitBackdropFilter: "blur(20px)",
+                        border: "1px solid rgba(255, 255, 255, 0.12)",
+                        boxShadow: "0 10px 30px -4px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.2)"
+                      },
+                      children: [
                         v.jsxs("div", {
-                          className: "relative inline-flex items-center justify-center px-12 sm:px-16 py-3 sm:py-4", children: [
-                            v.jsx("svg", {
-                              className: "absolute inset-0 w-full h-full pointer-events-none overflow-visible",
-                              viewBox: "0 0 320 100",
-                              fill: "none",
-                              children: v.jsx("ellipse", { cx: "160", cy: "50", rx: "150", ry: "44", stroke: "#1a1a1a", strokeWidth: "1.8", transform: "rotate(-2.5 160 50)" })
-                            }),
-                            v.jsx("span", {
-                              className: "leading-none lowercase relative z-10",
-                              style: { fontFamily: "'Rektorat Heavy', Swiss, -apple-system, sans-serif", fontSize: "clamp(34px, 5.2vw, 58px)", fontWeight: 800, color: "#1a1a1a" },
-                              children: cur.id === "plz-pebble" ? "liquid silicone" : cur.id === "plz-dual-wand" ? "frosted silicone" : cur.id === "plz-elixir" ? "hyaluronic acid" : "medical silicone"
-                            })
+                          className: "flex items-center justify-between",
+                          children: [
+                            v.jsx("div", { className: "text-[#FEE871] text-xs", children: "★★★★★" }),
+                            v.jsx("span", { className: "text-[11px] font-mono text-white/40", children: rev.date })
                           ]
                         }),
-                        v.jsx("p", {
-                          className: "leading-none lowercase mt-4 sm:mt-6 font-extrabold text-[#5e5b56]",
-                          style: { fontFamily: "'Rektorat Heavy', Swiss, -apple-system, sans-serif", fontSize: "clamp(32px, 4.8vw, 54px)" },
-                          children: cur.id === "plz-pebble" ? "acoustic core" : cur.id === "plz-dual-wand" ? "celestial hearts" : cur.id === "plz-elixir" ? "organic aloe" : "sonic motor"
+                        v.jsx("h5", {
+                          className: "text-sm font-bold text-white leading-snug",
+                          children: `"${rev.title}"`
                         }),
                         v.jsx("p", {
-                          className: "text-xs sm:text-sm text-[#67645e] max-w-sm mt-4 leading-relaxed",
-                          style: { fontFamily: "Swiss, -apple-system, sans-serif" },
-                          children: cur.id === "plz-pebble"
-                            ? "Hypoallergenic medical silicone adapts instantly to skin temperature while the acoustic core delivers sub-28dB whisper resonance."
-                            : cur.id === "plz-dual-wand"
-                              ? "Dual independent harmonic motors encased in frosted medical silicone with suspended celestial micro-particles."
-                              : cur.id === "plz-elixir"
-                                ? "Clean bio-compatible formula enriched with plant-derived hyaluronic acid and organic chamomile for long-lasting silky glide."
-                                : "Contoured medical silicone body driven by a targeted low-frequency sonic motor operating silently below 26dB."
+                          className: "text-xs text-white/70 leading-relaxed",
+                          children: rev.text
+                        }),
+                        v.jsxs("div", {
+                          className: "flex items-center gap-1.5 pt-1 text-[11px] font-semibold text-white/60",
+                          children: [
+                            v.jsx("span", { className: "text-[#22c55e]", children: "✓" }),
+                            rev.author,
+                            " • Verified Buyer"
+                          ]
                         })
                       ]
-                    })
-
-                  ]
-                })
+                    }))
+                  })
+                ]
+              })
             }),
 
-            // ── FRAME 5: ARCHITECTURAL PERFORMANCE PILLARS (4 LUXURY CARDS) ──────
-            v.jsx("div", {
-              className: "max-w-7xl mx-auto px-4 sm:px-8 py-8 sm:py-12 border-t border-[#dedad2]/80", children:
-                v.jsxs("div", {
-                  className: "space-y-6 text-center", children: [
-                    v.jsxs("div", {
-                      className: "space-y-1.5", children: [
-                        v.jsx("span", { className: "text-[10px] font-extrabold uppercase tracking-[0.25em] text-[#f82793]", children: "ENGINEERED FOR MODERN INTIMACY" }),
-                        v.jsx("h3", { className: "text-2xl sm:text-3xl font-extrabold lowercase text-[#1a1a1a]", style: { fontFamily: "'Rektorat Heavy', Swiss, sans-serif" }, children: "thoughtful by design." })
-                      ]
-                    }),
-                    v.jsxs("div", {
-                      className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 text-left pt-3", children: [
-                        {
-                          icon: "🔇",
-                          title: "Sub-28dB Acoustic Core",
-                          desc: "Whisper-quiet acoustic dampening engineered for total discretion and peace of mind."
-                        },
-                        {
-                          icon: "💧",
-                          title: "100% IPX7 Waterproof",
-                          desc: "Hermetically sealed unibody fully submersible up to 1 meter for bath rituals."
-                        },
-                        {
-                          icon: "✨",
-                          title: "Medical-Grade Silicone",
-                          desc: "100% hypoallergenic, non-porous liquid silicone with silky velvet-touch finish."
-                        },
-                        {
-                          icon: "⚡",
-                          title: "Magnetic Rapid Dock",
-                          desc: "Gold-plated hermetic charging contacts deliver 90+ minutes of continuous ritual."
-                        }
-                      ].map((feat, idx) => v.jsxs("div", {
-                        key: idx,
-                        className: "plezzy-box-frame p-6 bg-white/70 backdrop-blur-md border border-[#dedad2] rounded-2xl space-y-2 shadow-xs hover:border-[#1a1a1a] transition-all",
-                        children: [
-                          v.jsx("span", { className: "text-2xl", children: feat.icon }),
-                          v.jsx("h4", { className: "text-xs font-extrabold uppercase tracking-wider text-[#1a1a1a] pt-1", children: feat.title }),
-                          v.jsx("p", { className: "text-xs text-[#67645e] leading-relaxed", children: feat.desc })
-                        ]
-                      }))
-                    })
-                  ]
-                })
+            // ── FRAME 4: PLEZZY'S GUARANTEE (REUSING OUR BEAUTIFUL BORDERLESS SECTION) ──
+            v.jsx(PlezzyGuaranteeSection, {
+              className: "max-w-7xl mx-auto px-4 sm:px-8 my-10 sm:my-14 flex justify-center relative z-10"
             }),
 
-            // ── FRAME 7: STICKY BOTTOM ATB BAR (SLIDES UP ON SCROLL) ─────────────
+            // ── FRAME 5: STICKY BOTTOM ATB BAR (SLIDES UP ON SCROLL) ─────────────
             showStickyBar && v.jsx("div", {
-              className: "sticky-atb-bar bg-white/95 backdrop-blur-xl border-t border-[#dedad2] py-2.5 px-4 sm:px-8 shadow-2xl animate-in slide-in-from-bottom duration-300",
-              style: { position: "fixed", bottom: 0, left: 0, right: 0, width: "100%", zIndex: 50, boxSizing: "border-box" },
+              className: "sticky-atb-bar py-3 px-4 sm:px-8 shadow-2xl animate-in slide-in-from-bottom duration-300",
+              style: {
+                position: "fixed",
+                bottom: 0,
+                left: 0,
+                right: 0,
+                width: "100%",
+                zIndex: 50,
+                boxSizing: "border-box",
+                background: "rgba(14, 12, 18, 0.94)",
+                backdropFilter: "blur(24px)",
+                WebkitBackdropFilter: "blur(24px)",
+                borderTop: "1px solid rgba(255, 255, 255, 0.14)"
+              },
               children: v.jsxs("div", {
-                className: "max-w-7xl mx-auto flex items-center justify-between gap-4", children: [
+                className: "max-w-7xl mx-auto flex items-center justify-between gap-4",
+                children: [
                   v.jsxs("div", {
-                    className: "flex items-center gap-3 min-w-0", children: [
+                    className: "flex items-center gap-3 min-w-0",
+                    children: [
                       v.jsx("div", {
-                        style: { width: "44px", height: "44px", minWidth: "44px", minHeight: "44px", borderRadius: "10px", overflow: "hidden", flexShrink: 0, backgroundColor: "#edebe1", border: "1px solid #dedad2" }, children:
-                          v.jsx("img", { src: activeImgUrl, alt: cur.name, style: { width: "100%", height: "100%", objectFit: "cover", display: "block" }, className: "editorial-bw-img" })
+                        style: {
+                          width: "44px",
+                          height: "44px",
+                          minWidth: "44px",
+                          minHeight: "44px",
+                          borderRadius: "12px",
+                          overflow: "hidden",
+                          flexShrink: 0,
+                          backgroundColor: "#1f1a26",
+                          border: "1px solid rgba(255, 255, 255, 0.15)"
+                        },
+                        children: v.jsx("img", {
+                          src: activeImgUrl,
+                          alt: cur.name,
+                          style: { width: "100%", height: "100%", objectFit: "cover", display: "block" }
+                        })
                       }),
                       v.jsxs("div", {
-                        className: "text-left min-w-0", children: [
-                          v.jsx("p", { className: "text-xs font-extrabold lowercase text-[#1a1a1a] truncate", style: { fontFamily: "'Rektorat Heavy', Swiss, sans-serif" }, children: cur.name }),
-                          v.jsx("p", { className: "text-[10px] text-[#8b8782] lowercase truncate mt-0.5", children: currentShadeObj.name + " • ₹" + (cur.priceINR ? cur.priceINR.toLocaleString('en-IN') : "2,999") })
+                        className: "text-left min-w-0",
+                        children: [
+                          v.jsx("p", {
+                            className: "text-xs font-extrabold lowercase text-white truncate",
+                            style: { fontFamily: "'Rektorat Heavy', Swiss, sans-serif" },
+                            children: cur.name
+                          }),
+                          v.jsx("p", {
+                            className: "text-[10px] text-white/60 lowercase truncate mt-0.5",
+                            children: currentShadeObj.name + " • ₹" + (cur.priceINR ? cur.priceINR.toLocaleString('en-IN') : "2,499")
+                          })
                         ]
                       })
                     ]
@@ -10491,10 +10620,16 @@ function _F() {
                   v.jsx("button", {
                     disabled: cur.availability === "sold_out",
                     onClick: () => cur.availability !== "sold_out" && handleAdd(cur, selectedColor, 1),
-                    className: "px-6 py-2.5 rounded-full text-white font-extrabold text-xs uppercase tracking-wider shadow-md transition-all shrink-0 " +
-                      (cur.availability === "sold_out" ? "bg-[#dedad2] text-[#67645e] cursor-not-allowed" : "bg-[#f82793] hover:bg-[#d41c7b] text-white shadow-lg shadow-[#f82793]/35 cursor-pointer hover:shadow-lg active:scale-95"),
+                    className: "px-6 py-2.5 rounded-full text-white font-extrabold text-xs uppercase tracking-wider shadow-lg transition-all shrink-0 " +
+                      (cur.availability === "sold_out"
+                        ? "bg-white/10 text-white/40 cursor-not-allowed"
+                        : "bg-[#f82793] hover:bg-[#ff3b9e] text-white shadow-[#f82793]/40 cursor-pointer hover:scale-105 active:scale-95"),
                     style: { fontFamily: "Swiss, -apple-system, sans-serif" },
-                    children: cur.availability === "sold_out" ? "SOLD OUT" : (added ? "ADDED ✓" : ("ADD TO BAG • ₹" + (cur.priceINR ? cur.priceINR.toLocaleString('en-IN') : "2,999")))
+                    children: cur.availability === "sold_out"
+                      ? "SOLD OUT"
+                      : (added
+                        ? "ADDED ✓"
+                        : ("ADD TO BAG • ₹" + (cur.priceINR ? cur.priceINR.toLocaleString('en-IN') : "2,499")))
                   })
                 ]
               })
