@@ -7425,69 +7425,6 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
         })
       }),
 
-      // ── SUBTLE BREADCRUMB & ACTIVE FILTER STATUS TOOLBAR ─────────────────
-      v.jsxs("div", {
-        className: "flex items-center justify-between gap-3 text-xs font-mono text-neutral-400 tracking-wider mb-5 sm:mb-6 px-1 border-b border-white/10 pb-3",
-        children: [
-          // Breadcrumbs
-          v.jsxs("div", {
-            className: "flex items-center gap-2 text-[11px]",
-            children: [
-              v.jsx("button", {
-                onClick: onBackToHome,
-                className: "hover:text-[#f82793] transition-colors cursor-pointer",
-                children: "Home"
-              }),
-              v.jsx("span", { children: "/" }),
-              v.jsxs("span", {
-                className: "text-white font-medium",
-                children: [activeCategory.toUpperCase(), " (", displayedProducts.length, ")"]
-              })
-            ]
-          }),
-
-          // Active filter indicator / Quick Reset
-          activeFilterCount > 0 ? v.jsxs("div", {
-            className: "flex items-center gap-2",
-            children: [
-              v.jsxs("span", {
-                className: "text-[10.5px] text-[#f82793] font-bold tracking-wider uppercase",
-                children: [activeFilterCount, " Filter", activeFilterCount > 1 ? "s" : "", " Active"]
-              }),
-              v.jsx("button", {
-                type: "button",
-                onClick: () => {
-                  try { s(); } catch (err) {}
-                  setPriceFilter("all");
-                  setOffersOnly(false);
-                  setSortBy("featured");
-                },
-                className: "text-[10px] text-white/50 hover:text-white uppercase underline transition-colors cursor-pointer",
-                children: "Reset"
-              })
-            ]
-          }) : v.jsx("button", {
-            type: "button",
-            onClick: () => {
-              try { s(); } catch (err) {}
-              setIsFilterOpen(true);
-            },
-            className: "text-[10.5px] text-white/50 hover:text-white uppercase tracking-wider flex items-center gap-1.5 transition-colors cursor-pointer",
-            children: [
-              v.jsx("span", { children: "Sort & Filter" }),
-              v.jsx("svg", {
-                viewBox: "0 0 24 24",
-                fill: "none",
-                stroke: "currentColor",
-                strokeWidth: "2",
-                style: { width: "10px", height: "10px" },
-                children: v.jsx("path", { d: "M6 9l6 6 6-6", strokeLinecap: "round" })
-              })
-            ]
-          })
-        ]
-      }),
-
       // ── PLEZZY BENTO-STYLE PRODUCT GRID (MATCHING HOMEPAGE REFERENCE) ───────────
       v.jsx("div", {
         className: "plezzy-collections-grid",
@@ -7862,48 +7799,6 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
             ]
           })
         ]
-      }),
-
-      // ── REFINED E-COMMERCE ASSURANCE BANNER ───────────────────────────────
-      v.jsx("div", {
-        className: "mt-16 sm:mt-20 pt-10 border-t border-white/10",
-        children: v.jsxs("div", {
-          className: "grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 text-center",
-          children: [
-            v.jsxs("div", {
-              className: "p-3.5 sm:p-4 rounded-xl bg-[#0c0a0e] border border-white/10 space-y-1",
-              children: [
-                v.jsx("span", { className: "text-xl block", children: "📦" }),
-                v.jsx("h4", { className: "font-bold text-[11px] uppercase tracking-wider text-white", children: "100% Stealth Box" }),
-                v.jsx("p", { className: "text-[10px] text-neutral-400 leading-relaxed", children: "Plain outer box with zero product markers." })
-              ]
-            }),
-            v.jsxs("div", {
-              className: "p-3.5 sm:p-4 rounded-xl bg-[#0c0a0e] border border-white/10 space-y-1",
-              children: [
-                v.jsx("span", { className: "text-xl block", children: "⚡" }),
-                v.jsx("h4", { className: "font-bold text-[11px] uppercase tracking-wider text-white", children: "Express Shipping" }),
-                v.jsx("p", { className: "text-[10px] text-neutral-400 leading-relaxed", children: "Complimentary courier on orders over ₹999." })
-              ]
-            }),
-            v.jsxs("div", {
-              className: "p-3.5 sm:p-4 rounded-xl bg-[#0c0a0e] border border-white/10 space-y-1",
-              children: [
-                v.jsx("span", { className: "text-xl block", children: "🛡️" }),
-                v.jsx("h4", { className: "font-bold text-[11px] uppercase tracking-wider text-white", children: "2-Year Guarantee" }),
-                v.jsx("p", { className: "text-[10px] text-neutral-400 leading-relaxed", children: "Unconditional replacement against defect." })
-              ]
-            }),
-            v.jsxs("div", {
-              className: "p-3.5 sm:p-4 rounded-xl bg-[#0c0a0e] border border-white/10 space-y-1",
-              children: [
-                v.jsx("span", { className: "text-xl block", children: "💧" }),
-                v.jsx("h4", { className: "font-bold text-[11px] uppercase tracking-wider text-white", children: "Medical Silicone" }),
-                v.jsx("p", { className: "text-[10px] text-neutral-400 leading-relaxed", children: "100% hypoallergenic, phthalate-free." })
-              ]
-            })
-          ]
-        })
       }),
 
       // Sticky Bottom Cart Bar (shows total payable and direct checkout)
