@@ -23,7 +23,7 @@
     <script>
       window.__PLEZZY_DEFAULT_VIEW__ = "collections";
     </script>
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261104_collection_bento_grid_v45"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261105_filter_all_v46"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
@@ -3282,6 +3282,13 @@
           text-decoration: line-through !important;
           line-height: 1 !important;
         }
+        .plezzy-filter-trigger-btn {
+          height: 34px !important;
+          padding: 0 13px !important;
+          font-size: 10px !important;
+          gap: 5px !important;
+        }
+
         .plezzy-bento-add-btn {
           width: 100% !important;
           height: 34px !important;
@@ -3565,6 +3572,50 @@
         align-items: center !important;
         justify-content: center !important;
         gap: 6px !important;
+      }
+
+      /* White Capsule Filter Button (Right side of Collections Category Bar) */
+      .plezzy-filter-trigger-btn {
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+        color: #111111 !important;
+        border: 1px solid rgba(255, 255, 255, 0.9) !important;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25), 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+        border-radius: 9999px !important;
+        height: 38px !important;
+        padding: 0 18px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+        font-size: 11.5px !important;
+        font-weight: 800 !important;
+        letter-spacing: 0.1em !important;
+        text-transform: uppercase !important;
+        cursor: pointer !important;
+        white-space: nowrap !important;
+        transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        user-select: none !important;
+        flex-shrink: 0 !important;
+      }
+      .plezzy-filter-trigger-btn svg {
+        stroke: #111111 !important;
+        transition: stroke 0.25s ease !important;
+      }
+      .plezzy-filter-trigger-btn:hover {
+        background: #f82793 !important;
+        background-color: #f82793 !important;
+        color: #ffffff !important;
+        border-color: #f82793 !important;
+        box-shadow: 0 8px 26px rgba(248, 39, 147, 0.65) !important;
+        transform: translateY(-1px) scale(1.03) !important;
+      }
+      .plezzy-filter-trigger-btn:hover svg {
+        stroke: #ffffff !important;
+      }
+      .plezzy-filter-trigger-btn:active {
+        transform: scale(0.96) !important;
       }
 
       /* Header Cart Capsule */

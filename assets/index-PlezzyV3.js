@@ -7163,6 +7163,7 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
   const { playClickFeedback: s } = Pn();
   const { cart, addToCart, removeFromCart, updateQuantity, totalItemsCount, totalAmountINR, formatPrice } = xi();
   const filterTabs = [
+    "ALL",
     "LUX",
     "STANDARD",
     "HIM",
@@ -7179,8 +7180,9 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
       if (col === "HER" || col === "FOR HER") return "HER";
       if (col === "LUBES" || col === "LUBE" || col === "ELIXIRS") return "LUBES";
       if (col === "LUX" || col === "LUXE") return "LUX";
+      if (col === "ALL") return "ALL";
     } catch(e) {}
-    return "LUX";
+    return "ALL";
   });
 
   G.useEffect(() => {
@@ -7192,11 +7194,34 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
       else if (col === "HER" || col === "FOR HER") setActiveCategory("HER");
       else if (col === "LUBES" || col === "LUBE" || col === "ELIXIRS") setActiveCategory("LUBES");
       else if (col === "LUX" || col === "LUXE") setActiveCategory("LUX");
+      else if (col === "ALL") setActiveCategory("ALL");
     } catch(e) {}
   }, []);
 
   const [addedItems, setAddedItems] = G.useState({});
   const [sortBy, setSortBy] = G.useState("featured");
+  const [isFilterOpen, setIsFilterOpen] = G.useState(false);
+  const [priceFilter, setPriceFilter] = G.useState("all");
+  const [offersOnly, setOffersOnly] = G.useState(false);
+  const filterRef = G.useRef(null);
+
+  G.useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (filterRef.current && !filterRef.current.contains(e.target)) {
+        setIsFilterOpen(false);
+      }
+    };
+    if (isFilterOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("touchstart", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
+  }, [isFilterOpen]);
+
+  const activeFilterCount = (priceFilter !== "all" ? 1 : 0) + (offersOnly ? 1 : 0) + (sortBy !== "featured" ? 1 : 0);
 
   // Merge dynamic prods with full catalog
   const catalogList = G.useMemo(() => {
@@ -7232,6 +7257,7 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
   const matchesCategory = (p, cat) => {
     if (!cat) return true;
     const c = String(cat).toUpperCase();
+    if (c === "ALL") return true;
     const pCats = Array.isArray(p.categories) ? p.categories.map(x => String(x).toUpperCase()) : [];
     const pCat = String(p.category || "").toUpperCase();
     const pid = String(p.id || "").toLowerCase();
@@ -7262,19 +7288,27 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
     return pCats.includes(c) || pCat === c;
   };
 
-  // Filtered by active tab and sort order
+  // Filtered by active tab, price filter, offers toggle, and sort order
   const displayedProducts = G.useMemo(() => {
-    let list = catalogList.filter(p => matchesCategory(p, activeCategory));
+    let list = catalogList.filter(p => {
+      if (!matchesCategory(p, activeCategory)) return false;
+      const price = p.priceINR || p.price || 0;
+      if (priceFilter === "under-2000" && price >= 2000) return false;
+      if (priceFilter === "2000-4000" && (price < 2000 || price > 4000)) return false;
+      if (priceFilter === "over-4000" && price <= 4000) return false;
+      if (offersOnly && !p.badge) return false;
+      return true;
+    });
 
     if (sortBy === "price-low") {
-      list.sort((a, b) => (a.priceINR || 0) - (b.priceINR || 0));
+      list.sort((a, b) => (a.priceINR || a.price || 0) - (b.priceINR || b.price || 0));
     } else if (sortBy === "price-high") {
-      list.sort((a, b) => (b.priceINR || 0) - (a.priceINR || 0));
+      list.sort((a, b) => (b.priceINR || b.price || 0) - (a.priceINR || a.price || 0));
     } else if (sortBy === "rating") {
       list.sort((a, b) => (b.rating || 0) - (a.rating || 0));
     }
     return list;
-  }, [catalogList, activeCategory, sortBy]);
+  }, [catalogList, activeCategory, priceFilter, offersOnly, sortBy]);
 
   const handleAddToCart = (product, e) => {
     if (e) e.stopPropagation();
@@ -7324,30 +7358,229 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
         ]
       }),
 
-      // ── COMPACT FROSTED CAPSULE FILTER BAR (CLASSY & SLEEK) ───────────────
+      // ── COMPACT FROSTED CAPSULE FILTER BAR WITH RIGHT FILTER SECTION ───────
       v.jsx("div", {
-        className: "sticky top-16 sm:top-20 z-30 mb-6 sm:mb-8 py-2 overflow-x-auto no-scrollbar",
-        children: v.jsx("div", {
-          className: "flex items-center gap-1.5 sm:gap-2 w-max min-w-full justify-start sm:justify-center p-1.5 bg-white/95 backdrop-blur-xl border border-black/10 rounded-full shadow-lg mx-auto",
-          children: filterTabs.map(tab => {
-            const isActive = activeCategory === tab;
-            return v.jsx("button", {
-              key: tab,
-              onClick: () => {
-                try { s(); } catch (e) {}
-                setActiveCategory(tab);
-                try {
-                  const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + "?collection=" + tab.toLowerCase();
-                  window.history.replaceState({ collection: tab.toLowerCase() }, '', newUrl);
-                } catch(e) {}
-              },
-              className: "px-3.5 sm:px-4 py-1.5 rounded-full text-[10.5px] sm:text-[11px] font-medium uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer " +
-                (isActive 
-                  ? "bg-[#f82793] text-white shadow-md shadow-[#f82793]/35 scale-102 font-bold" 
-                  : "bg-transparent text-[#444444] hover:text-[#111111] hover:bg-black/[0.05]"),
-              children: tab
-            });
-          })
+        ref: filterRef,
+        className: "sticky top-16 sm:top-20 z-30 mb-6 sm:mb-8 py-2 w-full",
+        children: v.jsxs("div", {
+          className: "flex items-center justify-between gap-2.5 sm:gap-4 w-full max-w-[1240px] mx-auto",
+          children: [
+            // Left: Scrollable Category Pills Bar (Starting with ALL)
+            v.jsx("div", {
+              className: "overflow-x-auto no-scrollbar py-1 flex-1 min-w-0",
+              children: v.jsx("div", {
+                className: "flex items-center gap-1.5 sm:gap-2 p-1.5 bg-white/95 backdrop-blur-xl border border-black/10 rounded-full shadow-lg w-max",
+                children: filterTabs.map(tab => {
+                  const isActive = activeCategory === tab;
+                  return v.jsx("button", {
+                    key: tab,
+                    type: "button",
+                    onClick: () => {
+                      try { s(); } catch (e) {}
+                      setActiveCategory(tab);
+                      try {
+                        const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + (tab === "ALL" ? "" : "?collection=" + tab.toLowerCase());
+                        window.history.replaceState({ collection: tab.toLowerCase() }, '', newUrl);
+                      } catch (e) {}
+                    },
+                    className: "px-3.5 sm:px-4 py-1.5 rounded-full text-[10.5px] sm:text-[11px] font-medium uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer " +
+                      (isActive 
+                        ? "bg-[#f82793] text-white shadow-md shadow-[#f82793]/35 scale-102 font-bold" 
+                        : "bg-transparent text-[#444444] hover:text-[#111111] hover:bg-black/[0.05]"),
+                    children: tab
+                  });
+                })
+              })
+            }),
+
+            // Right: White Capsule Filter Button (Matching Image 2 Reference)
+            v.jsxs("div", {
+              className: "relative shrink-0",
+              children: [
+                v.jsxs("button", {
+                  type: "button",
+                  onClick: () => {
+                    try { s(); } catch (err) {}
+                    setIsFilterOpen(prev => !prev);
+                  },
+                  className: "plezzy-filter-trigger-btn",
+                  "aria-label": "Toggle Filters",
+                  children: [
+                    v.jsx("svg", {
+                      viewBox: "0 0 24 24",
+                      fill: "none",
+                      stroke: "currentColor",
+                      strokeWidth: "2",
+                      style: { width: "13px", height: "13px" },
+                      children: v.jsx("path", {
+                        d: "M4 6h16M7 12h10M10 18h4",
+                        strokeLinecap: "round"
+                      })
+                    }),
+                    v.jsx("span", { children: "FILTER" }),
+                    activeFilterCount > 0 && v.jsx("span", {
+                      className: "w-4 h-4 rounded-full bg-[#f82793] text-white text-[9.5px] font-bold flex items-center justify-center -mr-0.5",
+                      children: activeFilterCount
+                    }),
+                    v.jsx("svg", {
+                      viewBox: "0 0 24 24",
+                      fill: "none",
+                      stroke: "currentColor",
+                      strokeWidth: "2.5",
+                      style: { width: "11px", height: "11px" },
+                      className: "transition-transform duration-200 " + (isFilterOpen ? "rotate-180" : ""),
+                      children: v.jsx("path", {
+                        d: "M19 9l-7 7-7-7",
+                        strokeLinecap: "round",
+                        strokeLinejoin: "round"
+                      })
+                    })
+                  ]
+                }),
+
+                // Filter Dropdown Menu
+                isFilterOpen && v.jsxs("div", {
+                  className: "absolute right-0 top-full mt-2 w-[290px] sm:w-[330px] z-50 p-4 sm:p-5 rounded-2xl bg-[#0e0c12]/95 backdrop-blur-2xl border border-white/20 shadow-2xl space-y-4 text-white text-left select-none animate-in fade-in-50 zoom-in-95 duration-200",
+                  children: [
+                    // Header
+                    v.jsxs("div", {
+                      className: "flex items-center justify-between pb-2 border-b border-white/10",
+                      children: [
+                        v.jsx("span", {
+                          className: "text-[11px] font-mono uppercase tracking-widest text-[#f82793] font-bold",
+                          children: "FILTERS & SORT"
+                        }),
+                        activeFilterCount > 0 && v.jsx("button", {
+                          type: "button",
+                          onClick: () => {
+                            try { s(); } catch (err) {}
+                            setPriceFilter("all");
+                            setOffersOnly(false);
+                            setSortBy("featured");
+                          },
+                          className: "text-[10px] text-white/50 hover:text-white uppercase tracking-wider transition-colors cursor-pointer",
+                          children: "Reset All"
+                        })
+                      ]
+                    }),
+
+                    // Sort By Chips
+                    v.jsxs("div", {
+                      className: "space-y-1.5",
+                      children: [
+                        v.jsx("label", {
+                          className: "text-[10px] font-mono text-neutral-400 uppercase tracking-wider block",
+                          children: "SORT BY"
+                        }),
+                        v.jsx("div", {
+                          className: "grid grid-cols-2 gap-1.5",
+                          children: [
+                            { id: "featured", label: "Featured" },
+                            { id: "price-low", label: "Price: Low to High" },
+                            { id: "price-high", label: "Price: High to Low" },
+                            { id: "rating", label: "Top Rated" }
+                          ].map(opt => {
+                            const isSel = sortBy === opt.id;
+                            return v.jsx("button", {
+                              key: opt.id,
+                              type: "button",
+                              onClick: () => {
+                                try { s(); } catch (err) {}
+                                setSortBy(opt.id);
+                              },
+                              className: "px-2.5 py-1.5 rounded-lg text-[10.5px] font-sans font-medium transition-all text-left " +
+                                (isSel
+                                  ? "bg-[#f82793] text-white font-bold shadow-md shadow-[#f82793]/30"
+                                  : "bg-white/5 border border-white/10 text-white/70 hover:bg-white/10 hover:text-white"),
+                              children: opt.label
+                            });
+                          })
+                        })
+                      ]
+                    }),
+
+                    // Price Range Chips
+                    v.jsxs("div", {
+                      className: "space-y-1.5",
+                      children: [
+                        v.jsx("label", {
+                          className: "text-[10px] font-mono text-neutral-400 uppercase tracking-wider block",
+                          children: "PRICE RANGE"
+                        }),
+                        v.jsx("div", {
+                          className: "grid grid-cols-2 gap-1.5",
+                          children: [
+                            { id: "all", label: "All Prices" },
+                            { id: "under-2000", label: "Under ₹2,000" },
+                            { id: "2000-4000", label: "₹2,000 – ₹4,000" },
+                            { id: "over-4000", label: "Above ₹4,000" }
+                          ].map(opt => {
+                            const isSel = priceFilter === opt.id;
+                            return v.jsx("button", {
+                              key: opt.id,
+                              type: "button",
+                              onClick: () => {
+                                try { s(); } catch (err) {}
+                                setPriceFilter(opt.id);
+                              },
+                              className: "px-2.5 py-1.5 rounded-lg text-[10.5px] font-sans font-medium transition-all text-left " +
+                                (isSel
+                                  ? "bg-[#f82793] text-white font-bold shadow-md shadow-[#f82793]/30"
+                                  : "bg-white/5 border border-white/10 text-white/70 hover:bg-white/10 hover:text-white"),
+                              children: opt.label
+                            });
+                          })
+                        })
+                      ]
+                    }),
+
+                    // Offers Filter Toggle
+                    v.jsx("div", {
+                      className: "pt-1",
+                      children: v.jsxs("button", {
+                        type: "button",
+                        onClick: () => {
+                          try { s(); } catch (err) {}
+                          setOffersOnly(prev => !prev);
+                        },
+                        className: "w-full flex items-center justify-between p-2 rounded-lg transition-all " +
+                          (offersOnly ? "bg-white/10 border border-[#f82793]" : "bg-white/5 border border-white/10 hover:bg-white/10"),
+                        children: [
+                          v.jsxs("div", {
+                            className: "flex items-center gap-2",
+                            children: [
+                              v.jsx("span", { className: "w-2 h-2 rounded-full bg-[#FEE871]" }),
+                              v.jsx("span", { className: "text-[11px] font-medium", children: "30% OFF Deals Only" })
+                            ]
+                          }),
+                          v.jsx("span", {
+                            className: "text-[10px] font-bold font-mono " + (offersOnly ? "text-[#f82793]" : "text-white/40"),
+                            children: offersOnly ? "ACTIVE" : "OFF"
+                          })
+                        ]
+                      })
+                    }),
+
+                    // Apply Button
+                    v.jsx("div", {
+                      className: "pt-2",
+                      children: v.jsxs("button", {
+                        type: "button",
+                        onClick: () => {
+                          try { s(); } catch (err) {}
+                          setIsFilterOpen(false);
+                        },
+                        className: "w-full py-2.5 rounded-xl bg-[#f82793] hover:bg-[#d41c7b] text-white font-extrabold text-xs uppercase tracking-wider shadow-lg shadow-[#f82793]/30 transition-all cursor-pointer text-center",
+                        children: [
+                          "Show ", displayedProducts.length, " Products"
+                        ]
+                      })
+                    })
+                  ]
+                })
+              ]
+            })
+          ]
         })
       }),
 
@@ -7366,7 +7599,7 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
               }),
               v.jsx("span", { children: "/" }),
               v.jsxs("span", {
-                className: "text-[#111111] font-medium",
+                className: "text-white font-medium",
                 children: [activeCategory.toUpperCase(), " (", displayedProducts.length, ")"]
               })
             ]
