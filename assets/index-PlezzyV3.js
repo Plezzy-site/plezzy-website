@@ -7512,29 +7512,43 @@ function PlezzyGuaranteeSection({ className = "" }) {
           ]
         }),
 
-        // 4 Bento Trust Cards (2 cols mobile, 4 cols desktop) - ZERO BUTTONS
+        // 4 Bento Trust Cards (2 cols mobile, 4 cols desktop) - LUXURY SILVER BARS
         v.jsx("div", {
           className: "plezzy-guarantee-grid text-center relative z-10",
           children: items.map(item => v.jsxs("div", {
             key: item.id,
-            className: "plezzy-guarantee-inner-card flex flex-col items-center p-4 sm:p-6 rounded-2xl bg-white/[0.03] border border-white/8 hover:border-[#f82793]/40 hover:bg-white/[0.06] transition-all duration-300 group shadow-md",
+            className: "plezzy-guarantee-inner-card flex flex-col items-center p-4 sm:p-6 rounded-2xl transition-all duration-300 group shadow-md",
             style: {
-              borderRadius: "24px"
+              borderRadius: "24px",
+              border: "1.5px solid #d4d8e0",
+              background: "linear-gradient(135deg, rgba(234, 235, 237, 0.12) 0%, rgba(255, 255, 255, 0.22) 40%, rgba(207, 211, 216, 0.08) 75%, rgba(244, 245, 247, 0.16) 100%)",
+              boxShadow: "0 8px 24px -4px rgba(0, 0, 0, 0.45), 0 0 16px rgba(220, 225, 235, 0.22), inset 0 1px 2px rgba(255, 255, 255, 0.3)",
+              backdropFilter: "blur(12px)",
+              color: "#ffffff"
             },
             children: [
               v.jsx("div", {
-                className: "w-18 h-18 sm:w-22 sm:h-22 md:w-24 md:h-24 rounded-full bg-white/[0.05] border border-white/15 flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-105 group-hover:border-[#f82793]/60 group-hover:shadow-[0_0_25px_rgba(248,39,147,0.35)] transition-all duration-300 shadow-inner",
+                className: "plezzy-guarantee-icon-wrap w-18 h-18 sm:w-22 sm:h-22 md:w-24 md:h-24 rounded-full flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-105 transition-all duration-300 shadow-inner",
                 style: {
-                  borderRadius: "9999px"
+                  borderRadius: "9999px",
+                  border: "1.5px solid #d4d8e0",
+                  background: "rgba(255, 255, 255, 0.08)",
+                  boxShadow: "0 0 12px rgba(212, 216, 224, 0.2), inset 0 1px 2px rgba(255, 255, 255, 0.4)"
                 },
                 children: item.icon
               }),
               v.jsx("h4", {
-                className: "text-xs sm:text-sm md:text-base font-bold text-white group-hover:text-[#f82793] transition-colors leading-snug tracking-tight max-w-[170px]",
+                className: "plezzy-guarantee-title text-xs sm:text-sm md:text-base font-bold leading-snug tracking-tight max-w-[170px]",
+                style: {
+                  color: "#ffffff"
+                },
                 children: item.title
               }),
               v.jsx("span", {
-                className: "text-[10px] sm:text-[11px] md:text-xs text-white/50 tracking-wide mt-1.5 sm:mt-2",
+                className: "plezzy-guarantee-desc text-[10px] sm:text-[11px] md:text-xs tracking-wide mt-1.5 sm:mt-2",
+                style: {
+                  color: "rgba(220, 225, 235, 0.7)"
+                },
                 children: item.desc
               })
             ]

@@ -23,17 +23,14 @@
     <script>
       window.__PLEZZY_DEFAULT_VIEW__ = "collections";
     </script>
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261105_rounded_guarantee_v54"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261105_silver_bars_v55"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
-      /* Plezzy Guarantee Card & Responsive Grid */
+      /* Plezzy Guarantee Card & Silver Bars */
       .plezzy-guarantee-card {
         border-radius: 32px !important;
         overflow: hidden !important;
-      }
-      .plezzy-guarantee-inner-card {
-        border-radius: 24px !important;
       }
       .plezzy-guarantee-grid {
         display: grid !important;
@@ -45,6 +42,33 @@
           grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
           gap: 24px !important;
         }
+      }
+      .plezzy-guarantee-inner-card {
+        border-radius: 24px !important;
+        background: linear-gradient(135deg, rgba(234, 235, 237, 0.12) 0%, rgba(255, 255, 255, 0.22) 40%, rgba(207, 211, 216, 0.08) 75%, rgba(244, 245, 247, 0.16) 100%) !important;
+        border: 1.5px solid #d4d8e0 !important;
+        box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.45), 0 0 16px rgba(220, 225, 235, 0.22), inset 0 1px 2px rgba(255, 255, 255, 0.3) !important;
+        backdrop-filter: blur(12px) !important;
+        color: #ffffff !important;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      }
+      .plezzy-guarantee-inner-card:hover {
+        transform: translateY(-4px) !important;
+        border-color: #ffffff !important;
+        background: linear-gradient(135deg, rgba(234, 235, 237, 0.2) 0%, rgba(255, 255, 255, 0.32) 40%, rgba(207, 211, 216, 0.15) 75%, rgba(244, 245, 247, 0.25) 100%) !important;
+        box-shadow: 0 14px 36px -4px rgba(0, 0, 0, 0.5), 0 0 24px rgba(255, 255, 255, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.5) !important;
+      }
+      .plezzy-guarantee-icon-wrap {
+        border: 1.5px solid #d4d8e0 !important;
+        background: rgba(255, 255, 255, 0.08) !important;
+        box-shadow: 0 0 12px rgba(212, 216, 224, 0.2), inset 0 1px 2px rgba(255, 255, 255, 0.4) !important;
+      }
+      .plezzy-guarantee-title {
+        color: #ffffff !important;
+        font-weight: 700 !important;
+      }
+      .plezzy-guarantee-desc {
+        color: rgba(220, 225, 235, 0.7) !important;
       }
 
       @font-face {
