@@ -7247,44 +7247,32 @@ const allCatalogProducts = [
 
 
 // ═══════════════════════════════════════════════════════════════════════
-// PLEZZY'S GUARANTEE SECTION (BESPOKE TRUST & ASSURANCE COMPONENT)
+// PLEZZY'S GUARANTEE SECTION (DARK OBSIDIAN LUXURY WEBSITE THEME)
 // ═══════════════════════════════════════════════════════════════════════
 function PlezzyGuaranteeSection({ className = "" }) {
-  const [activeItem, setActiveItem] = G.useState(null);
-  let playFeedback = () => {};
-  try {
-    const fb = Pn();
-    if (fb && fb.playClickFeedback) playFeedback = fb.playClickFeedback;
-  } catch (err) {}
-
   const items = [
     {
       id: "quality",
       title: "European standard quality",
-      action: "How?",
-      badge: "CE & RoHS",
-      modalHeading: "European Standard Quality",
-      modalSubtitle: "Certified Medical-Grade & Hypoallergenic Standards",
-      modalDetail: "Every Plezzy pleasure device is engineered in accordance with rigorous European Union health, safety, and environmental benchmarks (CE & RoHS). Each piece undergoes dual automated quality checks and is crafted strictly from 100% skin-safe, phthalate-free, non-porous materials designed for intimate biocompatibility.",
-      highlights: ["CE & RoHS Certified", "100% Phthalate & BPA Free", "Hypoallergenic & Non-Porous", "Multi-Point Factory Inspection"],
+      desc: "CE & RoHS certified",
       icon: v.jsxs("svg", {
         width: "64",
         height: "64",
         viewBox: "0 0 80 80",
         fill: "none",
-        className: "w-14 h-14 sm:w-16 sm:h-16 select-none",
+        className: "w-13 h-13 sm:w-16 sm:h-16 select-none",
         children: [
           v.jsx("path", {
             d: "M40 10L62 18V38C62 52 52 64 40 70C28 64 18 52 18 38V18L40 10Z",
-            fill: "#F9D35A",
-            stroke: "#1A1A1A",
+            fill: "#FEE871",
+            stroke: "#FFFFFF",
             strokeWidth: "2.4",
             strokeLinejoin: "round"
           }),
           v.jsx("path", {
             d: "M32 38L38 44L50 30",
-            stroke: "#1A1A1A",
-            strokeWidth: "3",
+            stroke: "#0E0C12",
+            strokeWidth: "3.2",
             strokeLinecap: "round",
             strokeLinejoin: "round"
           }),
@@ -7294,37 +7282,32 @@ function PlezzyGuaranteeSection({ className = "" }) {
           }),
           v.jsx("path", {
             d: "M14 26L15.5 23L17 26L20 27.5L17 29L15.5 32L14 29L11 27.5L14 26Z",
-            fill: "#F9D35A"
+            fill: "#FEE871"
           }),
-          v.jsx("circle", { cx: "40", cy: "22", r: "2", fill: "#1A1A1A" }),
-          v.jsx("circle", { cx: "28", cy: "28", r: "2", fill: "#1A1A1A" }),
-          v.jsx("circle", { cx: "52", cy: "28", r: "2", fill: "#1A1A1A" }),
-          v.jsx("circle", { cx: "28", cy: "48", r: "2", fill: "#1A1A1A" }),
-          v.jsx("circle", { cx: "52", cy: "48", r: "2", fill: "#1A1A1A" }),
-          v.jsx("circle", { cx: "40", cy: "56", r: "2", fill: "#1A1A1A" })
+          v.jsx("circle", { cx: "40", cy: "22", r: "2", fill: "#0E0C12" }),
+          v.jsx("circle", { cx: "28", cy: "28", r: "2", fill: "#0E0C12" }),
+          v.jsx("circle", { cx: "52", cy: "28", r: "2", fill: "#0E0C12" }),
+          v.jsx("circle", { cx: "28", cy: "48", r: "2", fill: "#0E0C12" }),
+          v.jsx("circle", { cx: "52", cy: "48", r: "2", fill: "#0E0C12" }),
+          v.jsx("circle", { cx: "40", cy: "56", r: "2", fill: "#0E0C12" })
         ]
       })
     },
     {
       id: "silicon",
       title: "India’s Softest Silicon",
-      action: "Feel it",
-      badge: "Velvet Touch",
-      modalHeading: "India’s Softest Silicone",
-      modalSubtitle: "Proprietary Velvet-Touch Liquid Silicone",
-      modalDetail: "Specially formulated for sensitive body chemistry and tropical comfort. Our proprietary liquid-molded silicone features a cloud-soft micro-velvet finish that warms rapidly to body temperature and glides with frictionless ease against sensitive skin without drag, stickiness, or irritation.",
-      highlights: ["Proprietary Liquid Silicone Formulation", "Warm-to-Body Silk Texture", "Zero Drag or Irritation", "100% Waterproof & Easy to Clean"],
+      desc: "Velvet-touch liquid silicone",
       icon: v.jsxs("svg", {
         width: "64",
         height: "64",
         viewBox: "0 0 80 80",
         fill: "none",
-        className: "w-14 h-14 sm:w-16 sm:h-16 select-none",
+        className: "w-13 h-13 sm:w-16 sm:h-16 select-none",
         children: [
           v.jsx("path", {
             d: "M40 12C40 12 24 32 24 46C24 55 31 62 40 62C49 62 56 55 56 46C56 32 40 12 40 12Z",
-            fill: "#F9D35A",
-            stroke: "#1A1A1A",
+            fill: "#FEE871",
+            stroke: "#FFFFFF",
             strokeWidth: "2.4",
             strokeLinejoin: "round"
           }),
@@ -7336,13 +7319,14 @@ function PlezzyGuaranteeSection({ className = "" }) {
           }),
           v.jsx("path", {
             d: "M16 56C22 52 28 50 36 50C44 50 50 54 58 52C62 50 66 46 68 44",
-            stroke: "#1A1A1A",
+            stroke: "#FFFFFF",
             strokeWidth: "2.4",
             strokeLinecap: "round"
           }),
           v.jsx("path", {
             d: "M26 68C32 71 38 72 42 72C48 72 54 70 58 67",
-            stroke: "#1A1A1A",
+            stroke: "#FFFFFF",
+            strokeOpacity: "0.6",
             strokeWidth: "2",
             strokeLinecap: "round",
             strokeDasharray: "2 3"
@@ -7353,7 +7337,7 @@ function PlezzyGuaranteeSection({ className = "" }) {
           }),
           v.jsx("path", {
             d: "M16 38L17.5 35L19 38L22 39.5L19 41L17.5 44L16 41L13 39.5L16 38Z",
-            fill: "#F9D35A"
+            fill: "#FEE871"
           })
         ]
       })
@@ -7361,58 +7345,53 @@ function PlezzyGuaranteeSection({ className = "" }) {
     {
       id: "discreet",
       title: "Discreet delivery and packaging",
-      action: "Prove it!",
-      badge: "100% Stealth",
-      modalHeading: "Discreet Delivery & Packaging",
-      modalSubtitle: "Complete Confidentiality from Dispatch to Doorstep",
-      modalDetail: "Your personal privacy is our absolute priority. Orders are dispatched in 100% plain, unmarked, tamper-evident cardboard cartons. There are zero brand logos, product illustrations, or suggestive words on the box or on the courier airway bill. Even bank and card statements show a neutral billing descriptor.",
-      highlights: ["100% Plain Exterior Packaging", "No Brand Name or Logos on Box", "Tamper-Evident Security Seal", "Neutral Bank Billing Descriptor"],
+      desc: "100% plain unbranded box",
       icon: v.jsxs("svg", {
         width: "64",
         height: "64",
         viewBox: "0 0 80 80",
         fill: "none",
-        className: "w-14 h-14 sm:w-16 sm:h-16 select-none",
+        className: "w-13 h-13 sm:w-16 sm:h-16 select-none",
         children: [
           v.jsx("path", {
             d: "M34 14L54 24L34 34L14 24L34 14Z",
-            fill: "#FFFFFF",
-            stroke: "#1A1A1A",
+            fill: "#2A2433",
+            stroke: "#FFFFFF",
             strokeWidth: "2.4",
             strokeLinejoin: "round"
           }),
           v.jsx("path", {
             d: "M14 24V46L34 56V34L14 24Z",
-            fill: "#F8FAFC",
-            stroke: "#1A1A1A",
+            fill: "#1F1A26",
+            stroke: "#FFFFFF",
             strokeWidth: "2.4",
             strokeLinejoin: "round"
           }),
           v.jsx("path", {
             d: "M34 34V56L54 46V24L34 34Z",
-            fill: "#F1F5F9",
-            stroke: "#1A1A1A",
+            fill: "#16131C",
+            stroke: "#FFFFFF",
             strokeWidth: "2.4",
             strokeLinejoin: "round"
           }),
           v.jsx("path", {
             d: "M29 16.5L39 21.5L39 36.5L29 31.5L29 16.5Z",
-            fill: "#F9D35A",
-            stroke: "#1A1A1A",
-            strokeWidth: "2.4",
+            fill: "#FEE871",
+            stroke: "#FFFFFF",
+            strokeWidth: "2.2",
             strokeLinejoin: "round"
           }),
           v.jsx("circle", {
             cx: "52",
             cy: "50",
             r: "14",
-            fill: "#FFFFFF",
-            stroke: "#1A1A1A",
+            fill: "#16131C",
+            stroke: "#FFFFFF",
             strokeWidth: "2.4"
           }),
           v.jsx("path", {
             d: "M62 60L72 70",
-            stroke: "#1A1A1A",
+            stroke: "#FFFFFF",
             strokeWidth: "3",
             strokeLinecap: "round"
           }),
@@ -7444,18 +7423,13 @@ function PlezzyGuaranteeSection({ className = "" }) {
     {
       id: "warranty",
       title: "30 days Warranty",
-      action: "What’s the T&C?",
-      badge: "Replacement",
-      modalHeading: "30 Days Warranty",
-      modalSubtitle: "Zero Hassle Replacement Guarantee",
-      modalDetail: "We take immense pride in our craftsmanship and electronic reliability. Every Plezzy device is backed by our comprehensive 30-day replacement warranty covering any manufacturing, mechanical, or battery defect. If your device experiences an issue, our care team will replace it with zero awkward questions.",
-      highlights: ["30-Day Hassle-Free Replacement", "Covers Mechanical & Battery Defects", "Zero Awkward Questions Asked", "Dedicated Customer Care Support"],
+      desc: "Zero-hassle replacement",
       icon: v.jsxs("svg", {
         width: "64",
         height: "64",
         viewBox: "0 0 80 80",
         fill: "none",
-        className: "w-14 h-14 sm:w-16 sm:h-16 select-none",
+        className: "w-13 h-13 sm:w-16 sm:h-16 select-none",
         children: [
           v.jsx("rect", {
             x: "18",
@@ -7463,19 +7437,19 @@ function PlezzyGuaranteeSection({ className = "" }) {
             width: "44",
             height: "44",
             rx: "5",
-            fill: "#FFFFFF",
-            stroke: "#1A1A1A",
+            fill: "#1F1A26",
+            stroke: "#FFFFFF",
             strokeWidth: "2.4"
           }),
           v.jsx("path", {
             d: "M18 26C18 23.7909 19.7909 22 22 22H58C60.2091 22 62 23.7909 62 26V34H18V26Z",
-            fill: "#F9D35A",
-            stroke: "#1A1A1A",
+            fill: "#FEE871",
+            stroke: "#FFFFFF",
             strokeWidth: "2.4"
           }),
           v.jsx("path", {
             d: "M26 16V24M36 16V24M46 16V24M54 16V24",
-            stroke: "#1A1A1A",
+            stroke: "#FFFFFF",
             strokeWidth: "2.4",
             strokeLinecap: "round"
           }),
@@ -7486,14 +7460,14 @@ function PlezzyGuaranteeSection({ className = "" }) {
             fontFamily: "'Plus Jakarta Sans', Swiss, -apple-system, sans-serif",
             fontWeight: "800",
             fontSize: "20",
-            fill: "#1A1A1A",
+            fill: "#FFFFFF",
             letterSpacing: "-0.05em",
             children: "30"
           }),
           v.jsx("path", {
             d: "M33 59L38 62L47 56",
             stroke: "#F82793",
-            strokeWidth: "2.4",
+            strokeWidth: "2.6",
             strokeLinecap: "round",
             strokeLinejoin: "round"
           }),
@@ -7506,114 +7480,60 @@ function PlezzyGuaranteeSection({ className = "" }) {
     }
   ];
 
-  return v.jsxs("div", {
+  return v.jsx("div", {
     className: "w-full " + (className || ""),
-    children: [
-      v.jsxs("div", {
-        className: "w-full max-w-5xl mx-auto rounded-[28px] sm:rounded-[36px] bg-white text-[#111111] p-6 sm:p-10 md:p-12 shadow-2xl border border-white/20 select-none relative overflow-hidden",
-        children: [
-          // Header
-          v.jsxs("div", {
-            className: "text-center mb-8 sm:mb-12",
-            children: [
-              v.jsx("span", {
-                className: "text-[11px] sm:text-xs font-mono font-bold tracking-[0.22em] text-[#f82793] uppercase mb-1.5 inline-block",
-                children: "OUR PROMISE TO YOU"
-              }),
-              v.jsx("h2", {
-                className: "text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[#0e0c12]",
-                style: { fontFamily: "'Plus Jakarta Sans', Swiss, -apple-system, sans-serif" },
-                children: "Plezzy's Guarantee"
-              })
-            ]
-          }),
+    children: v.jsxs("div", {
+      className: "w-full max-w-6xl mx-auto rounded-[28px] sm:rounded-[36px] bg-[#121016]/90 backdrop-blur-2xl border border-white/12 p-6 sm:p-10 md:p-12 shadow-2xl relative overflow-hidden select-none",
+      style: {
+        background: "radial-gradient(circle at 50% 0%, rgba(248,39,147,0.12) 0%, rgba(18,16,22,0.95) 70%)",
+        boxShadow: "0 24px 60px -12px rgba(0,0,0,0.85), 0 0 40px rgba(248,39,147,0.15)"
+      },
+      children: [
+        // Decorative ambient top glow
+        v.jsx("div", {
+          className: "absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-36 bg-[#f82793]/15 blur-3xl rounded-full pointer-events-none"
+        }),
 
-          // 4-Column Grid
-          v.jsx("div", {
-            className: "grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-center",
-            children: items.map(item => v.jsxs("div", {
-              key: item.id,
-              onClick: () => { try { playFeedback(); } catch (e) {} setActiveItem(item); },
-              className: "flex flex-col items-center group cursor-pointer",
-              children: [
-                v.jsx("div", {
-                  className: "w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#faf9f6] border border-[#f0eae1] flex items-center justify-center mb-3 sm:mb-4 shadow-sm group-hover:scale-105 group-hover:border-[#f82793]/40 group-hover:shadow-md transition-all duration-300",
-                  children: item.icon
-                }),
-                v.jsx("h4", {
-                  className: "text-sm sm:text-base font-semibold text-[#111111] leading-snug max-w-[170px] group-hover:text-[#f82793] transition-colors",
-                  children: item.title
-                }),
-                v.jsx("button", {
-                  type: "button",
-                  onClick: (e) => { e.stopPropagation(); try { playFeedback(); } catch (err) {} setActiveItem(item); },
-                  className: "mt-2 text-xs sm:text-[13px] text-[#b89685] group-hover:text-[#f82793] underline underline-offset-4 decoration-[#b89685]/40 group-hover:decoration-[#f82793] transition-colors cursor-pointer",
-                  children: item.action
-                })
-              ]
-            }))
-          })
-        ]
-      }),
+        // Header
+        v.jsxs("div", {
+          className: "text-center mb-8 sm:mb-12 relative z-10",
+          children: [
+            v.jsx("span", {
+              className: "text-[11px] sm:text-xs font-mono font-bold tracking-[0.28em] text-[#f82793] uppercase mb-2 inline-block",
+              children: "OUR PROMISE TO YOU"
+            }),
+            v.jsx("h2", {
+              className: "text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white",
+              style: { fontFamily: "'Plus Jakarta Sans', Swiss, -apple-system, sans-serif" },
+              children: "Plezzy's Guarantee"
+            })
+          ]
+        }),
 
-      // Interactive Guarantee Detail Modal
-      activeItem && v.jsxs("div", {
-        className: "fixed inset-0 z-[999999] flex items-center justify-center p-4 select-none",
-        children: [
-          v.jsx("div", {
-            className: "fixed inset-0 bg-black/80 backdrop-blur-md cursor-pointer transition-opacity animate-in fade-in duration-200",
-            onClick: () => setActiveItem(null)
-          }),
-          v.jsxs("div", {
-            className: "relative w-full max-w-md bg-[#0e0c12] border border-white/20 rounded-3xl p-6 sm:p-8 shadow-2xl text-white z-10 flex flex-col items-center text-center animate-in zoom-in-95 duration-200",
+        // 4 Bento Trust Cards (2 cols mobile, 4 cols desktop) - ZERO BUTTONS
+        v.jsx("div", {
+          className: "grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 md:gap-8 text-center relative z-10",
+          children: items.map(item => v.jsxs("div", {
+            key: item.id,
+            className: "flex flex-col items-center p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white/[0.03] border border-white/8 hover:border-[#f82793]/40 hover:bg-white/[0.06] transition-all duration-300 group shadow-md",
             children: [
-              v.jsx("button", {
-                onClick: () => setActiveItem(null),
-                className: "absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/70 hover:text-white transition-colors cursor-pointer text-sm font-bold",
-                "aria-label": "Close",
-                children: "✕"
-              }),
               v.jsx("div", {
-                className: "w-20 h-20 rounded-full bg-white flex items-center justify-center mb-4 shadow-xl border border-white/20",
-                children: activeItem.icon
+                className: "w-18 h-18 sm:w-22 sm:h-22 md:w-24 md:h-24 rounded-full bg-white/[0.05] border border-white/15 flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-105 group-hover:border-[#f82793]/60 group-hover:shadow-[0_0_25px_rgba(248,39,147,0.35)] transition-all duration-300 shadow-inner",
+                children: item.icon
+              }),
+              v.jsx("h4", {
+                className: "text-xs sm:text-sm md:text-base font-bold text-white group-hover:text-[#f82793] transition-colors leading-snug tracking-tight max-w-[170px]",
+                children: item.title
               }),
               v.jsx("span", {
-                className: "px-3 py-1 rounded-full bg-[#f82793]/15 text-[#f82793] border border-[#f82793]/30 text-[10px] font-mono font-bold uppercase tracking-wider mb-2",
-                children: activeItem.badge
-              }),
-              v.jsx("h3", {
-                className: "text-xl sm:text-2xl font-extrabold text-white tracking-tight mb-1",
-                children: activeItem.modalHeading
-              }),
-              v.jsx("p", {
-                className: "text-xs font-medium text-[#f82793] mb-4",
-                children: activeItem.modalSubtitle
-              }),
-              v.jsx("p", {
-                className: "text-xs sm:text-sm text-white/80 leading-relaxed mb-6",
-                children: activeItem.modalDetail
-              }),
-              v.jsx("div", {
-                className: "w-full space-y-2 mb-6 text-left",
-                children: activeItem.highlights.map((h, i) => v.jsxs("div", {
-                  key: i,
-                  className: "flex items-center gap-2.5 text-xs text-white/90 bg-white/[0.04] border border-white/10 rounded-xl px-3.5 py-2",
-                  children: [
-                    v.jsx("span", { className: "text-[#22c55e] font-bold", children: "✓" }),
-                    v.jsx("span", { children: h })
-                  ]
-                }))
-              }),
-              v.jsx("button", {
-                onClick: () => setActiveItem(null),
-                className: "w-full py-3 rounded-full bg-[#f82793] hover:bg-[#d41c7b] text-white font-extrabold text-xs uppercase tracking-wider transition-colors shadow-lg shadow-[#f82793]/30 cursor-pointer",
-                children: "Understood"
+                className: "text-[10px] sm:text-[11px] md:text-xs text-white/50 tracking-wide mt-1.5 sm:mt-2",
+                children: item.desc
               })
             ]
-          })
-        ]
-      })
-    ]
+          }))
+        })
+      ]
+    })
   });
 }
 
