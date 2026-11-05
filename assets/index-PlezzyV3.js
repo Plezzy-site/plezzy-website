@@ -7365,11 +7365,11 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
         children: v.jsxs("div", {
           className: "flex items-center justify-between gap-2.5 sm:gap-4 w-full max-w-[1240px] mx-auto",
           children: [
-            // Left: Scrollable Category Pills Bar (Starting with ALL)
+            // Left: Scrollable Category Pills Bar (Starting with ALL - Dark Luxury Style)
             v.jsx("div", {
               className: "overflow-x-auto no-scrollbar py-1 flex-1 min-w-0",
               children: v.jsx("div", {
-                className: "flex items-center gap-1.5 sm:gap-2 p-1.5 bg-white/95 backdrop-blur-xl border border-black/10 rounded-full shadow-lg w-max",
+                className: "flex items-center gap-1.5 sm:gap-2 p-1.5 bg-black/60 backdrop-blur-xl border border-white/20 rounded-full shadow-lg w-max",
                 children: filterTabs.map(tab => {
                   const isActive = activeCategory === tab;
                   return v.jsx("button", {
@@ -7383,200 +7383,41 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
                         window.history.replaceState({ collection: tab.toLowerCase() }, '', newUrl);
                       } catch (e) {}
                     },
-                    className: "px-3.5 sm:px-4 py-1.5 rounded-full text-[10.5px] sm:text-[11px] font-medium uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer " +
+                    className: "px-3.5 sm:px-4 py-1.5 rounded-full text-[10.5px] sm:text-[11px] uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer " +
                       (isActive 
-                        ? "bg-[#f82793] text-white shadow-md shadow-[#f82793]/35 scale-102 font-bold" 
-                        : "bg-transparent text-[#444444] hover:text-[#111111] hover:bg-black/[0.05]"),
+                        ? "bg-[#f82793] text-white shadow-md shadow-[#f82793]/40 scale-102 font-bold" 
+                        : "bg-transparent text-white/70 hover:text-white hover:bg-white/10 font-medium"),
                     children: tab
                   });
                 })
               })
             }),
 
-            // Right: White Capsule Filter Button (Matching Image 2 Reference)
-            v.jsxs("div", {
-              className: "relative shrink-0",
+            // Right: Dark Luxury Filter Trigger Button
+            v.jsxs("button", {
+              type: "button",
+              onClick: () => {
+                try { s(); } catch (err) {}
+                setIsFilterOpen(true);
+              },
+              className: "plezzy-filter-trigger-btn",
+              "aria-label": "Open Filters and Sort",
               children: [
-                v.jsxs("button", {
-                  type: "button",
-                  onClick: () => {
-                    try { s(); } catch (err) {}
-                    setIsFilterOpen(prev => !prev);
-                  },
-                  className: "plezzy-filter-trigger-btn",
-                  "aria-label": "Toggle Filters",
-                  children: [
-                    v.jsx("svg", {
-                      viewBox: "0 0 24 24",
-                      fill: "none",
-                      stroke: "currentColor",
-                      strokeWidth: "2",
-                      style: { width: "13px", height: "13px" },
-                      children: v.jsx("path", {
-                        d: "M4 6h16M7 12h10M10 18h4",
-                        strokeLinecap: "round"
-                      })
-                    }),
-                    v.jsx("span", { children: "FILTER" }),
-                    activeFilterCount > 0 && v.jsx("span", {
-                      className: "w-4 h-4 rounded-full bg-[#f82793] text-white text-[9.5px] font-bold flex items-center justify-center -mr-0.5",
-                      children: activeFilterCount
-                    }),
-                    v.jsx("svg", {
-                      viewBox: "0 0 24 24",
-                      fill: "none",
-                      stroke: "currentColor",
-                      strokeWidth: "2.5",
-                      style: { width: "11px", height: "11px" },
-                      className: "transition-transform duration-200 " + (isFilterOpen ? "rotate-180" : ""),
-                      children: v.jsx("path", {
-                        d: "M19 9l-7 7-7-7",
-                        strokeLinecap: "round",
-                        strokeLinejoin: "round"
-                      })
-                    })
-                  ]
+                v.jsx("svg", {
+                  viewBox: "0 0 24 24",
+                  fill: "none",
+                  stroke: "currentColor",
+                  strokeWidth: "2",
+                  style: { width: "13px", height: "13px" },
+                  children: v.jsx("path", {
+                    d: "M4 6h16M7 12h10M10 18h4",
+                    strokeLinecap: "round"
+                  })
                 }),
-
-                // Filter Dropdown Menu
-                isFilterOpen && v.jsxs("div", {
-                  className: "absolute right-0 top-full mt-2 w-[290px] sm:w-[330px] z-50 p-4 sm:p-5 rounded-2xl bg-[#0e0c12]/95 backdrop-blur-2xl border border-white/20 shadow-2xl space-y-4 text-white text-left select-none animate-in fade-in-50 zoom-in-95 duration-200",
-                  children: [
-                    // Header
-                    v.jsxs("div", {
-                      className: "flex items-center justify-between pb-2 border-b border-white/10",
-                      children: [
-                        v.jsx("span", {
-                          className: "text-[11px] font-mono uppercase tracking-widest text-[#f82793] font-bold",
-                          children: "FILTERS & SORT"
-                        }),
-                        activeFilterCount > 0 && v.jsx("button", {
-                          type: "button",
-                          onClick: () => {
-                            try { s(); } catch (err) {}
-                            setPriceFilter("all");
-                            setOffersOnly(false);
-                            setSortBy("featured");
-                          },
-                          className: "text-[10px] text-white/50 hover:text-white uppercase tracking-wider transition-colors cursor-pointer",
-                          children: "Reset All"
-                        })
-                      ]
-                    }),
-
-                    // Sort By Chips
-                    v.jsxs("div", {
-                      className: "space-y-1.5",
-                      children: [
-                        v.jsx("label", {
-                          className: "text-[10px] font-mono text-neutral-400 uppercase tracking-wider block",
-                          children: "SORT BY"
-                        }),
-                        v.jsx("div", {
-                          className: "grid grid-cols-2 gap-1.5",
-                          children: [
-                            { id: "featured", label: "Featured" },
-                            { id: "price-low", label: "Price: Low to High" },
-                            { id: "price-high", label: "Price: High to Low" },
-                            { id: "rating", label: "Top Rated" }
-                          ].map(opt => {
-                            const isSel = sortBy === opt.id;
-                            return v.jsx("button", {
-                              key: opt.id,
-                              type: "button",
-                              onClick: () => {
-                                try { s(); } catch (err) {}
-                                setSortBy(opt.id);
-                              },
-                              className: "px-2.5 py-1.5 rounded-lg text-[10.5px] font-sans font-medium transition-all text-left " +
-                                (isSel
-                                  ? "bg-[#f82793] text-white font-bold shadow-md shadow-[#f82793]/30"
-                                  : "bg-white/5 border border-white/10 text-white/70 hover:bg-white/10 hover:text-white"),
-                              children: opt.label
-                            });
-                          })
-                        })
-                      ]
-                    }),
-
-                    // Price Range Chips
-                    v.jsxs("div", {
-                      className: "space-y-1.5",
-                      children: [
-                        v.jsx("label", {
-                          className: "text-[10px] font-mono text-neutral-400 uppercase tracking-wider block",
-                          children: "PRICE RANGE"
-                        }),
-                        v.jsx("div", {
-                          className: "grid grid-cols-2 gap-1.5",
-                          children: [
-                            { id: "all", label: "All Prices" },
-                            { id: "under-2000", label: "Under ₹2,000" },
-                            { id: "2000-4000", label: "₹2,000 – ₹4,000" },
-                            { id: "over-4000", label: "Above ₹4,000" }
-                          ].map(opt => {
-                            const isSel = priceFilter === opt.id;
-                            return v.jsx("button", {
-                              key: opt.id,
-                              type: "button",
-                              onClick: () => {
-                                try { s(); } catch (err) {}
-                                setPriceFilter(opt.id);
-                              },
-                              className: "px-2.5 py-1.5 rounded-lg text-[10.5px] font-sans font-medium transition-all text-left " +
-                                (isSel
-                                  ? "bg-[#f82793] text-white font-bold shadow-md shadow-[#f82793]/30"
-                                  : "bg-white/5 border border-white/10 text-white/70 hover:bg-white/10 hover:text-white"),
-                              children: opt.label
-                            });
-                          })
-                        })
-                      ]
-                    }),
-
-                    // Offers Filter Toggle
-                    v.jsx("div", {
-                      className: "pt-1",
-                      children: v.jsxs("button", {
-                        type: "button",
-                        onClick: () => {
-                          try { s(); } catch (err) {}
-                          setOffersOnly(prev => !prev);
-                        },
-                        className: "w-full flex items-center justify-between p-2 rounded-lg transition-all " +
-                          (offersOnly ? "bg-white/10 border border-[#f82793]" : "bg-white/5 border border-white/10 hover:bg-white/10"),
-                        children: [
-                          v.jsxs("div", {
-                            className: "flex items-center gap-2",
-                            children: [
-                              v.jsx("span", { className: "w-2 h-2 rounded-full bg-[#FEE871]" }),
-                              v.jsx("span", { className: "text-[11px] font-medium", children: "30% OFF Deals Only" })
-                            ]
-                          }),
-                          v.jsx("span", {
-                            className: "text-[10px] font-bold font-mono " + (offersOnly ? "text-[#f82793]" : "text-white/40"),
-                            children: offersOnly ? "ACTIVE" : "OFF"
-                          })
-                        ]
-                      })
-                    }),
-
-                    // Apply Button
-                    v.jsx("div", {
-                      className: "pt-2",
-                      children: v.jsxs("button", {
-                        type: "button",
-                        onClick: () => {
-                          try { s(); } catch (err) {}
-                          setIsFilterOpen(false);
-                        },
-                        className: "w-full py-2.5 rounded-xl bg-[#f82793] hover:bg-[#d41c7b] text-white font-extrabold text-xs uppercase tracking-wider shadow-lg shadow-[#f82793]/30 transition-all cursor-pointer text-center",
-                        children: [
-                          "Show ", displayedProducts.length, " Products"
-                        ]
-                      })
-                    })
-                  ]
+                v.jsx("span", { children: "FILTER" }),
+                activeFilterCount > 0 && v.jsx("span", {
+                  className: "w-4 h-4 rounded-full bg-[#f82793] text-white text-[9.5px] font-bold flex items-center justify-center -mr-0.5",
+                  children: activeFilterCount
                 })
               ]
             })
@@ -7584,7 +7425,7 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
         })
       }),
 
-      // ── SUBTLE BREADCRUMB & SORT TOOLBAR ──────────────────────────────────
+      // ── SUBTLE BREADCRUMB & ACTIVE FILTER STATUS TOOLBAR ─────────────────
       v.jsxs("div", {
         className: "flex items-center justify-between gap-3 text-xs font-mono text-neutral-400 tracking-wider mb-5 sm:mb-6 px-1 border-b border-white/10 pb-3",
         children: [
@@ -7605,24 +7446,42 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
             ]
           }),
 
-          // Subtle Sort Select
-          v.jsxs("div", {
-            className: "flex items-center gap-2 shrink-0 text-[11px]",
+          // Active filter indicator / Quick Reset
+          activeFilterCount > 0 ? v.jsxs("div", {
+            className: "flex items-center gap-2",
             children: [
-              v.jsx("span", { className: "hidden sm:inline text-[#777777]", children: "SORT:" }),
-              v.jsxs("select", {
-                value: sortBy,
-                onChange: e => {
+              v.jsxs("span", {
+                className: "text-[10.5px] text-[#f82793] font-bold tracking-wider uppercase",
+                children: [activeFilterCount, " Filter", activeFilterCount > 1 ? "s" : "", " Active"]
+              }),
+              v.jsx("button", {
+                type: "button",
+                onClick: () => {
                   try { s(); } catch (err) {}
-                  setSortBy(e.target.value);
+                  setPriceFilter("all");
+                  setOffersOnly(false);
+                  setSortBy("featured");
                 },
-                className: "bg-[#0c0a0e] border border-white/20 rounded-lg px-2 py-1 text-[10.5px] font-mono text-white outline-none cursor-pointer hover:border-white/40 transition-colors",
-                children: [
-                  v.jsx("option", { value: "featured", className: "bg-white text-[#111111]", children: "Featured" }),
-                  v.jsx("option", { value: "price-low", className: "bg-white text-[#111111]", children: "Price: Low to High" }),
-                  v.jsx("option", { value: "price-high", className: "bg-white text-[#111111]", children: "Price: High to Low" }),
-                  v.jsx("option", { value: "rating", className: "bg-white text-[#111111]", children: "Highest Rated" })
-                ]
+                className: "text-[10px] text-white/50 hover:text-white uppercase underline transition-colors cursor-pointer",
+                children: "Reset"
+              })
+            ]
+          }) : v.jsx("button", {
+            type: "button",
+            onClick: () => {
+              try { s(); } catch (err) {}
+              setIsFilterOpen(true);
+            },
+            className: "text-[10.5px] text-white/50 hover:text-white uppercase tracking-wider flex items-center gap-1.5 transition-colors cursor-pointer",
+            children: [
+              v.jsx("span", { children: "Sort & Filter" }),
+              v.jsx("svg", {
+                viewBox: "0 0 24 24",
+                fill: "none",
+                stroke: "currentColor",
+                strokeWidth: "2",
+                style: { width: "10px", height: "10px" },
+                children: v.jsx("path", { d: "M6 9l6 6 6-6", strokeLinecap: "round" })
               })
             ]
           })
@@ -7802,6 +7661,207 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
             ]
           });
         })
+      }),
+
+      // ── GLITCH-FREE LUXURY FILTER & SORT MODAL / BOTTOM SHEET ─────────────
+      isFilterOpen && v.jsxs("div", {
+        className: "fixed inset-0 z-[99999] flex flex-col justify-end sm:items-center sm:justify-center p-0 sm:p-4 select-none",
+        children: [
+          // Frosted dark luxury backdrop
+          v.jsx("div", {
+            className: "fixed inset-0 bg-black/80 backdrop-blur-md cursor-pointer transition-opacity animate-in fade-in duration-200",
+            onClick: () => setIsFilterOpen(false)
+          }),
+
+          // Bottom sheet on mobile, centered modal on desktop
+          v.jsxs("div", {
+            className: "relative w-full max-w-lg bg-[#0e0c12] border-t sm:border border-white/15 rounded-t-3xl sm:rounded-2xl p-5 sm:p-6 shadow-2xl flex flex-col max-h-[85vh] sm:max-h-[90vh] overflow-y-auto no-scrollbar text-white z-10 animate-in slide-in-from-bottom duration-300",
+            children: [
+              // Mobile pull indicator bar
+              v.jsx("div", {
+                className: "w-12 h-1 rounded-full bg-white/20 mx-auto mb-4 sm:hidden shrink-0"
+              }),
+
+              // Modal Header
+              v.jsxs("div", {
+                className: "flex items-center justify-between pb-4 border-b border-white/10 shrink-0",
+                children: [
+                  v.jsxs("div", {
+                    className: "flex items-center gap-2.5",
+                    children: [
+                      v.jsx("svg", {
+                        viewBox: "0 0 24 24",
+                        fill: "none",
+                        stroke: "#f82793",
+                        strokeWidth: "2.2",
+                        style: { width: "15px", height: "15px" },
+                        children: v.jsx("path", {
+                          d: "M4 6h16M7 12h10M10 18h4",
+                          strokeLinecap: "round"
+                        })
+                      }),
+                      v.jsx("span", {
+                        className: "text-xs font-mono uppercase tracking-[0.2em] text-[#f82793] font-bold",
+                        children: "FILTERS & SORT"
+                      })
+                    ]
+                  }),
+                  v.jsxs("div", {
+                    className: "flex items-center gap-3",
+                    children: [
+                      activeFilterCount > 0 && v.jsx("button", {
+                        type: "button",
+                        onClick: () => {
+                          try { s(); } catch (err) {}
+                          setPriceFilter("all");
+                          setOffersOnly(false);
+                          setSortBy("featured");
+                        },
+                        className: "text-[11px] text-white/50 hover:text-white uppercase tracking-wider transition-colors cursor-pointer",
+                        children: "Reset All"
+                      }),
+                      v.jsx("button", {
+                        type: "button",
+                        onClick: () => {
+                          try { s(); } catch (err) {}
+                          setIsFilterOpen(false);
+                        },
+                        className: "w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer text-sm",
+                        children: "✕"
+                      })
+                    ]
+                  })
+                ]
+              }),
+
+              // Modal Body with Sort, Price Range, and Offers
+              v.jsxs("div", {
+                className: "space-y-5 py-4 overflow-y-auto no-scrollbar",
+                children: [
+                  // Sort By Chips
+                  v.jsxs("div", {
+                    className: "space-y-2",
+                    children: [
+                      v.jsx("label", {
+                        className: "text-[10px] font-mono text-neutral-400 uppercase tracking-widest block",
+                        children: "SORT BY"
+                      }),
+                      v.jsx("div", {
+                        className: "grid grid-cols-2 gap-2",
+                        children: [
+                          { id: "featured", label: "Featured" },
+                          { id: "price-low", label: "Price: Low to High" },
+                          { id: "price-high", label: "Price: High to Low" },
+                          { id: "rating", label: "Top Rated" }
+                        ].map(opt => {
+                          const isSel = sortBy === opt.id;
+                          return v.jsx("button", {
+                            key: opt.id,
+                            type: "button",
+                            onClick: () => {
+                              try { s(); } catch (err) {}
+                              setSortBy(opt.id);
+                            },
+                            className: "px-3 py-2.5 rounded-xl text-xs font-sans font-medium transition-all text-left " +
+                              (isSel
+                                ? "bg-[#f82793] text-white font-bold shadow-lg shadow-[#f82793]/35 scale-101 border border-transparent"
+                                : "bg-white/[0.04] border border-white/10 text-white/80 hover:bg-white/[0.08] hover:text-white"),
+                            children: opt.label
+                          });
+                        })
+                      })
+                    ]
+                  }),
+
+                  // Price Range Chips
+                  v.jsxs("div", {
+                    className: "space-y-2",
+                    children: [
+                      v.jsx("label", {
+                        className: "text-[10px] font-mono text-neutral-400 uppercase tracking-widest block",
+                        children: "PRICE RANGE"
+                      }),
+                      v.jsx("div", {
+                        className: "grid grid-cols-2 gap-2",
+                        children: [
+                          { id: "all", label: "All Prices" },
+                          { id: "under-2000", label: "Under ₹2,000" },
+                          { id: "2000-4000", label: "₹2,000 – ₹4,000" },
+                          { id: "over-4000", label: "Above ₹4,000" }
+                        ].map(opt => {
+                          const isSel = priceFilter === opt.id;
+                          return v.jsx("button", {
+                            key: opt.id,
+                            type: "button",
+                            onClick: () => {
+                              try { s(); } catch (err) {}
+                              setPriceFilter(opt.id);
+                            },
+                            className: "px-3 py-2.5 rounded-xl text-xs font-sans font-medium transition-all text-left " +
+                              (isSel
+                                ? "bg-[#f82793] text-white font-bold shadow-lg shadow-[#f82793]/35 scale-101 border border-transparent"
+                                : "bg-white/[0.04] border border-white/10 text-white/80 hover:bg-white/[0.08] hover:text-white"),
+                            children: opt.label
+                          });
+                        })
+                      })
+                    ]
+                  }),
+
+                  // Special Offers Toggle
+                  v.jsxs("div", {
+                    className: "space-y-2",
+                    children: [
+                      v.jsx("label", {
+                        className: "text-[10px] font-mono text-neutral-400 uppercase tracking-widest block",
+                        children: "OFFERS & SPECIALS"
+                      }),
+                      v.jsxs("button", {
+                        type: "button",
+                        onClick: () => {
+                          try { s(); } catch (err) {}
+                          setOffersOnly(prev => !prev);
+                        },
+                        className: "w-full flex items-center justify-between p-3 rounded-xl transition-all cursor-pointer " +
+                          (offersOnly ? "bg-white/10 border border-[#f82793] shadow-md shadow-[#f82793]/20" : "bg-white/[0.04] border border-white/10 hover:bg-white/[0.08]"),
+                        children: [
+                          v.jsxs("div", {
+                            className: "flex items-center gap-2.5",
+                            children: [
+                              v.jsx("span", { className: "w-2.5 h-2.5 rounded-full bg-[#FEE871] shadow-sm shadow-[#FEE871]/50" }),
+                              v.jsx("span", { className: "text-xs font-medium text-white", children: "30% OFF Deals Only" })
+                            ]
+                          }),
+                          v.jsx("span", {
+                            className: "text-[10px] font-bold font-mono px-2 py-0.5 rounded-md " + 
+                              (offersOnly ? "bg-[#f82793] text-white" : "bg-white/10 text-white/50"),
+                            children: offersOnly ? "ACTIVE" : "OFF"
+                          })
+                        ]
+                      })
+                    ]
+                  })
+                ]
+              }),
+
+              // Modal Footer: Show Products CTA
+              v.jsx("div", {
+                className: "pt-3 border-t border-white/10 shrink-0",
+                children: v.jsxs("button", {
+                  type: "button",
+                  onClick: () => {
+                    try { s(); } catch (err) {}
+                    setIsFilterOpen(false);
+                  },
+                  className: "w-full py-3.5 rounded-full bg-[#f82793] hover:bg-[#d41c7b] text-white font-extrabold text-xs uppercase tracking-widest shadow-lg shadow-[#f82793]/40 transition-all cursor-pointer text-center",
+                  children: [
+                    "Show ", displayedProducts.length, " Products"
+                  ]
+                })
+              })
+            ]
+          })
+        ]
       }),
 
       // ── REFINED E-COMMERCE ASSURANCE BANNER ───────────────────────────────

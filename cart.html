@@ -23,7 +23,7 @@
     <script>
       window.__PLEZZY_DEFAULT_VIEW__ = "cart";
     </script>
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261105_filter_all_v46"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261105_filter_luxury_v47"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
@@ -3574,48 +3574,50 @@
         gap: 6px !important;
       }
 
-      /* White Capsule Filter Button (Right side of Collections Category Bar) */
+      /* Dark Luxury Capsule Filter Button (Matching Site Style - No White Bar) */
       .plezzy-filter-trigger-btn {
-        background: #ffffff !important;
-        background-color: #ffffff !important;
-        color: #111111 !important;
-        border: 1px solid rgba(255, 255, 255, 0.9) !important;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25), 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+        background: rgba(255, 255, 255, 0.08) !important;
+        background-color: rgba(255, 255, 255, 0.08) !important;
+        color: #ffffff !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
         border-radius: 9999px !important;
         height: 38px !important;
-        padding: 0 18px !important;
+        padding: 0 16px !important;
         display: inline-flex !important;
         align-items: center !important;
         justify-content: center !important;
         gap: 8px !important;
         font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
-        font-size: 11.5px !important;
-        font-weight: 800 !important;
-        letter-spacing: 0.1em !important;
+        font-size: 11px !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.12em !important;
         text-transform: uppercase !important;
         cursor: pointer !important;
         white-space: nowrap !important;
-        transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
         user-select: none !important;
         flex-shrink: 0 !important;
+        backdrop-filter: blur(12px) !important;
+        -webkit-backdrop-filter: blur(12px) !important;
       }
       .plezzy-filter-trigger-btn svg {
-        stroke: #111111 !important;
+        stroke: #ffffff !important;
         transition: stroke 0.25s ease !important;
       }
       .plezzy-filter-trigger-btn:hover {
-        background: #f82793 !important;
-        background-color: #f82793 !important;
-        color: #ffffff !important;
+        background: rgba(248, 39, 147, 0.18) !important;
+        background-color: rgba(248, 39, 147, 0.18) !important;
         border-color: #f82793 !important;
-        box-shadow: 0 8px 26px rgba(248, 39, 147, 0.65) !important;
-        transform: translateY(-1px) scale(1.03) !important;
+        color: #ffffff !important;
+        box-shadow: 0 6px 24px rgba(248, 39, 147, 0.4) !important;
+        transform: translateY(-1px) scale(1.02) !important;
       }
       .plezzy-filter-trigger-btn:hover svg {
-        stroke: #ffffff !important;
+        stroke: #f82793 !important;
       }
       .plezzy-filter-trigger-btn:active {
-        transform: scale(0.96) !important;
+        transform: scale(0.97) !important;
       }
 
       /* Header Cart Capsule */
