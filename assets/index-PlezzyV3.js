@@ -10452,24 +10452,60 @@ function _F() {
                               v.jsxs("div", {
                                 className: "flex items-center gap-3",
                                 children: [
-                                  // Quantity Pill Stepper
+                                  // Quantity Pill Stepper (Fixed spacing, robust dimensions & luxury tactile feedback)
                                   v.jsxs("div", {
-                                    className: "flex items-center justify-between rounded-full bg-white/10 border border-white/15 px-3 py-2.5 w-32 shrink-0 select-none shadow-sm",
+                                    className: "flex items-center justify-between rounded-full select-none shadow-md shrink-0",
+                                    style: {
+                                      width: "128px",
+                                      minWidth: "128px",
+                                      height: "46px",
+                                      padding: "0 10px",
+                                      background: "rgba(255, 255, 255, 0.08)",
+                                      border: "1px solid rgba(255, 255, 255, 0.16)",
+                                      backdropFilter: "blur(12px)",
+                                      WebkitBackdropFilter: "blur(12px)",
+                                      borderRadius: "9999px"
+                                    },
                                     children: [
                                       v.jsx("button", {
                                         type: "button",
                                         onClick: () => { try { s(); } catch (e) { } setQty(Math.max(1, qty - 1)); },
-                                        className: "w-6 h-6 flex items-center justify-center rounded-full text-white/80 hover:text-white hover:bg-white/10 text-base font-bold cursor-pointer transition-colors",
+                                        className: "flex items-center justify-center rounded-full text-white/70 hover:text-white hover:bg-white/15 cursor-pointer transition-all active:scale-90",
+                                        style: {
+                                          width: "32px",
+                                          height: "32px",
+                                          minWidth: "32px",
+                                          minHeight: "32px",
+                                          fontSize: "18px",
+                                          fontWeight: "700",
+                                          lineHeight: "1"
+                                        },
+                                        "aria-label": "Decrease quantity",
                                         children: "−"
                                       }),
                                       v.jsx("span", {
-                                        className: "font-mono font-bold text-sm text-white",
+                                        className: "font-mono font-bold text-white text-center select-none",
+                                        style: {
+                                          fontSize: "15px",
+                                          minWidth: "24px",
+                                          lineHeight: "1"
+                                        },
                                         children: qty
                                       }),
                                       v.jsx("button", {
                                         type: "button",
                                         onClick: () => { try { s(); } catch (e) { } setQty(qty + 1); },
-                                        className: "w-6 h-6 flex items-center justify-center rounded-full text-white/80 hover:text-white hover:bg-white/10 text-base font-bold cursor-pointer transition-colors",
+                                        className: "flex items-center justify-center rounded-full text-white/70 hover:text-white hover:bg-white/15 cursor-pointer transition-all active:scale-90",
+                                        style: {
+                                          width: "32px",
+                                          height: "32px",
+                                          minWidth: "32px",
+                                          minHeight: "32px",
+                                          fontSize: "18px",
+                                          fontWeight: "700",
+                                          lineHeight: "1"
+                                        },
+                                        "aria-label": "Increase quantity",
                                         children: "+"
                                       })
                                     ]
