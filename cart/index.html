@@ -23,7 +23,7 @@
     <script>
       window.__PLEZZY_DEFAULT_VIEW__ = "cart";
     </script>
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261105_fast_scroll_fix_v56"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261105_fast_scroll_fix_v57"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
@@ -94,20 +94,31 @@
       .font-swiss {
         font-family: 'Swiss', -apple-system, BlinkMacSystemFont, sans-serif !important;
       }
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+      }
       *, html, body {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-rendering: optimizeLegibility;
       }
       html {
+        overflow-x: clip !important;
+        overflow-y: auto !important;
         scroll-behavior: auto !important;
         -webkit-text-size-adjust: 100%;
         text-size-adjust: 100%;
-      }
-      html, body {
-        overflow-x: hidden !important;
+        overflow-anchor: none !important;
         width: 100% !important;
-        max-width: 100vw !important;
+        min-height: 100% !important;
+      }
+      body {
+        overflow-x: clip !important;
+        overflow-y: visible !important;
+        width: 100% !important;
+        min-height: 100% !important;
+        overflow-anchor: none !important;
+        position: relative !important;
       }
       @media (max-width: 768px) {
         button, a, input, select {
@@ -156,7 +167,15 @@
         font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
       }
       .no-scrollbar::-webkit-scrollbar { display: none; }
-      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        overscroll-behavior-x: contain;
+        overscroll-behavior-y: auto;
+      }
+      #plezzy-campaign-video {
+        pointer-events: none !important;
+      }
 
 
 
@@ -1422,10 +1441,15 @@
          MOBILE & TOUCH OPTIMIZATIONS (≤ 768px)
          ════════════════════════════════════════════════════════ */
       @media (max-width: 768px) {
-        html, body {
+        html {
           overflow-x: clip !important;
+          overflow-y: auto !important;
+          background-attachment: scroll !important;
+        }
+        body {
+          overflow-x: clip !important;
+          overflow-y: visible !important;
           width: 100% !important;
-          max-width: 100% !important;
           background-attachment: scroll !important;
         }
       }
@@ -2531,17 +2555,12 @@
         }
       }
 
-      /* 4. Scroll-Driven Graceful Elevation System */
-      .reveal-on-scroll {
-        opacity: 0;
-        transform: translateY(32px);
-        transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-                    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
-      }
-
+      /* 4. Scroll-Driven Graceful Elevation System - Fully Neutralized to prevent scroll stalling */
+      .reveal-on-scroll,
       .reveal-on-scroll.is-revealed {
         opacity: 1 !important;
-        transform: translateY(0) !important;
+        transform: none !important;
+        transition: none !important;
       }
 
       /* Staggered cascades for child cards */
@@ -3042,10 +3061,15 @@
           background: #000000 !important;
           background-image: none !important;
         }
-        html, body {
-          overflow-x: hidden !important;
+        html {
+          overflow-x: clip !important;
+          overflow-y: auto !important;
+          -webkit-text-size-adjust: 100% !important;
+        }
+        body {
+          overflow-x: clip !important;
+          overflow-y: visible !important;
           width: 100% !important;
-          max-width: 100vw !important;
           position: relative !important;
           -webkit-text-size-adjust: 100% !important;
           -webkit-tap-highlight-color: transparent !important;
@@ -4221,31 +4245,6 @@
           }
         } catch(e) {}
       })();
-
-      // Scroll-reactive transparent nav: adds glass tint when user scrolls > 40px (rAF throttled)
-      (function() {
-        var ticking = false;
-        function updateNav() {
-          var header = document.querySelector('header');
-          if (header) {
-            if (window.scrollY > 40) {
-              header.classList.add('nav-scrolled');
-            } else {
-              header.classList.remove('nav-scrolled');
-            }
-          }
-          ticking = false;
-        }
-        function handleScroll() {
-          if (!ticking) {
-            window.requestAnimationFrame(updateNav);
-            ticking = true;
-          }
-        }
-        window.addEventListener('DOMContentLoaded', handleScroll);
-        window.addEventListener('load', handleScroll);
-        window.addEventListener('scroll', handleScroll, { passive: true });
-      })();
     </script>
 
     <!-- ══════════════════════════════════════════════════════════════
@@ -4399,61 +4398,6 @@
 
         // Initial fetch
         refreshMobileInfo();
-      })();
-      // ══════════════════════════════════════════════════════════════
-      // SCROLL-DRIVEN LUXURY REVEAL CONTROLLER (INTERSECTION OBSERVER)
-      // ══════════════════════════════════════════════════════════════
-      (function() {
-        if (typeof window === 'undefined' || !('IntersectionObserver' in window)) return;
-
-        var observer = new IntersectionObserver(function(entries) {
-          entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-revealed');
-              observer.unobserve(entry.target);
-            }
-          });
-        }, {
-          root: null,
-          rootMargin: '0px 0px -40px 0px',
-          threshold: 0.08
-        });
-
-        function registerElements() {
-          var selectors = [
-            '#hero-left-content',
-            '#plezzy-ticker-marquee-bar',
-            '#plezzy-editorial-products-grid',
-            '.plezzy-bento-card',
-            '.plezzy-divider-cta-wrap',
-            '#editorial-collection-split',
-            '.split-panel-editorial',
-            '#campaign-video',
-            '#community',
-            '#newsletter',
-            'footer'
-          ];
-
-          selectors.forEach(function(sel) {
-            document.querySelectorAll(sel).forEach(function(el) {
-              if (!el.classList.contains('reveal-on-scroll')) {
-                el.classList.add('reveal-on-scroll');
-              }
-              if (!el.classList.contains('is-revealed')) {
-                observer.observe(el);
-              }
-            });
-          });
-        }
-
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', registerElements);
-        } else {
-          registerElements();
-        }
-
-        setTimeout(registerElements, 400);
-        setTimeout(registerElements, 1500);
       })();
     </script>
   </body>
