@@ -7483,8 +7483,10 @@ function PlezzyGuaranteeSection({ className = "" }) {
   return v.jsx("div", {
     className: "w-full " + (className || ""),
     children: v.jsxs("div", {
-      className: "w-full max-w-6xl mx-auto rounded-[28px] sm:rounded-[36px] bg-[#121016]/90 backdrop-blur-2xl border border-white/12 p-6 sm:p-10 md:p-12 shadow-2xl relative overflow-hidden select-none",
+      className: "plezzy-guarantee-card w-full max-w-6xl mx-auto rounded-3xl bg-[#121016]/90 backdrop-blur-2xl border border-white/12 p-6 sm:p-10 md:p-12 shadow-2xl relative overflow-hidden select-none",
       style: {
+        borderRadius: "32px",
+        overflow: "hidden",
         background: "radial-gradient(circle at 50% 0%, rgba(248,39,147,0.12) 0%, rgba(18,16,22,0.95) 70%)",
         boxShadow: "0 24px 60px -12px rgba(0,0,0,0.85), 0 0 40px rgba(248,39,147,0.15)"
       },
@@ -7512,13 +7514,19 @@ function PlezzyGuaranteeSection({ className = "" }) {
 
         // 4 Bento Trust Cards (2 cols mobile, 4 cols desktop) - ZERO BUTTONS
         v.jsx("div", {
-          className: "grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 md:gap-8 text-center relative z-10",
+          className: "plezzy-guarantee-grid text-center relative z-10",
           children: items.map(item => v.jsxs("div", {
             key: item.id,
-            className: "flex flex-col items-center p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white/[0.03] border border-white/8 hover:border-[#f82793]/40 hover:bg-white/[0.06] transition-all duration-300 group shadow-md",
+            className: "plezzy-guarantee-inner-card flex flex-col items-center p-4 sm:p-6 rounded-2xl bg-white/[0.03] border border-white/8 hover:border-[#f82793]/40 hover:bg-white/[0.06] transition-all duration-300 group shadow-md",
+            style: {
+              borderRadius: "24px"
+            },
             children: [
               v.jsx("div", {
                 className: "w-18 h-18 sm:w-22 sm:h-22 md:w-24 md:h-24 rounded-full bg-white/[0.05] border border-white/15 flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-105 group-hover:border-[#f82793]/60 group-hover:shadow-[0_0_25px_rgba(248,39,147,0.35)] transition-all duration-300 shadow-inner",
+                style: {
+                  borderRadius: "9999px"
+                },
                 children: item.icon
               }),
               v.jsx("h4", {
@@ -11111,10 +11119,12 @@ function _F() {
             v.jsx("div", {
               id: "campaign-statement",
               style: {
+                borderRadius: "32px",
+                overflow: "hidden",
                 background: "radial-gradient(circle at 50% 50%, rgba(248,39,147,0.18) 0%, rgba(14,12,18,0.92) 75%)",
                 boxShadow: "0 24px 64px -12px rgba(0,0,0,0.85), 0 0 45px rgba(248,39,147,0.22)"
               },
-              className: "mx-3 sm:mx-8 my-12 rounded-[32px] backdrop-blur-2xl border border-white/20 py-20 sm:py-28 px-6 text-center overflow-hidden relative select-none",
+              className: "mx-3 sm:mx-8 my-12 rounded-3xl backdrop-blur-2xl border border-white/20 py-20 sm:py-28 px-6 text-center overflow-hidden relative select-none",
               children:
                 v.jsxs("div", {
                   className: "relative z-10 space-y-4 max-w-4xl mx-auto", children: [

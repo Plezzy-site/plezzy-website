@@ -20,10 +20,30 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Italiana&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261105_guarantee_theme_v53"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261105_rounded_guarantee_v54"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
+      /* Plezzy Guarantee Card & Responsive Grid */
+      .plezzy-guarantee-card {
+        border-radius: 32px !important;
+        overflow: hidden !important;
+      }
+      .plezzy-guarantee-inner-card {
+        border-radius: 24px !important;
+      }
+      .plezzy-guarantee-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 16px !important;
+      }
+      @media (min-width: 768px) {
+        .plezzy-guarantee-grid {
+          grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+          gap: 24px !important;
+        }
+      }
+
       @font-face {
         font-family: 'Rektorat Heavy';
         src: url('/assets/NNRektoratWeb-Heavy.woff2') format('woff2');
