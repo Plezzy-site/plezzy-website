@@ -23,7 +23,7 @@
     <script>
       window.__PLEZZY_DEFAULT_VIEW__ = "collections";
     </script>
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261105_age_gate_v49"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261105_frame0_age_gate_v50"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
@@ -3926,9 +3926,340 @@
         }
       }
 
+
+    /* ══════════════════════════════════════════════════════════════
+       21+ AGE VERIFICATION SCREEN (FRAME 0 GUARANTEE BEFORE OPENING WEBSITE)
+       ══════════════════════════════════════════════════════════════ */
+    .plezzy-age-gate-wrapper {
+      position: fixed !important;
+      inset: 0 !important;
+      z-index: 99999999 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 16px !important;
+      background: radial-gradient(ellipse at center, rgba(22, 16, 28, 0.98) 0%, #060508 100%) !important;
+      overflow: hidden !important;
+      user-select: none !important;
+      transition: opacity 0.35s ease, transform 0.35s ease !important;
+    }
+    .plezzy-age-gate-wrapper.plezzy-gate-closed {
+      opacity: 0 !important;
+      transform: scale(1.02) !important;
+      pointer-events: none !important;
+    }
+    .plezzy-age-gate-glow-pink {
+      position: absolute !important;
+      top: -120px !important;
+      left: -120px !important;
+      width: 360px !important;
+      height: 360px !important;
+      border-radius: 9999px !important;
+      background: rgba(248, 39, 147, 0.18) !important;
+      filter: blur(80px) !important;
+      pointer-events: none !important;
+      animation: plezzyPulse 6s ease-in-out infinite !important;
+    }
+    .plezzy-age-gate-glow-yellow {
+      position: absolute !important;
+      bottom: -120px !important;
+      right: -120px !important;
+      width: 360px !important;
+      height: 360px !important;
+      border-radius: 9999px !important;
+      background: rgba(254, 232, 113, 0.12) !important;
+      filter: blur(80px) !important;
+      pointer-events: none !important;
+      animation: plezzyPulse 8s ease-in-out infinite !important;
+    }
+    @keyframes plezzyPulse {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.15); opacity: 1; }
+    }
+    .plezzy-age-gate-card {
+      position: relative !important;
+      width: 100% !important;
+      max-width: 460px !important;
+      border-radius: 28px !important;
+      padding: 32px 28px !important;
+      text-align: center !important;
+      color: #ffffff !important;
+      border: 1px solid rgba(255, 255, 255, 0.16) !important;
+      background: rgba(14, 12, 18, 0.94) !important;
+      backdrop-filter: blur(28px) !important;
+      -webkit-backdrop-filter: blur(28px) !important;
+      box-shadow: 0 25px 70px -15px rgba(0, 0, 0, 0.95), 0 0 40px rgba(248, 39, 147, 0.2) !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 20px !important;
+      z-index: 10 !important;
+    }
+    .plezzy-age-gate-brand {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 8px !important;
+    }
+    .plezzy-age-gate-logo {
+      font-family: 'Swiss', 'Plus Jakarta Sans', -apple-system, sans-serif !important;
+      font-size: 38px !important;
+      font-weight: 900 !important;
+      letter-spacing: -0.03em !important;
+      color: #f82793 !important;
+      margin: 0 !important;
+      line-height: 1 !important;
+    }
+    .plezzy-age-gate-badge {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      padding: 4px 14px !important;
+      border-radius: 9999px !important;
+      background: rgba(255, 255, 255, 0.05) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      font-family: 'Plus Jakarta Sans', monospace !important;
+      font-size: 9.5px !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.22em !important;
+      color: #f82793 !important;
+      text-transform: uppercase !important;
+    }
+    .plezzy-age-gate-badge-dot {
+      width: 6px !important;
+      height: 6px !important;
+      border-radius: 9999px !important;
+      background: #f82793 !important;
+      box-shadow: 0 0 8px #f82793 !important;
+      animation: plezzyPulse 2s infinite !important;
+    }
+    .plezzy-age-gate-title {
+      font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif !important;
+      font-size: 26px !important;
+      font-weight: 300 !important;
+      letter-spacing: -0.01em !important;
+      color: #ffffff !important;
+      text-transform: uppercase !important;
+      line-height: 1.15 !important;
+      margin: 0 0 8px 0 !important;
+    }
+    .plezzy-age-gate-desc {
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
+      font-size: 12.5px !important;
+      font-weight: 300 !important;
+      line-height: 1.6 !important;
+      color: #a39f9a !important;
+      max-width: 380px !important;
+      margin: 0 auto 20px auto !important;
+    }
+    .plezzy-age-gate-actions {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 10px !important;
+      width: 100% !important;
+    }
+    .plezzy-age-gate-btn-enter {
+      width: 100% !important;
+      padding: 15px 24px !important;
+      border-radius: 9999px !important;
+      background: #f82793 !important;
+      color: #ffffff !important;
+      border: none !important;
+      font-family: 'Plus Jakarta Sans', sans-serif !important;
+      font-size: 11.5px !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.14em !important;
+      text-transform: uppercase !important;
+      cursor: pointer !important;
+      box-shadow: 0 8px 25px rgba(248, 39, 147, 0.45) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    .plezzy-age-gate-btn-enter:hover {
+      background: #e01b80 !important;
+      box-shadow: 0 10px 30px rgba(248, 39, 147, 0.65) !important;
+      transform: translateY(-1px) scale(1.02) !important;
+    }
+    .plezzy-age-gate-btn-enter:active {
+      transform: scale(0.98) !important;
+    }
+    .plezzy-age-gate-btn-exit {
+      width: 100% !important;
+      padding: 13px 24px !important;
+      border-radius: 9999px !important;
+      background: rgba(255, 255, 255, 0.04) !important;
+      color: rgba(255, 255, 255, 0.6) !important;
+      border: 1px solid rgba(255, 255, 255, 0.12) !important;
+      font-family: 'Plus Jakarta Sans', sans-serif !important;
+      font-size: 10.5px !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.12em !important;
+      text-transform: uppercase !important;
+      cursor: pointer !important;
+      transition: all 0.2s ease !important;
+    }
+    .plezzy-age-gate-btn-exit:hover {
+      background: rgba(255, 255, 255, 0.08) !important;
+      color: #ffffff !important;
+      border-color: rgba(255, 255, 255, 0.25) !important;
+    }
+    .plezzy-age-gate-remember {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      font-family: 'Plus Jakarta Sans', sans-serif !important;
+      font-size: 11px !important;
+      color: #888888 !important;
+      cursor: pointer !important;
+      margin-top: 12px !important;
+    }
+    .plezzy-age-gate-remember input {
+      accent-color: #f82793 !important;
+      cursor: pointer !important;
+    }
+    .plezzy-age-gate-footer {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 6px !important;
+      padding-top: 14px !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+      width: 100% !important;
+      font-family: monospace !important;
+      font-size: 10px !important;
+      color: #666666 !important;
+      letter-spacing: 0.1em !important;
+      text-transform: uppercase !important;
+    }
+    .plezzy-age-gate-restricted-icon {
+      width: 48px !important;
+      height: 48px !important;
+      border-radius: 9999px !important;
+      background: rgba(239, 68, 68, 0.1) !important;
+      border: 1px solid rgba(239, 68, 68, 0.3) !important;
+      color: #f87171 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 20px !important;
+      margin: 0 auto 12px auto !important;
+    }
+    .plezzy-age-gate-restricted-title {
+      font-size: 16px !important;
+      font-weight: 800 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.1em !important;
+      color: #ffffff !important;
+      margin-bottom: 6px !important;
+    }
+    .plezzy-age-gate-restricted-desc {
+      font-size: 12px !important;
+      color: #a39f9a !important;
+      line-height: 1.5 !important;
+    }
+
     </style>
   </head>
   <body class="text-[#67645e] antialiased selection:bg-[#f82793] selection:text-white selection:text-white">
+    <!-- 21+ AGE VERIFICATION GATE (FRAME 0 GUARANTEE BEFORE OPENING WEBSITE) -->
+    <div id="plezzy-age-gate-overlay" class="plezzy-age-gate-wrapper">
+      <div class="plezzy-age-gate-glow-pink"></div>
+      <div class="plezzy-age-gate-glow-yellow"></div>
+      
+      <div class="plezzy-age-gate-card">
+        <div class="plezzy-age-gate-brand">
+          <h2 class="plezzy-age-gate-logo">plezzy</h2>
+          <div class="plezzy-age-gate-badge">
+            <span class="plezzy-age-gate-badge-dot"></span>
+            <span>21+ AGE VERIFICATION</span>
+          </div>
+        </div>
+
+        <div id="plezzy-age-gate-main-view" style="width:100%;">
+          <h3 class="plezzy-age-gate-title">Sensory Essentials for Adults</h3>
+          <p class="plezzy-age-gate-desc">
+            This website contains architectural tactile essentials, botanical elixirs, and intimacy wellness devices. You must be at least 21 years old to explore our collection.
+          </p>
+
+          <div class="plezzy-age-gate-actions">
+            <button id="plezzy-age-gate-enter-btn" class="plezzy-age-gate-btn-enter" type="button">
+              <span>I AM 21 OR OLDER • ENTER</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:13px;height:13px">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </button>
+            <button id="plezzy-age-gate-exit-btn" class="plezzy-age-gate-btn-exit" type="button">
+              I AM UNDER 21 (EXIT)
+            </button>
+          </div>
+
+          <label class="plezzy-age-gate-remember">
+            <input type="checkbox" id="plezzy-age-gate-remember-cb" checked>
+            <span>Remember my verification on this device</span>
+          </label>
+
+          <div class="plezzy-age-gate-footer">
+            <span>🔒</span>
+            <span>100% Plain Packaging • Encrypted Discretion</span>
+          </div>
+        </div>
+
+        <div id="plezzy-age-gate-restricted-view" style="display:none;" class="plezzy-age-gate-restricted">
+          <div class="plezzy-age-gate-restricted-icon">✕</div>
+          <h3 class="plezzy-age-gate-restricted-title">Access Restricted</h3>
+          <p class="plezzy-age-gate-restricted-desc">
+            You must be 21 years of age or older to enter PLEZZY. Redirecting you away safely...
+          </p>
+        </div>
+      </div>
+    </div>
+    <script>
+      (function() {
+        var overlay = document.getElementById('plezzy-age-gate-overlay');
+        if (!overlay) return;
+        try {
+          if (localStorage.getItem('plezzy_age_verified') === 'true') {
+            overlay.style.display = 'none';
+            return;
+          }
+        } catch (e) {}
+
+        var enterBtn = document.getElementById('plezzy-age-gate-enter-btn');
+        var exitBtn = document.getElementById('plezzy-age-gate-exit-btn');
+        var rememberCb = document.getElementById('plezzy-age-gate-remember-cb');
+        var mainView = document.getElementById('plezzy-age-gate-main-view');
+        var restrictedView = document.getElementById('plezzy-age-gate-restricted-view');
+
+        if (enterBtn) {
+          enterBtn.addEventListener('click', function() {
+            if (rememberCb && rememberCb.checked) {
+              try { localStorage.setItem('plezzy_age_verified', 'true'); } catch(e) {}
+            }
+            overlay.classList.add('plezzy-gate-closed');
+            setTimeout(function() {
+              if (overlay && overlay.parentNode) {
+                overlay.parentNode.removeChild(overlay);
+              }
+            }, 360);
+          });
+        }
+
+        if (exitBtn) {
+          exitBtn.addEventListener('click', function() {
+            if (mainView) mainView.style.display = 'none';
+            if (restrictedView) restrictedView.style.display = 'block';
+            setTimeout(function() {
+              window.location.href = 'https://www.google.com';
+            }, 1600);
+          });
+        }
+      })();
+    </script>
+
     <div id="plezzy-fixed-foil-bg"></div>
     <div id="root"></div>
     <script>
