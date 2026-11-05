@@ -10086,10 +10086,12 @@ function _F() {
                   v.jsxs("div", {
                     className: "lg:col-span-7 space-y-4 w-full max-w-full overflow-hidden",
                     children: [
-                      // Main Display Frame (BORDERLESS LUXURY CANVAS)
+                      // Main Display Frame (BORDERLESS ROUNDED LUXURY CANVAS)
                       v.jsxs("div", {
                         className: "relative w-full rounded-[32px] overflow-hidden group select-none shadow-2xl",
                         style: {
+                          borderRadius: "32px",
+                          overflow: "hidden",
                           background: "radial-gradient(circle at 50% 35%, rgba(255, 255, 255, 0.08) 0%, rgba(248, 39, 147, 0.06) 40%, rgba(14, 12, 18, 0.98) 90%)",
                           border: "none",
                           boxShadow: "0 24px 60px -12px rgba(0, 0, 0, 0.85)",
@@ -10097,66 +10099,109 @@ function _F() {
                           WebkitBackdropFilter: "blur(24px)"
                         },
                         children: [
-                          // Floating Top Badge
+                          // Floating Top Badge (Reference Style)
                           v.jsx("div", {
                             className: "absolute top-4 sm:top-5 left-4 sm:left-5 z-20 pointer-events-none",
                             children: v.jsx("span", {
-                              className: "px-3.5 py-1.5 rounded-full text-[10.5px] font-extrabold uppercase tracking-[0.2em] shadow-lg shadow-[#f82793]/40 bg-[#f82793] text-white",
-                              children: cur.badge || "CORE ESSENTIAL"
+                              className: "px-3.5 py-1.5 rounded-full text-[10.5px] font-extrabold uppercase tracking-[0.18em] shadow-xl bg-[#f82793] text-white",
+                              children: cur.badge || "30% OFF"
                             })
                           }),
 
-                          // Floating Star Rating Pill
+                          // Floating Top Right Controls (Zoom + Rating)
                           v.jsxs("div", {
-                            className: "absolute top-4 sm:top-5 right-4 sm:right-5 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-xs font-bold text-white shadow-md pointer-events-none",
+                            className: "absolute top-4 sm:top-5 right-4 sm:right-5 z-20 flex items-center gap-2",
                             children: [
-                              v.jsx("span", { style: { color: "#FEE871" }, children: "★" }),
-                              v.jsx("span", { children: (cur.rating || 4.9).toFixed(1) }),
-                              v.jsx("span", { className: "text-white/60 font-normal text-[11px]", children: "(" + (cur.reviewsCount || 348) + ")" })
+                              v.jsxs("div", {
+                                className: "flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md text-xs font-bold text-black shadow-lg pointer-events-none",
+                                children: [
+                                  v.jsx("span", { style: { color: "#eab308" }, children: "★" }),
+                                  v.jsx("span", { children: (cur.rating || 4.9).toFixed(1) }),
+                                  v.jsx("span", { className: "text-black/50 font-normal text-[11px]", children: "(" + (cur.reviewsCount || 348) + ")" })
+                                ]
+                              }),
+                              v.jsx("button", {
+                                type: "button",
+                                onClick: () => {
+                                  try {
+                                    const imgUrl = (cur.images && cur.images[activeThumb]) ? cur.images[activeThumb].src : cur.image;
+                                    window.open(imgUrl, "_blank");
+                                  } catch (e) { }
+                                },
+                                className: "w-9 h-9 rounded-full bg-white/90 hover:bg-white text-black shadow-lg flex items-center justify-center transition-all hover:scale-105 active:scale-95 cursor-pointer",
+                                "aria-label": "Zoom image",
+                                children: v.jsx("svg", {
+                                  width: "16",
+                                  height: "16",
+                                  viewBox: "0 0 24 24",
+                                  fill: "none",
+                                  stroke: "currentColor",
+                                  strokeWidth: "2.2",
+                                  strokeLinecap: "round",
+                                  strokeLinejoin: "round",
+                                  children: [
+                                    v.jsx("circle", { cx: "11", cy: "11", r: "8" }),
+                                    v.jsx("line", { x1: "21", y1: "21", x2: "16.65", y2: "16.65" }),
+                                    v.jsx("line", { x1: "11", y1: "8", x2: "11", y2: "14" }),
+                                    v.jsx("line", { x1: "8", y1: "11", x2: "14", y2: "11" })
+                                  ]
+                                })
+                              })
                             ]
                           }),
 
-                          // Horizontally Scrollable / Swipeable Image Track
+                          // Horizontally Scrollable / Swipeable Image Track (Reference Rounded Card Style)
                           v.jsx("div", {
                             ref: galleryRef,
                             onScroll: handleGalleryScroll,
-                            className: "w-full overflow-x-auto no-scrollbar flex snap-x snap-mandatory scroll-smooth relative",
+                            className: "w-full overflow-x-auto no-scrollbar flex snap-x snap-mandatory scroll-smooth relative rounded-[32px]",
                             style: {
                               scrollbarWidth: "none",
                               msOverflowStyle: "none",
-                              WebkitOverflowScrolling: "touch"
+                              WebkitOverflowScrolling: "touch",
+                              borderRadius: "32px"
                             },
                             children: (cur.images || [{ src: cur.image, label: cur.name }]).map((img, idx) => v.jsx("div", {
                               key: idx,
-                              className: "w-full min-w-full shrink-0 snap-center flex items-center justify-center p-4 sm:p-8 aspect-square sm:aspect-[4/3] lg:aspect-square relative box-border overflow-hidden",
+                              className: "w-full min-w-full shrink-0 snap-center aspect-[4/5] sm:aspect-[4/5] relative box-border overflow-hidden rounded-[32px] bg-[#141118]",
+                              style: {
+                                borderRadius: "32px",
+                                overflow: "hidden"
+                              },
                               children: v.jsx("img", {
                                 src: img.src,
                                 alt: img.label || cur.name,
                                 loading: idx === 0 ? "eager" : "lazy",
-                                className: "w-full h-full object-contain filter drop-shadow-[0_24px_48px_rgba(0,0,0,0.65)] select-none transition-transform duration-500 group-hover:scale-102 rounded-2xl sm:rounded-3xl",
-                                style: { maxHeight: "480px", borderRadius: "24px" }
+                                className: "w-full h-full object-cover select-none transition-transform duration-700 group-hover:scale-105 rounded-[32px]",
+                                style: {
+                                  width: "100%",
+                                  height: "100%",
+                                  objectFit: "cover",
+                                  borderRadius: "32px",
+                                  display: "block"
+                                }
                               })
                             }))
                           }),
 
-                          // Left Arrow Button
+                          // Left Arrow Button (Reference White Circular Button with Black Arrow)
                           cur.images && cur.images.length > 1 && v.jsx("button", {
                             type: "button",
                             onClick: () => scrollToSlide(activeThumb - 1),
                             disabled: activeThumb === 0,
-                            className: "absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/60 hover:bg-[#f82793] backdrop-blur-md border border-white/20 text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 hover:scale-110 active:scale-95 cursor-pointer shadow-lg disabled:opacity-20 disabled:pointer-events-none",
+                            className: "absolute left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white hover:bg-white text-black flex items-center justify-center transition-all shadow-xl hover:scale-110 active:scale-95 cursor-pointer disabled:opacity-25 disabled:pointer-events-none",
                             "aria-label": "Previous image",
-                            children: v.jsx("span", { className: "text-xl font-bold leading-none -ml-0.5", children: "‹" })
+                            children: v.jsx("span", { className: "text-lg font-bold leading-none -ml-0.5", children: "←" })
                           }),
 
-                          // Right Arrow Button
+                          // Right Arrow Button (Reference White Circular Button with Black Arrow)
                           cur.images && cur.images.length > 1 && v.jsx("button", {
                             type: "button",
                             onClick: () => scrollToSlide(activeThumb + 1),
                             disabled: activeThumb === cur.images.length - 1,
-                            className: "absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/60 hover:bg-[#f82793] backdrop-blur-md border border-white/20 text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 hover:scale-110 active:scale-95 cursor-pointer shadow-lg disabled:opacity-20 disabled:pointer-events-none",
+                            className: "absolute right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white hover:bg-white text-black flex items-center justify-center transition-all shadow-xl hover:scale-110 active:scale-95 cursor-pointer disabled:opacity-25 disabled:pointer-events-none",
                             "aria-label": "Next image",
-                            children: v.jsx("span", { className: "text-xl font-bold leading-none -mr-0.5", children: "›" })
+                            children: v.jsx("span", { className: "text-lg font-bold leading-none -mr-0.5", children: "→" })
                           }),
 
                           // Slide Indicator Dots (Bottom Overlay)
