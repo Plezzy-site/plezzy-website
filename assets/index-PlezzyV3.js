@@ -9382,6 +9382,9 @@ function _F() {
       window.history.pushState({ path: newUrl }, '', newUrl);
     } catch (e) { }
     setActiveThumb(0);
+    if (galleryRef.current) {
+      try { galleryRef.current.scrollTo({ left: 0, behavior: "smooth" }); } catch (e) { }
+    }
     setSelectedColor((product.shades && product.shades.length > 0) ? (product.shades.find(sh => sh.name === "monet") ? "monet" : product.shades[0].name) : "default");
     setIsShopMenuOpen(false);
     setIsMobileNavOpen(false);
@@ -9473,6 +9476,33 @@ function _F() {
     try { s(); } catch (err) { }
     const cat = (category || "").toLowerCase();
     window.location.href = "/collections.html?collection=" + encodeURIComponent(cat);
+  };
+
+  const scrollToSlide = (idx) => {
+    try { s(); } catch (e) { }
+    if (!cur || !cur.images) return;
+    const targetIdx = Math.max(0, Math.min(cur.images.length - 1, idx));
+    setActiveThumb(targetIdx);
+    if (galleryRef.current) {
+      const slideWidth = galleryRef.current.clientWidth;
+      galleryRef.current.scrollTo({
+        left: targetIdx * slideWidth,
+        behavior: "smooth"
+      });
+    }
+  };
+
+  const handleGalleryScroll = () => {
+    if (galleryRef.current && cur && cur.images) {
+      const scrollLeft = galleryRef.current.scrollLeft;
+      const slideWidth = galleryRef.current.clientWidth;
+      if (slideWidth > 0) {
+        const newIdx = Math.round(scrollLeft / slideWidth);
+        if (newIdx !== activeThumb && newIdx >= 0 && newIdx < cur.images.length) {
+          setActiveThumb(newIdx);
+        }
+      }
+    }
   };
 
   // Dynamic Alternating Cards for Meet The Product
@@ -9954,7 +9984,7 @@ function _F() {
         // SLEEK LUXURY SILVER PRODUCT DETAIL PAGE (BESPOKE OBSIDIAN & SILVER)
         // ═══════════════════════════════════════════════════════════════════════
         v.jsxs("div", {
-          className: "w-full min-h-screen bg-[#0a0810] text-white animate-in fade-in duration-300 pt-24 sm:pt-32 pb-24 relative overflow-hidden select-none",
+          className: "w-full min-h-screen bg-[#0a0810] text-white animate-in fade-in duration-300 pt-24 sm:pt-32 pb-24 relative overflow-x-hidden select-none",
           children: [
             // Ambient luxury lighting
             v.jsx("div", {
@@ -9969,9 +9999,9 @@ function _F() {
 
             // ── TOP LUXURY NAVIGATION & PRODUCT SWITCHER BAR ─────────────────────
             v.jsx("div", {
-              className: "max-w-7xl mx-auto px-4 sm:px-8 mb-6 sm:mb-8 relative z-10",
+              className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 sm:mb-8 relative z-10 w-full",
               children: v.jsxs("div", {
-                className: "flex flex-col md:flex-row md:items-center justify-between gap-3 p-3 sm:px-5 sm:py-3 rounded-2xl",
+                className: "flex flex-col md:flex-row md:items-center justify-between gap-3 p-3 sm:px-5 sm:py-3 rounded-2xl w-full",
                 style: {
                   background: "linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(220, 225, 235, 0.03) 100%)",
                   backdropFilter: "blur(20px)",
@@ -10047,29 +10077,29 @@ function _F() {
 
             // ── FRAME 1: MAIN 2-COLUMN HERO (GALLERY & SLEEK SILVER BUY BOX) ──────
             v.jsx("div", {
-              className: "max-w-7xl mx-auto px-4 sm:px-8 py-2 sm:py-4 relative z-10",
+              className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-4 relative z-10 w-full",
               children: v.jsxs("div", {
-                className: "grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start",
+                className: "grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start w-full",
                 children: [
 
-                  // ── LEFT: LUXURY GALLERY SHOWCASE (7 Cols) ─────────────
+                  // ── LEFT: HORIZONTALLY SCROLLABLE LUXURY GALLERY (7 Cols) ─────────────
                   v.jsxs("div", {
-                    className: "lg:col-span-7 space-y-4",
+                    className: "lg:col-span-7 space-y-4 w-full max-w-full overflow-hidden",
                     children: [
                       // Main Display Frame
                       v.jsxs("div", {
-                        className: "relative w-full aspect-square sm:aspect-[4/3] lg:aspect-square flex items-center justify-center overflow-hidden rounded-[32px] p-6 sm:p-10 group",
+                        className: "relative w-full rounded-[32px] overflow-hidden group select-none shadow-2xl",
                         style: {
-                          background: "radial-gradient(circle at 50% 35%, rgba(255, 255, 255, 0.08) 0%, rgba(248, 39, 147, 0.06) 40%, rgba(14, 12, 18, 0.95) 90%)",
+                          background: "radial-gradient(circle at 50% 35%, rgba(255, 255, 255, 0.08) 0%, rgba(248, 39, 147, 0.06) 40%, rgba(14, 12, 18, 0.98) 90%)",
                           border: "1px solid rgba(255, 255, 255, 0.14)",
-                          boxShadow: "0 24px 60px -12px rgba(0, 0, 0, 0.8), inset 0 1px 2px rgba(255, 255, 255, 0.25)",
+                          boxShadow: "0 24px 60px -12px rgba(0, 0, 0, 0.85), inset 0 1px 2px rgba(255, 255, 255, 0.25)",
                           backdropFilter: "blur(24px)",
                           WebkitBackdropFilter: "blur(24px)"
                         },
                         children: [
                           // Floating Top Badge
                           v.jsx("div", {
-                            className: "absolute top-5 left-5 z-20",
+                            className: "absolute top-4 sm:top-5 left-4 sm:left-5 z-20 pointer-events-none",
                             children: v.jsx("span", {
                               className: "px-3.5 py-1.5 rounded-full text-[10.5px] font-extrabold uppercase tracking-[0.2em] shadow-lg shadow-[#f82793]/40 bg-[#f82793] text-white",
                               children: cur.badge || "CORE ESSENTIAL"
@@ -10078,7 +10108,7 @@ function _F() {
 
                           // Floating Star Rating Pill
                           v.jsxs("div", {
-                            className: "absolute top-5 right-5 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-xs font-bold text-white shadow-md",
+                            className: "absolute top-4 sm:top-5 right-4 sm:right-5 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-xs font-bold text-white shadow-md pointer-events-none",
                             children: [
                               v.jsx("span", { style: { color: "#FEE871" }, children: "★" }),
                               v.jsx("span", { children: (cur.rating || 4.9).toFixed(1) }),
@@ -10086,40 +10116,91 @@ function _F() {
                             ]
                           }),
 
-                          // Hero Image with Drop Shadow & Smooth Zoom
-                          v.jsx("img", {
-                            src: activeImgUrl,
-                            alt: cur.name,
-                            className: "w-full h-full object-contain filter drop-shadow-[0_24px_48px_rgba(0,0,0,0.65)] group-hover:scale-105 transition-all duration-500 select-none",
-                            style: { maxHeight: "500px" }
-                          }),
-
-                          // Floating Thumbnails Navigation Bar (Lower Edge)
+                          // Horizontally Scrollable / Swipeable Image Track
                           v.jsx("div", {
-                            className: "absolute bottom-5 inset-x-5 z-20 flex items-center justify-center gap-2.5 overflow-x-auto py-1",
-                            children: cur.images.map((img, idx) => v.jsx("button", {
+                            ref: galleryRef,
+                            onScroll: handleGalleryScroll,
+                            className: "w-full overflow-x-auto no-scrollbar flex snap-x snap-mandatory scroll-smooth relative",
+                            style: {
+                              scrollbarWidth: "none",
+                              msOverflowStyle: "none",
+                              WebkitOverflowScrolling: "touch"
+                            },
+                            children: (cur.images || [{ src: cur.image, label: cur.name }]).map((img, idx) => v.jsx("div", {
                               key: idx,
-                              onClick: () => { try { s(); } catch (e) { } setActiveThumb(idx); },
-                              className: "relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl overflow-hidden p-1 transition-all cursor-pointer shrink-0 " +
-                                (activeThumb === idx
-                                  ? "border-2 border-white ring-2 ring-[#f82793]/60 bg-white/20 shadow-xl scale-105 -translate-y-1"
-                                  : "border border-white/15 bg-black/50 hover:border-white/40 opacity-70 hover:opacity-100"),
-                              "aria-label": img.label || ("View angle " + (idx + 1)),
+                              className: "w-full min-w-full shrink-0 snap-center flex items-center justify-center p-6 sm:p-10 aspect-square sm:aspect-[4/3] lg:aspect-square relative box-border",
                               children: v.jsx("img", {
                                 src: img.src,
                                 alt: img.label || cur.name,
-                                className: "w-full h-full object-cover rounded-xl"
+                                loading: idx === 0 ? "eager" : "lazy",
+                                className: "w-full h-full object-contain filter drop-shadow-[0_24px_48px_rgba(0,0,0,0.65)] select-none transition-transform duration-500 group-hover:scale-102",
+                                style: { maxHeight: "480px" }
                               })
+                            }))
+                          }),
+
+                          // Left Arrow Button
+                          cur.images && cur.images.length > 1 && v.jsx("button", {
+                            type: "button",
+                            onClick: () => scrollToSlide(activeThumb - 1),
+                            disabled: activeThumb === 0,
+                            className: "absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/60 hover:bg-[#f82793] backdrop-blur-md border border-white/20 text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 hover:scale-110 active:scale-95 cursor-pointer shadow-lg disabled:opacity-20 disabled:pointer-events-none",
+                            "aria-label": "Previous image",
+                            children: v.jsx("span", { className: "text-xl font-bold leading-none -ml-0.5", children: "‹" })
+                          }),
+
+                          // Right Arrow Button
+                          cur.images && cur.images.length > 1 && v.jsx("button", {
+                            type: "button",
+                            onClick: () => scrollToSlide(activeThumb + 1),
+                            disabled: activeThumb === cur.images.length - 1,
+                            className: "absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/60 hover:bg-[#f82793] backdrop-blur-md border border-white/20 text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 hover:scale-110 active:scale-95 cursor-pointer shadow-lg disabled:opacity-20 disabled:pointer-events-none",
+                            "aria-label": "Next image",
+                            children: v.jsx("span", { className: "text-xl font-bold leading-none -mr-0.5", children: "›" })
+                          }),
+
+                          // Slide Indicator Dots (Bottom Overlay)
+                          cur.images && cur.images.length > 1 && v.jsx("div", {
+                            className: "absolute bottom-4 inset-x-0 z-20 flex items-center justify-center gap-2",
+                            children: cur.images.map((_, idx) => v.jsx("button", {
+                              key: idx,
+                              type: "button",
+                              onClick: () => scrollToSlide(idx),
+                              className: "transition-all cursor-pointer rounded-full " +
+                                (activeThumb === idx
+                                  ? "w-7 h-2 bg-[#f82793] shadow-md shadow-[#f82793]/50"
+                                  : "w-2 h-2 bg-white/40 hover:bg-white/80"),
+                              "aria-label": `Go to slide ${idx + 1}`
                             }))
                           })
                         ]
                       }),
 
-                      // Caption
+                      // Synchronized Thumbnails Row (Below Main Stage)
+                      cur.images && cur.images.length > 1 && v.jsx("div", {
+                        className: "flex items-center justify-center gap-3 overflow-x-auto py-2 px-1 no-scrollbar",
+                        children: cur.images.map((img, idx) => v.jsx("button", {
+                          key: idx,
+                          type: "button",
+                          onClick: () => scrollToSlide(idx),
+                          className: "relative w-16 h-16 sm:w-18 sm:h-18 rounded-2xl overflow-hidden p-1 transition-all cursor-pointer shrink-0 " +
+                            (activeThumb === idx
+                              ? "border-2 border-[#f82793] ring-2 ring-[#f82793]/40 bg-white/20 shadow-xl scale-105 -translate-y-1"
+                              : "border border-white/15 bg-black/40 hover:border-white/40 opacity-60 hover:opacity-100"),
+                          "aria-label": img.label || `View angle ${idx + 1}`,
+                          children: v.jsx("img", {
+                            src: img.src,
+                            alt: img.label || cur.name,
+                            className: "w-full h-full object-cover rounded-xl"
+                          })
+                        }))
+                      }),
+
+                      // Photo Caption
                       v.jsxs("p", {
-                        className: "text-center text-[11px] font-mono tracking-[0.2em] uppercase text-white/50",
+                        className: "text-center text-[11px] font-mono tracking-[0.2em] uppercase text-white/50 pt-0.5",
                         children: [
-                          "ANGLE ", activeThumb + 1, " OF ", cur.images.length, " • ", (cur.images[activeThumb]?.label || cur.name)
+                          "ANGLE ", activeThumb + 1, " OF ", (cur.images ? cur.images.length : 1), " • ", ((cur.images && cur.images[activeThumb]) ? cur.images[activeThumb].label : cur.name)
                         ]
                       })
                     ]
@@ -10127,10 +10208,10 @@ function _F() {
 
                   // ── RIGHT: SLEEK SILVER BUY BOX (5 Cols, Sticky) ─────────────
                   v.jsxs("div", {
-                    className: "lg:col-span-5 text-left space-y-4 lg:sticky lg:top-24",
+                    className: "lg:col-span-5 text-left space-y-4 lg:sticky lg:top-24 w-full",
                     children: [
                       v.jsxs("div", {
-                        className: "rounded-[32px] p-6 sm:p-8 space-y-4 text-left relative overflow-hidden",
+                        className: "rounded-[32px] p-6 sm:p-8 space-y-4 text-left relative overflow-hidden w-full",
                         style: {
                           background: "linear-gradient(145deg, rgba(255, 255, 255, 0.09) 0%, rgba(220, 225, 235, 0.04) 50%, rgba(14, 12, 18, 0.96) 100%)",
                           border: "1px solid rgba(255, 255, 255, 0.15)",
@@ -10232,31 +10313,31 @@ function _F() {
 
                           // 4 Quick Value Bento Micro-Pills
                           v.jsxs("div", {
-                            className: "grid grid-cols-2 gap-2 pt-1",
+                            className: "grid grid-cols-2 gap-2.5 pt-1",
                             children: [
                               v.jsxs("div", {
-                                className: "flex items-center gap-1.5 p-2 rounded-xl bg-white/[0.05] border border-white/10 text-[11px] text-white/80",
+                                className: "flex items-center gap-1.5 p-2.5 rounded-xl bg-white/[0.05] border border-white/10 text-[11px] text-white/80",
                                 children: [
                                   v.jsx("span", { className: "text-[#FEE871]", children: "🔇" }),
                                   v.jsx("span", { className: "font-semibold truncate", children: "<28dB Whisper Core" })
                                 ]
                               }),
                               v.jsxs("div", {
-                                className: "flex items-center gap-1.5 p-2 rounded-xl bg-white/[0.05] border border-white/10 text-[11px] text-white/80",
+                                className: "flex items-center gap-1.5 p-2.5 rounded-xl bg-white/[0.05] border border-white/10 text-[11px] text-white/80",
                                 children: [
                                   v.jsx("span", { className: "text-[#38bdf8]", children: "💧" }),
                                   v.jsx("span", { className: "font-semibold truncate", children: "IPX7 100% Waterproof" })
                                 ]
                               }),
                               v.jsxs("div", {
-                                className: "flex items-center gap-1.5 p-2 rounded-xl bg-white/[0.05] border border-white/10 text-[11px] text-white/80",
+                                className: "flex items-center gap-1.5 p-2.5 rounded-xl bg-white/[0.05] border border-white/10 text-[11px] text-white/80",
                                 children: [
                                   v.jsx("span", { className: "text-[#f82793]", children: "✨" }),
                                   v.jsx("span", { className: "font-semibold truncate", children: "Medical Liquid Silicone" })
                                 ]
                               }),
                               v.jsxs("div", {
-                                className: "flex items-center gap-1.5 p-2 rounded-xl bg-white/[0.05] border border-white/10 text-[11px] text-white/80",
+                                className: "flex items-center gap-1.5 p-2.5 rounded-xl bg-white/[0.05] border border-white/10 text-[11px] text-white/80",
                                 children: [
                                   v.jsx("span", { className: "text-[#a855f7]", children: "⚡" }),
                                   v.jsx("span", { className: "font-semibold truncate", children: "Magnetic Rapid USB" })
@@ -10295,7 +10376,7 @@ function _F() {
 
                               // Swatches Row
                               v.jsx("div", {
-                                className: "flex items-center gap-3 pt-1 pb-1",
+                                className: "flex flex-wrap items-center gap-3 pt-1 pb-1",
                                 children: cur.shades.map(sh => v.jsxs("button", {
                                   key: sh.name,
                                   onClick: () => { try { s(); } catch (e) { } setSelectedColor(sh.name); },
@@ -10322,7 +10403,7 @@ function _F() {
                                 children: [
                                   // Quantity Pill Stepper
                                   v.jsxs("div", {
-                                    className: "flex items-center justify-between rounded-full bg-white/10 border border-white/15 px-3 py-2 w-32 shrink-0 select-none shadow-sm",
+                                    className: "flex items-center justify-between rounded-full bg-white/10 border border-white/15 px-3 py-2.5 w-32 shrink-0 select-none shadow-sm",
                                     children: [
                                       v.jsx("button", {
                                         type: "button",
@@ -10347,7 +10428,7 @@ function _F() {
                                   v.jsx("button", {
                                     onClick: () => cur.availability !== "sold_out" && handleAdd(cur, selectedColor, qty),
                                     disabled: cur.availability === "sold_out",
-                                    className: "flex-1 py-3.5 px-6 rounded-full text-white font-extrabold text-xs sm:text-sm tracking-wider uppercase transition-all shadow-xl flex items-center justify-center gap-2 " +
+                                    className: "flex-1 py-3 px-6 rounded-full text-white font-extrabold text-xs sm:text-sm tracking-wider uppercase transition-all shadow-xl flex items-center justify-center gap-2 " +
                                       (cur.availability === "sold_out"
                                         ? "bg-white/10 text-white/40 cursor-not-allowed"
                                         : "bg-[#f82793] hover:bg-[#ff3b9e] text-white shadow-[#f82793]/40 cursor-pointer hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98]"),
@@ -10431,7 +10512,7 @@ function _F() {
 
             // ── FRAME 2: ARCHITECTURAL PERFORMANCE PILLARS (4 SLEEK SILVER BENTO TILES) ──────
             v.jsx("div", {
-              className: "max-w-7xl mx-auto px-4 sm:px-8 py-10 sm:py-16 relative z-10",
+              className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 relative z-10 w-full",
               children: v.jsxs("div", {
                 className: "space-y-8 text-center",
                 children: [
@@ -10450,7 +10531,7 @@ function _F() {
                     ]
                   }),
                   v.jsx("div", {
-                    className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 text-left pt-2",
+                    className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 text-left items-stretch pt-2",
                     children: [
                       {
                         icon: "🔇",
@@ -10474,7 +10555,7 @@ function _F() {
                       }
                     ].map((feat, idx) => v.jsxs("div", {
                       key: idx,
-                      className: "p-6 rounded-3xl space-y-2.5 transition-all duration-300 hover:-translate-y-1.5 shadow-xl group",
+                      className: "p-6 rounded-3xl space-y-2.5 transition-all duration-300 hover:-translate-y-1.5 shadow-xl group flex flex-col justify-between",
                       style: {
                         background: "linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(220, 225, 235, 0.03) 100%)",
                         backdropFilter: "blur(20px)",
@@ -10483,9 +10564,14 @@ function _F() {
                         boxShadow: "0 14px 36px -4px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.25)"
                       },
                       children: [
-                        v.jsx("span", { className: "text-3xl inline-block group-hover:scale-110 transition-transform", children: feat.icon }),
-                        v.jsx("h4", { className: "text-sm font-extrabold uppercase tracking-wider text-white pt-1", children: feat.title }),
-                        v.jsx("p", { className: "text-xs text-white/70 leading-relaxed", children: feat.desc })
+                        v.jsxs("div", {
+                          className: "space-y-2",
+                          children: [
+                            v.jsx("span", { className: "text-3xl inline-block group-hover:scale-110 transition-transform", children: feat.icon }),
+                            v.jsx("h4", { className: "text-sm font-extrabold uppercase tracking-wider text-white pt-1", children: feat.title })
+                          ]
+                        }),
+                        v.jsx("p", { className: "text-xs text-white/70 leading-relaxed pt-1", children: feat.desc })
                       ]
                     }))
                   })
@@ -10495,7 +10581,7 @@ function _F() {
 
             // ── FRAME 3: VERIFIED CLIENT EXPERIENCES (CUSTOMER REVIEWS BENTO) ──────
             v.jsx("div", {
-              className: "max-w-7xl mx-auto px-4 sm:px-8 py-8 sm:py-12 relative z-10",
+              className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 relative z-10 w-full",
               children: v.jsxs("div", {
                 className: "space-y-8 text-center",
                 children: [
@@ -10514,10 +10600,10 @@ function _F() {
                     ]
                   }),
                   v.jsx("div", {
-                    className: "grid grid-cols-1 md:grid-cols-3 gap-5 text-left",
+                    className: "grid grid-cols-1 md:grid-cols-3 gap-5 text-left items-stretch",
                     children: reviews.map(rev => v.jsxs("div", {
                       key: rev.id,
-                      className: "p-6 rounded-3xl space-y-3 shadow-lg",
+                      className: "p-6 rounded-3xl space-y-3 shadow-lg flex flex-col justify-between",
                       style: {
                         background: "linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(220, 225, 235, 0.03) 100%)",
                         backdropFilter: "blur(20px)",
@@ -10527,22 +10613,27 @@ function _F() {
                       },
                       children: [
                         v.jsxs("div", {
-                          className: "flex items-center justify-between",
+                          className: "space-y-2",
                           children: [
-                            v.jsx("div", { className: "text-[#FEE871] text-xs", children: "★★★★★" }),
-                            v.jsx("span", { className: "text-[11px] font-mono text-white/40", children: rev.date })
+                            v.jsxs("div", {
+                              className: "flex items-center justify-between",
+                              children: [
+                                v.jsx("div", { className: "text-[#FEE871] text-xs", children: "★★★★★" }),
+                                v.jsx("span", { className: "text-[11px] font-mono text-white/40", children: rev.date })
+                              ]
+                            }),
+                            v.jsx("h5", {
+                              className: "text-sm font-bold text-white leading-snug",
+                              children: `"${rev.title}"`
+                            }),
+                            v.jsx("p", {
+                              className: "text-xs text-white/70 leading-relaxed",
+                              children: rev.text
+                            })
                           ]
                         }),
-                        v.jsx("h5", {
-                          className: "text-sm font-bold text-white leading-snug",
-                          children: `"${rev.title}"`
-                        }),
-                        v.jsx("p", {
-                          className: "text-xs text-white/70 leading-relaxed",
-                          children: rev.text
-                        }),
                         v.jsxs("div", {
-                          className: "flex items-center gap-1.5 pt-1 text-[11px] font-semibold text-white/60",
+                          className: "flex items-center gap-1.5 pt-2 text-[11px] font-semibold text-white/60 border-t border-white/10",
                           children: [
                             v.jsx("span", { className: "text-[#22c55e]", children: "✓" }),
                             rev.author,
@@ -10558,12 +10649,12 @@ function _F() {
 
             // ── FRAME 4: PLEZZY'S GUARANTEE (REUSING OUR BEAUTIFUL BORDERLESS SECTION) ──
             v.jsx(PlezzyGuaranteeSection, {
-              className: "max-w-7xl mx-auto px-4 sm:px-8 my-10 sm:my-14 flex justify-center relative z-10"
+              className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-10 sm:my-14 flex justify-center relative z-10 w-full"
             }),
 
             // ── FRAME 5: STICKY BOTTOM ATB BAR (SLIDES UP ON SCROLL) ─────────────
             showStickyBar && v.jsx("div", {
-              className: "sticky-atb-bar py-3 px-4 sm:px-8 shadow-2xl animate-in slide-in-from-bottom duration-300",
+              className: "sticky-atb-bar py-3 px-4 sm:px-6 lg:px-8 shadow-2xl animate-in slide-in-from-bottom duration-300",
               style: {
                 position: "fixed",
                 bottom: 0,
