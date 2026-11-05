@@ -10086,13 +10086,13 @@ function _F() {
                   v.jsxs("div", {
                     className: "lg:col-span-7 space-y-4 w-full max-w-full overflow-hidden",
                     children: [
-                      // Main Display Frame
+                      // Main Display Frame (BORDERLESS LUXURY CANVAS)
                       v.jsxs("div", {
                         className: "relative w-full rounded-[32px] overflow-hidden group select-none shadow-2xl",
                         style: {
                           background: "radial-gradient(circle at 50% 35%, rgba(255, 255, 255, 0.08) 0%, rgba(248, 39, 147, 0.06) 40%, rgba(14, 12, 18, 0.98) 90%)",
-                          border: "1px solid rgba(255, 255, 255, 0.14)",
-                          boxShadow: "0 24px 60px -12px rgba(0, 0, 0, 0.85), inset 0 1px 2px rgba(255, 255, 255, 0.25)",
+                          border: "none",
+                          boxShadow: "0 24px 60px -12px rgba(0, 0, 0, 0.85)",
                           backdropFilter: "blur(24px)",
                           WebkitBackdropFilter: "blur(24px)"
                         },
@@ -10128,13 +10128,13 @@ function _F() {
                             },
                             children: (cur.images || [{ src: cur.image, label: cur.name }]).map((img, idx) => v.jsx("div", {
                               key: idx,
-                              className: "w-full min-w-full shrink-0 snap-center flex items-center justify-center p-6 sm:p-10 aspect-square sm:aspect-[4/3] lg:aspect-square relative box-border",
+                              className: "w-full min-w-full shrink-0 snap-center flex items-center justify-center p-4 sm:p-8 aspect-square sm:aspect-[4/3] lg:aspect-square relative box-border overflow-hidden",
                               children: v.jsx("img", {
                                 src: img.src,
                                 alt: img.label || cur.name,
                                 loading: idx === 0 ? "eager" : "lazy",
-                                className: "w-full h-full object-contain filter drop-shadow-[0_24px_48px_rgba(0,0,0,0.65)] select-none transition-transform duration-500 group-hover:scale-102",
-                                style: { maxHeight: "480px" }
+                                className: "w-full h-full object-contain filter drop-shadow-[0_24px_48px_rgba(0,0,0,0.65)] select-none transition-transform duration-500 group-hover:scale-102 rounded-2xl sm:rounded-3xl",
+                                style: { maxHeight: "480px", borderRadius: "24px" }
                               })
                             }))
                           }),
@@ -10271,9 +10271,9 @@ function _F() {
                             ]
                           }),
 
-                          // Pricing Row (Indian Rupee INR with 30% Savings)
+                          // Pricing Row (Indian Rupee INR with Prominent Cut & Exact Discount, No Pink Bar)
                           v.jsxs("div", {
-                            className: "flex flex-wrap items-baseline gap-3 pt-1",
+                            className: "flex flex-wrap items-baseline gap-2.5 sm:gap-3 pt-1",
                             children: [
                               v.jsxs("span", {
                                 className: "text-3xl sm:text-4xl font-extrabold text-white tracking-tight",
@@ -10284,15 +10284,21 @@ function _F() {
                                 ]
                               }),
                               v.jsxs("span", {
-                                className: "text-base font-normal text-white/40 line-through",
+                                className: "text-base sm:text-lg font-medium text-white/45",
+                                style: {
+                                  textDecoration: "line-through",
+                                  textDecorationThickness: "2px",
+                                  textDecorationColor: "rgba(255, 255, 255, 0.75)"
+                                },
                                 children: [
                                   "₹",
                                   Math.round((cur.priceINR || 2499) / 0.7).toLocaleString('en-IN')
                                 ]
                               }),
                               v.jsx("span", {
-                                className: "px-2.5 py-0.5 rounded-full text-[10.5px] font-extrabold uppercase tracking-wider bg-[#f82793]/20 border border-[#f82793]/40 text-[#f82793]",
-                                children: "SAVE 30%"
+                                className: "text-sm sm:text-base font-extrabold text-[#f82793] tracking-wide",
+                                style: { fontFamily: "Swiss, -apple-system, sans-serif" },
+                                children: "(30% OFF)"
                               }),
                               v.jsx("span", {
                                 className: "w-full text-xs font-semibold text-[#22c55e] flex items-center gap-1 mt-0.5",
@@ -10512,26 +10518,27 @@ function _F() {
 
             // ── FRAME 2: ARCHITECTURAL PERFORMANCE PILLARS (4 SLEEK SILVER BENTO TILES) ──────
             v.jsx("div", {
-              className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 relative z-10 w-full",
+              className: "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 relative z-10 w-full",
               children: v.jsxs("div", {
-                className: "space-y-8 text-center",
+                className: "text-center relative z-10",
                 children: [
                   v.jsxs("div", {
-                    className: "space-y-2",
+                    className: "text-center mb-8 sm:mb-12 relative z-10",
+                    style: { marginBottom: "2.5rem" },
                     children: [
                       v.jsx("span", {
-                        className: "text-[11px] font-extrabold uppercase tracking-[0.28em] text-[#f82793]",
+                        className: "text-[11px] sm:text-xs font-mono font-bold tracking-[0.28em] text-[#f82793] uppercase mb-2 inline-block",
                         children: "ENGINEERED FOR MODERN INTIMACY"
                       }),
                       v.jsx("h3", {
-                        className: "text-2xl sm:text-3xl md:text-4xl font-extrabold lowercase text-white tracking-tight",
-                        style: { fontFamily: "'Rektorat Heavy', Swiss, sans-serif" },
+                        className: "text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white",
+                        style: { fontFamily: "'Plus Jakarta Sans', Swiss, -apple-system, sans-serif" },
                         children: "thoughtful by design."
                       })
                     ]
                   }),
                   v.jsx("div", {
-                    className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 text-left items-stretch pt-2",
+                    className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 text-left items-stretch",
                     children: [
                       {
                         icon: "🔇",
@@ -10581,20 +10588,21 @@ function _F() {
 
             // ── FRAME 3: VERIFIED CLIENT EXPERIENCES (CUSTOMER REVIEWS BENTO) ──────
             v.jsx("div", {
-              className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 relative z-10 w-full",
+              className: "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 relative z-10 w-full",
               children: v.jsxs("div", {
-                className: "space-y-8 text-center",
+                className: "text-center relative z-10",
                 children: [
                   v.jsxs("div", {
-                    className: "space-y-2",
+                    className: "text-center mb-8 sm:mb-12 relative z-10",
+                    style: { marginBottom: "2.5rem" },
                     children: [
                       v.jsx("span", {
-                        className: "text-[11px] font-extrabold uppercase tracking-[0.28em] text-[#f82793]",
+                        className: "text-[11px] sm:text-xs font-mono font-bold tracking-[0.28em] text-[#f82793] uppercase mb-2 inline-block",
                         children: "VERIFIED CLIENT RITUALS"
                       }),
                       v.jsx("h3", {
-                        className: "text-2xl sm:text-3xl md:text-4xl font-extrabold lowercase text-white tracking-tight",
-                        style: { fontFamily: "'Rektorat Heavy', Swiss, sans-serif" },
+                        className: "text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white",
+                        style: { fontFamily: "'Plus Jakarta Sans', Swiss, -apple-system, sans-serif" },
                         children: "what intimacy feels like."
                       })
                     ]
