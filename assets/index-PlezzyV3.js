@@ -10561,6 +10561,31 @@ function _F() {
               })
             }),
 
+            // ── HORIZONTALLY LONG EDITORIAL SHOWCASE BANNER ───────────────────────
+            v.jsx("div", {
+              className: "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 my-8 sm:my-14 relative z-10 w-full",
+              children: v.jsx("div", {
+                className: "relative w-full rounded-[32px] overflow-hidden group select-none shadow-2xl",
+                style: {
+                  borderRadius: "32px",
+                  overflow: "hidden",
+                  boxShadow: "0 24px 60px -12px rgba(0, 0, 0, 0.85)",
+                  background: "linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(18, 14, 24, 0.95) 100%)"
+                },
+                children: v.jsx("img", {
+                  src: cur.bannerImage || "/assets/products/pdp-editorial-banner.jpg",
+                  alt: (cur.name || "Plezzy") + " Editorial Visual",
+                  loading: "lazy",
+                  className: "w-full h-auto min-h-[160px] sm:min-h-[240px] md:min-h-[320px] max-h-[500px] object-cover select-none transition-transform duration-700 group-hover:scale-102 block rounded-[32px]",
+                  style: {
+                    width: "100%",
+                    display: "block",
+                    borderRadius: "32px"
+                  }
+                })
+              })
+            }),
+
             // ── FRAME 2: ARCHITECTURAL PERFORMANCE PILLARS (4 SLEEK SILVER BENTO TILES) ──────
             v.jsx("div", {
               className: "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 relative z-10 w-full",
