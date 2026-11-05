@@ -7610,6 +7610,46 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
   const [offersOnly, setOffersOnly] = G.useState(false);
   const filterRef = G.useRef(null);
 
+  // Dynamic show/hide category pill bar on scroll:
+  // Hide when scrolling down into products (finger swipe up) to expand view,
+  // Show again when scrolling back up (finger swipe down).
+  const [isCategoryBarVisible, setIsCategoryBarVisible] = G.useState(true);
+  const lastScrollYRef = G.useRef(0);
+
+  G.useEffect(() => {
+    let ticking = false;
+    const threshold = 10;
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          const diff = currentScrollY - lastScrollYRef.current;
+
+          if (currentScrollY < 120) {
+            // Near top of collection: always keep visible in natural position
+            setIsCategoryBarVisible(true);
+          } else if (Math.abs(diff) > threshold) {
+            if (diff > 0) {
+              // Scrolling downward into products -> hide
+              setIsCategoryBarVisible(false);
+            } else {
+              // Scrolling back upward -> show again
+              setIsCategoryBarVisible(true);
+            }
+          }
+
+          lastScrollYRef.current = currentScrollY;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   G.useEffect(() => {
     const handleClickOutside = (e) => {
       if (filterRef.current && !filterRef.current.contains(e.target)) {
@@ -7750,7 +7790,7 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
       v.jsx("div", {
         className: "w-full mb-6 sm:mb-8 rounded-2xl sm:rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative group cursor-pointer",
         onClick: () => {
-          try { s(); } catch (err) {}
+          try { s(); } catch (err) { }
           const cardProd = (catalogList || []).find(p => p.id === "plz-cards-guide") || { id: "plz-cards-guide" };
           onSelectProduct(cardProd);
         },
@@ -7780,9 +7820,15 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
         ]
       }),
 
-      // ── COMPACT FROSTED CAPSULE CATEGORY BAR (CENTERED, CLEAN) ───────────
+      // ── COMPACT FROSTED CAPSULE CATEGORY BAR (DYNAMIC HIDE/SHOW ON SCROLL) ───────────
       v.jsx("div", {
-        className: "sticky top-16 sm:top-20 z-30 mb-6 sm:mb-8 py-2 w-full",
+        className: "sticky top-16 sm:top-20 z-30 mb-6 sm:mb-8 py-2 w-full transition-all duration-300 " +
+          (isCategoryBarVisible
+            ? "translate-y-0 opacity-100 pointer-events-auto"
+            : "-translate-y-12 sm:-translate-y-16 opacity-0 pointer-events-none"),
+        style: {
+          transition: "transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease"
+        },
         children: v.jsx("div", {
           className: "overflow-x-auto no-scrollbar py-1 w-full flex justify-center",
           children: v.jsx("div", {
