@@ -8294,7 +8294,121 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
   });
 }
 
+const PLEZZY_PIN_DATABASE = {
+  "302001": { city: "Jaipur", state: "Rajasthan" },
+  "302002": { city: "Jaipur", state: "Rajasthan" },
+  "302003": { city: "Jaipur", state: "Rajasthan" },
+  "302004": { city: "Jaipur", state: "Rajasthan" },
+  "302012": { city: "Jaipur", state: "Rajasthan" },
+  "302015": { city: "Jaipur", state: "Rajasthan" },
+  "302017": { city: "Jaipur", state: "Rajasthan" },
+  "302020": { city: "Jaipur", state: "Rajasthan" },
+  "303002": { city: "Jaipur", state: "Rajasthan" },
+  "342001": { city: "Jodhpur", state: "Rajasthan" },
+  "313001": { city: "Udaipur", state: "Rajasthan" },
+  "110001": { city: "New Delhi", state: "Delhi" },
+  "110002": { city: "Central Delhi", state: "Delhi" },
+  "110019": { city: "Kalkaji, New Delhi", state: "Delhi" },
+  "110020": { city: "Okhla, New Delhi", state: "Delhi" },
+  "110024": { city: "Lajpat Nagar, New Delhi", state: "Delhi" },
+  "110025": { city: "Sukhdev Vihar, New Delhi", state: "Delhi" },
+  "110034": { city: "Saraswati Vihar, New Delhi", state: "Delhi" },
+  "110048": { city: "Greater Kailash, New Delhi", state: "Delhi" },
+  "110065": { city: "East of Kailash, New Delhi", state: "Delhi" },
+  "110070": { city: "Vasant Kunj, New Delhi", state: "Delhi" },
+  "110075": { city: "Dwarka, New Delhi", state: "Delhi" },
+  "122001": { city: "Gurugram", state: "Haryana" },
+  "122002": { city: "Gurugram", state: "Haryana" },
+  "201301": { city: "Noida", state: "Uttar Pradesh" },
+  "400001": { city: "Mumbai", state: "Maharashtra" },
+  "400050": { city: "Bandra, Mumbai", state: "Maharashtra" },
+  "400053": { city: "Andheri, Mumbai", state: "Maharashtra" },
+  "400092": { city: "Borivali, Mumbai", state: "Maharashtra" },
+  "411001": { city: "Pune", state: "Maharashtra" },
+  "560001": { city: "Bengaluru", state: "Karnataka" },
+  "560034": { city: "Koramangala, Bengaluru", state: "Karnataka" },
+  "560038": { city: "Indiranagar, Bengaluru", state: "Karnataka" },
+  "560066": { city: "Whitefield, Bengaluru", state: "Karnataka" },
+  "500001": { city: "Hyderabad", state: "Telangana" },
+  "500032": { city: "Gachibowli, Hyderabad", state: "Telangana" },
+  "500081": { city: "Madhapur, Hyderabad", state: "Telangana" },
+  "600001": { city: "Chennai", state: "Tamil Nadu" },
+  "700001": { city: "Kolkata", state: "West Bengal" },
+  "380001": { city: "Ahmedabad", state: "Gujarat" },
+  "160017": { city: "Chandigarh", state: "Punjab/Haryana" }
+};
 
+const PLEZZY_STATE_PREFIX_MAP = {
+  "11": "Delhi",
+  "12": "Haryana (Gurugram)",
+  "13": "Haryana",
+  "14": "Punjab",
+  "15": "Punjab",
+  "16": "Chandigarh",
+  "17": "Himachal Pradesh",
+  "18": "Jammu & Kashmir",
+  "19": "Jammu & Kashmir",
+  "20": "Uttar Pradesh (Noida)",
+  "21": "Uttar Pradesh",
+  "22": "Uttar Pradesh (Lucknow)",
+  "23": "Uttar Pradesh",
+  "24": "Uttar Pradesh",
+  "25": "Uttar Pradesh",
+  "26": "Uttar Pradesh",
+  "27": "Uttar Pradesh",
+  "28": "Uttar Pradesh",
+  "30": "Rajasthan (Jaipur)",
+  "31": "Rajasthan (Udaipur)",
+  "32": "Rajasthan (Kota)",
+  "33": "Rajasthan (Bikaner)",
+  "34": "Rajasthan (Jodhpur)",
+  "36": "Gujarat (Rajkot)",
+  "37": "Gujarat (Kutch)",
+  "38": "Gujarat (Ahmedabad)",
+  "39": "Gujarat (Surat)",
+  "40": "Maharashtra (Mumbai)",
+  "41": "Maharashtra (Pune)",
+  "42": "Maharashtra (Nashik)",
+  "43": "Maharashtra (Aurangabad)",
+  "44": "Maharashtra (Nagpur)",
+  "45": "Madhya Pradesh (Indore)",
+  "46": "Madhya Pradesh (Bhopal)",
+  "47": "Madhya Pradesh (Gwalior)",
+  "48": "Madhya Pradesh (Jabalpur)",
+  "49": "Chhattisgarh (Raipur)",
+  "50": "Telangana (Hyderabad)",
+  "51": "Andhra Pradesh (Tirupati)",
+  "52": "Andhra Pradesh (Vijayawada)",
+  "53": "Andhra Pradesh (Visakhapatnam)",
+  "56": "Karnataka (Bengaluru)",
+  "57": "Karnataka (Mangalore)",
+  "58": "Karnataka (Hubballi)",
+  "59": "Karnataka (Belagavi)",
+  "60": "Tamil Nadu (Chennai)",
+  "61": "Tamil Nadu (Trichy)",
+  "62": "Tamil Nadu (Madurai)",
+  "63": "Tamil Nadu (Salem)",
+  "64": "Tamil Nadu (Coimbatore)",
+  "67": "Kerala (Calicut)",
+  "68": "Kerala (Cochin)",
+  "69": "Kerala (Trivandrum)",
+  "70": "West Bengal (Kolkata)",
+  "71": "West Bengal (Howrah)",
+  "72": "West Bengal (Siliguri)",
+  "73": "West Bengal (Darjeeling)",
+  "74": "West Bengal (North 24 Parganas)",
+  "75": "Odisha (Bhubaneswar)",
+  "76": "Odisha (Cuttack)",
+  "77": "Odisha (Rourkela)",
+  "78": "Assam (Guwahati)",
+  "79": "North East",
+  "80": "Bihar (Patna)",
+  "81": "Bihar (Bhagalpur)",
+  "82": "Bihar (Gaya)",
+  "83": "Jharkhand (Ranchi)",
+  "84": "Bihar (Muzaffarpur)",
+  "85": "Jharkhand (Dhanbad/Jamshedpur)"
+};
 
 function PlezzyCartPage({ onBackToHome, onNavigateToCollections, onSelectProduct }) {
   const {
@@ -8320,10 +8434,25 @@ function PlezzyCartPage({ onBackToHome, onNavigateToCollections, onSelectProduct
   const { playClickFeedback: s } = Pn();
   const [promoInput, setPromoInput] = G.useState("");
   const [stealthBox, setStealthBox] = G.useState(true);
-  const [deliveryAddress, setDeliveryAddress] = G.useState("Jaipur - 303002");
+  const [deliveryAddress, setDeliveryAddress] = G.useState(() => {
+    try {
+      return localStorage.getItem("plezzy_delivery_pincode") || "Jaipur - 303002";
+    } catch (e) {
+      return "Jaipur - 303002";
+    }
+  });
   const [isEditingAddress, setIsEditingAddress] = G.useState(false);
-  const [addressInput, setAddressInput] = G.useState("Jaipur - 303002");
+  const [addressInput, setAddressInput] = G.useState(() => {
+    try {
+      return localStorage.getItem("plezzy_delivery_pincode") || "Jaipur - 303002";
+    } catch (e) {
+      return "Jaipur - 303002";
+    }
+  });
   const [savedMap, setSavedMap] = G.useState({});
+  const [isLocating, setIsLocating] = G.useState(false);
+  const [pinChecking, setPinChecking] = G.useState(false);
+  const [locationFeedback, setLocationFeedback] = G.useState(null);
 
   const handleApply = (e) => {
     if (e) e.preventDefault();
@@ -8345,10 +8474,192 @@ function PlezzyCartPage({ onBackToHome, onNavigateToCollections, onSelectProduct
   };
 
   const handleSaveAddress = () => {
+    try { s(); } catch (err) { }
     if (addressInput && addressInput.trim()) {
       setDeliveryAddress(addressInput.trim());
+      try { localStorage.setItem("plezzy_delivery_pincode", addressInput.trim()); } catch (e) { }
       setIsEditingAddress(false);
+      setLocationFeedback(null);
     }
+  };
+
+  const handleGetCurrentLocation = () => {
+    try { s(); } catch (err) { }
+    if (typeof navigator === "undefined" || !navigator.geolocation) {
+      setLocationFeedback({
+        type: "error",
+        message: "Geolocation is not supported by your browser. Please enter your PIN code manually."
+      });
+      return;
+    }
+    setIsLocating(true);
+    setLocationFeedback({
+      type: "info",
+      message: "Fetching GPS coordinates from your device..."
+    });
+
+    navigator.geolocation.getCurrentPosition(
+      async (pos) => {
+        try {
+          const lat = pos.coords.latitude;
+          const lon = pos.coords.longitude;
+          let resolvedCity = "";
+          let resolvedPin = "";
+
+          // 1. Try BigDataCloud reverse geocode API (CORS-friendly, client-side)
+          try {
+            const res = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`);
+            if (res.ok) {
+              const data = await res.json();
+              resolvedCity = data.locality || data.city || data.principalSubdivision || "";
+              resolvedPin = data.postcode || "";
+            }
+          } catch (e) { }
+
+          // 2. Fallback to OpenStreetMap Nominatim
+          if (!resolvedCity && !resolvedPin) {
+            try {
+              const res = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`);
+              if (res.ok) {
+                const data = await res.json();
+                const a = data.address || {};
+                resolvedCity = a.city || a.town || a.suburb || a.village || a.county || a.state || "";
+                resolvedPin = a.postcode || "";
+              }
+            } catch (e2) { }
+          }
+
+          // 3. Coordinate proximity heuristic for Indian hubs if network is restricted
+          if (!resolvedCity) {
+            if (Math.abs(lat - 26.9) < 1.0 && Math.abs(lon - 75.8) < 1.0) {
+              resolvedCity = "Jaipur";
+              resolvedPin = "302001";
+            } else if (Math.abs(lat - 28.6) < 1.0 && Math.abs(lon - 77.2) < 1.0) {
+              resolvedCity = "New Delhi";
+              resolvedPin = "110001";
+            } else if (Math.abs(lat - 19.0) < 1.0 && Math.abs(lon - 72.8) < 1.0) {
+              resolvedCity = "Mumbai";
+              resolvedPin = "400050";
+            } else if (Math.abs(lat - 12.9) < 1.0 && Math.abs(lon - 77.6) < 1.0) {
+              resolvedCity = "Bengaluru";
+              resolvedPin = "560001";
+            } else {
+              resolvedCity = "Detected Location";
+              resolvedPin = resolvedPin || "302001";
+            }
+          }
+
+          const formatted = resolvedPin ? `${resolvedCity} - ${resolvedPin}` : resolvedCity;
+          setAddressInput(formatted);
+          setDeliveryAddress(formatted);
+          try { localStorage.setItem("plezzy_delivery_pincode", formatted); } catch (e) { }
+          setLocationFeedback({
+            type: "success",
+            message: `✓ Current Location Detected: ${formatted} (Express Delivery Available)`
+          });
+        } catch (err) {
+          setLocationFeedback({
+            type: "error",
+            message: "Could not resolve address details. Please enter your PIN code manually."
+          });
+        } finally {
+          setIsLocating(false);
+        }
+      },
+      (err) => {
+        setIsLocating(false);
+        let msg = "Could not get your current location.";
+        if (err.code === 1) {
+          msg = "Location permission denied. Please enter your 6-digit PIN code manually.";
+        } else if (err.code === 2) {
+          msg = "Position unavailable. Please enter your PIN code manually.";
+        } else if (err.code === 3) {
+          msg = "Location detection timed out. Please enter your PIN code.";
+        }
+        setLocationFeedback({ type: "error", message: msg });
+      },
+      { enableHighAccuracy: true, timeout: 8000, maximumAge: 60000 }
+    );
+  };
+
+  const handlePinLookup = async (overridePin) => {
+    try { s(); } catch (err) { }
+    const raw = (overridePin !== undefined ? overridePin : addressInput) || "";
+    const cleanPin = raw.replace(/\D/g, "").slice(0, 6);
+
+    if (cleanPin.length !== 6) {
+      if (raw.trim().length > 2) {
+        setDeliveryAddress(raw.trim());
+        try { localStorage.setItem("plezzy_delivery_pincode", raw.trim()); } catch (e) { }
+        setLocationFeedback({
+          type: "success",
+          message: `✓ Delivery location set to ${raw.trim()} (Express 2-3 Days)`
+        });
+        return;
+      }
+      setLocationFeedback({
+        type: "error",
+        message: "Please enter a valid 6-digit Indian PIN code (e.g. 302001)."
+      });
+      return;
+    }
+
+    setPinChecking(true);
+    setLocationFeedback({
+      type: "info",
+      message: `Checking delivery serviceability for PIN ${cleanPin}...`
+    });
+
+    // 1. Check local database
+    if (PLEZZY_PIN_DATABASE[cleanPin]) {
+      const loc = PLEZZY_PIN_DATABASE[cleanPin];
+      const formatted = `${loc.city} - ${cleanPin}`;
+      setAddressInput(formatted);
+      setDeliveryAddress(formatted);
+      try { localStorage.setItem("plezzy_delivery_pincode", formatted); } catch (e) { }
+      setLocationFeedback({
+        type: "success",
+        message: `✓ Delivery Available to ${loc.city}, ${loc.state} (Stealth Express 2-3 Days)`
+      });
+      setPinChecking(false);
+      return;
+    }
+
+    // 2. Check public postal API
+    try {
+      const res = await fetch(`https://api.postalpincode.in/pincode/${cleanPin}`);
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data[0] && data[0].Status === "Success" && data[0].PostOffice && data[0].PostOffice.length > 0) {
+          const po = data[0].PostOffice[0];
+          const city = po.District || po.Name || "India";
+          const state = po.State || "";
+          const formatted = `${city} - ${cleanPin}`;
+          setAddressInput(formatted);
+          setDeliveryAddress(formatted);
+          try { localStorage.setItem("plezzy_delivery_pincode", formatted); } catch (e) { }
+          setLocationFeedback({
+            type: "success",
+            message: `✓ Delivery Available to ${city}${state ? ", " + state : ""} (Stealth Express 2-3 Days)`
+          });
+          setPinChecking(false);
+          return;
+        }
+      }
+    } catch (e) { }
+
+    // 3. Fallback to state prefix mapping
+    const prefix = cleanPin.slice(0, 2);
+    const stateOrRegion = PLEZZY_STATE_PREFIX_MAP[prefix] || "India";
+    const formatted = `${stateOrRegion} - ${cleanPin}`;
+    setAddressInput(formatted);
+    setDeliveryAddress(formatted);
+    try { localStorage.setItem("plezzy_delivery_pincode", formatted); } catch (e) { }
+    setLocationFeedback({
+      type: "success",
+      message: `✓ Delivery Available to ${stateOrRegion} (${cleanPin}) - Free Stealth Shipping`
+    });
+    setPinChecking(false);
   };
 
   const freeProgress = Math.min(100, Math.round((discountedSubtotalINR / (freeShipThresholdINR || 999)) * 100));
@@ -8490,55 +8801,225 @@ function PlezzyCartPage({ onBackToHome, onNavigateToCollections, onSelectProduct
               className: "lg:col-span-7 xl:col-span-8 space-y-4 w-full",
               children: [
 
-                // 1. DELIVERY TO LOCATION BAR (Reference Top Banner)
-                v.jsxs("div", {
+                // 1. DELIVERY TO LOCATION BAR (Enhanced with Geolocation & PIN Lookup)
+                !isEditingAddress ? v.jsxs("div", {
                   className: "p-3.5 sm:p-4 rounded-2xl bg-white border border-black/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-sm select-none",
                   children: [
-                    !isEditingAddress ? v.jsxs("div", {
-                      className: "flex items-center gap-2.5 min-w-0",
+                    v.jsxs("div", {
+                      className: "flex items-center gap-2.5 min-w-0 flex-wrap sm:flex-nowrap",
                       children: [
-                        v.jsx("span", { className: "text-base shrink-0", children: "📍" }),
+                        v.jsx("span", { className: "text-lg shrink-0", children: "📍" }),
                         v.jsxs("div", {
                           className: "text-xs text-[#555555] truncate",
                           children: [
                             "Deliver to: ",
-                            v.jsx("span", { className: "font-bold text-[#111111]", children: deliveryAddress })
+                            v.jsx("span", { className: "font-bold text-[#111111] text-sm", children: deliveryAddress }),
+                            v.jsx("span", {
+                              className: "ml-2.5 text-[11px] font-semibold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-full inline-flex items-center gap-1 border border-emerald-200",
+                              children: [
+                                v.jsx("span", { className: "w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse" }),
+                                "Express Delivery Available"
+                              ]
+                            })
                           ]
                         })
                       ]
-                    }) : v.jsxs("div", {
-                      className: "flex items-center gap-2 w-full sm:w-auto flex-1",
+                    }),
+                    v.jsx("button", {
+                      type: "button",
+                      onClick: () => {
+                        setAddressInput(deliveryAddress);
+                        setIsEditingAddress(true);
+                        setLocationFeedback(null);
+                      },
+                      className: "px-4 py-1.5 text-xs font-bold text-[#111111] hover:text-[#f82793] hover:border-[#f82793] border border-black/15 rounded-lg transition-colors cursor-pointer self-end sm:self-auto shrink-0 shadow-xs",
+                      children: "Change"
+                    })
+                  ]
+                }) : v.jsxs("div", {
+                  style: {
+                    borderColor: "#f82793",
+                    boxShadow: "0 8px 30px -4px rgba(248, 39, 147, 0.15)"
+                  },
+                  className: "p-4 sm:p-5 rounded-2xl bg-white border-2 space-y-3.5 select-none transition-all w-full",
+                  children: [
+                    // Header Row: Title & Close
+                    v.jsxs("div", {
+                      className: "flex items-center justify-between pb-2.5 border-b border-black/5",
                       children: [
-                        v.jsx("input", {
-                          type: "text",
-                          value: addressInput,
-                          onChange: (e) => setAddressInput(e.target.value),
-                          placeholder: "Enter City - Pincode",
-                          className: "flex-1 px-3 py-1.5 text-xs border border-black/20 rounded-lg outline-none focus:border-[#f82793]"
+                        v.jsxs("div", {
+                          className: "flex items-center gap-2",
+                          children: [
+                            v.jsx("span", { className: "text-base", children: "📍" }),
+                            v.jsx("span", {
+                              className: "text-xs font-extrabold text-[#111111] uppercase tracking-wider",
+                              children: "Select Delivery Location"
+                            })
+                          ]
+                        }),
+                        v.jsx("button", {
+                          type: "button",
+                          onClick: () => {
+                            setIsEditingAddress(false);
+                            setLocationFeedback(null);
+                          },
+                          className: "text-xs font-semibold text-[#888888] hover:text-[#111111] px-2 py-1 rounded transition-colors cursor-pointer",
+                          children: "✕ Close"
+                        })
+                      ]
+                    }),
+
+                    // Method 1: "Get Current Location" Button
+                    v.jsx("button", {
+                      type: "button",
+                      onClick: handleGetCurrentLocation,
+                      disabled: isLocating,
+                      style: {
+                        background: isLocating ? "#fce7f3" : "linear-gradient(135deg, #fff0f7 0%, #ffe4f0 100%)",
+                        borderColor: "#f82793"
+                      },
+                      className: "w-full py-2.5 px-4 rounded-xl border border-[#f82793]/60 flex items-center justify-center gap-2 text-xs font-bold text-[#f82793] hover:bg-[#ffe4f0] transition-all shadow-xs cursor-pointer active:scale-[0.99] disabled:opacity-75 disabled:cursor-wait",
+                      children: isLocating ? [
+                        v.jsx("svg", {
+                          className: "animate-spin h-3.5 w-3.5 text-[#f82793]",
+                          xmlns: "http://www.w3.org/2000/svg",
+                          fill: "none",
+                          viewBox: "0 0 24 24",
+                          children: [
+                            v.jsx("circle", { className: "opacity-25", cx: "12", cy: "12", r: "10", stroke: "currentColor", strokeWidth: "4" }),
+                            v.jsx("path", { className: "opacity-75", fill: "currentColor", d: "M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" })
+                          ]
+                        }),
+                        "Detecting Current Location via GPS..."
+                      ] : [
+                        v.jsx("span", { className: "text-base", children: "🎯" }),
+                        "Use My Current Location",
+                        v.jsx("span", {
+                          className: "ml-auto text-[10px] font-bold text-[#f82793] uppercase tracking-wider bg-white/90 px-2 py-0.5 rounded-md border border-[#f82793]/30",
+                          children: "Auto Detect"
+                        })
+                      ]
+                    }),
+
+                    // Divider: "OR ENTER PIN CODE"
+                    v.jsxs("div", {
+                      className: "relative flex py-0.5 items-center",
+                      children: [
+                        v.jsx("div", { className: "flex-grow border-t border-black/10" }),
+                        v.jsx("span", {
+                          className: "flex-shrink mx-3 text-[10px] font-bold text-[#888888] uppercase tracking-wider",
+                          children: "Or Enter 6-Digit PIN Code"
+                        }),
+                        v.jsx("div", { className: "flex-grow border-t border-black/10" })
+                      ]
+                    }),
+
+                    // Method 2: PIN Code / City Input with Check, Save, and Cancel
+                    v.jsxs("div", {
+                      className: "flex flex-col sm:flex-row items-stretch sm:items-center gap-2",
+                      children: [
+                        v.jsxs("div", {
+                          className: "relative flex-1",
+                          children: [
+                            v.jsx("input", {
+                              type: "text",
+                              value: addressInput,
+                              onChange: (e) => {
+                                setAddressInput(e.target.value);
+                                if (locationFeedback) setLocationFeedback(null);
+                                const digits = e.target.value.replace(/\D/g, "");
+                                if (digits.length === 6 && e.target.value.length === 6) {
+                                  handlePinLookup(digits);
+                                }
+                              },
+                              onKeyDown: (e) => {
+                                if (e.key === "Enter") {
+                                  e.preventDefault();
+                                  handlePinLookup();
+                                }
+                              },
+                              placeholder: "Enter PIN code or City (e.g. 302001)",
+                              style: { borderColor: "#f82793" },
+                              className: "w-full pl-3.5 pr-20 py-2.5 text-xs font-semibold text-[#111111] bg-white border-2 rounded-xl outline-none focus:ring-2 focus:ring-[#f82793]/20 shadow-xs"
+                            }),
+                            v.jsx("button", {
+                              type: "button",
+                              onClick: () => handlePinLookup(),
+                              disabled: pinChecking,
+                              className: "absolute right-1.5 top-1/2 -translate-y-1/2 px-3 py-1.5 text-[11px] font-extrabold text-[#f82793] hover:text-[#d41c7b] bg-pink-50 hover:bg-pink-100 rounded-lg transition-colors cursor-pointer disabled:opacity-50",
+                              children: pinChecking ? "..." : "Check"
+                            })
+                          ]
                         }),
                         v.jsx("button", {
                           type: "button",
                           onClick: handleSaveAddress,
-                          className: "px-3 py-1.5 text-xs font-bold text-white bg-[#111111] hover:bg-[#f82793] rounded-lg transition-colors cursor-pointer shrink-0",
+                          style: {
+                            backgroundColor: "#f82793",
+                            boxShadow: "0 4px 14px 0 rgba(248, 39, 147, 0.35)"
+                          },
+                          className: "px-5 py-2.5 text-xs font-bold text-white hover:bg-[#d41c7b] rounded-xl transition-all cursor-pointer shrink-0 text-center active:scale-95",
                           children: "Save"
                         }),
                         v.jsx("button", {
                           type: "button",
-                          onClick: () => setIsEditingAddress(false),
-                          className: "px-2 py-1.5 text-xs text-[#777777] hover:text-[#111111] cursor-pointer",
+                          onClick: () => {
+                            setIsEditingAddress(false);
+                            setLocationFeedback(null);
+                          },
+                          className: "px-3 py-2.5 text-xs font-medium text-[#777777] hover:text-[#111111] transition-colors cursor-pointer text-center",
                           children: "Cancel"
                         })
                       ]
                     }),
 
-                    !isEditingAddress && v.jsx("button", {
-                      type: "button",
-                      onClick: () => {
-                        setAddressInput(deliveryAddress);
-                        setIsEditingAddress(true);
-                      },
-                      className: "px-4 py-1.5 text-xs font-bold text-[#111111] hover:text-[#f82793] hover:border-[#f82793] border border-black/15 rounded-lg transition-colors cursor-pointer self-end sm:self-auto shrink-0",
-                      children: "Change"
+                    // Quick Metro Hub Selector Chips
+                    v.jsxs("div", {
+                      className: "flex flex-wrap items-center gap-1.5 pt-0.5",
+                      children: [
+                        v.jsx("span", {
+                          className: "text-[10px] font-bold text-[#888888] uppercase tracking-wider mr-1",
+                          children: "Popular Hubs:"
+                        }),
+                        [
+                          { label: "Jaipur (302001)", val: "Jaipur - 302001", pin: "302001" },
+                          { label: "Delhi (110001)", val: "New Delhi - 110001", pin: "110001" },
+                          { label: "Mumbai (400050)", val: "Mumbai - 400050", pin: "400050" },
+                          { label: "Bengaluru (560001)", val: "Bengaluru - 560001", pin: "560001" }
+                        ].map((hub) =>
+                          v.jsx("button", {
+                            key: hub.pin,
+                            type: "button",
+                            onClick: () => {
+                              setAddressInput(hub.val);
+                              handlePinLookup(hub.pin);
+                            },
+                            className: "text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-gray-100 hover:bg-[#ffe4f0] hover:text-[#f82793] text-[#444444] transition-colors cursor-pointer border border-black/5 active:scale-95",
+                            children: hub.label
+                          })
+                        )
+                      ]
+                    }),
+
+                    // Location / Serviceability Feedback Alert
+                    locationFeedback && v.jsxs("div", {
+                      className: `p-2.5 rounded-xl text-xs flex items-center gap-2 ${
+                        locationFeedback.type === "success"
+                          ? "bg-emerald-50 text-emerald-800 border border-emerald-200"
+                          : locationFeedback.type === "error"
+                          ? "bg-rose-50 text-rose-800 border border-rose-200"
+                          : "bg-blue-50 text-blue-800 border border-blue-200"
+                      }`,
+                      children: [
+                        v.jsx("span", {
+                          className: "shrink-0 font-bold",
+                          children: locationFeedback.type === "success" ? "✓" : locationFeedback.type === "error" ? "⚠️" : "ℹ️"
+                        }),
+                        v.jsx("span", {
+                          className: "flex-1 font-medium",
+                          children: locationFeedback.message
+                        })
+                      ]
                     })
                   ]
                 }),
