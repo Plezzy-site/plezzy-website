@@ -10499,8 +10499,9 @@ function _F() {
                                     children: [
                                       v.jsx("button", {
                                         type: "button",
-                                        onClick: () => { try { s(); } catch (e) { } setQty(Math.max(1, qty - 1)); },
-                                        className: "flex items-center justify-center rounded-full text-white/70 hover:text-white hover:bg-white/15 cursor-pointer transition-all active:scale-90",
+                                        onClick: () => { try { s(); } catch (e) { } setQty(Math.max(0, qty - 1)); },
+                                        disabled: qty === 0,
+                                        className: "flex items-center justify-center rounded-full text-white/70 hover:text-white hover:bg-white/15 cursor-pointer transition-all active:scale-90 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-transparent",
                                         style: {
                                           width: "32px",
                                           height: "32px",
@@ -10543,18 +10544,20 @@ function _F() {
 
                                   // Primary Button: ADD TO BAG
                                   v.jsx("button", {
-                                    onClick: () => cur.availability !== "sold_out" && handleAdd(cur, selectedColor, qty),
-                                    disabled: cur.availability === "sold_out",
+                                    onClick: () => cur.availability !== "sold_out" && qty > 0 && handleAdd(cur, selectedColor, qty),
+                                    disabled: cur.availability === "sold_out" || qty === 0,
                                     className: "flex-1 py-3 px-6 rounded-full text-white font-extrabold text-xs sm:text-sm tracking-wider uppercase transition-all shadow-xl flex items-center justify-center gap-2 " +
-                                      (cur.availability === "sold_out"
+                                      (cur.availability === "sold_out" || qty === 0
                                         ? "bg-white/10 text-white/40 cursor-not-allowed"
                                         : "bg-[#f82793] hover:bg-[#ff3b9e] text-white shadow-[#f82793]/40 cursor-pointer hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98]"),
                                     style: { fontFamily: "Swiss, -apple-system, sans-serif" },
                                     children: cur.availability === "sold_out"
                                       ? "SOLD OUT — NOTIFY ME"
-                                      : (added
-                                        ? "ADDED TO BAG ✓"
-                                        : ("ADD TO BAG • ₹" + ((cur.priceINR || 2499) * qty).toLocaleString('en-IN')))
+                                      : (qty === 0
+                                        ? "SELECT QUANTITY"
+                                        : (added
+                                          ? "ADDED TO BAG ✓"
+                                          : ("ADD TO BAG • ₹" + ((cur.priceINR || 2499) * qty).toLocaleString('en-IN'))))
                                   })
                                 ]
                               }),
@@ -10563,13 +10566,16 @@ function _F() {
                               v.jsx("button", {
                                 onClick: () => {
                                   try { s(); } catch (e) { }
-                                  if (cur.availability !== "sold_out") {
+                                  if (cur.availability !== "sold_out" && qty > 0) {
                                     handleAdd(cur, selectedColor, qty);
                                     if (openCart) openCart(true);
                                   }
                                 },
-                                disabled: cur.availability === "sold_out",
-                                className: "w-full py-3 px-6 rounded-full text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 cursor-pointer shadow-md hover:scale-[1.01] active:scale-[0.99]",
+                                disabled: cur.availability === "sold_out" || qty === 0,
+                                className: "w-full py-3 px-6 rounded-full text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 " +
+                                  (cur.availability === "sold_out" || qty === 0
+                                    ? "bg-white/5 text-white/30 border border-white/10 cursor-not-allowed"
+                                    : "bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 cursor-pointer shadow-md hover:scale-[1.01] active:scale-[0.99]"),
                                 style: { fontFamily: "Swiss, -apple-system, sans-serif" },
                                 children: "⚡ INSTANT CHECKOUT • BUY NOW"
                               }),
