@@ -10362,39 +10362,56 @@ function _F() {
                             ]
                           }),
 
-                          // 4 Quick Value Bento Micro-Pills
+                          // 4 Quick Value Bento Feature Boxes (Slightly Rounded Rectangles, Larger Size)
                           v.jsxs("div", {
-                            className: "grid grid-cols-2 gap-2.5 pt-1",
+                            className: "grid grid-cols-2 gap-3 pt-1.5",
                             children: [
-                              v.jsxs("div", {
-                                className: "flex items-center gap-1.5 p-2.5 rounded-xl bg-white/[0.05] border border-white/10 text-[11px] text-white/80",
-                                children: [
-                                  v.jsx("span", { className: "text-[#FEE871]", children: "🔇" }),
-                                  v.jsx("span", { className: "font-semibold truncate", children: "<28dB Whisper Core" })
-                                ]
-                              }),
-                              v.jsxs("div", {
-                                className: "flex items-center gap-1.5 p-2.5 rounded-xl bg-white/[0.05] border border-white/10 text-[11px] text-white/80",
-                                children: [
-                                  v.jsx("span", { className: "text-[#38bdf8]", children: "💧" }),
-                                  v.jsx("span", { className: "font-semibold truncate", children: "IPX7 100% Waterproof" })
-                                ]
-                              }),
-                              v.jsxs("div", {
-                                className: "flex items-center gap-1.5 p-2.5 rounded-xl bg-white/[0.05] border border-white/10 text-[11px] text-white/80",
-                                children: [
-                                  v.jsx("span", { className: "text-[#f82793]", children: "✨" }),
-                                  v.jsx("span", { className: "font-semibold truncate", children: "Medical Liquid Silicone" })
-                                ]
-                              }),
-                              v.jsxs("div", {
-                                className: "flex items-center gap-1.5 p-2.5 rounded-xl bg-white/[0.05] border border-white/10 text-[11px] text-white/80",
-                                children: [
-                                  v.jsx("span", { className: "text-[#a855f7]", children: "⚡" }),
-                                  v.jsx("span", { className: "font-semibold truncate", children: "Magnetic Rapid USB" })
-                                ]
-                              })
-                            ]
+                              {
+                                icon: "🔇",
+                                color: "#FEE871",
+                                title: "<28dB Whisper Core"
+                              },
+                              {
+                                icon: "💧",
+                                color: "#38bdf8",
+                                title: "IPX7 100% Waterproof"
+                              },
+                              {
+                                icon: "✨",
+                                color: "#f82793",
+                                title: "Medical Liquid Silicone"
+                              },
+                              {
+                                icon: "⚡",
+                                color: "#a855f7",
+                                title: "Magnetic Rapid USB"
+                              }
+                            ].map((pill, pIdx) => v.jsxs("div", {
+                              key: pIdx,
+                              className: "flex items-center gap-2.5 transition-all hover:bg-white/10 group cursor-default select-none shadow-sm",
+                              style: {
+                                borderRadius: "12px",
+                                padding: "12px 14px",
+                                minHeight: "48px",
+                                background: "linear-gradient(145deg, rgba(255, 255, 255, 0.07) 0%, rgba(220, 225, 235, 0.03) 100%)",
+                                border: "1px solid rgba(255, 255, 255, 0.14)",
+                                backdropFilter: "blur(12px)",
+                                WebkitBackdropFilter: "blur(12px)",
+                                boxShadow: "0 2px 8px rgba(0, 0, 0, 0.35)"
+                              },
+                              children: [
+                                v.jsx("span", {
+                                  className: "text-base sm:text-lg shrink-0 group-hover:scale-110 transition-transform",
+                                  style: { color: pill.color, lineHeight: "1" },
+                                  children: pill.icon
+                                }),
+                                v.jsx("span", {
+                                  className: "text-xs sm:text-[12.5px] font-semibold text-white/90 truncate tracking-wide",
+                                  style: { fontFamily: "Swiss, -apple-system, sans-serif" },
+                                  children: pill.title
+                                })
+                              ]
+                            }))
                           }),
 
                           // Divider
