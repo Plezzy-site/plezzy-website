@@ -10269,6 +10269,8 @@ function _F() {
                       v.jsxs("div", {
                         className: "rounded-[32px] p-6 sm:p-8 space-y-4 text-left relative overflow-hidden w-full",
                         style: {
+                          borderRadius: "32px",
+                          overflow: "hidden",
                           background: "linear-gradient(145deg, rgba(255, 255, 255, 0.09) 0%, rgba(220, 225, 235, 0.04) 50%, rgba(14, 12, 18, 0.96) 100%)",
                           border: "1px solid rgba(255, 255, 255, 0.15)",
                           boxShadow: "0 24px 60px -12px rgba(0, 0, 0, 0.85), inset 0 1px 2px rgba(255, 255, 255, 0.35)",
