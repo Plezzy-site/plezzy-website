@@ -6626,19 +6626,19 @@ const allCatalogProducts = [
     ],
     "shades": [
       {
-        "name": "sunburst yellow",
+        "name": "Sunburst Yellow",
         "color": "#F7C948",
-        "desc": "warm velvety saffron",
-        "badge": "signature"
+        "desc": "Warm Velvety Saffron",
+        "badge": "Signature"
       },
       {
-        "name": "obsidian noir",
+        "name": "Obsidian Noir",
         "color": "#1A1A1A",
-        "desc": "deep matte obsidian",
-        "badge": "core"
+        "desc": "Deep Matte Obsidian",
+        "badge": "Core"
       }
     ],
-    "desc1": "The pocket muse is an intentional sensory wellness object designed to rest naturally within the palm. Encased in velvety, hypoallergenic medical-grade silicone with water-resistant acoustic dampening, it delivers deeply calming acoustic frequencies for discreet daily wellness.",
+    "desc1": "The Pocket Muse is an intentional sensory wellness object designed to rest naturally within the palm. Encased in velvety, hypoallergenic medical-grade silicone with water-resistant acoustic dampening, it delivers deeply calming acoustic frequencies for discreet daily wellness.",
     "desc2": "Engineered with magnetic rapid charging and an intuitive one-touch control interface. Crafted to elevate intimate sensory rituals with quiet confidence.",
     "accordions": [
       {
@@ -6701,19 +6701,19 @@ const allCatalogProducts = [
     ],
     "shades": [
       {
-        "name": "celestial frost",
+        "name": "Celestial Frost",
         "color": "#E0DBE8",
-        "desc": "frosted lavender with hearts",
-        "badge": "signature"
+        "desc": "Frosted Lavender with Hearts",
+        "badge": "Signature"
       },
       {
-        "name": "amethyst mist",
+        "name": "Amethyst Mist",
         "color": "#7B5E8C",
-        "desc": "deep violet shimmer",
-        "badge": "limited"
+        "desc": "Deep Violet Shimmer",
+        "badge": "Limited"
       }
     ],
-    "desc1": "The cloud kiss represents the pinnacle of sculptural intimacy design. Molded from frosted translucent medical silicone and hand-infused with iridescent micro-hearts, it houses dual synchronized acoustic motors that generate deep resonant frequencies across both contact nodes.",
+    "desc1": "The Cloud Kiss represents the pinnacle of sculptural intimacy design. Molded from frosted translucent medical silicone and hand-infused with iridescent micro-hearts, it houses dual synchronized acoustic motors that generate deep resonant frequencies across both contact nodes.",
     "desc2": "Features independent multi-speed harmonic wave modes and ergonomic dual-end curvature tailored for both focused acupressure and expansive resonance.",
     "accordions": [
       {
@@ -6775,10 +6775,10 @@ const allCatalogProducts = [
     ],
     "shades": [
       {
-        "name": "pure botanical",
+        "name": "Pure Botanical",
         "color": "#F0E130",
-        "desc": "canary yellow dispenser",
-        "badge": "essential"
+        "desc": "Canary Yellow Dispenser",
+        "badge": "Essential"
       }
     ],
     "desc1": "Banana Espresso is a water-soluble, clean botanical formulation that provides an effortless, frictionless glide with skin-soothing hydration. Packaged in a contemporary airtight pump dispenser featuring signature graphic artwork.",
@@ -6844,19 +6844,19 @@ const allCatalogProducts = [
     ],
     "shades": [
       {
-        "name": "carmine glaze",
+        "name": "Carmine Glaze",
         "color": "#B82E3E",
-        "desc": "translucent cherry rose",
-        "badge": "limited"
+        "desc": "Translucent Cherry Rose",
+        "badge": "Limited"
       },
       {
-        "name": "noir shadow",
+        "name": "Noir Shadow",
         "color": "#2B2B2B",
-        "desc": "smoky matte shadow",
-        "badge": "core"
+        "desc": "Smoky Matte Shadow",
+        "badge": "Core"
       }
     ],
-    "desc1": "The rose rush is an ergonomically sculpted resonance instrument engineered with a flexible contoured head to deliver focused, deep-tissue acoustic resonance exactly where required. Its frosted, velvet-soft silicone surface glides weightlessly.",
+    "desc1": "The Rose Rush is an ergonomically sculpted resonance instrument engineered with a flexible contoured head to deliver focused, deep-tissue acoustic resonance exactly where required. Its frosted, velvet-soft silicone surface glides weightlessly.",
     "desc2": "Equipped with an ultra-quiet high-torque magnetic motor operating below 26dB, offering 10 discrete rhythmic frequencies ranging from gentle continuous murmurs to powerful pulse waves.",
     "accordions": [
       {
@@ -6923,16 +6923,16 @@ const allCatalogProducts = [
     ],
     "shades": [
       {
-        "name": "amethyst aura",
+        "name": "Amethyst Aura",
         "color": "#8B5CF6",
-        "desc": "deep velvety violet",
-        "badge": "signature"
+        "desc": "Deep Velvety Violet",
+        "badge": "Signature"
       },
       {
-        "name": "obsidian noir",
+        "name": "Obsidian Noir",
         "color": "#1E1B24",
-        "desc": "smoky matte shadow",
-        "badge": "core"
+        "desc": "Smoky Matte Shadow",
+        "badge": "Core"
       }
     ],
     "desc1": "Velvet Solstice is an architectural dual-ended intimacy sculpture engineered for immersive resonance. Cast in medical hypoallergenic liquid silicone, it features calibrated dual core motors with whisper acoustic dampening.",
@@ -6992,10 +6992,10 @@ const allCatalogProducts = [
     ],
     "shades": [
       {
-        "name": "blush petal",
+        "name": "Blush Petal",
         "color": "#F472B6",
-        "desc": "soft rose petal",
-        "badge": "signature"
+        "desc": "Soft Rose Petal",
+        "badge": "Signature"
       }
     ],
     "desc1": "The Rose Petal Touch combines delicate ribbed wave ridges with deeply penetrating sonic resonance. Sculpted to cup natural body curves with zero pinch.",
@@ -7056,16 +7056,16 @@ const allCatalogProducts = [
     ],
     "shades": [
       {
-        "name": "burgundy suede",
+        "name": "Burgundy Suede",
         "color": "#4A0E17",
-        "desc": "deep wine velvet",
-        "badge": "signature"
+        "desc": "Deep Wine Velvet",
+        "badge": "Signature"
       },
       {
-        "name": "matte obsidian",
+        "name": "Matte Obsidian",
         "color": "#1A1A1A",
-        "desc": "discreet black",
-        "badge": "core"
+        "desc": "Discreet Black",
+        "badge": "Core"
       }
     ],
     "desc1": "Crafted from double-brushed antimicrobial vegan suede to protect your Plezzy wellness instruments from dust, lint, and curious eyes.",
@@ -7117,10 +7117,10 @@ const allCatalogProducts = [
     ],
     "shades": [
       {
-        "name": "curated ritual edition",
+        "name": "Curated Ritual Edition",
         "color": "#F7C948",
-        "desc": "gold & saffron edition",
-        "badge": "curated"
+        "desc": "Gold & Saffron Edition",
+        "badge": "Curated"
       }
     ],
     "desc1": "The complete Plezzy ritual experience bundled together in a keepsake gift box: our flagship Pocket Muse, full-size Banana Espresso organic elixir, and antimicrobial vegan suede pouch.",
@@ -7176,10 +7176,10 @@ const allCatalogProducts = [
     ],
     "shades": [
       {
-        "name": "midnight luxury suite",
+        "name": "Midnight Luxury Suite",
         "color": "#B82E3E",
-        "desc": "carmine & amethyst",
-        "badge": "limited"
+        "desc": "Carmine & Amethyst",
+        "badge": "Limited"
       }
     ],
     "desc1": "The premier couples collection featuring both signature wands: Cloud Kiss with translucent heart inclusions, Rose Rush with targeted flex-tip resonance, and full-size Banana Espresso elixir.",
@@ -7223,10 +7223,10 @@ const allCatalogProducts = [
     ],
     "shades": [
       {
-        "name": "standard deck",
+        "name": "Standard Deck",
         "color": "#f82793",
-        "desc": "52 curated cards",
-        "badge": "core"
+        "desc": "52 Curated Cards",
+        "badge": "Core"
       }
     ],
     "desc1": "52 beautifully designed intimacy prompts, tactile challenges, and deep conversation starters designed to unlock fantasy, vulnerability, and playful passion between partners.",
@@ -8921,10 +8921,10 @@ function _F() {
     {
       "id": "plz-pebble",
       "slug": "pocket-muse",
-      "name": "pocket muse",
+      "name": "Pocket Muse",
       "subtitle": "SENSORY ERGONOMIC PEBBLE \u2022 POCKET MUSE",
-      "category": "sensory essentials",
-      "badge": "curated essential",
+      "category": "Sensory Essentials",
+      "badge": "Curated Essential",
       "role": "palm acoustic resonance & velvety tactile wellness",
       "tagline": "An ultra-smooth, palm-sculpted tactile pebble with whisper acoustic dampening and water-resistant finish.",
       "priceINR": 2499,
@@ -8948,19 +8948,19 @@ function _F() {
       ],
       "shades": [
         {
-          "name": "sunburst yellow",
+          "name": "Sunburst Yellow",
           "color": "#F7C948",
-          "desc": "warm velvety saffron",
-          "badge": "signature"
+          "desc": "Warm Velvety Saffron",
+          "badge": "Signature"
         },
         {
-          "name": "obsidian noir",
+          "name": "Obsidian Noir",
           "color": "#1A1A1A",
-          "desc": "deep matte obsidian",
-          "badge": "core"
+          "desc": "Deep Matte Obsidian",
+          "badge": "Core"
         }
       ],
-      "desc1": "The pocket muse is an intentional sensory wellness object designed to rest naturally within the palm. Encased in velvety, hypoallergenic medical-grade silicone with water-resistant acoustic dampening, it delivers deeply calming acoustic frequencies for discreet daily wellness.",
+      "desc1": "The Pocket Muse is an intentional sensory wellness object designed to rest naturally within the palm. Encased in velvety, hypoallergenic medical-grade silicone with water-resistant acoustic dampening, it delivers deeply calming acoustic frequencies for discreet daily wellness.",
       "desc2": "Engineered with magnetic rapid charging and an intuitive one-touch control interface. Crafted to elevate intimate sensory rituals with quiet confidence.",
       "accordions": [
         {
@@ -8987,10 +8987,10 @@ function _F() {
     {
       "id": "plz-dual-wand",
       "slug": "cloud-kiss",
-      "name": "cloud kiss",
+      "name": "Cloud Kiss",
       "subtitle": "DUAL HARMONIC RESONANCE WAND \u2022 CLOUD KISS",
-      "category": "harmonic resonance",
-      "badge": "signature edition",
+      "category": "Harmonic Resonance",
+      "badge": "Signature Edition",
       "role": "dual-point harmonic resonance with floating celestial hearts",
       "tagline": "Translucent frosted silicone body infused with floating celestial hearts and dual harmonic motors.",
       "priceINR": 3999,
@@ -9014,19 +9014,19 @@ function _F() {
       ],
       "shades": [
         {
-          "name": "celestial frost",
+          "name": "Celestial Frost",
           "color": "#E0DBE8",
-          "desc": "frosted lavender with hearts",
-          "badge": "signature"
+          "desc": "Frosted Lavender with Hearts",
+          "badge": "Signature"
         },
         {
-          "name": "amethyst mist",
+          "name": "Amethyst Mist",
           "color": "#7B5E8C",
-          "desc": "deep violet shimmer",
-          "badge": "limited"
+          "desc": "Deep Violet Shimmer",
+          "badge": "Limited"
         }
       ],
-      "desc1": "The cloud kiss represents the pinnacle of sculptural intimacy design. Molded from frosted translucent medical silicone and hand-infused with iridescent micro-hearts, it houses dual synchronized acoustic motors that generate deep resonant frequencies across both contact nodes.",
+      "desc1": "The Cloud Kiss represents the pinnacle of sculptural intimacy design. Molded from frosted translucent medical silicone and hand-infused with iridescent micro-hearts, it houses dual synchronized acoustic motors that generate deep resonant frequencies across both contact nodes.",
       "desc2": "Features independent multi-speed harmonic wave modes and ergonomic dual-end curvature tailored for both focused acupressure and expansive resonance.",
       "accordions": [
         {
@@ -9055,8 +9055,8 @@ function _F() {
       "slug": "banana-espresso",
       "name": "Banana Espresso",
       "subtitle": "BOTANICAL HYDRATION ELIXIR \u2022 BANANA ESPRESSO",
-      "category": "botanical elixirs",
-      "badge": "bestseller",
+      "category": "Botanical Elixirs",
+      "badge": "Bestseller",
       "role": "ultra-glide clean moisture & botanical nourishment",
       "tagline": "pH-balanced organic botanical intimacy serum formulated for silky, long-lasting hydration.",
       "priceINR": 1299,
@@ -9080,10 +9080,10 @@ function _F() {
       ],
       "shades": [
         {
-          "name": "pure botanical",
+          "name": "Pure Botanical",
           "color": "#F0E130",
-          "desc": "canary yellow dispenser",
-          "badge": "essential"
+          "desc": "Canary Yellow Dispenser",
+          "badge": "Essential"
         }
       ],
       "desc1": "Banana Espresso is a water-soluble, clean botanical formulation that provides an effortless, frictionless glide with skin-soothing hydration. Packaged in a contemporary airtight pump dispenser featuring signature graphic artwork.",
@@ -9113,10 +9113,10 @@ function _F() {
     {
       "id": "plz-cherry-wand",
       "slug": "rose-rush",
-      "name": "rose rush",
+      "name": "Rose Rush",
       "subtitle": "PRECISION CONTOURED WAND \u2022 ROSE RUSH",
-      "category": "precision resonance",
-      "badge": "limited edition",
+      "category": "Precision Resonance",
+      "badge": "Limited Edition",
       "role": "targeted acupressure & whisper-quiet sonic depth",
       "tagline": "Sculptural flexible wand in frosted silicone with deep rumbly vibrations for pinpoint release.",
       "priceINR": 3499,
@@ -9140,19 +9140,19 @@ function _F() {
       ],
       "shades": [
         {
-          "name": "carmine glaze",
+          "name": "Carmine Glaze",
           "color": "#B82E3E",
-          "desc": "translucent cherry rose",
-          "badge": "limited"
+          "desc": "Translucent Cherry Rose",
+          "badge": "Limited"
         },
         {
-          "name": "noir shadow",
+          "name": "Noir Shadow",
           "color": "#2B2B2B",
-          "desc": "smoky matte shadow",
-          "badge": "core"
+          "desc": "Smoky Matte Shadow",
+          "badge": "Core"
         }
       ],
-      "desc1": "The rose rush is an ergonomically sculpted resonance instrument engineered with a flexible contoured head to deliver focused, deep-tissue acoustic resonance exactly where required. Its frosted, velvet-soft silicone surface glides weightlessly.",
+      "desc1": "The Rose Rush is an ergonomically sculpted resonance instrument engineered with a flexible contoured head to deliver focused, deep-tissue acoustic resonance exactly where required. Its frosted, velvet-soft silicone surface glides weightlessly.",
       "desc2": "Equipped with an ultra-quiet high-torque magnetic motor operating below 26dB, offering 10 discrete rhythmic frequencies ranging from gentle continuous murmurs to powerful pulse waves.",
       "accordions": [
         {
@@ -9714,8 +9714,8 @@ function _F() {
                           }),
                           v.jsxs("div", {
                             className: "flex-1", children: [
-                              v.jsx("p", { className: "text-xs font-bold lowercase", style: { color: "#ffffff" }, children: p.name }),
-                              v.jsx("p", { className: "text-[10px] lowercase", style: { color: "#888888" }, children: p.subtitle }),
+                              v.jsx("p", { className: "text-xs font-bold", style: { color: "#ffffff" }, children: p.name }),
+                              v.jsx("p", { className: "text-[10px]", style: { color: "#888888" }, children: p.subtitle }),
                               v.jsxs("p", { className: "text-[11px] font-medium", style: { color: "#cccccc" }, children: ["\u20B9", p.priceINR.toLocaleString('en-IN')] })
                             ]
                           })
@@ -10062,7 +10062,7 @@ function _F() {
                       prods.map(p => v.jsx("button", {
                         key: p.id,
                         onClick: () => handleSelectProduct(p),
-                        className: "px-3.5 py-1.5 rounded-full text-xs font-bold lowercase whitespace-nowrap transition-all cursor-pointer " +
+                        className: "px-3.5 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all cursor-pointer " +
                           (p.id === cur.id
                             ? "bg-[#f82793] text-white shadow-md shadow-[#f82793]/40 scale-105"
                             : "bg-white/5 text-white/70 hover:bg-white/15 hover:text-white border border-white/10"),
@@ -10299,7 +10299,7 @@ function _F() {
 
                           // Title: Heavy Luxury Typography
                           v.jsx("h1", {
-                            className: "text-3xl sm:text-4xl lg:text-[42px] text-white tracking-tight leading-none lowercase",
+                            className: "text-3xl sm:text-4xl lg:text-[42px] text-white tracking-tight leading-none",
                             style: { fontFamily: "'Rektorat Heavy', Swiss, -apple-system, sans-serif", fontWeight: 800 },
                             children: cur.name
                           }),
@@ -10323,7 +10323,7 @@ function _F() {
                                 className: "text-xs text-white/60 font-medium",
                                 children: [
                                   (cur.rating || 4.9).toFixed(1),
-                                  " • 348+ verified rituals"
+                                  " • 348+ Verified Rituals"
                                 ]
                               })
                             ]
@@ -10669,7 +10669,7 @@ function _F() {
                       v.jsx("h3", {
                         className: "text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white",
                         style: { fontFamily: "'Plus Jakarta Sans', Swiss, -apple-system, sans-serif" },
-                        children: "thoughtful by design."
+                        children: "Thoughtful by Design."
                       })
                     ]
                   }),
@@ -10840,12 +10840,12 @@ function _F() {
                         className: "text-left min-w-0",
                         children: [
                           v.jsx("p", {
-                            className: "text-xs font-extrabold lowercase text-white truncate",
+                            className: "text-xs font-extrabold text-white truncate",
                             style: { fontFamily: "'Rektorat Heavy', Swiss, sans-serif" },
                             children: cur.name
                           }),
                           v.jsx("p", {
-                            className: "text-[10px] text-white/60 lowercase truncate mt-0.5",
+                            className: "text-[10px] text-white/60 truncate mt-0.5",
                             children: currentShadeObj.name + " • ₹" + (cur.priceINR ? cur.priceINR.toLocaleString('en-IN') : "2,499")
                           })
                         ]
@@ -11600,12 +11600,12 @@ function _F() {
                     className: "space-y-3", children: [
                       v.jsx("h5", { className: "font-extrabold text-white tracking-widest", children: "THE COLLECTION" }),
                       v.jsxs("ul", {
-                        className: "space-y-2.5 text-white/60 lowercase", children: [
+                        className: "space-y-2.5 text-white/60", children: [
                           prods.map(p => v.jsx("li", {
                             key: p.id, children:
                               v.jsx("button", { onClick: () => handleSelectProduct(p), className: "hover:text-[#f82793] transition-colors cursor-pointer text-left", children: p.name })
                           })),
-                          v.jsx("li", { children: v.jsx("button", { onClick: handleShopClick, className: "hover:text-[#f82793] font-bold text-white transition-colors cursor-pointer", children: "all editions →" }) })
+                          v.jsx("li", { children: v.jsx("button", { onClick: handleShopClick, className: "hover:text-[#f82793] font-bold text-white transition-colors cursor-pointer", children: "All Editions →" }) })
                         ]
                       })
                     ]
@@ -11616,12 +11616,12 @@ function _F() {
                     className: "space-y-3", children: [
                       v.jsx("h5", { className: "font-extrabold text-white tracking-widest", children: "HELP" }),
                       v.jsxs("ul", {
-                        className: "space-y-2.5 text-white/60 lowercase", children: [
-                          v.jsx("li", { children: v.jsx("button", { onClick: () => a("contact"), className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "contact" }) }),
-                          v.jsx("li", { children: v.jsx("button", { onClick: () => a("faq"), className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "faqs" }) }),
-                          v.jsx("li", { children: v.jsx("button", { onClick: () => a("shipping"), className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "shipping" }) }),
-                          v.jsx("li", { children: v.jsx("button", { onClick: () => a("shipping"), className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "returns" }) }),
-                          v.jsx("li", { children: v.jsx("button", { onClick: () => a("tracking"), className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "order tracking" }) })
+                        className: "space-y-2.5 text-white/60", children: [
+                          v.jsx("li", { children: v.jsx("button", { onClick: () => a("contact"), className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "Contact" }) }),
+                          v.jsx("li", { children: v.jsx("button", { onClick: () => a("faq"), className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "FAQs" }) }),
+                          v.jsx("li", { children: v.jsx("button", { onClick: () => a("shipping"), className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "Shipping" }) }),
+                          v.jsx("li", { children: v.jsx("button", { onClick: () => a("shipping"), className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "Returns" }) }),
+                          v.jsx("li", { children: v.jsx("button", { onClick: () => a("tracking"), className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "Order Tracking" }) })
                         ]
                       })
                     ]
@@ -11632,10 +11632,10 @@ function _F() {
                     className: "space-y-3", children: [
                       v.jsx("h5", { className: "font-extrabold text-white tracking-widest", children: "ABOUT" }),
                       v.jsxs("ul", {
-                        className: "space-y-2.5 text-white/60 lowercase", children: [
-                          v.jsx("li", { children: v.jsx("button", { onClick: () => { s(); if (isPdp) handleBackToHome(); setTimeout(() => { const el = document.getElementById("campaign-statement"); if (el) el.scrollIntoView({ behavior: "smooth" }); }, 100) }, className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "our story" }) }),
-                          v.jsx("li", { children: v.jsx("button", { onClick: () => { s(); if (isPdp) handleBackToHome(); setTimeout(() => { const el = document.getElementById("campaign-video"); if (el) el.scrollIntoView({ behavior: "smooth" }); }, 100) }, className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "journal" }) }),
-                          v.jsx("li", { children: v.jsx("button", { onClick: () => { s(); if (isPdp) handleBackToHome(); setTimeout(() => { const el = document.getElementById("campaign-statement"); if (el) el.scrollIntoView({ behavior: "smooth" }); }, 100) }, className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "careers" }) })
+                        className: "space-y-2.5 text-white/60", children: [
+                          v.jsx("li", { children: v.jsx("button", { onClick: () => { s(); if (isPdp) handleBackToHome(); setTimeout(() => { const el = document.getElementById("campaign-statement"); if (el) el.scrollIntoView({ behavior: "smooth" }); }, 100) }, className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "Our Story" }) }),
+                          v.jsx("li", { children: v.jsx("button", { onClick: () => { s(); if (isPdp) handleBackToHome(); setTimeout(() => { const el = document.getElementById("campaign-video"); if (el) el.scrollIntoView({ behavior: "smooth" }); }, 100) }, className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "Journal" }) }),
+                          v.jsx("li", { children: v.jsx("button", { onClick: () => { s(); if (isPdp) handleBackToHome(); setTimeout(() => { const el = document.getElementById("campaign-statement"); if (el) el.scrollIntoView({ behavior: "smooth" }); }, 100) }, className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "Careers" }) })
                         ]
                       })
                     ]
@@ -11646,11 +11646,11 @@ function _F() {
                     className: "space-y-3", children: [
                       v.jsx("h5", { className: "font-extrabold text-white tracking-widest", children: "FOLLOW" }),
                       v.jsxs("ul", {
-                        className: "space-y-2.5 text-white/60 lowercase", children: [
-                          v.jsx("li", { children: v.jsx("a", { href: "https://instagram.com", target: "_blank", rel: "noopener noreferrer", className: "hover:text-[#1a1a1a] transition-colors", children: "instagram" }) }),
-                          v.jsx("li", { children: v.jsx("a", { href: "https://tiktok.com", target: "_blank", rel: "noopener noreferrer", className: "hover:text-[#1a1a1a] transition-colors", children: "tiktok" }) }),
-                          v.jsx("li", { children: v.jsx("a", { href: "https://youtube.com", target: "_blank", rel: "noopener noreferrer", className: "hover:text-[#1a1a1a] transition-colors", children: "youtube" }) }),
-                          v.jsx("li", { children: v.jsx("button", { onClick: navigateToAdmin, className: "hover:text-[#f82793] text-[#f82793] font-bold transition-colors cursor-pointer", children: "admin portal →" }) })
+                        className: "space-y-2.5 text-white/60", children: [
+                          v.jsx("li", { children: v.jsx("a", { href: "https://instagram.com", target: "_blank", rel: "noopener noreferrer", className: "hover:text-white transition-colors", children: "Instagram" }) }),
+                          v.jsx("li", { children: v.jsx("a", { href: "https://tiktok.com", target: "_blank", rel: "noopener noreferrer", className: "hover:text-white transition-colors", children: "TikTok" }) }),
+                          v.jsx("li", { children: v.jsx("a", { href: "https://youtube.com", target: "_blank", rel: "noopener noreferrer", className: "hover:text-white transition-colors", children: "YouTube" }) }),
+                          v.jsx("li", { children: v.jsx("button", { onClick: navigateToAdmin, className: "hover:text-[#f82793] text-[#f82793] font-bold transition-colors cursor-pointer", children: "Admin Portal →" }) })
                         ]
                       })
                     ]
@@ -11661,11 +11661,11 @@ function _F() {
                     className: "space-y-3", children: [
                       v.jsx("h5", { className: "font-extrabold text-white tracking-widest", children: "LEGAL" }),
                       v.jsxs("ul", {
-                        className: "space-y-2.5 text-white/60 lowercase", children: [
-                          v.jsx("li", { children: v.jsx("button", { onClick: () => a("faq"), className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "privacy" }) }),
-                          v.jsx("li", { children: v.jsx("button", { onClick: () => a("faq"), className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "terms" }) }),
-                          v.jsx("li", { children: v.jsx("button", { onClick: () => a("shipping"), className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "shipping policy" }) }),
-                          v.jsx("li", { children: v.jsx("button", { onClick: () => a("shipping"), className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "refund policy" }) })
+                        className: "space-y-2.5 text-white/60", children: [
+                          v.jsx("li", { children: v.jsx("button", { onClick: () => a("faq"), className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "Privacy Policy" }) }),
+                          v.jsx("li", { children: v.jsx("button", { onClick: () => a("faq"), className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "Terms of Service" }) }),
+                          v.jsx("li", { children: v.jsx("button", { onClick: () => a("shipping"), className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "Shipping Policy" }) }),
+                          v.jsx("li", { children: v.jsx("button", { onClick: () => a("shipping"), className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "Refund Policy" }) })
                         ]
                       })
                     ]
@@ -12258,20 +12258,20 @@ function SF() { const n = document.createElement("canvas"); n.style.position = "
             v.jsxs("div", {
               children: [
                 v.jsxs("span", {
-                  className: "inline-flex items-center px-3 py-0.5 rounded-full bg-[#f1f0ed] dark:bg-[#1f1e1c] text-[#67645e] dark:text-[#a39f9a] text-[11px] font-medium lowercase tracking-tight border border-[#dddedc]/60 mb-1",
-                  children: ["checkout • step ", u, " of 2"]
+                  className: "inline-flex items-center px-3 py-0.5 rounded-full bg-[#f1f0ed] dark:bg-[#1f1e1c] text-[#67645e] dark:text-[#a39f9a] text-[11px] font-medium tracking-tight border border-[#dddedc]/60 mb-1",
+                  children: ["Checkout • Step ", u, " of 2"]
                 }),
                 v.jsx("h3", {
-                  className: "font-sans font-medium text-xl lowercase tracking-[-0.03em] text-[#1a1a1a] dark:text-white",
-                  children: u === 1 ? "shipping & recipient details" : "payment & order review"
+                  className: "font-sans font-medium text-xl tracking-[-0.03em] text-[#1a1a1a] dark:text-white",
+                  children: u === 1 ? "Shipping & Recipient Details" : "Payment & Order Review"
                 })
               ]
             }),
             v.jsxs("div", {
-              className: "flex items-center gap-1.5 text-xs text-[#67645e] dark:text-[#a39f9a] lowercase tracking-tight",
+              className: "flex items-center gap-1.5 text-xs text-[#67645e] dark:text-[#a39f9a] tracking-tight",
               children: [
                 v.jsx(RO, { className: "size-3.5 text-emerald-600" }),
-                v.jsx("span", { children: "256-bit encrypted checkout" })
+                v.jsx("span", { children: "256-Bit Encrypted Checkout" })
               ]
             })
           ]
@@ -12292,8 +12292,8 @@ function SF() { const n = document.createElement("canvas"); n.style.position = "
                 v.jsxs("div", {
                   children: [
                     v.jsx("label", {
-                      className: "text-xs font-medium text-[#1a1a1a] dark:text-white lowercase tracking-tight",
-                      children: "full recipient name *"
+                      className: "text-xs font-medium text-[#1a1a1a] dark:text-white tracking-tight",
+                      children: "Full Recipient Name *"
                     }),
                     v.jsx("input", {
                       type: "text",
@@ -12308,8 +12308,8 @@ function SF() { const n = document.createElement("canvas"); n.style.position = "
                 v.jsxs("div", {
                   children: [
                     v.jsx("label", {
-                      className: "text-xs font-medium text-[#1a1a1a] dark:text-white lowercase tracking-tight",
-                      children: "phone number (for discreet courier updates) *"
+                      className: "text-xs font-medium text-[#1a1a1a] dark:text-white tracking-tight",
+                      children: "Phone Number (for discreet courier updates) *"
                     }),
                     v.jsx("input", {
                       type: "tel",
@@ -12327,8 +12327,8 @@ function SF() { const n = document.createElement("canvas"); n.style.position = "
             v.jsxs("div", {
               children: [
                 v.jsx("label", {
-                  className: "text-xs font-medium text-[#1a1a1a] dark:text-white lowercase tracking-tight",
-                  children: "email address (for tracking receipt) *"
+                  className: "text-xs font-medium text-[#1a1a1a] dark:text-white tracking-tight",
+                  children: "Email Address (for tracking receipt) *"
                 }),
                 v.jsx("input", {
                   type: "email",
@@ -12347,8 +12347,8 @@ function SF() { const n = document.createElement("canvas"); n.style.position = "
                 v.jsxs("div", {
                   children: [
                     v.jsx("label", {
-                      className: "text-xs font-medium text-[#1a1a1a] dark:text-white lowercase tracking-tight",
-                      children: "street address *"
+                      className: "text-xs font-medium text-[#1a1a1a] dark:text-white tracking-tight",
+                      children: "Street Address *"
                     }),
                     v.jsx("input", {
                       type: "text",
@@ -12363,8 +12363,8 @@ function SF() { const n = document.createElement("canvas"); n.style.position = "
                 v.jsxs("div", {
                   children: [
                     v.jsx("label", {
-                      className: "text-xs font-medium text-[#1a1a1a] dark:text-white lowercase tracking-tight",
-                      children: "apartment / suite / landmark (optional)"
+                      className: "text-xs font-medium text-[#1a1a1a] dark:text-white tracking-tight",
+                      children: "Apartment / Suite / Landmark (Optional)"
                     }),
                     v.jsx("input", {
                       type: "text",
@@ -12384,8 +12384,8 @@ function SF() { const n = document.createElement("canvas"); n.style.position = "
                 v.jsxs("div", {
                   children: [
                     v.jsx("label", {
-                      className: "text-xs font-medium text-[#1a1a1a] dark:text-white lowercase tracking-tight",
-                      children: "city *"
+                      className: "text-xs font-medium text-[#1a1a1a] dark:text-white tracking-tight",
+                      children: "City *"
                     }),
                     v.jsx("input", {
                       type: "text",
@@ -12400,8 +12400,8 @@ function SF() { const n = document.createElement("canvas"); n.style.position = "
                 v.jsxs("div", {
                   children: [
                     v.jsx("label", {
-                      className: "text-xs font-medium text-[#1a1a1a] dark:text-white lowercase tracking-tight",
-                      children: "state *"
+                      className: "text-xs font-medium text-[#1a1a1a] dark:text-white tracking-tight",
+                      children: "State *"
                     }),
                     v.jsx("input", {
                       type: "text",
@@ -12416,8 +12416,8 @@ function SF() { const n = document.createElement("canvas"); n.style.position = "
                 v.jsxs("div", {
                   children: [
                     v.jsx("label", {
-                      className: "text-xs font-medium text-[#1a1a1a] dark:text-white lowercase tracking-tight",
-                      children: "PIN / ZIP code *"
+                      className: "text-xs font-medium text-[#1a1a1a] dark:text-white tracking-tight",
+                      children: "PIN / ZIP Code *"
                     }),
                     v.jsx("input", {
                       type: "text",
@@ -12435,8 +12435,8 @@ function SF() { const n = document.createElement("canvas"); n.style.position = "
             v.jsxs("div", {
               children: [
                 v.jsx("label", {
-                  className: "text-xs font-medium text-[#1a1a1a] dark:text-white lowercase tracking-tight",
-                  children: "stealth delivery notes (courier discretion instruction)"
+                  className: "text-xs font-medium text-[#1a1a1a] dark:text-white tracking-tight",
+                  children: "Stealth Delivery Notes (Discretion instructions)"
                 }),
                 v.jsx("input", {
                   type: "text",
@@ -12449,7 +12449,7 @@ function SF() { const n = document.createElement("canvas"); n.style.position = "
             }),
 
             v.jsxs("div", {
-              className: "flex items-center gap-2.5 p-3 rounded-2xl bg-[#f1f0ed] dark:bg-[#1c1b19] border border-[#dddedc] dark:border-[#2d2c29] text-xs text-[#67645e] dark:text-[#a39f9a] lowercase tracking-tight",
+              className: "flex items-center gap-2.5 p-3 rounded-2xl bg-[#f1f0ed] dark:bg-[#1c1b19] border border-[#dddedc] dark:border-[#2d2c29] text-xs text-[#67645e] dark:text-[#a39f9a] tracking-tight",
               children: [
                 v.jsx(lC, { className: "size-4 shrink-0 text-[#1a1a1a] dark:text-white" }),
                 v.jsx("span", {
@@ -12462,7 +12462,7 @@ function SF() { const n = document.createElement("canvas"); n.style.position = "
               type: "submit",
               className: "w-full btn-rhode btn-rhode-dark text-xs sm:text-sm py-3.5 justify-center shadow-md cursor-pointer",
               children: v.jsxs("span", {
-                children: ["continue to payment • ", r(i)]
+                children: ["Continue to Payment • ", r(i)]
               })
             })
           ]
@@ -12478,8 +12478,8 @@ function SF() { const n = document.createElement("canvas"); n.style.position = "
               className: "space-y-3",
               children: [
                 v.jsx("label", {
-                  className: "text-xs font-medium text-[#1a1a1a] dark:text-white lowercase tracking-tight",
-                  children: "choose payment method"
+                  className: "text-xs font-medium text-[#1a1a1a] dark:text-white tracking-tight",
+                  children: "Choose Payment Method"
                 }),
 
                 // UPI Option
@@ -12497,8 +12497,8 @@ function SF() { const n = document.createElement("canvas"); n.style.position = "
                         }),
                         v.jsxs("div", {
                           children: [
-                            v.jsx("h4", { className: "text-xs font-medium text-[#1a1a1a] dark:text-white lowercase tracking-tight", children: "instant upi / google pay / phonepe / paytm" }),
-                            v.jsx("p", { className: "text-[11px] text-[#67645e] dark:text-[#a39f9a] lowercase tracking-tight", children: 'billed discreetly as "PLZ-WLNS CO"' })
+                            v.jsx("h4", { className: "text-xs font-medium text-[#1a1a1a] dark:text-white tracking-tight", children: "Instant UPI / Google Pay / PhonePe / Paytm" }),
+                            v.jsx("p", { className: "text-[11px] text-[#67645e] dark:text-[#a39f9a] tracking-tight", children: 'Billed discreetly as "PLZ-WLNS CO"' })
                           ]
                         })
                       ]
@@ -12522,8 +12522,8 @@ function SF() { const n = document.createElement("canvas"); n.style.position = "
                         }),
                         v.jsxs("div", {
                           children: [
-                            v.jsx("h4", { className: "text-xs font-medium text-[#1a1a1a] dark:text-white lowercase tracking-tight", children: "credit / debit card (all major banks)" }),
-                            v.jsx("p", { className: "text-[11px] text-[#67645e] dark:text-[#a39f9a] lowercase tracking-tight", children: "visa, mastercard, amex (stealth descriptor on bank statement)" })
+                            v.jsx("h4", { className: "text-xs font-medium text-[#1a1a1a] dark:text-white tracking-tight", children: "Credit / Debit Card (All major banks)" }),
+                            v.jsx("p", { className: "text-[11px] text-[#67645e] dark:text-[#a39f9a] tracking-tight", children: "Visa, Mastercard, Amex (stealth descriptor on bank statement)" })
                           ]
                         })
                       ]
@@ -12547,8 +12547,8 @@ function SF() { const n = document.createElement("canvas"); n.style.position = "
                         }),
                         v.jsxs("div", {
                           children: [
-                            v.jsx("h4", { className: "text-xs font-medium text-[#1a1a1a] dark:text-white lowercase tracking-tight", children: "cash on delivery (cod)" }),
-                            v.jsx("p", { className: "text-[11px] text-[#67645e] dark:text-[#a39f9a] lowercase tracking-tight", children: "pay safely in cash upon discreet doorstep delivery" })
+                            v.jsx("h4", { className: "text-xs font-medium text-[#1a1a1a] dark:text-white tracking-tight", children: "Cash on Delivery (COD)" }),
+                            v.jsx("p", { className: "text-[11px] text-[#67645e] dark:text-[#a39f9a] tracking-tight", children: "Pay safely in cash upon discreet doorstep delivery" })
                           ]
                         })
                       ]
@@ -12561,9 +12561,9 @@ function SF() { const n = document.createElement("canvas"); n.style.position = "
 
             // Order Breakdown Box
             v.jsxs("div", {
-              className: "rounded-2xl border border-[#dddedc] dark:border-[#2d2c29] bg-[#f1f0ed] dark:bg-[#1a1918] p-4 space-y-3 text-xs lowercase tracking-tight",
+              className: "rounded-2xl border border-[#dddedc] dark:border-[#2d2c29] bg-[#f1f0ed] dark:bg-[#1a1918] p-4 space-y-3 text-xs tracking-tight",
               children: [
-                v.jsx("h4", { className: "font-semibold text-[#1a1a1a] dark:text-white pb-2 border-b border-[#dddedc] dark:border-[#2d2c29]", children: "order summary" }),
+                v.jsx("h4", { className: "font-semibold text-[#1a1a1a] dark:text-white pb-2 border-b border-[#dddedc] dark:border-[#2d2c29]", children: "Order Summary" }),
                 v.jsx("div", {
                   className: "space-y-1.5 max-h-36 overflow-y-auto pr-1",
                   children: t.map((item, idx) => v.jsxs("div", {
@@ -12581,14 +12581,14 @@ function SF() { const n = document.createElement("canvas"); n.style.position = "
                     v.jsxs("div", {
                       className: "flex justify-between text-[#67645e] dark:text-[#a39f9a]",
                       children: [
-                        v.jsx("span", { children: "discreet shipping:" }),
-                        v.jsx("span", { className: "text-emerald-600 font-semibold", children: "free plain delivery" })
+                        v.jsx("span", { children: "Discreet Shipping:" }),
+                        v.jsx("span", { className: "text-emerald-600 font-semibold", children: "Free Plain Delivery" })
                       ]
                     }),
                     v.jsxs("div", {
                       className: "flex justify-between text-base font-bold text-[#1a1a1a] dark:text-white pt-1",
                       children: [
-                        v.jsx("span", { children: "total payable:" }),
+                        v.jsx("span", { children: "Total Payable:" }),
                         v.jsx("span", { className: "text-[#f82793] font-mono", children: r(i) })
                       ]
                     })
