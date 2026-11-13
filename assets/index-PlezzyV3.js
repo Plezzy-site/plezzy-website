@@ -10108,16 +10108,21 @@ function _F() {
                             })
                           }),
 
-                          // Floating Top Right Controls (Zoom + Rating)
+                          // Floating Top Right Controls (Zoom + Rating - High Contrast Dark Text & Icon)
                           v.jsxs("div", {
                             className: "absolute top-4 sm:top-5 right-4 sm:right-5 z-20 flex items-center gap-2",
                             children: [
                               v.jsxs("div", {
-                                className: "flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md text-xs font-bold text-black shadow-lg pointer-events-none",
+                                className: "flex items-center gap-1.5 px-3 py-1.5 rounded-full shadow-lg pointer-events-none select-none",
+                                style: {
+                                  background: "#ffffff",
+                                  boxShadow: "0 4px 16px rgba(0, 0, 0, 0.18)",
+                                  color: "#0e0c12"
+                                },
                                 children: [
-                                  v.jsx("span", { style: { color: "#eab308" }, children: "★" }),
-                                  v.jsx("span", { children: (cur.rating || 4.9).toFixed(1) }),
-                                  v.jsx("span", { className: "text-black/50 font-normal text-[11px]", children: "(" + (cur.reviewsCount || 348) + ")" })
+                                  v.jsx("span", { style: { color: "#d97706", fontSize: "13px" }, children: "★" }),
+                                  v.jsx("span", { style: { color: "#0e0c12", fontWeight: 800, fontSize: "12px" }, children: (cur.rating || 4.9).toFixed(1) }),
+                                  v.jsx("span", { style: { color: "rgba(14, 12, 18, 0.55)", fontWeight: 500, fontSize: "11px" }, children: "(" + (cur.reviewsCount || 348) + ")" })
                                 ]
                               }),
                               v.jsx("button", {
@@ -10128,15 +10133,21 @@ function _F() {
                                     window.open(imgUrl, "_blank");
                                   } catch (e) { }
                                 },
-                                className: "w-9 h-9 rounded-full bg-white/90 hover:bg-white text-black shadow-lg flex items-center justify-center transition-all hover:scale-105 active:scale-95 cursor-pointer",
+                                className: "w-9 h-9 rounded-full flex items-center justify-center transition-all hover:scale-105 active:scale-95 cursor-pointer shadow-lg",
+                                style: {
+                                  background: "#ffffff",
+                                  boxShadow: "0 4px 16px rgba(0, 0, 0, 0.18)",
+                                  color: "#0e0c12",
+                                  border: "none"
+                                },
                                 "aria-label": "Zoom image",
                                 children: v.jsx("svg", {
                                   width: "16",
                                   height: "16",
                                   viewBox: "0 0 24 24",
                                   fill: "none",
-                                  stroke: "currentColor",
-                                  strokeWidth: "2.2",
+                                  stroke: "#0e0c12",
+                                  strokeWidth: "2.4",
                                   strokeLinecap: "round",
                                   strokeLinejoin: "round",
                                   children: [
