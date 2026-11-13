@@ -9024,36 +9024,46 @@ function PlezzyCartPage({ onBackToHome, onNavigateToCollections, onSelectProduct
                   ]
                 }),
 
-                // 2. FREE SHIPPING THRESHOLD PROGRESS BAR
+                // 2. FREE SHIPPING THRESHOLD PROGRESS BAR (Elevated Celebratory Banner)
                 v.jsxs("div", {
-                  className: "p-3.5 sm:p-4 rounded-2xl bg-white border border-black/10 space-y-2 shadow-sm",
+                  style: {
+                    background: isFreeShip ? "#f0fdf4" : "#ffffff",
+                    borderColor: isFreeShip ? "#bbf7d0" : "rgba(0, 0, 0, 0.1)"
+                  },
+                  className: "p-3.5 sm:p-4 rounded-2xl border space-y-2.5 shadow-sm transition-all",
                   children: [
                     v.jsxs("div", {
                       className: "flex items-center justify-between text-xs",
                       children: [
                         v.jsxs("span", {
-                          className: "font-medium " + (isFreeShip ? "text-emerald-600 font-bold" : "text-[#111111]"),
-                          children: isFreeShip
-                            ? "✓ Complimentary express stealth shipping unlocked!"
-                            : `Add ${formatPrice(remainingForFree)} more for FREE express stealth delivery`
+                          className: "font-bold flex items-center gap-1.5 " + (isFreeShip ? "text-[#15803d]" : "text-[#111111]"),
+                          children: [
+                            v.jsx("span", { className: "text-sm", children: isFreeShip ? "🎉" : "🚚" }),
+                            isFreeShip
+                              ? "Complimentary Express Stealth Shipping Unlocked!"
+                              : `Add ${formatPrice(remainingForFree)} more for FREE Express Stealth Delivery`
+                          ]
                         }),
                         v.jsxs("span", {
-                          className: "font-mono font-bold text-[#777777] text-[11px]",
+                          className: "font-mono font-extrabold text-[11px] px-2 py-0.5 rounded-full " + (isFreeShip ? "bg-emerald-100 text-emerald-800" : "bg-black/5 text-[#555555]"),
                           children: [freeProgress, "%"]
                         })
                       ]
                     }),
                     v.jsx("div", {
-                      className: "w-full h-1.5 rounded-full bg-black/10 overflow-hidden",
+                      className: "w-full h-2 rounded-full bg-black/10 overflow-hidden",
                       children: v.jsx("div", {
-                        className: "h-full rounded-full bg-gradient-to-r from-[#f82793] to-emerald-400 transition-all duration-500",
-                        style: { width: `${freeProgress}%` }
+                        className: "h-full rounded-full transition-all duration-500",
+                        style: {
+                          width: `${freeProgress}%`,
+                          background: isFreeShip ? "linear-gradient(90deg, #10b981 0%, #059669 100%)" : "linear-gradient(90deg, #f82793 0%, #10b981 100%)"
+                        }
                       })
                     })
                   ]
                 }),
 
-                // 3. PRODUCT CARDS (SMALL SIZE ON LEFT + FLIPKART STYLE ACTION ROW)
+                // 3. PRODUCT CARDS (SMALL SIZE ON LEFT + CLEAN 2-ACTION ROW: SAVE & REMOVE)
                 v.jsx("div", {
                   className: "space-y-3.5",
                   children: cart.map((item) => {
@@ -9080,7 +9090,7 @@ function PlezzyCartPage({ onBackToHome, onNavigateToCollections, onSelectProduct
                                 height: "96px",
                                 minHeight: "96px",
                                 maxHeight: "96px",
-                                borderRadius: "12px",
+                                borderRadius: "14px",
                                 overflow: "hidden",
                                 background: "#f8f8fa",
                                 border: "1px solid rgba(0, 0, 0, 0.08)",
@@ -9126,7 +9136,7 @@ function PlezzyCartPage({ onBackToHome, onNavigateToCollections, onSelectProduct
                                       className: "text-[11.5px] text-[#666666] tracking-tight pt-0.5",
                                       children: [
                                         "Edition: ",
-                                        v.jsx("span", { className: "text-[#111111] font-semibold", children: item.selectedColor })
+                                        v.jsx("span", { className: "text-[#111111] font-semibold capitalize", children: item.selectedColor })
                                       ]
                                     })
                                   ]
@@ -9178,7 +9188,7 @@ function PlezzyCartPage({ onBackToHome, onNavigateToCollections, onSelectProduct
                                   children: [
                                     // Compact Quantity Stepper Pill
                                     v.jsxs("div", {
-                                      className: "inline-flex items-center rounded-full border border-black/15 bg-black/[0.03] px-2 py-0.5 gap-2 select-none",
+                                      className: "inline-flex items-center rounded-full border border-black/15 bg-black/[0.03] px-2.5 py-0.5 gap-2 select-none",
                                       children: [
                                         v.jsx("button", {
                                           type: "button",
@@ -9191,11 +9201,11 @@ function PlezzyCartPage({ onBackToHome, onNavigateToCollections, onSelectProduct
                                             }
                                           },
                                           className: "w-6 h-6 flex items-center justify-center rounded-full text-[#444444] hover:text-[#111111] hover:bg-black/10 transition-colors cursor-pointer text-sm font-bold active:scale-90",
-                                          title: "Decrease",
+                                          title: item.quantity > 1 ? "Decrease quantity" : "Remove item",
                                           children: "−"
                                         }),
                                         v.jsx("span", {
-                                          className: "font-mono font-bold text-xs text-[#111111] min-w-[16px] text-center",
+                                          className: "font-mono font-bold text-xs text-[#111111] min-w-[18px] text-center",
                                           children: item.quantity
                                         }),
                                         v.jsx("button", {
@@ -9205,7 +9215,7 @@ function PlezzyCartPage({ onBackToHome, onNavigateToCollections, onSelectProduct
                                             updateQuantity(itemId, item.quantity + 1);
                                           },
                                           className: "w-6 h-6 flex items-center justify-center rounded-full text-[#444444] hover:text-[#111111] hover:bg-black/10 transition-colors cursor-pointer text-sm font-bold active:scale-90",
-                                          title: "Increase",
+                                          title: "Increase quantity",
                                           children: "+"
                                         })
                                       ]
@@ -9215,7 +9225,8 @@ function PlezzyCartPage({ onBackToHome, onNavigateToCollections, onSelectProduct
                                     v.jsxs("div", {
                                       className: "text-[11.5px] text-[#555555] font-medium flex items-center gap-1",
                                       children: [
-                                        "⚡ Delivery by ",
+                                        v.jsx("span", { className: "text-emerald-500", children: "⚡" }),
+                                        "Delivery by ",
                                         v.jsx("span", { className: "font-bold text-[#111111]", children: deliveryDateStr })
                                       ]
                                     })
@@ -9227,17 +9238,20 @@ function PlezzyCartPage({ onBackToHome, onNavigateToCollections, onSelectProduct
                           ]
                         }),
 
-                        // Bottom Action Row (Save for later | Remove | Buy this now)
+                        // Bottom Action Row (Save for later | Remove - Clean 2-action standard, no extra buttons)
                         v.jsxs("div", {
-                          className: "border-t border-black/10 grid grid-cols-3 bg-black/[0.015] text-center divide-x divide-black/10 text-xs font-semibold select-none",
+                          className: "border-t border-black/10 grid grid-cols-2 bg-black/[0.015] text-center divide-x divide-black/10 text-xs font-semibold select-none",
                           children: [
                             v.jsxs("button", {
                               type: "button",
                               onClick: () => handleSaveForLater(itemId),
-                              className: "py-2.5 px-2 hover:bg-black/[0.04] text-[#555555] hover:text-[#f82793] transition-colors cursor-pointer flex items-center justify-center gap-1.5",
+                              style: {
+                                color: isSaved ? "#f82793" : "#444444"
+                              },
+                              className: "py-3 px-3 hover:bg-pink-50/70 transition-colors cursor-pointer flex items-center justify-center gap-1.5 active:scale-[0.98]",
                               children: [
-                                v.jsx("span", { children: isSaved ? "✓" : "♡" }),
-                                v.jsx("span", { children: isSaved ? "Saved" : "Save for later" })
+                                v.jsx("span", { className: "text-sm", children: isSaved ? "♥" : "♡" }),
+                                v.jsx("span", { children: isSaved ? "Saved for Later" : "Save for Later" })
                               ]
                             }),
                             v.jsxs("button", {
@@ -9246,22 +9260,10 @@ function PlezzyCartPage({ onBackToHome, onNavigateToCollections, onSelectProduct
                                 try { s(); } catch (err) { }
                                 removeFromCart(itemId);
                               },
-                              className: "py-2.5 px-2 hover:bg-black/[0.04] text-[#555555] hover:text-rose-600 transition-colors cursor-pointer flex items-center justify-center gap-1.5",
+                              className: "py-3 px-3 hover:bg-rose-50 text-[#555555] hover:text-rose-600 transition-colors cursor-pointer flex items-center justify-center gap-1.5 active:scale-[0.98]",
                               children: [
-                                v.jsx("span", { children: "🗑" }),
+                                v.jsx("span", { className: "text-sm", children: "🗑" }),
                                 v.jsx("span", { children: "Remove" })
-                              ]
-                            }),
-                            v.jsxs("button", {
-                              type: "button",
-                              onClick: () => {
-                                try { s(); } catch (err) { }
-                                setActiveModal("checkout");
-                              },
-                              className: "py-2.5 px-2 hover:bg-[#f82793]/10 text-[#111111] hover:text-[#f82793] transition-colors cursor-pointer flex items-center justify-center gap-1.5 font-bold",
-                              children: [
-                                v.jsx("span", { children: "⚡" }),
-                                v.jsx("span", { children: "Buy this now" })
                               ]
                             })
                           ]
@@ -9407,16 +9409,21 @@ function PlezzyCartPage({ onBackToHome, onNavigateToCollections, onSelectProduct
                         }),
                         promoError && v.jsx("p", { className: "text-[11px] text-rose-500 pt-0.5", children: promoError }),
                         !appliedPromo && v.jsxs("div", {
-                          className: "flex items-center gap-1.5 pt-0.5 text-[10.5px] text-[#777777]",
+                          className: "flex items-center gap-2 pt-1 text-[11px] text-[#777777]",
                           children: [
-                            v.jsx("span", { children: "Try:" }),
+                            v.jsx("span", { children: "Use coupon:" }),
                             v.jsx("button", {
                               type: "button",
                               onClick: () => applyPromoCode("PLEZZY10"),
-                              className: "px-2 py-0.5 rounded bg-black/[0.05] text-[#f82793] font-mono font-bold hover:bg-[#f82793] hover:text-white transition-colors cursor-pointer",
+                              style: {
+                                backgroundColor: "#fff0f7",
+                                color: "#f82793",
+                                border: "1px dashed #f82793"
+                              },
+                              className: "px-2.5 py-0.5 rounded-md font-mono font-bold text-xs hover:opacity-80 transition-opacity cursor-pointer active:scale-95",
                               children: "PLEZZY10"
                             }),
-                            v.jsx("span", { children: "for 10% off" })
+                            v.jsx("span", { className: "text-emerald-600 font-semibold", children: "for 10% off" })
                           ]
                         })
                       ]
@@ -9441,10 +9448,11 @@ function PlezzyCartPage({ onBackToHome, onNavigateToCollections, onSelectProduct
 
                     // Green Savings Callout Banner (Exact Reference Style)
                     totalOrderSavings > 0 && v.jsxs("div", {
-                      className: "p-2.5 sm:p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-center text-xs font-bold text-[#15803d]",
+                      className: "p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-center text-xs font-bold text-[#15803d] flex items-center justify-center gap-1.5",
                       children: [
+                        v.jsx("span", { className: "text-sm", children: "🎉" }),
                         "You will save ",
-                        v.jsxs("span", { className: "font-mono", children: ["₹", totalOrderSavings.toLocaleString("en-IN")] }),
+                        v.jsxs("span", { className: "font-mono underline", children: ["₹", totalOrderSavings.toLocaleString("en-IN")] }),
                         " on this order"
                       ]
                     }),
@@ -9475,7 +9483,7 @@ function PlezzyCartPage({ onBackToHome, onNavigateToCollections, onSelectProduct
                         color: "#ffffff",
                         boxShadow: "0 10px 25px -4px rgba(248, 39, 147, 0.45)"
                       },
-                      className: "plezzy-cart-checkout-btn w-full py-3.5 px-6 rounded-full bg-[#f82793] hover:bg-[#d41c7b] text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider shadow-xl hover:scale-[1.02] active:scale-98 transition-all flex items-center justify-center gap-2 cursor-pointer select-none",
+                      className: "plezzy-cart-checkout-btn w-full py-3.5 px-6 rounded-full text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider shadow-xl hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer select-none",
                       children: [
                         v.jsx("span", { children: "Proceed To Checkout" }),
                         v.jsx("span", { children: "→" })
