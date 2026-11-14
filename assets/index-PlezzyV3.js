@@ -9562,6 +9562,1696 @@ function PlezzyCartPage({ onBackToHome, onNavigateToCollections, onSelectProduct
 }
 
 
+// ═══════════════════════════════════════════════════════════════════════════════
+// PLEZZY ACCOUNT SECTION (Orders, Saved Addresses, Wishlist, Notifications, Profile, Logout)
+// Modeled after leading luxury e-commerce platforms (Flipkart, Myntra, Nykaa)
+// ═══════════════════════════════════════════════════════════════════════════════
+function PlezzyAccountPage({ onBackToHome, onNavigateToCollections, onSelectProduct, prods = [], initialTab = "profile" }) {
+  const { cart, addToCart, formatPrice, userOrders } = xi();
+  const { playClickFeedback: s } = Pn();
+
+  // Tab State: "profile" | "orders" | "addresses" | "wishlist" | "notifications"
+  const [activeTab, setActiveTab] = G.useState(() => {
+    try {
+      const hash = window.location.hash ? window.location.hash.replace("#", "") : "";
+      if (["profile", "orders", "addresses", "wishlist", "notifications"].includes(hash)) return hash;
+      const tab = new URLSearchParams(window.location.search).get("tab");
+      if (["profile", "orders", "addresses", "wishlist", "notifications"].includes(tab)) return tab;
+    } catch (e) { }
+    return initialTab || "profile";
+  });
+
+  const handleSwitchTab = (tab) => {
+    try { s(); } catch (e) { }
+    if (tab === "logout") {
+      setIsLogoutModalOpen(true);
+      return;
+    }
+    setActiveTab(tab);
+    try {
+      window.history.pushState({}, "", `/account.html#${tab}`);
+    } catch (e) { }
+  };
+
+  G.useEffect(() => {
+    try {
+      const hash = window.location.hash ? window.location.hash.replace("#", "") : "";
+      if (hash === "logout" || initialTab === "logout") {
+        setIsLogoutModalOpen(true);
+      }
+    } catch (e) { }
+  }, [initialTab]);
+
+  // Toast feedback
+  const [toastMessage, setToastMessage] = G.useState(null);
+  const showToast = (msg) => {
+    setToastMessage(msg);
+    setTimeout(() => setToastMessage(null), 3200);
+  };
+
+  // 1. PROFILE STATE
+  const [profile, setProfile] = G.useState(() => {
+    try {
+      const saved = localStorage.getItem("plezzy_user_profile");
+      if (saved) return JSON.parse(saved);
+    } catch (e) { }
+    return {
+      firstName: "Khushwant",
+      lastName: "Singh",
+      email: "khushwant@example.com",
+      phone: "9876543210",
+      gender: "Male",
+      dob: "1998-05-14"
+    };
+  });
+  const [isEditingProfile, setIsEditingProfile] = G.useState(false);
+  const [profileForm, setProfileForm] = G.useState(profile);
+
+  const handleSaveProfile = (e) => {
+    if (e) e.preventDefault();
+    try { s(); } catch (err) { }
+    setProfile(profileForm);
+    try {
+      localStorage.setItem("plezzy_user_profile", JSON.stringify(profileForm));
+      localStorage.setItem("plezzy_user_name", `${profileForm.firstName} ${profileForm.lastName}`.trim());
+    } catch (err) { }
+    setIsEditingProfile(false);
+    showToast("✓ Personal details updated successfully!");
+  };
+
+  // 2. SAVED ADDRESSES STATE
+  const [addresses, setAddresses] = G.useState(() => {
+    try {
+      const saved = localStorage.getItem("plezzy_user_addresses");
+      if (saved) return JSON.parse(saved);
+    } catch (e) { }
+    return [
+      {
+        id: "addr_1",
+        isDefault: true,
+        type: "Home",
+        name: "Khushwant Singh",
+        phone: "9876543210",
+        pincode: "302001",
+        addressLine: "Flat 402, Royal Palms, C-Scheme",
+        city: "Jaipur",
+        state: "Rajasthan"
+      },
+      {
+        id: "addr_2",
+        isDefault: false,
+        type: "Work",
+        name: "Khushwant Singh",
+        phone: "9876543210",
+        pincode: "303002",
+        addressLine: "Tower B, World Trade Park, Malviya Nagar",
+        city: "Jaipur",
+        state: "Rajasthan"
+      }
+    ];
+  });
+  const [isAddressModalOpen, setIsAddressModalOpen] = G.useState(false);
+  const [editingAddressId, setEditingAddressId] = G.useState(null);
+  const [addressForm, setAddressForm] = G.useState({
+    type: "Home",
+    name: "Khushwant Singh",
+    phone: "9876543210",
+    pincode: "302001",
+    addressLine: "",
+    city: "Jaipur",
+    state: "Rajasthan",
+    isDefault: false
+  });
+
+  const handleOpenAddAddress = () => {
+    try { s(); } catch (e) { }
+    setEditingAddressId(null);
+    setAddressForm({
+      type: "Home",
+      name: `${profile.firstName} ${profile.lastName}`.trim(),
+      phone: profile.phone,
+      pincode: "302001",
+      addressLine: "",
+      city: "Jaipur",
+      state: "Rajasthan",
+      isDefault: addresses.length === 0
+    });
+    setIsAddressModalOpen(true);
+  };
+
+  const handleOpenEditAddress = (addr) => {
+    try { s(); } catch (e) { }
+    setEditingAddressId(addr.id);
+    setAddressForm({ ...addr });
+    setIsAddressModalOpen(true);
+  };
+
+  const handleDeleteAddress = (id) => {
+    try { s(); } catch (e) { }
+    const updated = addresses.filter(a => a.id !== id);
+    if (updated.length > 0 && !updated.some(a => a.isDefault)) {
+      updated[0].isDefault = true;
+    }
+    setAddresses(updated);
+    try { localStorage.setItem("plezzy_user_addresses", JSON.stringify(updated)); } catch (e) { }
+    showToast("✓ Address removed successfully");
+  };
+
+  const handleSetDefaultAddress = (id) => {
+    try { s(); } catch (e) { }
+    const updated = addresses.map(a => ({ ...a, isDefault: a.id === id }));
+    setAddresses(updated);
+    const def = updated.find(a => a.id === id);
+    if (def) {
+      try {
+        localStorage.setItem("plezzy_user_addresses", JSON.stringify(updated));
+        localStorage.setItem("plezzy_delivery_pincode", `${def.city} - ${def.pincode}`);
+      } catch (e) { }
+      showToast(`✓ Default address updated to ${def.city} - ${def.pincode}`);
+    }
+  };
+
+  const handleSaveAddressModal = (e) => {
+    if (e) e.preventDefault();
+    try { s(); } catch (err) { }
+    let updated;
+    if (editingAddressId) {
+      updated = addresses.map(a => a.id === editingAddressId ? { ...addressForm, id: editingAddressId } : a);
+    } else {
+      const newAddr = {
+        ...addressForm,
+        id: "addr_" + Date.now()
+      };
+      if (addressForm.isDefault) {
+        updated = [newAddr, ...addresses.map(a => ({ ...a, isDefault: false }))];
+      } else {
+        updated = [...addresses, newAddr];
+      }
+    }
+    if (addressForm.isDefault) {
+      try {
+        localStorage.setItem("plezzy_delivery_pincode", `${addressForm.city} - ${addressForm.pincode}`);
+      } catch (e) { }
+    }
+    setAddresses(updated);
+    try { localStorage.setItem("plezzy_user_addresses", JSON.stringify(updated)); } catch (e) { }
+    setIsAddressModalOpen(false);
+    showToast(editingAddressId ? "✓ Address updated successfully!" : "✓ New address added!");
+  };
+
+  // 3. ORDERS STATE
+  const allOrders = G.useMemo(() => {
+    const defaultOrders = [
+      {
+        id: "PLZ-89421",
+        date: "10 Nov 2026",
+        deliveryDate: "Delivered on 13 Nov 2026",
+        status: "Delivered",
+        statusStep: 4,
+        totalINR: 4998,
+        paymentMethod: "Prepaid UPI • Discreet Billing (PLZ Tech)",
+        carrier: "BlueDart Express Stealth",
+        trackingNumber: "BD-98214152",
+        stealthBox: true,
+        deliveryAddress: "Flat 402, Royal Palms, C-Scheme, Jaipur - 302001",
+        items: [
+          {
+            id: "pocket-muse",
+            name: "Pocket Muse",
+            selectedColor: "Sunburst Yellow",
+            image: "https://images.unsplash.com/photo-1608248597359-5613531b2682?auto=format&fit=crop&q=80&w=800",
+            priceINR: 2499,
+            quantity: 1
+          },
+          {
+            id: "bio-juice",
+            name: "Bio Juice Hydrating Skin Drink",
+            selectedColor: "Dewy Glow",
+            image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=800",
+            priceINR: 2499,
+            quantity: 1
+          }
+        ]
+      },
+      {
+        id: "PLZ-74218",
+        date: "13 Nov 2026",
+        deliveryDate: "Expected by Mon, 16 Nov",
+        status: "In Transit",
+        statusStep: 3,
+        totalINR: 2799,
+        paymentMethod: "Prepaid Card • Discreet Billing (PLZ Tech)",
+        carrier: "BlueDart Express Stealth",
+        trackingNumber: "BD-88412094",
+        stealthBox: true,
+        deliveryAddress: "Flat 402, Royal Palms, C-Scheme, Jaipur - 302001",
+        items: [
+          {
+            id: "cloud-kiss",
+            name: "Cloud Kiss",
+            selectedColor: "Celestial Frost",
+            image: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&q=80&w=800",
+            priceINR: 2799,
+            quantity: 1
+          }
+        ]
+      }
+    ];
+    return [...(userOrders || []), ...defaultOrders];
+  }, [userOrders]);
+
+  const [orderFilter, setOrderFilter] = G.useState("all");
+  const filteredOrders = allOrders.filter(o => {
+    if (orderFilter === "in_transit") return o.status === "In Transit" || o.status === "Stealth Packaged";
+    if (orderFilter === "delivered") return o.status === "Delivered";
+    return true;
+  });
+
+  // Selected Order for Live Tracking Drawer
+  const [trackingOrder, setTrackingOrder] = G.useState(null);
+
+  // 4. WISHLIST STATE
+  const [wishlist, setWishlist] = G.useState(() => {
+    try {
+      const saved = localStorage.getItem("plezzy_user_wishlist");
+      if (saved) return JSON.parse(saved);
+    } catch (e) { }
+    return [
+      {
+        id: "pocket-muse",
+        name: "Pocket Muse",
+        color: "Sunburst Yellow",
+        priceINR: 2499,
+        originalINR: 3570,
+        rating: 4.9,
+        reviewsCount: 348,
+        image: "https://images.unsplash.com/photo-1608248597359-5613531b2682?auto=format&fit=crop&q=80&w=800"
+      },
+      {
+        id: "cloud-kiss",
+        name: "Cloud Kiss",
+        color: "Celestial Frost",
+        priceINR: 2799,
+        originalINR: 3999,
+        rating: 4.9,
+        reviewsCount: 284,
+        image: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&q=80&w=800"
+      },
+      {
+        id: "bio-juice",
+        name: "Bio Juice Hydrating Skin Drink",
+        color: "Dewy Glow",
+        priceINR: 2499,
+        originalINR: 3200,
+        rating: 4.8,
+        reviewsCount: 195,
+        image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=800"
+      }
+    ];
+  });
+
+  const handleMoveToBag = (item) => {
+    try { s(); } catch (err) { }
+    addToCart({
+      id: item.id,
+      name: item.name,
+      priceINR: item.priceINR,
+      price: item.priceINR,
+      originalINR: item.originalINR,
+      image: item.image,
+      selectedColor: item.color,
+      quantity: 1
+    });
+    const updated = wishlist.filter(w => w.id !== item.id);
+    setWishlist(updated);
+    try { localStorage.setItem("plezzy_user_wishlist", JSON.stringify(updated)); } catch (e) { }
+    showToast(`✓ "${item.name}" moved to your Shopping Bag!`);
+  };
+
+  const handleRemoveFromWishlist = (id) => {
+    try { s(); } catch (err) { }
+    const updated = wishlist.filter(w => w.id !== id);
+    setWishlist(updated);
+    try { localStorage.setItem("plezzy_user_wishlist", JSON.stringify(updated)); } catch (e) { }
+    showToast("Removed from wishlist");
+  };
+
+  // 5. NOTIFICATIONS STATE
+  const [notifications, setNotifications] = G.useState([
+    {
+      id: "n_1",
+      type: "order",
+      title: "Order #PLZ-89421 Delivered",
+      description: "Delivered safely in 100% plain unbranded packaging with zero exterior identifiers.",
+      time: "2 hours ago",
+      read: false
+    },
+    {
+      id: "n_2",
+      type: "shipping",
+      title: "Order #PLZ-74218 In Transit",
+      description: "BlueDart Express Stealth has picked up your parcel. Arriving by Mon, 16 Nov.",
+      time: "Yesterday",
+      read: false
+    },
+    {
+      id: "n_3",
+      type: "exclusive",
+      title: "VIP Early Access: 'Celestial Frost'",
+      description: "You've unlocked member access to our limited frosted edition. Use PLEZZY10 for 10% off.",
+      time: "3 days ago",
+      read: true
+    },
+    {
+      id: "n_4",
+      type: "security",
+      title: "Discreet Billing Verified",
+      description: "Your bank statement descriptor is set strictly to 'PLZ Digital Tech'.",
+      time: "5 days ago",
+      read: true
+    }
+  ]);
+  const [notificationFilter, setNotificationFilter] = G.useState("all");
+
+  const unreadCount = notifications.filter(n => !n.read).length;
+
+  const handleMarkAllNotificationsRead = () => {
+    try { s(); } catch (err) { }
+    setNotifications(prev => prev.map(n => ({ ...n, read: true })));
+    showToast("✓ All notifications marked as read");
+  };
+
+  // 6. LOGOUT MODAL STATE
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = G.useState(false);
+  const handleConfirmLogout = () => {
+    try { s(); } catch (err) { }
+    setIsLogoutModalOpen(false);
+    showToast("✓ Logged out securely");
+    setTimeout(() => {
+      if (onBackToHome) onBackToHome();
+      window.location.href = "/";
+    }, 800);
+  };
+
+  // Nav Tab Definitions (Sidebar Items matching Flipkart reference)
+  const navTabs = [
+    { id: "profile", label: "My Profile", icon: "👤", desc: "Personal info & preferences" },
+    { id: "orders", label: "Orders", icon: "📦", badge: allOrders.length, desc: "Order history & live tracking" },
+    { id: "addresses", label: "Saved Addresses", icon: "📍", badge: addresses.length, desc: "Delivery locations" },
+    { id: "wishlist", label: "Wishlist", icon: "♡", badge: wishlist.length, desc: "Saved luxury items" },
+    { id: "notifications", label: "Notifications", icon: "🔔", badge: unreadCount ? `${unreadCount} new` : null, desc: "Alerts & parcel updates" },
+    { id: "logout", label: "Log Out", icon: "🚪", isDestructive: true, desc: "End discreet session" }
+  ];
+
+  return v.jsxs("div", {
+    className: "plezzy-account-page w-full min-h-screen text-[#111111] pt-24 sm:pt-32 pb-28 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto select-none",
+    children: [
+
+      // ── BREADCRUMB & HEADER ────────────────────────────────────────────────
+      v.jsxs("div", {
+        className: "mb-6 pb-4 border-b border-black/10 flex flex-col sm:flex-row sm:items-end justify-between gap-3",
+        children: [
+          v.jsxs("div", {
+            className: "space-y-1.5",
+            children: [
+              v.jsxs("div", {
+                className: "flex items-center gap-2 text-[11px] font-mono text-[#666666] tracking-wider",
+                children: [
+                  v.jsx("a", {
+                    href: "/",
+                    onClick: (e) => {
+                      if (onBackToHome) {
+                        e.preventDefault();
+                        onBackToHome();
+                        window.location.href = "/";
+                      }
+                    },
+                    className: "hover:text-[#f82793] transition-colors cursor-pointer",
+                    children: "Home"
+                  }),
+                  v.jsx("span", { children: "/" }),
+                  v.jsx("span", {
+                    className: "text-[#111111] font-semibold",
+                    children: "My Account"
+                  }),
+                  v.jsx("span", { children: "/" }),
+                  v.jsx("span", {
+                    className: "text-[#f82793] font-bold capitalize",
+                    children: activeTab === "addresses" ? "Saved Addresses" : activeTab
+                  })
+                ]
+              }),
+              v.jsxs("h1", {
+                className: "text-2xl sm:text-3xl font-bold tracking-tight text-white flex items-center gap-3",
+                style: { fontFamily: "'Swiss', 'Plus Jakarta Sans', sans-serif" },
+                children: [
+                  "Your Account",
+                  v.jsx("span", {
+                    className: "text-xs font-semibold px-2.5 py-0.5 rounded-full bg-white/10 text-white/80 border border-white/15",
+                    children: "VIP Discreet Member"
+                  })
+                ]
+              })
+            ]
+          }),
+
+          // Privacy Guarantee Pill
+          v.jsxs("div", {
+            className: "inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-[11px] font-medium text-white/90 self-start sm:self-auto",
+            children: [
+              v.jsx("span", { className: "w-2 h-2 rounded-full bg-emerald-400 animate-pulse" }),
+              "🔒 100% Confidential Profile • Zero Ad Tracking"
+            ]
+          })
+        ]
+      }),
+
+      // ── MOBILE HORIZONTAL SCROLLING TAB SELECTOR ─────────────────────────
+      v.jsx("div", {
+        className: "lg:hidden flex items-center gap-2 overflow-x-auto pb-4 mb-4 scrollbar-none",
+        children: navTabs.map((tab) => {
+          const isActive = activeTab === tab.id;
+          return v.jsxs("button", {
+            key: tab.id,
+            type: "button",
+            onClick: () => {
+              if (tab.id === "logout") {
+                setIsLogoutModalOpen(true);
+              } else {
+                handleSwitchTab(tab.id);
+              }
+            },
+            style: {
+              backgroundColor: isActive ? "#f82793" : "#ffffff",
+              color: isActive ? "#ffffff" : tab.isDestructive ? "#e11d48" : "#333333"
+            },
+            className: "shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-bold shadow-sm border border-black/10 transition-all cursor-pointer whitespace-nowrap active:scale-95",
+            children: [
+              v.jsx("span", { children: tab.icon }),
+              v.jsx("span", { children: tab.label }),
+              tab.badge && v.jsx("span", {
+                className: `text-[10px] px-1.5 py-0.2 rounded-full font-mono ${isActive ? "bg-white/20 text-white" : "bg-black/5 text-[#666666]"}`,
+                children: tab.badge
+              })
+            ]
+          });
+        })
+      }),
+
+      // ── MAIN 2-COLUMN DASHBOARD GRID ─────────────────────────────────────
+      v.jsxs("div", {
+        className: "grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start w-full",
+        children: [
+
+          // ── LEFT SIDEBAR NAVIGATION (280px-340px) ────────────────────────
+          v.jsxs("div", {
+            className: "hidden lg:block lg:col-span-4 xl:col-span-3 space-y-4 sticky top-28 select-none",
+            children: [
+
+              // User Profile Identity Card
+              v.jsxs("div", {
+                className: "p-5 rounded-2xl bg-white border border-black/10 shadow-sm flex items-center gap-3.5",
+                children: [
+                  v.jsx("div", {
+                    style: {
+                      background: "linear-gradient(135deg, #111111 0%, #333333 50%, #f82793 100%)",
+                      boxShadow: "0 4px 14px rgba(248, 39, 147, 0.3)"
+                    },
+                    className: "w-13 h-13 rounded-full flex items-center justify-center text-white font-extrabold text-lg shrink-0",
+                    children: `${profile.firstName[0] || "K"}${profile.lastName[0] || "S"}`
+                  }),
+                  v.jsxs("div", {
+                    className: "min-w-0 flex-1",
+                    children: [
+                      v.jsx("p", { className: "text-[10px] font-bold text-[#888888] uppercase tracking-wider", children: "Hello," }),
+                      v.jsxs("h2", {
+                        className: "font-bold text-sm text-[#111111] truncate",
+                        children: [`${profile.firstName} ${profile.lastName}`]
+                      }),
+                      v.jsx("p", {
+                        className: "text-[11px] text-[#666666] truncate font-mono",
+                        children: profile.email
+                      })
+                    ]
+                  })
+                ]
+              }),
+
+              // Navigation Links List (Flipkart standard sidebar tabs)
+              v.jsx("div", {
+                className: "rounded-2xl bg-white border border-black/10 shadow-sm overflow-hidden p-2 space-y-1",
+                children: navTabs.map((tab) => {
+                  const isActive = activeTab === tab.id;
+                  const isLogout = tab.id === "logout";
+
+                  return v.jsxs("button", {
+                    key: tab.id,
+                    type: "button",
+                    onClick: () => {
+                      if (isLogout) {
+                        setIsLogoutModalOpen(true);
+                      } else {
+                        handleSwitchTab(tab.id);
+                      }
+                    },
+                    style: {
+                      backgroundColor: isActive ? "#fff0f7" : "transparent",
+                      color: isActive ? "#f82793" : isLogout ? "#e11d48" : "#222222"
+                    },
+                    className: `w-full flex items-center justify-between px-4 py-3 rounded-xl text-xs font-bold transition-all cursor-pointer text-left ${isActive ? "border border-[#f82793]/30 shadow-xs" : "hover:bg-black/[0.03]"}`,
+                    children: [
+                      v.jsxs("div", {
+                        className: "flex items-center gap-3",
+                        children: [
+                          v.jsx("span", { className: "text-base", children: tab.icon }),
+                          v.jsxs("div", {
+                            children: [
+                              v.jsx("p", { className: "leading-none", children: tab.label }),
+                              v.jsx("p", {
+                                className: "text-[10px] font-normal text-[#888888] mt-1 leading-none",
+                                children: tab.desc
+                              })
+                            ]
+                          })
+                        ]
+                      }),
+                      tab.badge && v.jsx("span", {
+                        className: `text-[10px] font-mono px-2 py-0.5 rounded-full font-bold ${isActive ? "bg-[#f82793] text-white" : "bg-black/5 text-[#555555]"}`,
+                        children: tab.badge
+                      })
+                    ]
+                  });
+                })
+              }),
+
+              // Discreet Privacy Assurance Widget
+              v.jsxs("div", {
+                className: "p-4 rounded-2xl bg-white border border-black/10 shadow-sm space-y-2 text-xs text-[#555555]",
+                children: [
+                  v.jsxs("div", {
+                    className: "flex items-center gap-2 font-bold text-[#111111]",
+                    children: [
+                      v.jsx("span", { children: "🔒" }),
+                      v.jsx("span", { children: "Stealth Shopping Guarantee" })
+                    ]
+                  }),
+                  v.jsx("p", {
+                    className: "text-[11px] leading-relaxed text-[#666666]",
+                    children: "Every order from PLEZZY is shipped in 100% plain unbranded brown cardboard with zero external brand indicators or logos."
+                  })
+                ]
+              })
+
+            ]
+          }),
+
+          // ── RIGHT CONTENT PANELS (Profile, Orders, Addresses, Wishlist, Notifications) ──
+          v.jsxs("div", {
+            className: "lg:col-span-8 xl:col-span-9 space-y-6 w-full",
+            children: [
+
+              // ═══════════════════════════════════════════════════════════════
+              // TAB 1: MY PROFILE (PERSONAL INFO OF THE USER)
+              // ═══════════════════════════════════════════════════════════════
+              activeTab === "profile" && v.jsxs("div", {
+                className: "space-y-5 animate-in fade-in duration-200",
+                children: [
+
+                  // Personal Information Card
+                  v.jsxs("div", {
+                    className: "p-6 sm:p-7 rounded-2xl bg-white border border-black/10 shadow-sm space-y-6",
+                    children: [
+                      // Header Row
+                      v.jsxs("div", {
+                        className: "flex items-center justify-between pb-3 border-b border-black/10",
+                        children: [
+                          v.jsxs("div", {
+                            children: [
+                              v.jsx("h2", {
+                                className: "font-extrabold text-base sm:text-lg text-[#111111]",
+                                children: "Personal Information"
+                              }),
+                              v.jsx("p", {
+                                className: "text-xs text-[#777777] mt-0.5",
+                                children: "Manage your personal profile and identity preferences"
+                              })
+                            ]
+                          }),
+                          v.jsx("button", {
+                            type: "button",
+                            onClick: () => {
+                              try { s(); } catch (e) { }
+                              if (isEditingProfile) {
+                                setProfileForm(profile);
+                              }
+                              setIsEditingProfile(!isEditingProfile);
+                            },
+                            className: "px-4 py-1.5 text-xs font-bold text-[#f82793] hover:text-[#d41c7b] border border-[#f82793]/40 hover:border-[#f82793] rounded-lg transition-colors cursor-pointer",
+                            children: isEditingProfile ? "Cancel" : "Edit Details"
+                          })
+                        ]
+                      }),
+
+                      // Form Body
+                      v.jsxs("form", {
+                        onSubmit: handleSaveProfile,
+                        className: "space-y-4",
+                        children: [
+                          // Names Row
+                          v.jsxs("div", {
+                            className: "grid grid-cols-1 sm:grid-cols-2 gap-4",
+                            children: [
+                              v.jsxs("div", {
+                                className: "space-y-1.5",
+                                children: [
+                                  v.jsx("label", { className: "text-xs font-bold text-[#333333]", children: "First Name" }),
+                                  v.jsx("input", {
+                                    type: "text",
+                                    disabled: !isEditingProfile,
+                                    value: profileForm.firstName,
+                                    onChange: (e) => setProfileForm({ ...profileForm, firstName: e.target.value }),
+                                    className: `w-full px-3.5 py-2.5 text-xs font-semibold rounded-xl border transition-colors outline-none ${isEditingProfile ? "bg-white border-[#f82793] focus:ring-2 focus:ring-[#f82793]/20" : "bg-black/[0.02] border-black/10 text-[#444444]"}`
+                                  })
+                                ]
+                              }),
+                              v.jsxs("div", {
+                                className: "space-y-1.5",
+                                children: [
+                                  v.jsx("label", { className: "text-xs font-bold text-[#333333]", children: "Last Name" }),
+                                  v.jsx("input", {
+                                    type: "text",
+                                    disabled: !isEditingProfile,
+                                    value: profileForm.lastName,
+                                    onChange: (e) => setProfileForm({ ...profileForm, lastName: e.target.value }),
+                                    className: `w-full px-3.5 py-2.5 text-xs font-semibold rounded-xl border transition-colors outline-none ${isEditingProfile ? "bg-white border-[#f82793] focus:ring-2 focus:ring-[#f82793]/20" : "bg-black/[0.02] border-black/10 text-[#444444]"}`
+                                  })
+                                ]
+                              })
+                            ]
+                          }),
+
+                          // Contact Info Row
+                          v.jsxs("div", {
+                            className: "grid grid-cols-1 sm:grid-cols-2 gap-4",
+                            children: [
+                              v.jsxs("div", {
+                                className: "space-y-1.5",
+                                children: [
+                                  v.jsxs("div", {
+                                    className: "flex items-center justify-between text-xs font-bold text-[#333333]",
+                                    children: [
+                                      v.jsx("span", { children: "Email Address" }),
+                                      v.jsx("span", { className: "text-[10px] text-emerald-600 bg-emerald-50 px-2 py-0.2 rounded-full", children: "✓ Verified" })
+                                    ]
+                                  }),
+                                  v.jsx("input", {
+                                    type: "email",
+                                    disabled: !isEditingProfile,
+                                    value: profileForm.email,
+                                    onChange: (e) => setProfileForm({ ...profileForm, email: e.target.value }),
+                                    className: `w-full px-3.5 py-2.5 text-xs font-semibold rounded-xl border transition-colors outline-none ${isEditingProfile ? "bg-white border-[#f82793] focus:ring-2 focus:ring-[#f82793]/20" : "bg-black/[0.02] border-black/10 text-[#444444]"}`
+                                  })
+                                ]
+                              }),
+                              v.jsxs("div", {
+                                className: "space-y-1.5",
+                                children: [
+                                  v.jsxs("div", {
+                                    className: "flex items-center justify-between text-xs font-bold text-[#333333]",
+                                    children: [
+                                      v.jsx("span", { children: "Mobile Number" }),
+                                      v.jsx("span", { className: "text-[10px] text-emerald-600 bg-emerald-50 px-2 py-0.2 rounded-full", children: "✓ OTP Secured" })
+                                    ]
+                                  }),
+                                  v.jsx("input", {
+                                    type: "tel",
+                                    disabled: !isEditingProfile,
+                                    value: profileForm.phone,
+                                    onChange: (e) => setProfileForm({ ...profileForm, phone: e.target.value }),
+                                    className: `w-full px-3.5 py-2.5 text-xs font-semibold rounded-xl border transition-colors outline-none ${isEditingProfile ? "bg-white border-[#f82793] focus:ring-2 focus:ring-[#f82793]/20" : "bg-black/[0.02] border-black/10 text-[#444444]"}`
+                                  })
+                                ]
+                              })
+                            ]
+                          }),
+
+                          // Gender & Birthday Row
+                          v.jsxs("div", {
+                            className: "grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2",
+                            children: [
+                              v.jsxs("div", {
+                                className: "space-y-2",
+                                children: [
+                                  v.jsx("label", { className: "text-xs font-bold text-[#333333]", children: "Your Gender" }),
+                                  v.jsx("div", {
+                                    className: "flex flex-wrap gap-2",
+                                    children: ["Male", "Female", "Non-binary", "Other"].map((g) =>
+                                      v.jsx("button", {
+                                        key: g,
+                                        type: "button",
+                                        disabled: !isEditingProfile,
+                                        onClick: () => setProfileForm({ ...profileForm, gender: g }),
+                                        style: {
+                                          borderColor: profileForm.gender === g ? "#f82793" : "rgba(0,0,0,0.15)",
+                                          backgroundColor: profileForm.gender === g ? "#fff0f7" : "transparent",
+                                          color: profileForm.gender === g ? "#f82793" : "#444444"
+                                        },
+                                        className: `px-3.5 py-1.5 text-xs font-bold rounded-lg border transition-all ${isEditingProfile ? "cursor-pointer" : "opacity-90"}` ,
+                                        children: g
+                                      })
+                                    )
+                                  })
+                                ]
+                              }),
+                              v.jsxs("div", {
+                                className: "space-y-1.5",
+                                children: [
+                                  v.jsx("label", { className: "text-xs font-bold text-[#333333]", children: "Date of Birth" }),
+                                  v.jsx("input", {
+                                    type: "date",
+                                    disabled: !isEditingProfile,
+                                    value: profileForm.dob,
+                                    onChange: (e) => setProfileForm({ ...profileForm, dob: e.target.value }),
+                                    className: `w-full px-3.5 py-2.5 text-xs font-semibold rounded-xl border transition-colors outline-none ${isEditingProfile ? "bg-white border-[#f82793] focus:ring-2 focus:ring-[#f82793]/20" : "bg-black/[0.02] border-black/10 text-[#444444]"}`
+                                  })
+                                ]
+                              })
+                            ]
+                          }),
+
+                          // Save Changes CTA
+                          isEditingProfile && v.jsx("div", {
+                            className: "pt-4 flex justify-end",
+                            children: v.jsx("button", {
+                              type: "submit",
+                              style: {
+                                backgroundColor: "#f82793",
+                                boxShadow: "0 6px 18px rgba(248, 39, 147, 0.4)"
+                              },
+                              className: "px-6 py-2.5 rounded-xl text-white font-extrabold text-xs uppercase tracking-wider transition-all cursor-pointer hover:bg-[#d41c7b] active:scale-95",
+                              children: "Save Changes"
+                            })
+                          })
+                        ]
+                      })
+                    ]
+                  }),
+
+                  // Discreet Shopping & Privacy Settings Card
+                  v.jsxs("div", {
+                    className: "p-6 sm:p-7 rounded-2xl bg-white border border-black/10 shadow-sm space-y-4",
+                    children: [
+                      v.jsxs("div", {
+                        className: "pb-3 border-b border-black/10",
+                        children: [
+                          v.jsx("h3", { className: "font-extrabold text-base text-[#111111]", children: "Discreet Preferences" }),
+                          v.jsx("p", { className: "text-xs text-[#777777]", children: "Configure how your parcels, statements, and alerts are presented" })
+                        ]
+                      }),
+                      v.jsxs("div", {
+                        className: "divide-y divide-black/5 text-xs",
+                        children: [
+                          v.jsxs("div", {
+                            className: "py-3 flex items-center justify-between gap-4",
+                            children: [
+                              v.jsxs("div", {
+                                children: [
+                                  v.jsx("p", { className: "font-bold text-[#111111]", children: "Guaranteed Plain Unbranded Packaging" }),
+                                  v.jsx("p", { className: "text-[#666666] text-[11px]", children: "Every parcel sent in 100% unmarked outer box with zero logos" })
+                                ]
+                              }),
+                              v.jsx("span", { className: "px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 font-extrabold text-[11px]", children: "ACTIVE" })
+                            ]
+                          }),
+                          v.jsxs("div", {
+                            className: "py-3 flex items-center justify-between gap-4",
+                            children: [
+                              v.jsxs("div", {
+                                children: [
+                                  v.jsx("p", { className: "font-bold text-[#111111]", children: "Masked Billing Statement" }),
+                                  v.jsx("p", { className: "text-[#666666] text-[11px]", children: "Charges appear strictly as 'PLZ Digital Tech' on UPI/Card statements" })
+                                ]
+                              }),
+                              v.jsx("span", { className: "px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 font-extrabold text-[11px]", children: "ACTIVE" })
+                            ]
+                          })
+                        ]
+                      })
+                    ]
+                  })
+
+                ]
+              }),
+
+              // ═══════════════════════════════════════════════════════════════
+              // TAB 2: ORDERS (ORDER HISTORY & TRACKING)
+              // ═══════════════════════════════════════════════════════════════
+              activeTab === "orders" && v.jsxs("div", {
+                className: "space-y-4 animate-in fade-in duration-200",
+                children: [
+
+                  // Header with Filters
+                  v.jsxs("div", {
+                    className: "p-4 sm:p-5 rounded-2xl bg-white border border-black/10 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3",
+                    children: [
+                      v.jsxs("div", {
+                        children: [
+                          v.jsxs("h2", {
+                            className: "font-extrabold text-base sm:text-lg text-[#111111] flex items-center gap-2",
+                            children: [
+                              "My Orders",
+                              v.jsx("span", { className: "text-xs font-mono text-[#777777] font-normal", children: `(${allOrders.length})` })
+                            ]
+                          }),
+                          v.jsx("p", { className: "text-xs text-[#777777]", children: "Track packages and review stealth order history" })
+                        ]
+                      }),
+
+                      // Filter Pills
+                      v.jsxs("div", {
+                        className: "flex items-center gap-2",
+                        children: [
+                          [
+                            { id: "all", label: "All Orders" },
+                            { id: "in_transit", label: "In Transit" },
+                            { id: "delivered", label: "Delivered" }
+                          ].map(f =>
+                            v.jsx("button", {
+                              key: f.id,
+                              type: "button",
+                              onClick: () => {
+                                try { s(); } catch (e) { }
+                                setOrderFilter(f.id);
+                              },
+                              style: {
+                                backgroundColor: orderFilter === f.id ? "#111111" : "#f5f5f7",
+                                color: orderFilter === f.id ? "#ffffff" : "#444444"
+                              },
+                              className: "px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer active:scale-95",
+                              children: f.label
+                            })
+                          )
+                        ]
+                      })
+                    ]
+                  }),
+
+                  // Orders List
+                  filteredOrders.length === 0 ? (
+                    v.jsxs("div", {
+                      className: "p-12 rounded-2xl bg-white border border-black/10 text-center space-y-3",
+                      children: [
+                        v.jsx("span", { className: "text-4xl", children: "📦" }),
+                        v.jsx("h3", { className: "font-bold text-base text-[#111111]", children: "No orders found" }),
+                        v.jsx("p", { className: "text-xs text-[#777777]", children: "No orders match your selected filter." })
+                      ]
+                    })
+                  ) : (
+                    filteredOrders.map((ord) => {
+                      const isDelivered = ord.status === "Delivered";
+
+                      return v.jsxs("div", {
+                        key: ord.id,
+                        className: "rounded-2xl bg-white border border-black/10 shadow-sm overflow-hidden divide-y divide-black/5 transition-all hover:shadow-md",
+                        children: [
+                          // Order Meta Top Bar
+                          v.jsxs("div", {
+                            className: "p-4 sm:px-6 bg-[#fafafc] flex flex-wrap items-center justify-between gap-3 text-xs",
+                            children: [
+                              v.jsxs("div", {
+                                className: "flex items-center gap-3",
+                                children: [
+                                  v.jsxs("span", { className: "font-bold text-[#111111]", children: ["Order #", ord.id] }),
+                                  v.jsx("span", { className: "text-[#888888]", children: "•" }),
+                                  v.jsx("span", { className: "text-[#666666]", children: ord.date })
+                                ]
+                              }),
+                              v.jsxs("div", {
+                                className: "flex items-center gap-2",
+                                children: [
+                                  v.jsx("span", {
+                                    className: `px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1.5 ${isDelivered ? "bg-emerald-50 text-emerald-800 border border-emerald-200" : "bg-sky-50 text-sky-800 border border-sky-200"}`,
+                                    children: [
+                                      v.jsx("span", { className: `w-1.5 h-1.5 rounded-full ${isDelivered ? "bg-emerald-500" : "bg-sky-500 animate-pulse"}` }),
+                                      ord.status
+                                    ]
+                                  }),
+                                  v.jsx("span", { className: "font-mono font-bold text-sm text-[#111111]", children: formatPrice(ord.totalINR) })
+                                ]
+                              })
+                            ]
+                          }),
+
+                          // Items List
+                          v.jsx("div", {
+                            className: "p-4 sm:p-6 space-y-4",
+                            children: ord.items.map((item, idx) =>
+                              v.jsxs("div", {
+                                key: idx,
+                                className: "flex items-center gap-4",
+                                children: [
+                                  v.jsx("img", {
+                                    src: item.image,
+                                    alt: item.name,
+                                    style: {
+                                      width: "72px",
+                                      height: "72px",
+                                      borderRadius: "12px",
+                                      objectFit: "cover"
+                                    },
+                                    className: "border border-black/10 shrink-0 bg-[#f5f5f7]"
+                                  }),
+                                  v.jsxs("div", {
+                                    className: "flex-1 min-w-0 space-y-1",
+                                    children: [
+                                      v.jsx("h4", { className: "font-bold text-sm text-[#111111] truncate", children: item.name }),
+                                      item.selectedColor && v.jsxs("p", {
+                                        className: "text-[11px] text-[#666666] capitalize",
+                                        children: ["Edition: ", item.selectedColor]
+                                      }),
+                                      v.jsxs("p", {
+                                        className: "text-xs font-mono font-semibold text-[#111111]",
+                                        children: [`Qty: ${item.quantity}`, " • ", formatPrice(item.priceINR)]
+                                      })
+                                    ]
+                                  })
+                                ]
+                              })
+                            )
+                          }),
+
+                          // Order Tracking Stepper Timeline
+                          v.jsxs("div", {
+                            className: "p-4 sm:px-6 bg-[#fafafc] space-y-3",
+                            children: [
+                              v.jsxs("div", {
+                                className: "flex items-center justify-between text-xs text-[#555555]",
+                                children: [
+                                  v.jsxs("span", {
+                                    className: "font-bold text-[#111111]",
+                                    children: ["Delivery: ", v.jsx("span", { className: "text-emerald-700", children: ord.deliveryDate })]
+                                  }),
+                                  v.jsx("span", {
+                                    className: "text-[11px] font-mono text-[#888888]",
+                                    children: `Tracking: ${ord.trackingNumber}`
+                                  })
+                                ]
+                              }),
+                              // Stepper Line
+                              v.jsxs("div", {
+                                className: "grid grid-cols-4 gap-2 text-center text-[10px] font-bold pt-1",
+                                children: [
+                                  { label: "Confirmed", step: 1 },
+                                  { label: "Stealth Packed", step: 2 },
+                                  { label: "Dispatched", step: 3 },
+                                  { label: "Delivered", step: 4 }
+                                ].map((st) => {
+                                  const isDone = ord.statusStep >= st.step;
+                                  return v.jsxs("div", {
+                                    key: st.step,
+                                    className: "space-y-1",
+                                    children: [
+                                      v.jsx("div", {
+                                        className: `h-1.5 rounded-full transition-all ${isDone ? "bg-emerald-500" : "bg-black/10"}`
+                                      }),
+                                      v.jsx("span", {
+                                        className: isDone ? "text-emerald-700" : "text-[#999999]",
+                                        children: st.label
+                                      })
+                                    ]
+                                  });
+                                })
+                              })
+                            ]
+                          }),
+
+                          // Action Footer
+                          v.jsxs("div", {
+                            className: "p-3 sm:px-6 flex flex-wrap items-center justify-between gap-3 text-xs",
+                            children: [
+                              v.jsx("span", {
+                                className: "text-[11px] text-[#666666]",
+                                children: "🔒 100% Plain Unbranded Box • Tamper-Evident Seal"
+                              }),
+                              v.jsxs("div", {
+                                className: "flex items-center gap-2",
+                                children: [
+                                  v.jsx("button", {
+                                    type: "button",
+                                    onClick: () => {
+                                      try { s(); } catch (e) { }
+                                      showToast("✓ Invoice downloaded to your device");
+                                    },
+                                    className: "px-3 py-1.5 rounded-lg border border-black/15 hover:border-black/30 font-bold text-xs text-[#333333] transition-colors cursor-pointer",
+                                    children: "Invoice ⬇"
+                                  }),
+                                  v.jsx("button", {
+                                    type: "button",
+                                    onClick: () => {
+                                      try { s(); } catch (e) { }
+                                      setTrackingOrder(ord);
+                                    },
+                                    className: "px-4 py-1.5 rounded-lg bg-[#111111] hover:bg-[#f82793] text-white font-bold text-xs transition-colors cursor-pointer",
+                                    children: "Track Package"
+                                  })
+                                ]
+                              })
+                            ]
+                          })
+
+                        ]
+                      });
+                    })
+                  )
+
+                ]
+              }),
+
+              // ═══════════════════════════════════════════════════════════════
+              // TAB 3: SAVED ADDRESSES
+              // ═══════════════════════════════════════════════════════════════
+              activeTab === "addresses" && v.jsxs("div", {
+                className: "space-y-4 animate-in fade-in duration-200",
+                children: [
+
+                  // Header with Add New Address
+                  v.jsxs("div", {
+                    className: "p-4 sm:p-5 rounded-2xl bg-white border border-black/10 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3",
+                    children: [
+                      v.jsxs("div", {
+                        children: [
+                          v.jsx("h2", { className: "font-extrabold text-base sm:text-lg text-[#111111]", children: "Saved Delivery Addresses" }),
+                          v.jsx("p", { className: "text-xs text-[#777777]", children: "Manage and verify your home & work delivery locations" })
+                        ]
+                      }),
+                      v.jsx("button", {
+                        type: "button",
+                        onClick: handleOpenAddAddress,
+                        style: {
+                          backgroundColor: "#f82793",
+                          boxShadow: "0 4px 14px rgba(248, 39, 147, 0.35)"
+                        },
+                        className: "px-4 py-2 rounded-xl text-white font-extrabold text-xs uppercase tracking-wider transition-all cursor-pointer hover:bg-[#d41c7b] active:scale-95 shrink-0",
+                        children: "+ Add New Address"
+                      })
+                    ]
+                  }),
+
+                  // Address Cards List
+                  v.jsx("div", {
+                    className: "grid grid-cols-1 md:grid-cols-2 gap-4",
+                    children: addresses.map((addr) =>
+                      v.jsxs("div", {
+                        key: addr.id,
+                        style: {
+                          borderColor: addr.isDefault ? "#f82793" : "rgba(0,0,0,0.1)"
+                        },
+                        className: `p-5 rounded-2xl bg-white border-2 shadow-sm space-y-3.5 relative transition-all ${addr.isDefault ? "ring-2 ring-[#f82793]/15" : ""}`,
+                        children: [
+                          // Header: Type + Default Badge
+                          v.jsxs("div", {
+                            className: "flex items-center justify-between",
+                            children: [
+                              v.jsxs("div", {
+                                className: "flex items-center gap-2",
+                                children: [
+                                  v.jsx("span", {
+                                    className: "px-2 py-0.5 rounded text-[10px] font-extrabold uppercase tracking-wider bg-black/5 text-[#333333]",
+                                    children: addr.type || "HOME"
+                                  }),
+                                  addr.isDefault && v.jsx("span", {
+                                    className: "px-2 py-0.5 rounded text-[10px] font-extrabold uppercase tracking-wider bg-emerald-50 text-emerald-700 border border-emerald-200",
+                                    children: "DEFAULT"
+                                  })
+                                ]
+                              }),
+                              // Edit & Delete Icons
+                              v.jsxs("div", {
+                                className: "flex items-center gap-2",
+                                children: [
+                                  v.jsx("button", {
+                                    type: "button",
+                                    onClick: () => handleOpenEditAddress(addr),
+                                    className: "text-xs font-bold text-[#666666] hover:text-[#f82793] cursor-pointer",
+                                    children: "Edit"
+                                  }),
+                                  v.jsx("span", { className: "text-[#cccccc]", children: "•" }),
+                                  v.jsx("button", {
+                                    type: "button",
+                                    onClick: () => handleDeleteAddress(addr.id),
+                                    className: "text-xs font-bold text-[#666666] hover:text-rose-600 cursor-pointer",
+                                    children: "Delete"
+                                  })
+                                ]
+                              })
+                            ]
+                          }),
+
+                          // Recipient Name & Phone
+                          v.jsxs("div", {
+                            children: [
+                              v.jsx("h3", { className: "font-bold text-sm text-[#111111]", children: addr.name }),
+                              v.jsxs("p", { className: "text-xs text-[#555555] font-mono", children: ["+91 ", addr.phone] })
+                            ]
+                          }),
+
+                          // Full Address
+                          v.jsxs("p", {
+                            className: "text-xs text-[#555555] leading-relaxed",
+                            children: [
+                              addr.addressLine,
+                              ", ",
+                              addr.city,
+                              " - ",
+                              v.jsx("span", { className: "font-bold text-[#111111]", children: addr.pincode }),
+                              ", ",
+                              addr.state
+                            ]
+                          }),
+
+                          // Set Default Button
+                          !addr.isDefault && v.jsx("button", {
+                            type: "button",
+                            onClick: () => handleSetDefaultAddress(addr.id),
+                            className: "w-full py-1.5 rounded-lg border border-black/15 hover:border-[#f82793] hover:text-[#f82793] text-xs font-bold text-[#555555] transition-colors cursor-pointer",
+                            children: "Set as Default Delivery Address"
+                          })
+                        ]
+                      })
+                    )
+                  })
+
+                ]
+              }),
+
+              // ═══════════════════════════════════════════════════════════════
+              // TAB 4: WISHLIST (SAVED LUXURY PRODUCTS)
+              // ═══════════════════════════════════════════════════════════════
+              activeTab === "wishlist" && v.jsxs("div", {
+                className: "space-y-4 animate-in fade-in duration-200",
+                children: [
+
+                  // Header
+                  v.jsxs("div", {
+                    className: "p-4 sm:p-5 rounded-2xl bg-white border border-black/10 shadow-sm flex items-center justify-between",
+                    children: [
+                      v.jsxs("div", {
+                        children: [
+                          v.jsxs("h2", {
+                            className: "font-extrabold text-base sm:text-lg text-[#111111] flex items-center gap-2",
+                            children: [
+                              "My Wishlist",
+                              v.jsx("span", { className: "text-xs font-mono text-[#777777] font-normal", children: `(${wishlist.length} items)` })
+                            ]
+                          }),
+                          v.jsx("p", { className: "text-xs text-[#777777]", children: "Saved essentials ready for instant one-click transfer to your bag" })
+                        ]
+                      }),
+                      wishlist.length > 0 && v.jsx("button", {
+                        type: "button",
+                        onClick: () => {
+                          try { s(); } catch (e) { }
+                          wishlist.forEach(item => {
+                            addToCart({
+                              id: item.id,
+                              name: item.name,
+                              priceINR: item.priceINR,
+                              price: item.priceINR,
+                              originalINR: item.originalINR,
+                              image: item.image,
+                              selectedColor: item.color,
+                              quantity: 1
+                            });
+                          });
+                          setWishlist([]);
+                          try { localStorage.setItem("plezzy_user_wishlist", "[]"); } catch (e) { }
+                          showToast("✓ All wishlist items moved to Shopping Bag!");
+                        },
+                        className: "px-4 py-2 rounded-xl bg-[#111111] hover:bg-[#f82793] text-white font-bold text-xs uppercase tracking-wider transition-colors cursor-pointer shrink-0",
+                        children: "Move All to Bag"
+                      })
+                    ]
+                  }),
+
+                  // Wishlist Grid
+                  wishlist.length === 0 ? (
+                    v.jsxs("div", {
+                      className: "p-12 rounded-2xl bg-white border border-black/10 text-center space-y-4",
+                      children: [
+                        v.jsx("span", { className: "text-5xl", children: "♡" }),
+                        v.jsx("h3", { className: "font-bold text-lg text-[#111111]", children: "Your Wishlist is Empty" }),
+                        v.jsx("p", { className: "text-xs text-[#777777] max-w-sm mx-auto", children: "Explore our collection and tap the heart icon to save your favorite luxury essentials here." }),
+                        v.jsx("a", {
+                          href: "/collections.html",
+                          onClick: (e) => {
+                            if (onNavigateToCollections) {
+                              e.preventDefault();
+                              onNavigateToCollections();
+                            }
+                          },
+                          style: { backgroundColor: "#f82793" },
+                          className: "inline-flex items-center px-6 py-2.5 rounded-full text-white font-extrabold text-xs uppercase tracking-wider shadow-md hover:bg-[#d41c7b] transition-all cursor-pointer",
+                          children: "Explore Collections →"
+                        })
+                      ]
+                    })
+                  ) : (
+                    v.jsx("div", {
+                      className: "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4",
+                      children: wishlist.map((item) => {
+                        const discountPct = Math.round(((item.originalINR - item.priceINR) / item.originalINR) * 100);
+
+                        return v.jsxs("div", {
+                          key: item.id,
+                          className: "rounded-2xl bg-white border border-black/10 shadow-sm overflow-hidden flex flex-col justify-between select-none transition-all hover:shadow-md group",
+                          children: [
+                            // Product Thumbnail Image
+                            v.jsxs("div", {
+                              className: "relative aspect-square overflow-hidden bg-[#fafafa]",
+                              children: [
+                                v.jsx("img", {
+                                  src: item.image,
+                                  alt: item.name,
+                                  className: "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                }),
+                                // Remove Icon (Top Right)
+                                v.jsx("button", {
+                                  type: "button",
+                                  onClick: () => handleRemoveFromWishlist(item.id),
+                                  title: "Remove from wishlist",
+                                  className: "absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-white/90 hover:bg-white text-rose-500 hover:text-rose-700 shadow-sm flex items-center justify-center transition-colors cursor-pointer",
+                                  children: "✕"
+                                }),
+                                // Discount Pill (Top Left)
+                                discountPct > 0 && v.jsxs("span", {
+                                  className: "absolute top-2.5 left-2.5 px-2 py-0.5 rounded-md text-[10.5px] font-extrabold bg-emerald-500 text-white shadow-xs",
+                                  children: [discountPct, "% OFF"]
+                                })
+                              ]
+                            }),
+
+                            // Product Info
+                            v.jsxs("div", {
+                              className: "p-4 space-y-2 flex-1 flex flex-col justify-between",
+                              children: [
+                                v.jsxs("div", {
+                                  className: "space-y-1",
+                                  children: [
+                                    v.jsx("h3", {
+                                      className: "font-bold text-sm text-[#111111] truncate",
+                                      children: item.name
+                                    }),
+                                    item.color && v.jsxs("p", {
+                                      className: "text-[11px] text-[#666666] capitalize",
+                                      children: ["Edition: ", item.color]
+                                    }),
+                                    // Price Row
+                                    v.jsxs("div", {
+                                      className: "flex items-baseline gap-2 pt-1",
+                                      children: [
+                                        v.jsx("span", {
+                                          className: "font-mono font-bold text-base text-[#111111]",
+                                          children: formatPrice(item.priceINR)
+                                        }),
+                                        v.jsxs("span", {
+                                          className: "text-xs text-[#888888] line-through font-mono",
+                                          children: ["₹", item.originalINR.toLocaleString("en-IN")]
+                                        })
+                                      ]
+                                    })
+                                  ]
+                                }),
+
+                                // Move to Bag CTA Button
+                                v.jsx("button", {
+                                  type: "button",
+                                  onClick: () => handleMoveToBag(item),
+                                  style: {
+                                    backgroundColor: "#f82793",
+                                    boxShadow: "0 4px 12px rgba(248, 39, 147, 0.3)"
+                                  },
+                                  className: "w-full py-2.5 rounded-xl text-white font-extrabold text-xs uppercase tracking-wider transition-all cursor-pointer hover:bg-[#d41c7b] active:scale-95 text-center mt-2",
+                                  children: "Move To Bag →"
+                                })
+                              ]
+                            })
+
+                          ]
+                        });
+                      })
+                    })
+                  )
+
+                ]
+              }),
+
+              // ═══════════════════════════════════════════════════════════════
+              // TAB 5: NOTIFICATIONS
+              // ═══════════════════════════════════════════════════════════════
+              activeTab === "notifications" && v.jsxs("div", {
+                className: "space-y-4 animate-in fade-in duration-200",
+                children: [
+
+                  // Header with Filters and Mark Read
+                  v.jsxs("div", {
+                    className: "p-4 sm:p-5 rounded-2xl bg-white border border-black/10 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3",
+                    children: [
+                      v.jsxs("div", {
+                        children: [
+                          v.jsxs("h2", {
+                            className: "font-extrabold text-base sm:text-lg text-[#111111] flex items-center gap-2",
+                            children: [
+                              "Notifications",
+                              unreadCount > 0 && v.jsxs("span", {
+                                className: "text-xs px-2 py-0.5 rounded-full bg-[#f82793] text-white font-bold",
+                                children: [unreadCount, " new"]
+                              })
+                            ]
+                          }),
+                          v.jsx("p", { className: "text-xs text-[#777777]", children: "Stealth tracking updates, billing notices, and exclusive member drops" })
+                        ]
+                      }),
+                      unreadCount > 0 && v.jsx("button", {
+                        type: "button",
+                        onClick: handleMarkAllNotificationsRead,
+                        className: "text-xs font-bold text-[#f82793] hover:text-[#d41c7b] cursor-pointer",
+                        children: "Mark all as read ✓"
+                      })
+                    ]
+                  }),
+
+                  // Notifications List
+                  v.jsx("div", {
+                    className: "space-y-3",
+                    children: notifications.map((notif) =>
+                      v.jsxs("div", {
+                        key: notif.id,
+                        style: {
+                          backgroundColor: notif.read ? "#ffffff" : "#fff8fb",
+                          borderColor: notif.read ? "rgba(0,0,0,0.08)" : "rgba(248,39,147,0.3)"
+                        },
+                        className: "p-4 sm:p-5 rounded-2xl border shadow-sm flex items-start gap-4 transition-all select-none",
+                        children: [
+                          // Icon
+                          v.jsx("div", {
+                            className: `w-10 h-10 rounded-full flex items-center justify-center text-lg shrink-0 ${notif.read ? "bg-black/5" : "bg-[#f82793]/15 text-[#f82793]"}`,
+                            children: notif.type === "order" ? "📦" : notif.type === "shipping" ? "🚚" : notif.type === "exclusive" ? "⚡" : "🔒"
+                          }),
+
+                          // Content
+                          v.jsxs("div", {
+                            className: "flex-1 min-w-0 space-y-1",
+                            children: [
+                              v.jsxs("div", {
+                                className: "flex items-center justify-between gap-2",
+                                children: [
+                                  v.jsx("h4", {
+                                    className: `text-sm font-bold ${notif.read ? "text-[#333333]" : "text-[#111111]"}`,
+                                    children: notif.title
+                                  }),
+                                  v.jsx("span", {
+                                    className: "text-[11px] text-[#888888] font-mono shrink-0",
+                                    children: notif.time
+                                  })
+                                ]
+                              }),
+                              v.jsx("p", {
+                                className: "text-xs text-[#666666] leading-relaxed",
+                                children: notif.description
+                              })
+                            ]
+                          }),
+
+                          // Unread Blue/Pink Dot
+                          !notif.read && v.jsx("span", {
+                            className: "w-2.5 h-2.5 rounded-full bg-[#f82793] shrink-0 mt-1.5 shadow-sm shadow-[#f82793]/50"
+                          })
+                        ]
+                      })
+                    )
+                  })
+
+                ]
+              })
+
+            ]
+          })
+
+        ]
+      }),
+
+      // ── ADD / EDIT ADDRESS MODAL ─────────────────────────────────────────
+      isAddressModalOpen && v.jsx("div", {
+        className: "fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200 select-none",
+        children: v.jsxs("div", {
+          className: "bg-white w-full max-w-lg rounded-3xl p-6 sm:p-8 space-y-5 shadow-2xl border border-black/10 max-h-[90vh] overflow-y-auto",
+          children: [
+            // Modal Header
+            v.jsxs("div", {
+              className: "flex items-center justify-between pb-3 border-b border-black/10",
+              children: [
+                v.jsx("h3", {
+                  className: "font-extrabold text-lg text-[#111111]",
+                  children: editingAddressId ? "Edit Delivery Address" : "Add New Delivery Address"
+                }),
+                v.jsx("button", {
+                  type: "button",
+                  onClick: () => setIsAddressModalOpen(false),
+                  className: "text-sm font-bold text-[#888888] hover:text-[#111111] p-1 cursor-pointer",
+                  children: "✕"
+                })
+              ]
+            }),
+
+            // Modal Form
+            v.jsxs("form", {
+              onSubmit: handleSaveAddressModal,
+              className: "space-y-4",
+              children: [
+                // Name & Phone
+                v.jsxs("div", {
+                  className: "grid grid-cols-1 sm:grid-cols-2 gap-3",
+                  children: [
+                    v.jsxs("div", {
+                      className: "space-y-1",
+                      children: [
+                        v.jsx("label", { className: "text-xs font-bold text-[#333333]", children: "Full Name" }),
+                        v.jsx("input", {
+                          type: "text",
+                          required: true,
+                          value: addressForm.name,
+                          onChange: (e) => setAddressForm({ ...addressForm, name: e.target.value }),
+                          placeholder: "e.g. Khushwant Singh",
+                          className: "w-full px-3 py-2 text-xs border rounded-xl outline-none focus:border-[#f82793]"
+                        })
+                      ]
+                    }),
+                    v.jsxs("div", {
+                      className: "space-y-1",
+                      children: [
+                        v.jsx("label", { className: "text-xs font-bold text-[#333333]", children: "10-Digit Mobile" }),
+                        v.jsx("input", {
+                          type: "tel",
+                          required: true,
+                          value: addressForm.phone,
+                          onChange: (e) => setAddressForm({ ...addressForm, phone: e.target.value }),
+                          placeholder: "9876543210",
+                          className: "w-full px-3 py-2 text-xs border rounded-xl outline-none focus:border-[#f82793]"
+                        })
+                      ]
+                    })
+                  ]
+                }),
+
+                // PIN Code & City
+                v.jsxs("div", {
+                  className: "grid grid-cols-1 sm:grid-cols-2 gap-3",
+                  children: [
+                    v.jsxs("div", {
+                      className: "space-y-1",
+                      children: [
+                        v.jsx("label", { className: "text-xs font-bold text-[#333333]", children: "6-Digit PIN Code" }),
+                        v.jsx("input", {
+                          type: "text",
+                          required: true,
+                          value: addressForm.pincode,
+                          onChange: (e) => setAddressForm({ ...addressForm, pincode: e.target.value.replace(/\D/g, "").slice(0, 6) }),
+                          placeholder: "e.g. 302001",
+                          className: "w-full px-3 py-2 text-xs border rounded-xl outline-none focus:border-[#f82793]"
+                        })
+                      ]
+                    }),
+                    v.jsxs("div", {
+                      className: "space-y-1",
+                      children: [
+                        v.jsx("label", { className: "text-xs font-bold text-[#333333]", children: "City" }),
+                        v.jsx("input", {
+                          type: "text",
+                          required: true,
+                          value: addressForm.city,
+                          onChange: (e) => setAddressForm({ ...addressForm, city: e.target.value }),
+                          placeholder: "e.g. Jaipur",
+                          className: "w-full px-3 py-2 text-xs border rounded-xl outline-none focus:border-[#f82793]"
+                        })
+                      ]
+                    })
+                  ]
+                }),
+
+                // Address Line
+                v.jsxs("div", {
+                  className: "space-y-1",
+                  children: [
+                    v.jsx("label", { className: "text-xs font-bold text-[#333333]", children: "Flat, House No., Building, Area" }),
+                    v.jsx("input", {
+                      type: "text",
+                      required: true,
+                      value: addressForm.addressLine,
+                      onChange: (e) => setAddressForm({ ...addressForm, addressLine: e.target.value }),
+                      placeholder: "e.g. Flat 402, Royal Palms, C-Scheme",
+                      className: "w-full px-3 py-2 text-xs border rounded-xl outline-none focus:border-[#f82793]"
+                    })
+                  ]
+                }),
+
+                // State & Type
+                v.jsxs("div", {
+                  className: "grid grid-cols-1 sm:grid-cols-2 gap-3",
+                  children: [
+                    v.jsxs("div", {
+                      className: "space-y-1",
+                      children: [
+                        v.jsx("label", { className: "text-xs font-bold text-[#333333]", children: "State" }),
+                        v.jsx("input", {
+                          type: "text",
+                          required: true,
+                          value: addressForm.state,
+                          onChange: (e) => setAddressForm({ ...addressForm, state: e.target.value }),
+                          placeholder: "e.g. Rajasthan",
+                          className: "w-full px-3 py-2 text-xs border rounded-xl outline-none focus:border-[#f82793]"
+                        })
+                      ]
+                    }),
+                    v.jsxs("div", {
+                      className: "space-y-1",
+                      children: [
+                        v.jsx("label", { className: "text-xs font-bold text-[#333333]", children: "Address Type" }),
+                        v.jsxs("div", {
+                          className: "flex gap-2 pt-0.5",
+                          children: ["Home", "Work"].map(t =>
+                            v.jsx("button", {
+                              key: t,
+                              type: "button",
+                              onClick: () => setAddressForm({ ...addressForm, type: t }),
+                              style: {
+                                borderColor: addressForm.type === t ? "#f82793" : "rgba(0,0,0,0.15)",
+                                backgroundColor: addressForm.type === t ? "#fff0f7" : "transparent",
+                                color: addressForm.type === t ? "#f82793" : "#444444"
+                              },
+                              className: "flex-1 py-1.5 rounded-lg border text-xs font-bold transition-all cursor-pointer",
+                              children: t
+                            })
+                          )
+                        })
+                      ]
+                    })
+                  ]
+                }),
+
+                // Default Checkbox
+                v.jsxs("label", {
+                  className: "flex items-center gap-2 pt-2 cursor-pointer select-none",
+                  children: [
+                    v.jsx("input", {
+                      type: "checkbox",
+                      checked: addressForm.isDefault,
+                      onChange: (e) => setAddressForm({ ...addressForm, isDefault: e.target.checked }),
+                      className: "accent-[#f82793] rounded"
+                    }),
+                    v.jsx("span", { className: "text-xs font-semibold text-[#444444]", children: "Set as default delivery address" })
+                  ]
+                }),
+
+                // Actions
+                v.jsxs("div", {
+                  className: "flex justify-end gap-2 pt-4 border-t border-black/10",
+                  children: [
+                    v.jsx("button", {
+                      type: "button",
+                      onClick: () => setIsAddressModalOpen(false),
+                      className: "px-4 py-2 text-xs font-bold text-[#777777] hover:text-[#111111] cursor-pointer",
+                      children: "Cancel"
+                    }),
+                    v.jsx("button", {
+                      type: "submit",
+                      style: {
+                        backgroundColor: "#f82793",
+                        boxShadow: "0 4px 14px rgba(248, 39, 147, 0.4)"
+                      },
+                      className: "px-6 py-2 rounded-xl text-white font-extrabold text-xs uppercase tracking-wider transition-all cursor-pointer hover:bg-[#d41c7b]",
+                      children: "Save Address"
+                    })
+                  ]
+                })
+              ]
+            })
+          ]
+        })
+      }),
+
+      // ── LOGOUT CONFIRMATION MODAL ────────────────────────────────────────
+      isLogoutModalOpen && v.jsx("div", {
+        className: "fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200 select-none",
+        children: v.jsxs("div", {
+          className: "bg-white w-full max-w-sm rounded-3xl p-6 text-center space-y-4 shadow-2xl border border-black/10",
+          children: [
+            v.jsx("div", {
+              className: "w-14 h-14 rounded-full bg-rose-50 text-rose-600 text-2xl flex items-center justify-center mx-auto",
+              children: "🚪"
+            }),
+            v.jsxs("div", {
+              className: "space-y-1",
+              children: [
+                v.jsx("h3", { className: "font-extrabold text-lg text-[#111111]", children: "Log Out of PLEZZY?" }),
+                v.jsx("p", { className: "text-xs text-[#666666] leading-relaxed", children: "Are you sure you want to log out? Your cart and saved delivery addresses will remain securely saved on this device." })
+              ]
+            }),
+            v.jsxs("div", {
+              className: "flex items-center gap-2 pt-2",
+              children: [
+                v.jsx("button", {
+                  type: "button",
+                  onClick: () => setIsLogoutModalOpen(false),
+                  className: "flex-1 py-2.5 rounded-xl border border-black/15 font-bold text-xs text-[#444444] hover:bg-black/5 transition-colors cursor-pointer",
+                  children: "Cancel"
+                }),
+                v.jsx("button", {
+                  type: "button",
+                  onClick: handleConfirmLogout,
+                  className: "flex-1 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs uppercase tracking-wider transition-colors cursor-pointer shadow-md",
+                  children: "Log Out"
+                })
+              ]
+            })
+          ]
+        })
+      }),
+
+      // ── TOAST NOTIFICATION ───────────────────────────────────────────────
+      toastMessage && v.jsx("div", {
+        style: {
+          backgroundColor: "#111111",
+          color: "#ffffff",
+          boxShadow: "0 10px 30px rgba(0, 0, 0, 0.3)"
+        },
+        className: "fixed bottom-8 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-full text-xs font-bold flex items-center gap-2 animate-in fade-in slide-in-from-bottom-4 duration-200 pointer-events-none",
+        children: toastMessage
+      })
+
+    ]
+  });
+}
+
 function _F() {
   const { selectedProductDetail: t, setSelectedProductDetail: setProd, addToCart: i, formatPrice: r, setActiveModal: a, setIsCartOpen: openCart, totalItemsCount: totCount, totalAmountINR, cart, removeFromCart: removeFromCartFn, updateQuantity: updateQuantityFn } = xi();
   const { playClickFeedback: s } = Pn();
@@ -10009,11 +11699,53 @@ function _F() {
   };
   const [isCartView, setIsCartView] = G.useState(checkIsCart);
 
+  // Account View URL Routing
+  const checkIsAccount = () => {
+    try {
+      if (typeof window !== "undefined" && window.__PLEZZY_DEFAULT_VIEW__ === "account") return true;
+      const pathname = (typeof window !== "undefined" && window.location.pathname) ? window.location.pathname.toLowerCase() : "";
+      if (pathname.includes("account")) return true;
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("view") === "account" || params.has("account")) return true;
+      if (window.location.hash === "#account" || window.location.hash === "#profile" || window.location.hash === "#orders" || window.location.hash === "#addresses" || window.location.hash === "#wishlist" || window.location.hash === "#notifications") return true;
+    } catch (e) { }
+    return false;
+  };
+  const [isAccountView, setIsAccountView] = G.useState(checkIsAccount);
+  const [accountActiveTab, setAccountActiveTab] = G.useState(() => {
+    try {
+      const hash = window.location.hash ? window.location.hash.replace("#", "") : "";
+      if (["profile", "orders", "addresses", "wishlist", "notifications"].includes(hash)) return hash;
+      const tab = new URLSearchParams(window.location.search).get("tab");
+      if (["profile", "orders", "addresses", "wishlist", "notifications"].includes(tab)) return tab;
+    } catch (e) { }
+    return "profile";
+  });
+  const [isAccountDropdownOpen, setIsAccountDropdownOpen] = G.useState(false);
+  const accountDropdownRef = G.useRef(null);
+
+  G.useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (accountDropdownRef.current && !accountDropdownRef.current.contains(e.target)) {
+        setIsAccountDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   G.useEffect(() => {
     const handleUrlChange = () => {
       setIsAdminView(checkIsAdmin());
       setIsCollectionsView(checkIsCollections());
       setIsCartView(checkIsCart());
+      setIsAccountView(checkIsAccount());
+      try {
+        const hash = window.location.hash ? window.location.hash.replace("#", "") : "";
+        if (["profile", "orders", "addresses", "wishlist", "notifications"].includes(hash)) {
+          setAccountActiveTab(hash);
+        }
+      } catch (e) { }
       try {
         const p = new URLSearchParams(window.location.search).get("product");
         setSelectedProd(p);
@@ -10026,6 +11758,25 @@ function _F() {
       window.removeEventListener("hashchange", handleUrlChange);
     };
   }, []);
+
+  const navigateToAccount = (tab = "profile") => {
+    try { s(); } catch (err) { }
+    setIsAccountDropdownOpen(false);
+    setAccountActiveTab(tab);
+    setIsAccountView(true);
+    setIsCartView(false);
+    setIsCollectionsView(false);
+    setSelectedProd(null);
+    setIsAdminView(false);
+    setIsMobileNavOpen(false);
+    try {
+      if (window.location.pathname.includes("account")) {
+        window.history.pushState({}, "", `/account.html#${tab}`);
+      } else {
+        window.location.href = `/account.html#${tab}`;
+      }
+    } catch (e) { }
+  };
 
   const navigateToAdmin = () => {
     try { window.history.pushState({}, "", "/admin"); } catch (e) { }
@@ -10197,12 +11948,13 @@ function _F() {
     a(null);
     setIsCollectionsView(false);
     setIsCartView(false);
+    setIsAccountView(false);
     setIsAdminView(false);
     setIsShopMenuOpen(false);
     setIsMobileNavOpen(false);
     setIsSearchOpen(false);
     try {
-      if (window.location.pathname.includes("collection")) {
+      if (window.location.pathname.includes("collection") || window.location.pathname.includes("account") || window.location.pathname.includes("cart")) {
         window.location.href = "/index.html";
         return;
       }
@@ -10396,19 +12148,165 @@ function _F() {
               v.jsxs("div", {
                 className: "flex items-center gap-2 sm:gap-3.5 z-10 text-xs font-bold uppercase tracking-wider text-white", children: [
 
-                  // Account: Dedicated circular icon button (All screens, mobile + desktop)
-                  v.jsx("button", {
-                    id: "plezzy-header-account-btn",
-                    onClick: () => { s(); a("auth") },
-                    className: "plezzy-header-account-btn flex items-center justify-center rounded-full transition-all focus:outline-none cursor-pointer",
-                    "aria-label": "Account",
-                    title: "Account",
-                    children: v.jsxs("svg", {
-                      width: "22", height: "22", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2.2", strokeLinecap: "round", strokeLinejoin: "round", children: [
-                        v.jsx("path", { d: "M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" }),
-                        v.jsx("circle", { cx: "12", cy: "7", r: "4" })
-                      ]
-                    })
+                  // Account: Floating Dropdown Menu (Matches Reference Image Exactly)
+                  v.jsxs("div", {
+                    ref: accountDropdownRef,
+                    className: "relative select-none",
+                    children: [
+                      v.jsxs("button", {
+                        id: "plezzy-header-account-btn",
+                        type: "button",
+                        onClick: () => {
+                          try { s(); } catch (err) { }
+                          setIsAccountDropdownOpen(prev => !prev);
+                        },
+                        className: "plezzy-header-account-btn flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full transition-all duration-200 cursor-pointer border border-white/10 hover:border-white/30 hover:bg-white/10 focus:outline-none text-white",
+                        "aria-label": "Account",
+                        title: "Account",
+                        children: [
+                          v.jsxs("svg", {
+                            width: "20",
+                            height: "20",
+                            viewBox: "0 0 24 24",
+                            fill: "none",
+                            stroke: "currentColor",
+                            strokeWidth: "2.2",
+                            strokeLinecap: "round",
+                            strokeLinejoin: "round",
+                            children: [
+                              v.jsx("path", { d: "M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" }),
+                              v.jsx("circle", { cx: "12", cy: "7", r: "4" })
+                            ]
+                          }),
+                          v.jsx("span", {
+                            className: "hidden sm:inline font-bold text-xs tracking-wide capitalize",
+                            children: "Account"
+                          }),
+                          v.jsx("span", {
+                            className: `hidden sm:inline text-[10px] text-white/70 transition-transform duration-200 ${isAccountDropdownOpen ? "rotate-180" : ""}`,
+                            children: "▾"
+                          })
+                        ]
+                      }),
+
+                      // Floating Dropdown Card
+                      isAccountDropdownOpen && v.jsxs("div", {
+                        style: {
+                          backgroundColor: "#ffffff",
+                          color: "#111111",
+                          boxShadow: "0 20px 45px -10px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(0, 0, 0, 0.08)",
+                          borderRadius: "20px",
+                          minWidth: "230px",
+                          zIndex: 100
+                        },
+                        className: "absolute right-0 top-full mt-2.5 p-2 space-y-1 animate-in fade-in zoom-in-95 duration-150 select-none shadow-2xl",
+                        children: [
+                          // Dropdown Header
+                          v.jsxs("div", {
+                            className: "px-3.5 py-2.5 border-b border-black/5 flex items-center justify-between",
+                            children: [
+                              v.jsxs("div", {
+                                children: [
+                                  v.jsx("p", { className: "text-[10.5px] font-extrabold uppercase tracking-wider text-[#777777]", children: "Your Account" }),
+                                  v.jsx("p", { className: "text-xs font-bold text-[#111111] truncate max-w-[160px]", children: (typeof localStorage !== "undefined" && localStorage.getItem("plezzy_user_name")) || "Khushwant Singh" })
+                                ]
+                              }),
+                              v.jsx("span", { className: "w-2 h-2 rounded-full bg-emerald-500", title: "Active Session" })
+                            ]
+                          }),
+
+                          // 1. My Profile
+                          v.jsxs("button", {
+                            type: "button",
+                            onClick: () => navigateToAccount("profile"),
+                            className: "w-full flex items-center gap-3 px-3.5 py-2 text-xs font-semibold rounded-xl text-[#222222] hover:bg-[#fff0f7] hover:text-[#f82793] transition-colors cursor-pointer text-left",
+                            children: [
+                              v.jsx("span", { className: "text-base", children: "👤" }),
+                              v.jsx("span", { children: "My Profile" })
+                            ]
+                          }),
+
+                          // 2. Orders
+                          v.jsxs("button", {
+                            type: "button",
+                            onClick: () => navigateToAccount("orders"),
+                            className: "w-full flex items-center justify-between px-3.5 py-2 text-xs font-semibold rounded-xl text-[#222222] hover:bg-[#fff0f7] hover:text-[#f82793] transition-colors cursor-pointer text-left",
+                            children: [
+                              v.jsxs("div", {
+                                className: "flex items-center gap-3",
+                                children: [
+                                  v.jsx("span", { className: "text-base", children: "📦" }),
+                                  v.jsx("span", { children: "Orders" })
+                                ]
+                              }),
+                              v.jsx("span", { className: "text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-black/5 font-bold text-[#555555]", children: "2" })
+                            ]
+                          }),
+
+                          // 3. Saved Addresses
+                          v.jsxs("button", {
+                            type: "button",
+                            onClick: () => navigateToAccount("addresses"),
+                            className: "w-full flex items-center gap-3 px-3.5 py-2 text-xs font-semibold rounded-xl text-[#222222] hover:bg-[#fff0f7] hover:text-[#f82793] transition-colors cursor-pointer text-left",
+                            children: [
+                              v.jsx("span", { className: "text-base", children: "📍" }),
+                              v.jsx("span", { children: "Saved Addresses" })
+                            ]
+                          }),
+
+                          // 4. Wishlist
+                          v.jsxs("button", {
+                            type: "button",
+                            onClick: () => navigateToAccount("wishlist"),
+                            className: "w-full flex items-center justify-between px-3.5 py-2 text-xs font-semibold rounded-xl text-[#222222] hover:bg-[#fff0f7] hover:text-[#f82793] transition-colors cursor-pointer text-left",
+                            children: [
+                              v.jsxs("div", {
+                                className: "flex items-center gap-3",
+                                children: [
+                                  v.jsx("span", { className: "text-base", children: "♡" }),
+                                  v.jsx("span", { children: "Wishlist" })
+                                ]
+                              }),
+                              v.jsx("span", { className: "text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-pink-100 font-bold text-[#f82793]", children: "3" })
+                            ]
+                          }),
+
+                          // 5. Notifications
+                          v.jsxs("button", {
+                            type: "button",
+                            onClick: () => navigateToAccount("notifications"),
+                            className: "w-full flex items-center justify-between px-3.5 py-2 text-xs font-semibold rounded-xl text-[#222222] hover:bg-[#fff0f7] hover:text-[#f82793] transition-colors cursor-pointer text-left",
+                            children: [
+                              v.jsxs("div", {
+                                className: "flex items-center gap-3",
+                                children: [
+                                  v.jsx("span", { className: "text-base", children: "🔔" }),
+                                  v.jsx("span", { children: "Notifications" })
+                                ]
+                              }),
+                              v.jsx("span", { className: "w-2 h-2 rounded-full bg-[#f82793]" })
+                            ]
+                          }),
+
+                          // Divider
+                          v.jsx("div", { className: "my-1 border-t border-black/5" }),
+
+                          // 6. Logout
+                          v.jsxs("button", {
+                            type: "button",
+                            onClick: () => {
+                              setIsAccountDropdownOpen(false);
+                              navigateToAccount("logout");
+                            },
+                            className: "w-full flex items-center gap-3 px-3.5 py-2 text-xs font-semibold rounded-xl text-rose-600 hover:bg-rose-50 transition-colors cursor-pointer text-left",
+                            children: [
+                              v.jsx("span", { className: "text-base", children: "🚪" }),
+                              v.jsx("span", { children: "Logout" })
+                            ]
+                          })
+                        ]
+                      })
+                    ]
                   }),
                   // Luxury Frosted Glass Cart Button with Enlarged Shopping Cart Icon
                   v.jsxs("button", {
@@ -10643,14 +12541,14 @@ function _F() {
                     {
                       num: "06",
                       label: "My Account",
-                      tag: "Orders & Profile",
-                      href: "#",
+                      tag: "Orders, Addresses & Wishlist",
+                      href: "/account.html",
                       action: (e) => {
                         if (e) try { e.preventDefault(); } catch (err) { }
                         try { s(); } catch (err) { }
                         setIsMobileNavOpen(false);
                         setIsNavClosing(false);
-                        a("auth");
+                        navigateToAccount("profile");
                       }
                     }
                   ].map((item) =>
@@ -10719,6 +12617,21 @@ function _F() {
             setIsCartView(false);
             handleSelectProduct(p);
           }
+        })
+      ) : isAccountView ? (
+        v.jsx(PlezzyAccountPage, {
+          initialTab: accountActiveTab,
+          onBackToHome: handleBackToHome,
+          onNavigateToCollections: () => {
+            setIsAccountView(false);
+            setIsCollectionsView(true);
+            window.location.href = "/collections.html";
+          },
+          onSelectProduct: (p) => {
+            setIsAccountView(false);
+            handleSelectProduct(p);
+          },
+          prods
         })
       ) : (isCollectionsView && !isPdp) ? (
         v.jsx(PlezzyCollectionsPage, {
