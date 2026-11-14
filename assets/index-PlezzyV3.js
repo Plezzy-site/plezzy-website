@@ -9779,7 +9779,7 @@ function PlezzyAccountPage({ onBackToHome, onNavigateToCollections, onSelectProd
             id: "pocket-muse",
             name: "Pocket Muse",
             selectedColor: "Sunburst Yellow",
-            image: "https://images.unsplash.com/photo-1608248597359-5613531b2682?auto=format&fit=crop&q=80&w=800",
+            image: "/assets/products/pocket-pebble-main.jpg",
             priceINR: 2499,
             quantity: 1
           },
@@ -9787,7 +9787,7 @@ function PlezzyAccountPage({ onBackToHome, onNavigateToCollections, onSelectProd
             id: "bio-juice",
             name: "Bio Juice Hydrating Skin Drink",
             selectedColor: "Dewy Glow",
-            image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=800",
+            image: "/assets/products/nectar-elixir-main.jpg",
             priceINR: 2499,
             quantity: 1
           }
@@ -9810,7 +9810,7 @@ function PlezzyAccountPage({ onBackToHome, onNavigateToCollections, onSelectProd
             id: "cloud-kiss",
             name: "Cloud Kiss",
             selectedColor: "Celestial Frost",
-            image: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&q=80&w=800",
+            image: "/assets/products/astral-wave-wand-main.jpg",
             priceINR: 2799,
             quantity: 1
           }
@@ -9845,7 +9845,7 @@ function PlezzyAccountPage({ onBackToHome, onNavigateToCollections, onSelectProd
         originalINR: 3570,
         rating: 4.9,
         reviewsCount: 348,
-        image: "https://images.unsplash.com/photo-1608248597359-5613531b2682?auto=format&fit=crop&q=80&w=800"
+        image: "/assets/products/pocket-pebble-main.jpg"
       },
       {
         id: "cloud-kiss",
@@ -9855,7 +9855,7 @@ function PlezzyAccountPage({ onBackToHome, onNavigateToCollections, onSelectProd
         originalINR: 3999,
         rating: 4.9,
         reviewsCount: 284,
-        image: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&q=80&w=800"
+        image: "/assets/products/astral-wave-wand-main.jpg"
       },
       {
         id: "bio-juice",
@@ -9865,7 +9865,7 @@ function PlezzyAccountPage({ onBackToHome, onNavigateToCollections, onSelectProd
         originalINR: 3200,
         rating: 4.8,
         reviewsCount: 195,
-        image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=800"
+        image: "/assets/products/nectar-elixir-main.jpg"
       }
     ];
   });
@@ -10060,12 +10060,27 @@ function PlezzyAccountPage({ onBackToHome, onNavigateToCollections, onSelectProd
 
       // ── MAIN 2-COLUMN DASHBOARD GRID ─────────────────────────────────────
       v.jsxs("div", {
-        className: "grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start w-full",
+        style: {
+          display: "flex",
+          alignItems: "flex-start",
+          gap: "32px",
+          width: "100%",
+          maxWidth: "1280px",
+          margin: "0 auto",
+          boxSizing: "border-box"
+        },
+        className: "plezzy-account-layout flex flex-col lg:flex-row items-start gap-6 lg:gap-8 w-full",
         children: [
 
-          // ── LEFT SIDEBAR NAVIGATION (280px-340px) ────────────────────────
+          // ── LEFT SIDEBAR NAVIGATION (300px) ───────────────────────────────
           v.jsxs("div", {
-            className: "hidden lg:block lg:col-span-4 xl:col-span-3 space-y-4 sticky top-28 select-none",
+            style: {
+              width: "300px",
+              minWidth: "300px",
+              maxWidth: "300px",
+              flexShrink: 0
+            },
+            className: "plezzy-account-sidebar hidden lg:flex flex-col space-y-4 sticky top-28 select-none shrink-0",
             children: [
 
               // User Profile Identity Card
@@ -10074,10 +10089,19 @@ function PlezzyAccountPage({ onBackToHome, onNavigateToCollections, onSelectProd
                 children: [
                   v.jsx("div", {
                     style: {
+                      width: "52px",
+                      height: "52px",
+                      minWidth: "52px",
+                      minHeight: "52px",
+                      borderRadius: "50%",
                       background: "linear-gradient(135deg, #111111 0%, #333333 50%, #f82793 100%)",
-                      boxShadow: "0 4px 14px rgba(248, 39, 147, 0.3)"
+                      boxShadow: "0 4px 14px rgba(248, 39, 147, 0.3)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      flexShrink: 0
                     },
-                    className: "w-13 h-13 rounded-full flex items-center justify-center text-white font-extrabold text-lg shrink-0",
+                    className: "rounded-full flex items-center justify-center text-white font-extrabold text-lg shrink-0",
                     children: `${profile.firstName[0] || "K"}${profile.lastName[0] || "S"}`
                   }),
                   v.jsxs("div", {
@@ -10167,7 +10191,12 @@ function PlezzyAccountPage({ onBackToHome, onNavigateToCollections, onSelectProd
 
           // ── RIGHT CONTENT PANELS (Profile, Orders, Addresses, Wishlist, Notifications) ──
           v.jsxs("div", {
-            className: "lg:col-span-8 xl:col-span-9 space-y-6 w-full",
+            style: {
+              flex: "1 1 0%",
+              minWidth: 0,
+              width: "100%"
+            },
+            className: "plezzy-account-content flex-1 min-w-0 space-y-6 w-full",
             children: [
 
               // ═══════════════════════════════════════════════════════════════
@@ -10559,6 +10588,13 @@ function PlezzyAccountPage({ onBackToHome, onNavigateToCollections, onSelectProd
                               }),
                               // Stepper Line
                               v.jsxs("div", {
+                                style: {
+                                  display: "grid",
+                                  gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+                                  gap: "8px",
+                                  width: "100%",
+                                  textAlign: "center"
+                                },
                                 className: "grid grid-cols-4 gap-2 text-center text-[10px] font-bold pt-1",
                                 children: [
                                   { label: "Confirmed", step: 1 },
@@ -11232,6 +11268,87 @@ function PlezzyAccountPage({ onBackToHome, onNavigateToCollections, onSelectProd
                   children: "Log Out"
                 })
               ]
+            })
+          ]
+        })
+      }),
+
+      // ── TRACKING ORDER MODAL ─────────────────────────────────────────────
+      trackingOrder && v.jsx("div", {
+        className: "fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200 select-none",
+        children: v.jsxs("div", {
+          className: "bg-white w-full max-w-md rounded-3xl p-6 sm:p-7 space-y-5 shadow-2xl border border-black/10 max-h-[90vh] overflow-y-auto",
+          children: [
+            v.jsxs("div", {
+              className: "flex items-center justify-between pb-3 border-b border-black/10",
+              children: [
+                v.jsxs("div", {
+                  children: [
+                    v.jsxs("h3", { className: "font-extrabold text-base text-[#111111]", children: ["Track Package: #", trackingOrder.id] }),
+                    v.jsxs("p", { className: "text-xs text-[#777777]", children: ["Carrier: ", trackingOrder.carrier, " • ", trackingOrder.trackingNumber] })
+                  ]
+                }),
+                v.jsx("button", {
+                  type: "button",
+                  onClick: () => setTrackingOrder(null),
+                  className: "text-sm font-bold text-[#888888] hover:text-[#111111] p-1 cursor-pointer",
+                  children: "✕"
+                })
+              ]
+            }),
+            v.jsxs("div", {
+              className: "space-y-4 py-2",
+              children: [
+                { step: 1, title: "Order Confirmed & Verified", time: trackingOrder.date, desc: "Discreet payment verified via PLZ Tech" },
+                { step: 2, title: "Stealth Packaging Completed", time: "Discreet Warehouse", desc: "Sealed inside plain double-walled carton" },
+                { step: 3, title: "Dispatched with BlueDart", time: "In Transit", desc: "Private express courier in transit" },
+                { step: 4, title: "Delivered to Recipient", time: trackingOrder.deliveryDate, desc: "Handover with discreet signature check" }
+              ].map((st) => {
+                const isDone = trackingOrder.statusStep >= st.step;
+                const isCurrent = trackingOrder.statusStep === st.step;
+                return v.jsxs("div", {
+                  key: st.step,
+                  className: "flex items-start gap-3.5",
+                  children: [
+                    v.jsx("div", {
+                      style: {
+                        width: "28px",
+                        height: "28px",
+                        minWidth: "28px",
+                        borderRadius: "50%",
+                        backgroundColor: isDone ? "#10b981" : "#e5e7eb",
+                        color: isDone ? "#ffffff" : "#6b7280",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontSize: "12px",
+                        fontWeight: "bold"
+                      },
+                      children: isDone ? "✓" : st.step
+                    }),
+                    v.jsxs("div", {
+                      className: "flex-1 min-w-0 space-y-0.5",
+                      children: [
+                        v.jsxs("div", {
+                          className: "flex items-center justify-between gap-2",
+                          children: [
+                            v.jsx("p", { className: "text-xs font-bold " + (isCurrent ? "text-[#f82793]" : isDone ? "text-[#111111]" : "text-[#888888]"), children: st.title }),
+                            v.jsx("span", { className: "text-[10px] font-mono text-[#888888]", children: st.time })
+                          ]
+                        }),
+                        v.jsx("p", { className: "text-[11px] text-[#666666]", children: st.desc })
+                      ]
+                    })
+                  ]
+                });
+              })
+            }),
+            v.jsx("button", {
+              type: "button",
+              onClick: () => setTrackingOrder(null),
+              style: { backgroundColor: "#111111" },
+              className: "w-full py-2.5 rounded-xl text-white font-bold text-xs uppercase tracking-wider hover:bg-[#333333] transition-colors cursor-pointer",
+              children: "Close Tracking"
             })
           ]
         })

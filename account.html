@@ -23,7 +23,7 @@
     <script>
       window.__PLEZZY_DEFAULT_VIEW__ = "account";
     </script>
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261114_account_section_v74"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261114_account_layout_fix_v75"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
@@ -4237,6 +4237,58 @@
       line-height: 1.5 !important;
     }
 
+    
+      /* PLEZZY Account Page Layout Fixes */
+      .plezzy-account-page {
+        width: 100% !important;
+        max-width: 1240px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        box-sizing: border-box !important;
+      }
+      .plezzy-account-layout {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 24px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
+      @media (min-width: 1024px) {
+        .plezzy-account-layout {
+          flex-direction: row !important;
+          align-items: flex-start !important;
+          gap: 32px !important;
+        }
+        .plezzy-account-sidebar {
+          display: flex !important;
+          flex-direction: column !important;
+          width: 300px !important;
+          min-width: 300px !important;
+          max-width: 300px !important;
+          flex-shrink: 0 !important;
+        }
+        .plezzy-account-content {
+          flex: 1 1 0% !important;
+          min-width: 0 !important;
+          width: calc(100% - 332px) !important;
+        }
+        .lg\:col-span-8 {
+          grid-column: span 8 / span 8 !important;
+        }
+        .lg\:col-span-4 {
+          grid-column: span 4 / span 4 !important;
+        }
+      }
+      @media (min-width: 1280px) {
+        .xl\:col-span-3 {
+          grid-column: span 3 / span 3 !important;
+        }
+        .xl\:col-span-9 {
+          grid-column: span 9 / span 9 !important;
+        }
+      }
+    
     </style>
   </head>
   <body class="text-[#67645e] antialiased selection:bg-[#f82793] selection:text-white selection:text-white">
