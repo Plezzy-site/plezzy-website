@@ -15589,7 +15589,7 @@ function bF() { var f; const { activeModal: n, setActiveModal: e, userOrders: t,
   const [isVerified, setIsVerified] = G.useState(() => {
     try {
       if (typeof window !== "undefined") {
-        return localStorage.getItem("plezzy_age_verified") === "true";
+        return localStorage.getItem("plezzy_age_gate_21_confirmed") === "true";
       }
     } catch (e) { }
     return false;
@@ -15612,7 +15612,7 @@ function bF() { var f; const { activeModal: n, setActiveModal: e, userOrders: t,
 
   const handleVerify = () => {
     try {
-      localStorage.setItem("plezzy_age_verified", "true");
+      localStorage.setItem("plezzy_age_gate_21_confirmed", "true");
     } catch (e) { }
     try { s(); } catch (e) { }
     setIsVerified(true);
