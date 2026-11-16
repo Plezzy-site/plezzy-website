@@ -7823,103 +7823,6 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
         ]
       }),
 
-      // ── CIRCULAR CATEGORIES SECTION (COLLECTION PAGE STORY ROW - CENTER ALIGNED) ──
-      v.jsx("div", {
-        className: "w-full mb-6 select-none flex justify-center items-center text-center",
-        style: {
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "100%",
-          margin: "0 auto"
-        },
-        children: v.jsx("div", {
-          className: "overflow-x-auto no-scrollbar py-2 w-full flex justify-center items-center",
-          style: {
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            width: "100%",
-            margin: "0 auto",
-            WebkitOverflowScrolling: "touch",
-            msOverflowStyle: "none",
-            scrollbarWidth: "none"
-          },
-          children: v.jsx("div", {
-            className: "flex items-center justify-center gap-4 sm:gap-6 lg:gap-8 mx-auto px-2",
-            style: {
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              margin: "0 auto",
-              width: "auto"
-            },
-            children: [
-              { id: "all", name: "All", query: "ALL", image: "/assets/products/pocket-pebble-main.jpg" },
-              { id: "her", name: "Her", query: "HER", image: "/assets/products/carmine-resonance-wand-main.jpg" },
-              { id: "him", name: "Him", query: "HIM", image: "/assets/products/pocket-pebble-main.jpg" },
-              { id: "lubes", name: "Lubes", query: "LUBES", image: "/assets/products/nectar-elixir-main.jpg" },
-              { id: "couples", name: "Couples", query: "COUPLES", image: "/assets/suede-panel-contents.jpg" },
-              { id: "digital-guides", name: "Digital Guides", query: "DIGITAL GUIDES", image: "/assets/category-digital-guides.svg" },
-              { id: "lifestyle", name: "Lifestyle", query: "LIFESTYLE", image: "/assets/suede-pouch-banner.jpg" }
-            ].map(cat => {
-              const isActive = activeCategory === cat.query;
-              return v.jsxs("button", {
-                key: cat.id,
-                type: "button",
-                onClick: () => {
-                  try { s(); } catch (e) { }
-                  setActiveCategory(cat.query);
-                  try {
-                    const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + (cat.query === "ALL" ? "" : "?collection=" + cat.query.toLowerCase());
-                    window.history.replaceState({ collection: cat.query.toLowerCase() }, "", newUrl);
-                  } catch (e) { }
-                },
-                className: "flex flex-col items-center group cursor-pointer shrink-0 transition-transform active:scale-95",
-                children: [
-                  v.jsx("div", {
-                    className: "rounded-full transition-all duration-300 " +
-                      (isActive
-                        ? "scale-105 shadow-[0_0_24px_rgba(248,39,147,0.7)]"
-                        : "group-hover:scale-105 group-hover:shadow-[0_0_18px_rgba(248,39,147,0.45)]"),
-                    style: {
-                      width: "72px",
-                      height: "72px",
-                      minWidth: "72px",
-                      minHeight: "72px",
-                      padding: "2.5px",
-                      background: isActive
-                        ? "linear-gradient(135deg, #ff4fa7 0%, #f82793 50%, #c40062 100%)"
-                        : "linear-gradient(135deg, rgba(248,39,147,0.8) 0%, rgba(255,79,167,0.6) 100%)",
-                      boxShadow: isActive ? "0 0 20px rgba(248, 39, 147, 0.6)" : "0 4px 14px rgba(248, 39, 147, 0.25)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      borderRadius: "50%"
-                    },
-                    children: v.jsx("div", {
-                      className: "w-full h-full rounded-full overflow-hidden bg-[#16131c] flex items-center justify-center p-[2px]",
-                      children: v.jsx("img", {
-                        src: cat.image,
-                        alt: cat.name,
-                        className: "w-full h-full rounded-full object-cover transition-transform duration-300 group-hover:scale-110",
-                        style: { objectPosition: "center" }
-                      })
-                    })
-                  }),
-                  v.jsx("span", {
-                    className: "mt-2 text-xs sm:text-[12.5px] transition-colors duration-200 text-center tracking-tight " +
-                      (isActive ? "text-[#f82793] font-extrabold" : "text-white/80 font-bold group-hover:text-[#f82793]"),
-                    style: { fontFamily: "'Plus Jakarta Sans', -apple-system, sans-serif" },
-                    children: cat.name
-                  })
-                ]
-              });
-            })
-          })
-        })
-      }),
-
       // ── COMPACT FROSTED CAPSULE CATEGORY BAR (DYNAMIC HIDE/SHOW ON SCROLL) ───────────
       v.jsx("div", {
         className: "sticky top-16 sm:top-20 z-30 mb-6 sm:mb-8 py-2 w-full transition-all duration-300 " +
@@ -13770,6 +13673,105 @@ function _F() {
           className: "w-full animate-in fade-in duration-200", children: [
 
             // ══════════════════════════════════════════════════════════════
+            // SECTION 0: TOP CIRCULAR STORY-STYLE CATEGORIES (GENEROUS NEGATIVE SPACE)
+            // ══════════════════════════════════════════════════════════════
+            v.jsx("section", {
+              id: "plezzy-circular-categories-row",
+              className: "w-full select-none relative z-20 flex justify-center items-center text-center",
+              style: {
+                background: "#000000",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "100%",
+                margin: "0 auto",
+                paddingTop: "112px",
+                paddingBottom: "44px"
+              },
+              children: v.jsx("div", {
+                className: "w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 flex justify-center items-center",
+                style: {
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  margin: "0 auto",
+                  width: "100%"
+                },
+                children: v.jsx("div", {
+                  className: "flex items-center justify-center gap-5 sm:gap-8 lg:gap-11 overflow-x-auto scrollbar-none py-2 no-scrollbar mx-auto",
+                  style: {
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    margin: "0 auto",
+                    width: "auto",
+                    maxWidth: "100%",
+                    WebkitOverflowScrolling: "touch",
+                    msOverflowStyle: "none",
+                    scrollbarWidth: "none"
+                  },
+                  children: [
+                    { id: "her", name: "Her", query: "her", image: "/assets/products/carmine-resonance-wand-main.jpg" },
+                    { id: "him", name: "Him", query: "him", image: "/assets/products/pocket-pebble-main.jpg" },
+                    { id: "lubes", name: "Lubes", query: "lubes", image: "/assets/products/nectar-elixir-main.jpg" },
+                    { id: "couples", name: "Couples", query: "couples", image: "/assets/suede-panel-contents.jpg" },
+                    { id: "digital-guides", name: "Digital Guides", query: "guides", image: "/assets/category-digital-guides.svg" },
+                    { id: "lifestyle", name: "Lifestyle", query: "lifestyle", image: "/assets/suede-pouch-banner.jpg" }
+                  ].map((cat) =>
+                    v.jsxs("a", {
+                      key: cat.id,
+                      href: `/collections.html?collection=${cat.query}`,
+                      onClick: (e) => {
+                        try { s(); } catch (err) { }
+                        window.location.href = `/collections.html?collection=${cat.query}`;
+                      },
+                      className: "flex flex-col items-center group cursor-pointer shrink-0 transition-transform active:scale-95 text-decoration-none",
+                      style: {
+                        textDecoration: "none"
+                      },
+                      children: [
+                        // Circle Outer Ring (Pink gradient border matching user image)
+                        v.jsx("div", {
+                          className: "rounded-full p-[2.5px] transition-all duration-300 group-hover:scale-108 group-hover:shadow-[0_0_24px_rgba(248,39,147,0.65)]",
+                          style: {
+                            width: "76px",
+                            height: "76px",
+                            minWidth: "76px",
+                            minHeight: "76px",
+                            background: "linear-gradient(135deg, #ff4fa7 0%, #f82793 50%, #d6006f 100%)",
+                            boxShadow: "0 4px 16px rgba(248, 39, 147, 0.35)",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center"
+                          },
+                          children: v.jsx("div", {
+                            className: "w-full h-full rounded-full overflow-hidden bg-[#18151f] p-[2px] flex items-center justify-center",
+                            children: v.jsx("img", {
+                              src: cat.image,
+                              alt: cat.name,
+                              className: "w-full h-full rounded-full object-cover transition-transform duration-300 group-hover:scale-110",
+                              style: {
+                                objectPosition: "center"
+                              }
+                            })
+                          })
+                        }),
+                        // Label Underneath
+                        v.jsx("span", {
+                          className: "mt-2.5 text-xs sm:text-[13px] font-bold text-white transition-colors duration-200 group-hover:text-[#f82793] text-center tracking-tight",
+                          style: {
+                            fontFamily: "'Plus Jakarta Sans', -apple-system, sans-serif"
+                          },
+                          children: cat.name
+                        })
+                      ]
+                    })
+                  )
+                })
+              })
+            }),
+
+            // ══════════════════════════════════════════════════════════════
             // SECTION 1: TOPICALS FULL-BLEED EDITORIAL HERO
             // ══════════════════════════════════════════════════════════════
             v.jsxs("section", {
@@ -13777,7 +13779,7 @@ function _F() {
               className: "w-full relative overflow-hidden flex flex-col justify-end select-none",
               style: {
                 width: "100%",
-                marginTop: "80px",
+                marginTop: "0px",
                 aspectRatio: "1024 / 388",
                 backgroundColor: "#f3acce",
                 paddingTop: "0px"
@@ -13837,104 +13839,6 @@ function _F() {
                 })
 
               ]
-            }),
-
-            // ══════════════════════════════════════════════════════════════
-            // SECTION 1.2: CIRCULAR STORY-STYLE CATEGORIES ROW (CENTER ALIGNED)
-            // ══════════════════════════════════════════════════════════════
-            v.jsx("section", {
-              id: "plezzy-circular-categories-row",
-              className: "w-full py-5 sm:py-7 select-none border-b border-white/10 relative z-20 flex justify-center items-center text-center",
-              style: {
-                background: "linear-gradient(180deg, #131019 0%, #0c0a10 100%)",
-                boxShadow: "0 8px 30px rgba(0, 0, 0, 0.5)",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                width: "100%",
-                margin: "0 auto"
-              },
-              children: v.jsx("div", {
-                className: "w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 flex justify-center items-center",
-                style: {
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  margin: "0 auto",
-                  width: "100%"
-                },
-                children: v.jsx("div", {
-                  className: "flex items-center justify-center gap-5 sm:gap-8 lg:gap-11 overflow-x-auto scrollbar-none py-2 no-scrollbar mx-auto",
-                  style: {
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    margin: "0 auto",
-                    width: "auto",
-                    maxWidth: "100%",
-                    WebkitOverflowScrolling: "touch",
-                    msOverflowStyle: "none",
-                    scrollbarWidth: "none"
-                  },
-                  children: [
-                    { id: "her", name: "Her", query: "her", image: "/assets/products/carmine-resonance-wand-main.jpg" },
-                    { id: "him", name: "Him", query: "him", image: "/assets/products/pocket-pebble-main.jpg" },
-                    { id: "lubes", name: "Lubes", query: "lubes", image: "/assets/products/nectar-elixir-main.jpg" },
-                    { id: "couples", name: "Couples", query: "couples", image: "/assets/suede-panel-contents.jpg" },
-                    { id: "digital-guides", name: "Digital Guides", query: "guides", image: "/assets/category-digital-guides.svg" },
-                    { id: "lifestyle", name: "Lifestyle", query: "lifestyle", image: "/assets/suede-pouch-banner.jpg" }
-                  ].map((cat) =>
-                    v.jsxs("a", {
-                      key: cat.id,
-                      href: `/collections.html?collection=${cat.query}`,
-                      onClick: (e) => {
-                        try { s(); } catch (err) { }
-                        window.location.href = `/collections.html?collection=${cat.query}`;
-                      },
-                      className: "flex flex-col items-center group cursor-pointer shrink-0 transition-transform active:scale-95 text-decoration-none",
-                      style: {
-                        textDecoration: "none"
-                      },
-                      children: [
-                        // Circle Outer Ring (Pink gradient border matching user image)
-                        v.jsx("div", {
-                          className: "rounded-full p-[2.5px] transition-all duration-300 group-hover:scale-108 group-hover:shadow-[0_0_22px_rgba(248,39,147,0.6)]",
-                          style: {
-                            width: "76px",
-                            height: "76px",
-                            minWidth: "76px",
-                            minHeight: "76px",
-                            background: "linear-gradient(135deg, #ff4fa7 0%, #f82793 50%, #d6006f 100%)",
-                            boxShadow: "0 4px 16px rgba(248, 39, 147, 0.35)",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center"
-                          },
-                          children: v.jsx("div", {
-                            className: "w-full h-full rounded-full overflow-hidden bg-[#18151f] p-[2px] flex items-center justify-center",
-                            children: v.jsx("img", {
-                              src: cat.image,
-                              alt: cat.name,
-                              className: "w-full h-full rounded-full object-cover transition-transform duration-300 group-hover:scale-110",
-                              style: {
-                                objectPosition: "center"
-                              }
-                            })
-                          })
-                        }),
-                        // Label Underneath
-                        v.jsx("span", {
-                          className: "mt-2.5 text-xs sm:text-[13px] font-bold text-white transition-colors duration-200 group-hover:text-[#f82793] text-center tracking-tight",
-                          style: {
-                            fontFamily: "'Plus Jakarta Sans', -apple-system, sans-serif"
-                          },
-                          children: cat.name
-                        })
-                      ]
-                    })
-                  )
-                })
-              })
             }),
 
             // ══════════════════════════════════════════════════════════════
