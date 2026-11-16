@@ -7617,6 +7617,7 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
   // Show again when scrolling back up (finger swipe down).
   const [isCategoryBarVisible, setIsCategoryBarVisible] = G.useState(true);
   const lastScrollYRef = G.useRef(0);
+  const categorySectionRef = G.useRef(null);
 
   G.useEffect(() => {
     let ticking = false;
@@ -7628,12 +7629,23 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
           const currentScrollY = window.scrollY;
           const diff = currentScrollY - lastScrollYRef.current;
 
-          if (currentScrollY < 120) {
-            // Near top of collection: always keep visible in natural position
+          const sectionEl = categorySectionRef.current;
+          let isOnSection = false;
+          if (sectionEl) {
+            const rect = sectionEl.getBoundingClientRect();
+            const navHeight = window.innerWidth < 640 ? 64 : 80;
+            // If section is in its natural position or has not scrolled past the sticky header threshold
+            if (rect.top >= navHeight - 15) {
+              isOnSection = true;
+            }
+          }
+
+          if (isOnSection || currentScrollY < 300) {
+            // When on this exact section or near top: NEVER hide categories
             setIsCategoryBarVisible(true);
           } else if (Math.abs(diff) > threshold) {
             if (diff > 0) {
-              // Scrolling downward into products -> hide
+              // Scrolling downward deep into products -> hide
               setIsCategoryBarVisible(false);
             } else {
               // Scrolling back upward -> show again
@@ -7825,14 +7837,17 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
 
       // ── COMPACT FROSTED CAPSULE CATEGORY BAR (DYNAMIC HIDE/SHOW ON SCROLL) ───────────
       v.jsx("div", {
-        className: "sticky top-16 sm:top-20 z-30 mb-6 sm:mb-8 py-2 w-full transition-all duration-300 " +
-          (isCategoryBarVisible
-            ? "translate-y-0 opacity-100 pointer-events-auto"
-            : "-translate-y-12 sm:-translate-y-16 opacity-0 pointer-events-none"),
-        style: {
-          transition: "transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease"
-        },
+        ref: categorySectionRef,
+        className: "w-full",
         children: v.jsx("div", {
+          className: "sticky top-16 sm:top-20 z-30 mb-6 sm:mb-8 py-2 w-full transition-all duration-300 " +
+            (isCategoryBarVisible
+              ? "translate-y-0 opacity-100 pointer-events-auto"
+              : "-translate-y-12 sm:-translate-y-16 opacity-0 pointer-events-none"),
+          style: {
+            transition: "transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease"
+          },
+          children: v.jsx("div", {
           className: "overflow-x-auto no-scrollbar py-1 w-full flex justify-center",
           children: v.jsx("div", {
             className: "flex items-center gap-1.5 sm:gap-2 p-1.5 bg-black/60 backdrop-blur-xl border border-white/20 rounded-full shadow-lg w-max mx-auto",
@@ -7858,6 +7873,7 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
             })
           })
         })
+      })
       }),
 
       // ── PLEZZY BENTO-STYLE PRODUCT GRID (MATCHING HOMEPAGE REFERENCE) ───────────
