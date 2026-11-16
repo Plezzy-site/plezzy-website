@@ -36,7 +36,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Italiana&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261116_instant_age_gate_v85"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261116_no_age_gate_v86"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>
@@ -4264,68 +4264,7 @@
     </style>
   </head>
   <body class="text-[#67645e] antialiased selection:bg-[#f82793] selection:text-white selection:text-white">
-    <!-- ══════════════════════════════════════════════════════════════
-         PLEZZY 21+ AGE VERIFICATION MODAL (INSTANT HTML RENDER)
-         ══════════════════════════════════════════════════════════════ -->
-    <div id="plezzy-age-gate-overlay" style="display: flex; position: fixed; inset: 0; z-index: 999999; background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); align-items: center; justify-content: center; padding: 16px; box-sizing: border-box;">
-      <div style="position: relative; width: 100%; max-width: 420px; border-radius: 28px; overflow: hidden; padding: 40px 28px; text-align: center; box-shadow: 0 25px 60px rgba(0,0,0,0.6), 0 0 50px rgba(248,39,147,0.35); display: flex; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box; background: linear-gradient(135deg, #fba18c 0%, #ff5297 45%, #e60067 100%);">
-        
-        <!-- Background organic shapes -->
-        <div style="position: absolute; top: -50px; left: -50px; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.22) 0%, transparent 70%); pointer-events: none;"></div>
-        <div style="position: absolute; bottom: -60px; right: -40px; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle, rgba(255,200,180,0.35) 0%, transparent 70%); pointer-events: none;"></div>
-
-        <!-- Top Stylized Fluid Heart Icon -->
-        <div style="position: relative; z-index: 2; margin-bottom: 12px; display: flex; align-items: center; justify-content: center;">
-          <svg width="46" height="46" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M16 28C14 20 18 14 24 14C29 14 34 18 32 24C30 30 20 34 16 34C14 34 12 32 14 28C16 22 22 17 28 20C32 22 32 26 29 28" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-
-        <!-- Heading: Are you over 21? -->
-        <h2 style="position: relative; z-index: 2; margin: 0 0 18px 0; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 23px; font-weight: 700; color: #ffffff; letter-spacing: -0.02em;">Are you over 21?</h2>
-
-        <!-- Primary Pill Button: Yes I'm 21+ years old -->
-        <button type="button" id="plezzy-age-confirm-btn" onclick="verifyPlezzyAge()" style="position: relative; z-index: 2; width: 100%; max-width: 280px; padding: 14px 24px; border-radius: 9999px; background: #ffffff; color: #e60067; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13.5px; font-weight: 700; border: none; cursor: pointer; box-shadow: 0 8px 24px rgba(0,0,0,0.18); transition: transform 0.2s ease, box-shadow 0.2s ease; outline: none;">Yes I'm 21+ years old</button>
-
-        <!-- Secondary Link: Exit -->
-        <a href="https://www.google.com" style="position: relative; z-index: 2; margin-top: 14px; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; font-weight: 600; color: rgba(255, 255, 255, 0.9); text-decoration: underline; text-underline-offset: 4px; cursor: pointer; transition: color 0.15s ease;">Exit</a>
-
-        <!-- Legal Disclaimer -->
-        <p style="position: relative; z-index: 2; margin: 20px 0 0 0; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10.5px; line-height: 1.5; color: rgba(255, 255, 255, 0.8); max-width: 290px;">By entering the website, you are agreeing to the Terms of Use and Privacy Policy.</p>
-      </div>
-    </div>
-
-    <script>
-      (function() {
-        try {
-          var isVerified = localStorage.getItem("plezzy_age_gate_21_confirmed") === "true";
-          var overlay = document.getElementById("plezzy-age-gate-overlay");
-          if (isVerified && overlay) {
-            overlay.style.display = "none";
-          } else if (overlay) {
-            overlay.style.display = "flex";
-            document.documentElement.style.overflow = "hidden";
-            document.body.style.overflow = "hidden";
-          }
-        } catch(e) {}
-      })();
-
-      function verifyPlezzyAge() {
-        try {
-          localStorage.setItem("plezzy_age_gate_21_confirmed", "true");
-        } catch(e) {}
-        var overlay = document.getElementById("plezzy-age-gate-overlay");
-        if (overlay) {
-          overlay.style.opacity = "0";
-          overlay.style.transition = "opacity 0.25s ease";
-          setTimeout(function() {
-            overlay.style.display = "none";
-            document.documentElement.style.overflow = "";
-            document.body.style.overflow = "";
-          }, 250);
-        }
-      }
-    </script>
+    
 
 
     <div id="plezzy-fixed-foil-bg"></div>
