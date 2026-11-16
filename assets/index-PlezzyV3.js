@@ -13685,8 +13685,8 @@ function _F() {
                 alignItems: "center",
                 width: "100%",
                 margin: "0 auto",
-                paddingTop: "112px",
-                paddingBottom: "44px"
+                paddingTop: "98px",
+                paddingBottom: "18px"
               },
               children: v.jsx("div", {
                 className: "w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 flex justify-center items-center",
@@ -13698,7 +13698,7 @@ function _F() {
                   width: "100%"
                 },
                 children: v.jsx("div", {
-                  className: "flex items-center justify-center gap-5 sm:gap-8 lg:gap-11 overflow-x-auto scrollbar-none py-2 no-scrollbar mx-auto",
+                  className: "flex items-center justify-center gap-5 sm:gap-8 lg:gap-11 overflow-x-auto scrollbar-none py-1 no-scrollbar mx-auto",
                   style: {
                     display: "flex",
                     alignItems: "center",
