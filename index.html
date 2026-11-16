@@ -2,6 +2,22 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      /* Clean URL standard navigation: strip index.html and .html extensions */
+      (function() {
+        try {
+          var p = window.location.pathname;
+          if (p === "/index.html" || p.endsWith("/index.html")) {
+            var c = p.replace(/\/index\.html$/, "/") || "/";
+            window.history.replaceState(null, "", c + window.location.search + window.location.hash);
+          } else if (p.endsWith(".html")) {
+            var c = p.replace(/\.html$/, "");
+            window.history.replaceState(null, "", c + window.location.search + window.location.hash);
+          }
+        } catch(e) {}
+      })();
+    </script>
+
     <meta name="hosting-provider" content="Netlify">
     <meta name="netlify-deploy" content="https://netlify.new/?utm_campaign=ai-legible&amp;utm_source=meta&amp;utm_medium=referral&amp;utm_id=49d0d0f0-8377-4c95-b39c-dede549f8578">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23f1f0ed'/><text x='50' y='64' font-family='sans-serif' font-size='42' font-weight='600' fill='%2367645e' text-anchor='middle'>p</text></svg>" />
@@ -20,7 +36,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Italiana&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261116_sticky_categories_v82"></script>
+    <script type="module" crossorigin src="/assets/index-PlezzyV3.js?v=20261116_clean_urls_v83"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-eZDzgBVB.css">
     
     <style>

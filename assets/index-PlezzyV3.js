@@ -8294,11 +8294,11 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
               ]
             }),
             v.jsxs("a", {
-              href: "/cart.html",
+              href: "/cart",
               onClick: (e) => {
                 e.preventDefault();
                 try { s(); } catch (err) { }
-                window.location.href = "/cart.html";
+                window.location.href = "/cart";
               },
               className: "px-4 py-2.5 rounded-xl bg-[#f82793] hover:bg-[#d41c7b] text-white font-extrabold text-xs uppercase tracking-wider shadow-md transition-all cursor-pointer whitespace-nowrap active:scale-95 flex items-center gap-1.5",
               children: [
@@ -8727,7 +8727,7 @@ function PlezzyCartPage({ onBackToHome, onNavigateToCollections, onSelectProduct
                   }),
                   v.jsx("span", { children: "/" }),
                   v.jsx("a", {
-                    href: "/collections.html",
+                    href: "/collections",
                     onClick: (e) => {
                       if (onNavigateToCollections) {
                         e.preventDefault();
@@ -8793,7 +8793,7 @@ function PlezzyCartPage({ onBackToHome, onNavigateToCollections, onSelectProduct
               ]
             }),
             v.jsx("a", {
-              href: "/collections.html",
+              href: "/collections",
               onClick: (e) => {
                 if (onNavigateToCollections) {
                   e.preventDefault();
@@ -9298,7 +9298,7 @@ function PlezzyCartPage({ onBackToHome, onNavigateToCollections, onSelectProduct
                   className: "pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/10 text-xs text-white/60",
                   children: [
                     v.jsx("a", {
-                      href: "/collections.html",
+                      href: "/collections",
                       onClick: (e) => {
                         if (onNavigateToCollections) {
                           e.preventDefault();
@@ -9608,7 +9608,7 @@ function PlezzyAccountPage({ onBackToHome, onNavigateToCollections, onSelectProd
     }
     setActiveTab(tab);
     try {
-      window.history.pushState({}, "", `/account.html#${tab}`);
+      window.history.pushState({}, "", `/account#${tab}`);
     } catch (e) { }
   };
 
@@ -10795,7 +10795,7 @@ function PlezzyAccountPage({ onBackToHome, onNavigateToCollections, onSelectProd
                         v.jsx("h3", { className: "font-bold text-lg text-[#111111]", children: "Your Wishlist is Empty" }),
                         v.jsx("p", { className: "text-xs text-[#777777] max-w-sm mx-auto", children: "Explore our collection and tap the heart icon to save your favorite luxury essentials here." }),
                         v.jsx("a", {
-                          href: "/collections.html",
+                          href: "/collections",
                           onClick: (e) => {
                             if (onNavigateToCollections) {
                               e.preventDefault();
@@ -11881,9 +11881,9 @@ function _F() {
     setIsMobileNavOpen(false);
     try {
       if (window.location.pathname.includes("account")) {
-        window.history.pushState({}, "", `/account.html#${tab}`);
+        window.history.pushState({}, "", `/account#${tab}`);
       } else {
-        window.location.href = `/account.html#${tab}`;
+        window.location.href = `/account#${tab}`;
       }
     } catch (e) { }
   };
@@ -11909,7 +11909,7 @@ function _F() {
     setIsMobileNavOpen(false);
     try {
       if (!window.location.pathname.includes("collection")) {
-        window.location.href = "/collections.html";
+        window.location.href = "/collections";
         return;
       }
     } catch (err) { }
@@ -12065,7 +12065,7 @@ function _F() {
     setIsSearchOpen(false);
     try {
       if (window.location.pathname.includes("collection") || window.location.pathname.includes("account") || window.location.pathname.includes("cart")) {
-        window.location.href = "/index.html";
+        window.location.href = "/";
         return;
       }
       const newUrl = window.location.protocol + "//" + window.location.host + "/";
@@ -12092,7 +12092,7 @@ function _F() {
     if (e) try { e.stopPropagation(); } catch (err) { }
     try { s(); } catch (err) { }
     const cat = (category || "").toLowerCase();
-    window.location.href = "/collections.html?collection=" + encodeURIComponent(cat);
+    window.location.href = "/collections?collection=" + encodeURIComponent(cat);
   };
 
   const scrollToSlide = (idx) => {
@@ -12421,7 +12421,7 @@ function _F() {
                   // Luxury Frosted Glass Cart Button with Enlarged Shopping Cart Icon
                   v.jsxs("button", {
                     id: "plezzy-header-cart-btn",
-                    onClick: () => { s(); window.location.href = "/cart.html"; },
+                    onClick: () => { s(); window.location.href = "/cart"; },
                     className: "plezzy-header-cart-btn flex items-center justify-center gap-1.5 rounded-full transition-all duration-200 cursor-pointer shadow-sm hover:scale-105 active:scale-95",
                     "aria-label": "Open cart",
                     children: [
@@ -12510,7 +12510,7 @@ function _F() {
                       try { s(); } catch (err) { }
                       setIsMobileNavOpen(false);
                       setIsNavClosing(false);
-                      if (window.location.pathname !== "/" && window.location.pathname !== "/index.html") {
+                      if (window.location.pathname !== "/" && window.location.pathname !== "/") {
                         window.location.href = "/";
                       } else if (window.location.hash || window.location.search) {
                         window.location.href = "/";
@@ -12562,7 +12562,7 @@ function _F() {
                         try { s(); } catch (err) { }
                         setIsMobileNavOpen(false);
                         setIsNavClosing(false);
-                        if (window.location.pathname !== "/" && window.location.pathname !== "/index.html") {
+                        if (window.location.pathname !== "/" && window.location.pathname !== "/") {
                           window.location.href = "/";
                         } else if (window.location.hash || window.location.search) {
                           window.location.href = "/";
@@ -12576,13 +12576,13 @@ function _F() {
                       num: "02",
                       label: "The Collection",
                       tag: "Luxe & Standard Editions",
-                      href: "/collections.html",
+                      href: "/collections",
                       action: (e) => {
                         if (e) try { e.preventDefault(); } catch (err) { }
                         try { s(); } catch (err) { }
                         setIsMobileNavOpen(false);
                         setIsNavClosing(false);
-                        window.location.href = "/collections.html";
+                        window.location.href = "/collections";
                       }
                     },
                     {
@@ -12595,7 +12595,7 @@ function _F() {
                         try { s(); } catch (err) { }
                         setIsMobileNavOpen(false);
                         setIsNavClosing(false);
-                        if (window.location.pathname !== "/" && window.location.pathname !== "/index.html") {
+                        if (window.location.pathname !== "/" && window.location.pathname !== "/") {
                           window.location.href = "/#plezzy-editorial-products-grid";
                         } else {
                           if (isPdp) handleBackToHome();
@@ -12616,7 +12616,7 @@ function _F() {
                         try { s(); } catch (err) { }
                         setIsMobileNavOpen(false);
                         setIsNavClosing(false);
-                        if (window.location.pathname !== "/" && window.location.pathname !== "/index.html") {
+                        if (window.location.pathname !== "/" && window.location.pathname !== "/") {
                           window.location.href = "/#editorial-collection-split";
                         } else {
                           if (isPdp) handleBackToHome();
@@ -12637,7 +12637,7 @@ function _F() {
                         try { s(); } catch (err) { }
                         setIsMobileNavOpen(false);
                         setIsNavClosing(false);
-                        if (window.location.pathname !== "/" && window.location.pathname !== "/index.html") {
+                        if (window.location.pathname !== "/" && window.location.pathname !== "/") {
                           window.location.href = "/#campaign-video";
                         } else {
                           if (isPdp) handleBackToHome();
@@ -12652,7 +12652,7 @@ function _F() {
                       num: "06",
                       label: "My Account",
                       tag: "Orders, Addresses & Wishlist",
-                      href: "/account.html",
+                      href: "/account",
                       action: (e) => {
                         if (e) try { e.preventDefault(); } catch (err) { }
                         try { s(); } catch (err) { }
@@ -12721,7 +12721,7 @@ function _F() {
           onNavigateToCollections: () => {
             setIsCartView(false);
             setIsCollectionsView(true);
-            window.location.href = "/collections.html";
+            window.location.href = "/collections";
           },
           onSelectProduct: (p) => {
             setIsCartView(false);
@@ -12735,7 +12735,7 @@ function _F() {
           onNavigateToCollections: () => {
             setIsAccountView(false);
             setIsCollectionsView(true);
-            window.location.href = "/collections.html";
+            window.location.href = "/collections";
           },
           onSelectProduct: (p) => {
             setIsAccountView(false);
@@ -12753,7 +12753,7 @@ function _F() {
           onAddToCart: (p, shade) => handleAdd(p, shade, 1),
           onBuyNow: (p, shade) => {
             handleAdd(p, shade, 1);
-            window.location.href = "/cart.html";
+            window.location.href = "/cart";
           },
           currency
         })
@@ -13736,10 +13736,10 @@ function _F() {
                   ].map((cat) =>
                     v.jsxs("a", {
                       key: cat.id,
-                      href: `/collections.html?collection=${cat.query}`,
+                      href: `/collections?collection=${cat.query}`,
                       onClick: (e) => {
                         try { s(); } catch (err) { }
-                        window.location.href = `/collections.html?collection=${cat.query}`;
+                        window.location.href = `/collections?collection=${cat.query}`;
                       },
                       className: "flex flex-col items-center group cursor-pointer shrink-0 transition-transform active:scale-95 text-decoration-none",
                       style: {
@@ -13847,7 +13847,7 @@ function _F() {
                     id: "hero-explore-btn",
                     onClick: () => {
                       try { s(); } catch (e) { }
-                      window.location.href = "/collections.html";
+                      window.location.href = "/collections";
                     },
                     className: "hover:scale-105 active:scale-95 transition-all",
                     children: "Explore Now"
@@ -14088,11 +14088,11 @@ function _F() {
                       })
                     }),
                     v.jsx("a", {
-                      href: "/collections.html",
+                      href: "/collections",
                       onClick: (e) => {
                         e.preventDefault();
                         try { s(); } catch (err) { }
-                        window.location.href = "/collections.html";
+                        window.location.href = "/collections";
                       },
                       className: "plezzy-divider-btn",
                       children: "BROWSE ALL COLLECTIONS"

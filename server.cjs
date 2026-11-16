@@ -341,7 +341,30 @@ const server = http.createServer((req, res) => {
     }
   }
 
-  if (reqPath === '/') reqPath = '/index.html';
+  // Standard Clean URLs: 301 redirect index.html and *.html to clean paths
+  if (reqPath === "/index.html") {
+    const query = parsedUrl.search || "";
+    res.writeHead(301, { "Location": "/" + query });
+    res.end();
+    return;
+  }
+  if (reqPath.endsWith(".html") && !reqPath.startsWith("/assets/")) {
+    const clean = reqPath.slice(0, -5);
+    const query = parsedUrl.search || "";
+    res.writeHead(301, { "Location": (clean === "/index" ? "/" : clean) + query });
+    res.end();
+    return;
+  }
+
+  // Clean URL resolution
+  if (reqPath === "/") {
+    reqPath = "/index.html";
+  } else if (!path.extname(reqPath)) {
+    const potentialHtml = path.join(PUBLIC_DIR, reqPath + ".html");
+    if (fs.existsSync(potentialHtml) && fs.statSync(potentialHtml).isFile()) {
+      reqPath = reqPath + ".html";
+    }
+  }
 
   let filePath = path.normalize(path.join(PUBLIC_DIR, reqPath));
   if (!filePath.startsWith(PUBLIC_DIR)) {

@@ -1,4 +1,13 @@
-/collections    /collections.html    200
-/collections/   /collections.html    200
-/collections.html /collections.html  200
-/*              /index.html          200
+# Canonical 301 redirects for clean URLs
+/index.html        /                 301!
+/collections.html  /collections      301!
+/cart.html         /cart             301!
+/account.html      /account          301!
+
+# Rewrite clean URLs to internal HTML files
+/collections       /collections.html 200
+/cart              /cart.html        200
+/account           /account.html     200
+
+# Catch-all fallback
+/*                 /index.html       200
