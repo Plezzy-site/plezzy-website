@@ -7566,24 +7566,25 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
   const { cart, addToCart, removeFromCart, updateQuantity, totalItemsCount, totalAmountINR, formatPrice } = xi();
   const filterTabs = [
     "ALL",
-    "LUX",
-    "STANDARD",
-    "HIM",
     "HER",
+    "HIM",
     "LUBES",
-    "COMBO"
+    "COUPLES",
+    "DIGITAL GUIDES",
+    "LIFESTYLE"
   ];
 
   const [activeCategory, setActiveCategory] = G.useState(() => {
     try {
       const params = new URLSearchParams(window.location.search);
       const col = (params.get("collection") || "").toUpperCase();
-      if (col === "STANDARD") return "STANDARD";
-      if (col === "HIM" || col === "FOR HIM") return "HIM";
       if (col === "HER" || col === "FOR HER") return "HER";
+      if (col === "HIM" || col === "FOR HIM") return "HIM";
       if (col === "LUBES" || col === "LUBE" || col === "ELIXIRS") return "LUBES";
+      if (col === "COUPLES" || col === "COMBO" || col === "COMBOS" || col === "BUNDLES") return "COUPLES";
+      if (col === "GUIDES" || col === "DIGITAL GUIDES" || col === "CARDS") return "DIGITAL GUIDES";
+      if (col === "LIFESTYLE" || col === "ACCESSORIES" || col === "STANDARD") return "LIFESTYLE";
       if (col === "LUX" || col === "LUXE") return "LUX";
-      if (col === "COMBO" || col === "COMBOS" || col === "BUNDLES" || col === "SETS") return "COMBO";
       if (col === "ALL") return "ALL";
     } catch (e) { }
     return "ALL";
@@ -7593,12 +7594,13 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
     try {
       const params = new URLSearchParams(window.location.search);
       const col = (params.get("collection") || "").toUpperCase();
-      if (col === "STANDARD") setActiveCategory("STANDARD");
+      if (col === "HER" || col === "FOR HER") setActiveCategory("HER");
       else if (col === "HIM" || col === "FOR HIM") setActiveCategory("HIM");
-      else if (col === "HER" || col === "FOR HER") setActiveCategory("HER");
       else if (col === "LUBES" || col === "LUBE" || col === "ELIXIRS") setActiveCategory("LUBES");
+      else if (col === "COUPLES" || col === "COMBO" || col === "COMBOS" || col === "BUNDLES") setActiveCategory("COUPLES");
+      else if (col === "GUIDES" || col === "DIGITAL GUIDES" || col === "CARDS") setActiveCategory("DIGITAL GUIDES");
+      else if (col === "LIFESTYLE" || col === "ACCESSORIES" || col === "STANDARD") setActiveCategory("LIFESTYLE");
       else if (col === "LUX" || col === "LUXE") setActiveCategory("LUX");
-      else if (col === "COMBO" || col === "COMBOS" || col === "BUNDLES" || col === "SETS") setActiveCategory("COMBO");
       else if (col === "ALL") setActiveCategory("ALL");
     } catch (e) { }
   }, []);
@@ -7707,34 +7709,35 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
     const pCat = String(p.category || "").toUpperCase();
     const pid = String(p.id || "").toLowerCase();
 
-    if (c === "LUX" || c === "LUXE") {
-      return pCats.includes("LUX") || pCats.includes("LUXE") || pCat === "LUX" || pCat === "LUXE" ||
-        ['plz-lovers-suite', 'plz-ritual-set', 'plz-dual-wand', 'plz-velvet-solstice', 'plz-cherry-wand', 'plz-rose-petal'].includes(pid) ||
-        (p.priceINR || p.price || 0) >= 2800;
-    }
-    if (c === "STANDARD") {
-      return pCats.includes("STANDARD") || pCat === "STANDARD" ||
-        ['plz-pebble', 'plz-elixir', 'plz-suede-pouch', 'plz-cards-guide'].includes(pid) ||
-        (p.priceINR || p.price || 0) < 2800;
-    }
-    if (c === "HIM") {
-      return pCats.includes("HIM") || pCats.includes("FOR HIM") || pCat.includes("HIM") ||
-        ['plz-pebble', 'plz-elixir', 'plz-suede-pouch', 'plz-cards-guide', 'plz-lovers-suite', 'plz-ritual-set'].includes(pid);
-    }
-    if (c === "HER") {
+    if (c === "HER" || c === "FOR HER") {
       return pCats.includes("HER") || pCats.includes("FOR HER") || pCat.includes("HER") ||
         ['plz-dual-wand', 'plz-cherry-wand', 'plz-velvet-solstice', 'plz-rose-petal', 'plz-pebble', 'plz-elixir', 'plz-suede-pouch', 'plz-lovers-suite'].includes(pid);
     }
-    if (c === "LUBES") {
+    if (c === "HIM" || c === "FOR HIM") {
+      return pCats.includes("HIM") || pCats.includes("FOR HIM") || pCat.includes("HIM") ||
+        ['plz-pebble', 'plz-elixir', 'plz-suede-pouch', 'plz-cards-guide', 'plz-lovers-suite', 'plz-ritual-set'].includes(pid);
+    }
+    if (c === "LUBES" || c === "LUBE" || c === "ELIXIRS") {
       return pCats.includes("LUBES") || pCats.includes("ELIXIRS & LUBES") || pCats.includes("LUBE") ||
         pCat.includes("LUBE") || pCat.includes("ELIXIR") ||
         ['plz-elixir', 'plz-ritual-set', 'plz-lovers-suite'].includes(pid);
     }
-    if (c === "COMBO" || c === "COMBOS") {
-      return pCats.includes("COMBO") || pCats.includes("COMBOS") || pCats.includes("BUNDLE") || pCats.includes("BUNDLES") ||
+    if (c === "COUPLES" || c === "COMBO" || c === "COMBOS") {
+      return pCats.includes("COUPLES") || pCats.includes("COMBO") || pCats.includes("COMBOS") || pCats.includes("BUNDLE") || pCats.includes("BUNDLES") ||
         pCats.includes("SET") || pCats.includes("SETS") || pCat.includes("COMBO") || pCat.includes("BUNDLE") || pCat.includes("SET") ||
         ['plz-lovers-suite', 'plz-ritual-set'].includes(pid) ||
         String(p.name || "").toLowerCase().includes("suite") || String(p.name || "").toLowerCase().includes("set") || String(p.name || "").toLowerCase().includes("bundle");
+    }
+    if (c === "DIGITAL GUIDES" || c === "GUIDES" || c === "CARDS") {
+      return pCats.includes("DIGITAL GUIDES") || pCat.includes("GUIDE") || pCat.includes("DIGITAL") || pid.includes("cards") || pid.includes("guide");
+    }
+    if (c === "LIFESTYLE" || c === "ACCESSORIES" || c === "STANDARD") {
+      return pCats.includes("ACCESSORIES & CARE") || pCat.includes("ACCESSOR") || pid.includes("pouch") || pCats.includes("STANDARD");
+    }
+    if (c === "LUX" || c === "LUXE") {
+      return pCats.includes("LUX") || pCats.includes("LUXE") || pCat === "LUX" || pCat === "LUXE" ||
+        ['plz-lovers-suite', 'plz-ritual-set', 'plz-dual-wand', 'plz-velvet-solstice', 'plz-cherry-wand', 'plz-rose-petal'].includes(pid) ||
+        (p.priceINR || p.price || 0) >= 2800;
     }
     return pCats.includes(c) || pCat === c;
   };
@@ -7818,6 +7821,80 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
             children: "Tactile sensory stones, dual-resonance wand sculptures, and botanical hydration formulations. Engineered with body-safe liquid silicone for quiet everyday pleasure."
           })
         ]
+      }),
+
+      // ── CIRCULAR CATEGORIES SECTION (COLLECTION PAGE STORY ROW) ───────
+      v.jsx("div", {
+        className: "w-full mb-6 select-none",
+        children: v.jsx("div", {
+          className: "overflow-x-auto no-scrollbar py-2 w-full",
+          style: { WebkitOverflowScrolling: "touch", msOverflowStyle: "none", scrollbarWidth: "none" },
+          children: v.jsx("div", {
+            className: "flex items-center gap-4 sm:gap-6 lg:gap-8 justify-start sm:justify-center w-max sm:w-full mx-auto px-2",
+            children: [
+              { id: "all", name: "All", query: "ALL", image: "/assets/products/pocket-pebble-main.jpg" },
+              { id: "her", name: "Her", query: "HER", image: "/assets/products/carmine-resonance-wand-main.jpg" },
+              { id: "him", name: "Him", query: "HIM", image: "/assets/products/pocket-pebble-main.jpg" },
+              { id: "lubes", name: "Lubes", query: "LUBES", image: "/assets/products/nectar-elixir-main.jpg" },
+              { id: "couples", name: "Couples", query: "COUPLES", image: "/assets/suede-panel-contents.jpg" },
+              { id: "digital-guides", name: "Digital Guides", query: "DIGITAL GUIDES", image: "/assets/category-digital-guides.svg" },
+              { id: "lifestyle", name: "Lifestyle", query: "LIFESTYLE", image: "/assets/suede-pouch-banner.jpg" }
+            ].map(cat => {
+              const isActive = activeCategory === cat.query;
+              return v.jsxs("button", {
+                key: cat.id,
+                type: "button",
+                onClick: () => {
+                  try { s(); } catch (e) { }
+                  setActiveCategory(cat.query);
+                  try {
+                    const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + (cat.query === "ALL" ? "" : "?collection=" + cat.query.toLowerCase());
+                    window.history.replaceState({ collection: cat.query.toLowerCase() }, "", newUrl);
+                  } catch (e) { }
+                },
+                className: "flex flex-col items-center group cursor-pointer shrink-0 transition-transform active:scale-95",
+                children: [
+                  v.jsx("div", {
+                    className: "rounded-full transition-all duration-300 " +
+                      (isActive
+                        ? "scale-105 shadow-[0_0_24px_rgba(248,39,147,0.7)]"
+                        : "group-hover:scale-105 group-hover:shadow-[0_0_18px_rgba(248,39,147,0.45)]"),
+                    style: {
+                      width: "72px",
+                      height: "72px",
+                      minWidth: "72px",
+                      minHeight: "72px",
+                      padding: "2.5px",
+                      background: isActive
+                        ? "linear-gradient(135deg, #ff4fa7 0%, #f82793 50%, #c40062 100%)"
+                        : "linear-gradient(135deg, rgba(248,39,147,0.8) 0%, rgba(255,79,167,0.6) 100%)",
+                      boxShadow: isActive ? "0 0 20px rgba(248, 39, 147, 0.6)" : "0 4px 14px rgba(248, 39, 147, 0.25)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      borderRadius: "50%"
+                    },
+                    children: v.jsx("div", {
+                      className: "w-full h-full rounded-full overflow-hidden bg-[#16131c] flex items-center justify-center p-[2px]",
+                      children: v.jsx("img", {
+                        src: cat.image,
+                        alt: cat.name,
+                        className: "w-full h-full rounded-full object-cover transition-transform duration-300 group-hover:scale-110",
+                        style: { objectPosition: "center" }
+                      })
+                    })
+                  }),
+                  v.jsx("span", {
+                    className: "mt-2 text-xs sm:text-[12.5px] transition-colors duration-200 text-center tracking-tight " +
+                      (isActive ? "text-[#f82793] font-extrabold" : "text-white/80 font-bold group-hover:text-[#f82793]"),
+                    style: { fontFamily: "'Plus Jakarta Sans', -apple-system, sans-serif" },
+                    children: cat.name
+                  })
+                ]
+              });
+            })
+          })
+        })
       }),
 
       // ── COMPACT FROSTED CAPSULE CATEGORY BAR (DYNAMIC HIDE/SHOW ON SCROLL) ───────────
@@ -13737,6 +13814,86 @@ function _F() {
                 })
 
               ]
+            }),
+
+            // ══════════════════════════════════════════════════════════════
+            // SECTION 1.2: CIRCULAR STORY-STYLE CATEGORIES ROW (MATCHING REFERENCE)
+            // ══════════════════════════════════════════════════════════════
+            v.jsx("section", {
+              id: "plezzy-circular-categories-row",
+              className: "w-full py-5 sm:py-7 select-none border-b border-white/10 relative z-20",
+              style: {
+                background: "linear-gradient(180deg, #131019 0%, #0c0a10 100%)",
+                boxShadow: "0 8px 30px rgba(0, 0, 0, 0.5)"
+              },
+              children: v.jsx("div", {
+                className: "max-w-6xl mx-auto px-4 sm:px-6 md:px-8",
+                children: v.jsx("div", {
+                  className: "flex items-center gap-5 sm:gap-8 lg:gap-11 overflow-x-auto scrollbar-none py-2 justify-start sm:justify-center no-scrollbar",
+                  style: {
+                    WebkitOverflowScrolling: "touch",
+                    msOverflowStyle: "none",
+                    scrollbarWidth: "none"
+                  },
+                  children: [
+                    { id: "her", name: "Her", query: "her", image: "/assets/products/carmine-resonance-wand-main.jpg" },
+                    { id: "him", name: "Him", query: "him", image: "/assets/products/pocket-pebble-main.jpg" },
+                    { id: "lubes", name: "Lubes", query: "lubes", image: "/assets/products/nectar-elixir-main.jpg" },
+                    { id: "couples", name: "Couples", query: "couples", image: "/assets/suede-panel-contents.jpg" },
+                    { id: "digital-guides", name: "Digital Guides", query: "guides", image: "/assets/category-digital-guides.svg" },
+                    { id: "lifestyle", name: "Lifestyle", query: "lifestyle", image: "/assets/suede-pouch-banner.jpg" }
+                  ].map((cat) =>
+                    v.jsxs("a", {
+                      key: cat.id,
+                      href: `/collections.html?collection=${cat.query}`,
+                      onClick: (e) => {
+                        try { s(); } catch (err) { }
+                        window.location.href = `/collections.html?collection=${cat.query}`;
+                      },
+                      className: "flex flex-col items-center group cursor-pointer shrink-0 transition-transform active:scale-95 text-decoration-none",
+                      style: {
+                        textDecoration: "none"
+                      },
+                      children: [
+                        // Circle Outer Ring (Pink gradient border matching user image)
+                        v.jsx("div", {
+                          className: "rounded-full p-[2.5px] transition-all duration-300 group-hover:scale-108 group-hover:shadow-[0_0_22px_rgba(248,39,147,0.6)]",
+                          style: {
+                            width: "76px",
+                            height: "76px",
+                            minWidth: "76px",
+                            minHeight: "76px",
+                            background: "linear-gradient(135deg, #ff4fa7 0%, #f82793 50%, #d6006f 100%)",
+                            boxShadow: "0 4px 16px rgba(248, 39, 147, 0.35)",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center"
+                          },
+                          children: v.jsx("div", {
+                            className: "w-full h-full rounded-full overflow-hidden bg-[#18151f] p-[2px] flex items-center justify-center",
+                            children: v.jsx("img", {
+                              src: cat.image,
+                              alt: cat.name,
+                              className: "w-full h-full rounded-full object-cover transition-transform duration-300 group-hover:scale-110",
+                              style: {
+                                objectPosition: "center"
+                              }
+                            })
+                          })
+                        }),
+                        // Label Underneath
+                        v.jsx("span", {
+                          className: "mt-2.5 text-xs sm:text-[13px] font-bold text-white transition-colors duration-200 group-hover:text-[#f82793] text-center tracking-tight",
+                          style: {
+                            fontFamily: "'Plus Jakarta Sans', -apple-system, sans-serif"
+                          },
+                          children: cat.name
+                        })
+                      ]
+                    })
+                  )
+                })
+              })
             }),
 
             // ══════════════════════════════════════════════════════════════

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="pinkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff44a5"/>
+      <stop offset="50%" stop-color="#f82793"/>
+      <stop offset="100%" stop-color="#d6006f"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#pinkGrad)"/>
+  <!-- Left Sparkle -->
+  <path d="M38 95 Q38 84 43 79 Q38 74 38 63 Q38 74 33 79 Q38 84 38 95 Z" fill="#fff59d"/>
+  <!-- Right Sparkle -->
+  <path d="M162 97 Q162 87 166 83 Q162 79 162 69 Q162 79 158 83 Q162 87 162 97 Z" fill="#fff59d"/>
+  <!-- Typography matching reference -->
+  <text x="100" y="96" fill="#ffffff" font-family="'Plus Jakarta Sans', 'Arial Black', -apple-system, sans-serif" font-weight="900" font-size="29" text-anchor="middle" letter-spacing="-0.5">Digital</text>
+  <text x="100" y="128" fill="#ffffff" font-family="'Plus Jakarta Sans', 'Arial Black', -apple-system, sans-serif" font-weight="900" font-size="29" text-anchor="middle" letter-spacing="-0.5">guides</text>
+</svg>
