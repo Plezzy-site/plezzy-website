@@ -11449,6 +11449,42 @@ function _F() {
   const [activeRecycleTab, setActiveRecycleTab] = G.useState(0); // 0: Benefits, 1: Application, 2: Specs
   const [qty, setQty] = G.useState(1);
   const [added, setAdded] = G.useState(false);
+
+  // Wishlist state for PDP — persisted in localStorage
+  const [wishlisted, setWishlisted] = G.useState(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem("plezzy_user_wishlist") || "[]");
+      return saved.some(item => item.id === (cur && cur.id));
+    } catch (e) { return false; }
+  });
+  const handleToggleWishlist = () => {
+    try { s(); } catch (err) { }
+    if (!cur) return;
+    try {
+      const saved = JSON.parse(localStorage.getItem("plezzy_user_wishlist") || "[]");
+      const isIn = saved.some(item => item.id === cur.id);
+      let updated;
+      if (isIn) {
+        updated = saved.filter(item => item.id !== cur.id);
+        setWishlisted(false);
+      } else {
+        const itemImg = (cur.images && cur.images[0]?.src) || cur.image || "";
+        updated = [...saved, {
+          id: cur.id,
+          name: cur.name,
+          color: selectedColor || (cur.shades && cur.shades[0]?.name) || "default",
+          priceINR: cur.priceINR || 2499,
+          originalINR: cur.originalPriceINR || Math.round((cur.priceINR || 2499) * 1.4),
+          rating: cur.rating || 4.9,
+          reviewsCount: cur.reviewsCount || 348,
+          image: itemImg
+        }];
+        setWishlisted(true);
+      }
+      localStorage.setItem("plezzy_user_wishlist", JSON.stringify(updated));
+    } catch (e) { }
+  };
+
   const [activeReviewFilter, setActiveReviewFilter] = G.useState("All");
   const [activeHotspot, setActiveHotspot] = G.useState(0);
   const [activeMadeWith, setActiveMadeWith] = G.useState(0);
@@ -13363,6 +13399,31 @@ function _F() {
                                     : "bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 cursor-pointer shadow-md hover:scale-[1.01] active:scale-[0.99]"),
                                 style: { fontFamily: "Swiss, -apple-system, sans-serif" },
                                 children: "⚡ INSTANT CHECKOUT • BUY NOW"
+                              }),
+
+                              // Save to Wishlist Button
+                              v.jsxs("button", {
+                                type: "button",
+                                onClick: handleToggleWishlist,
+                                className: "w-full py-3 px-6 rounded-full font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2.5 cursor-pointer active:scale-[0.98]",
+                                style: {
+                                  fontFamily: "Swiss, -apple-system, sans-serif",
+                                  backgroundColor: wishlisted ? "rgba(248, 39, 147, 0.12)" : "transparent",
+                                  border: wishlisted ? "1px solid rgba(248, 39, 147, 0.5)" : "1px solid rgba(255,255,255,0.18)",
+                                  color: wishlisted ? "#f82793" : "rgba(255,255,255,0.75)"
+                                },
+                                children: [
+                                  v.jsx("span", {
+                                    style: {
+                                      fontSize: "16px",
+                                      transition: "transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)",
+                                      transform: wishlisted ? "scale(1.3)" : "scale(1)",
+                                      display: "inline-block"
+                                    },
+                                    children: wishlisted ? "♥" : "♡"
+                                  }),
+                                  wishlisted ? "SAVED TO WISHLIST" : "SAVE TO WISHLIST"
+                                ]
                               }),
 
                               // Discreet Shipping & Guarantee Notice
