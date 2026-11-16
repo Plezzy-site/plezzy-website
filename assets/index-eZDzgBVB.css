@@ -18,3 +18,22 @@
 }
 .w-13 { width: 3.25rem !important; }
 .h-13 { height: 3.25rem !important; }
+
+
+/* Circular Categories Row Center Alignment Overrides */
+#plezzy-circular-categories-row,
+#plezzy-circular-categories-row > div,
+#plezzy-circular-categories-row > div > div {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+@media (min-width: 640px) {
+  .sm\:justify-center { justify-content: center !important; }
+}
+@media (min-width: 1024px) {
+  .lg\:justify-center { justify-content: center !important; }
+}

@@ -7823,14 +7823,37 @@ function PlezzyCollectionsPage({ prods, onSelectProduct, onBackToHome, onAddToCa
         ]
       }),
 
-      // ── CIRCULAR CATEGORIES SECTION (COLLECTION PAGE STORY ROW) ───────
+      // ── CIRCULAR CATEGORIES SECTION (COLLECTION PAGE STORY ROW - CENTER ALIGNED) ──
       v.jsx("div", {
-        className: "w-full mb-6 select-none",
+        className: "w-full mb-6 select-none flex justify-center items-center text-center",
+        style: {
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+          margin: "0 auto"
+        },
         children: v.jsx("div", {
-          className: "overflow-x-auto no-scrollbar py-2 w-full",
-          style: { WebkitOverflowScrolling: "touch", msOverflowStyle: "none", scrollbarWidth: "none" },
+          className: "overflow-x-auto no-scrollbar py-2 w-full flex justify-center items-center",
+          style: {
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+            margin: "0 auto",
+            WebkitOverflowScrolling: "touch",
+            msOverflowStyle: "none",
+            scrollbarWidth: "none"
+          },
           children: v.jsx("div", {
-            className: "flex items-center gap-4 sm:gap-6 lg:gap-8 justify-start sm:justify-center w-max sm:w-full mx-auto px-2",
+            className: "flex items-center justify-center gap-4 sm:gap-6 lg:gap-8 mx-auto px-2",
+            style: {
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              margin: "0 auto",
+              width: "auto"
+            },
             children: [
               { id: "all", name: "All", query: "ALL", image: "/assets/products/pocket-pebble-main.jpg" },
               { id: "her", name: "Her", query: "HER", image: "/assets/products/carmine-resonance-wand-main.jpg" },
@@ -13817,20 +13840,38 @@ function _F() {
             }),
 
             // ══════════════════════════════════════════════════════════════
-            // SECTION 1.2: CIRCULAR STORY-STYLE CATEGORIES ROW (MATCHING REFERENCE)
+            // SECTION 1.2: CIRCULAR STORY-STYLE CATEGORIES ROW (CENTER ALIGNED)
             // ══════════════════════════════════════════════════════════════
             v.jsx("section", {
               id: "plezzy-circular-categories-row",
-              className: "w-full py-5 sm:py-7 select-none border-b border-white/10 relative z-20",
+              className: "w-full py-5 sm:py-7 select-none border-b border-white/10 relative z-20 flex justify-center items-center text-center",
               style: {
                 background: "linear-gradient(180deg, #131019 0%, #0c0a10 100%)",
-                boxShadow: "0 8px 30px rgba(0, 0, 0, 0.5)"
+                boxShadow: "0 8px 30px rgba(0, 0, 0, 0.5)",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "100%",
+                margin: "0 auto"
               },
               children: v.jsx("div", {
-                className: "max-w-6xl mx-auto px-4 sm:px-6 md:px-8",
+                className: "w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 flex justify-center items-center",
+                style: {
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  margin: "0 auto",
+                  width: "100%"
+                },
                 children: v.jsx("div", {
-                  className: "flex items-center gap-5 sm:gap-8 lg:gap-11 overflow-x-auto scrollbar-none py-2 justify-start sm:justify-center no-scrollbar",
+                  className: "flex items-center justify-center gap-5 sm:gap-8 lg:gap-11 overflow-x-auto scrollbar-none py-2 no-scrollbar mx-auto",
                   style: {
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    margin: "0 auto",
+                    width: "auto",
+                    maxWidth: "100%",
                     WebkitOverflowScrolling: "touch",
                     msOverflowStyle: "none",
                     scrollbarWidth: "none"
