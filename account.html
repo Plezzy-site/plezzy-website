@@ -4332,25 +4332,25 @@
 
         <!-- Network Mode Tabs -->
         <div style="display: flex; gap: 6px; background: rgba(255,255,255,0.06); padding: 4px; border-radius: 12px; margin-bottom: 12px;">
-          <button id="tab-cloud-btn" onclick="selectMobileMode('cloud')" style="flex: 1; padding: 6px 8px; font-size: 11px; font-weight: 700; border-radius: 8px; border: none; cursor: pointer; background: #ffffff; color: #141414; transition: all 0.2s;">🌐 Cloud Link (4G/5G/Anywhere)</button>
-          <button id="tab-lan-btn" onclick="selectMobileMode('lan')" style="flex: 1; padding: 6px 8px; font-size: 11px; font-weight: 700; border-radius: 8px; border: none; cursor: pointer; background: transparent; color: rgba(255,255,255,0.7); transition: all 0.2s;">📶 Same Wi-Fi</button>
+          <button id="tab-cloud-btn" onclick="selectMobileMode('cloud')" style="flex: 1; padding: 6px 8px; font-size: 11px; font-weight: 700; border-radius: 8px; border: none; cursor: pointer; background: transparent; color: rgba(255,255,255,0.7); transition: all 0.2s;">🌐 Cloud Link (4G/5G/Anywhere)</button>
+          <button id="tab-lan-btn" onclick="selectMobileMode('lan')" style="flex: 1; padding: 6px 8px; font-size: 11px; font-weight: 700; border-radius: 8px; border: none; cursor: pointer; background: #ffffff; color: #141414; transition: all 0.2s;">📶 Same Wi-Fi</button>
         </div>
 
         <p id="mobile-help-text" style="font-size: 11.5px; color: rgba(255,255,255,0.75); line-height: 1.4; margin: 0 0 12px 0;">
-          Scan with your phone camera (works on ANY mobile phone, 4G, 5G, or Wi-Fi):
+          Scan with your phone camera (must be connected to same Wi-Fi):
         </p>
 
         <!-- QR Code Frame -->
         <div style="background: #ffffff; padding: 12px; border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; box-shadow: inset 0 2px 8px rgba(0,0,0,0.15);">
-          <img id="mobile-qr-img" src="/api/qr.svg?url=https%3A%2F%2Ftribes-functions-nation-copyrights.trycloudflare.com%2F" alt="Plezzy Mobile QR Code" style="width: 180px; height: 180px; display: block; border-radius: 8px;" />
+          <img id="mobile-qr-img" src="/api/qr.svg?url=http%3A%2F%2F192.168.1.5%3A3000%2F" alt="Plezzy Mobile QR Code" style="width: 180px; height: 180px; display: block; border-radius: 8px;" />
         </div>
 
         <!-- Copyable Address Pill -->
         <div style="background: rgba(255,255,255,0.08); border-radius: 12px; padding: 8px 10px; display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px;">
-          <span id="mobile-url-text" style="font-family: monospace; font-size: 10.5px; color: #ffffff; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; user-select: all;">https://tribes-functions-nation-copyrights.trycloudflare.com/</span>
+          <span id="mobile-url-text" style="font-family: monospace; font-size: 10.5px; color: #ffffff; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; user-select: all;">http://192.168.1.5:3000/</span>
           <button id="copy-mobile-btn" onclick="copyMobileUrl()" style="background: #ff2a85; color: #ffffff; border: none; border-radius: 8px; padding: 6px 12px; font-size: 10.5px; font-weight: 800; text-transform: uppercase; cursor: pointer; shrink: 0; transition: background-color 0.2s;">Copy</button>
         </div>
-        <p id="mobile-footer-tip" style="font-size: 10px; color: #22c55e; text-align: center; margin: 0; font-weight: 600;">✓ Connected via Cloud HTTPS tunnel (accessible anywhere globally)</p>
+        <p id="mobile-footer-tip" style="font-size: 10px; color: #22c55e; text-align: center; margin: 0; font-weight: 600;">✓ Connected via Same Wi-Fi (http://192.168.1.5:3000/)</p>
       </div>
     </div>
 
@@ -4360,9 +4360,9 @@
         var widget = document.getElementById('mobile-connect-widget');
         var pill = document.getElementById('mobile-connect-pill');
         var modal = document.getElementById('mobile-connect-modal');
-        var lanUrl = 'http://192.168.1.6:3000/';
+        var lanUrl = 'http://192.168.1.5:3000/';
         var cloudUrl = 'https://tribes-functions-nation-copyrights.trycloudflare.com/';
-        var activeMode = 'cloud';
+        var activeMode = 'lan';
 
         function checkScreen() {
           var isLocal = window.location.hostname === 'localhost' || 

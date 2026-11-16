@@ -9,7 +9,11 @@ let QRCode;
 try {
   QRCode = require('qrcode');
 } catch (e) {
-  console.log('QRCode package optional');
+  try {
+    QRCode = require(path.join(__dirname, 'node_modules', 'qrcode'));
+  } catch (err) {
+    console.log('QRCode package optional');
+  }
 }
 
 const PORT = 3000;
@@ -17,19 +21,26 @@ const PUBLIC_DIR = __dirname;
 
 // Smart LAN IP discovery (filters out Tailscale, Docker, WSL, virtual adapters)
 function getLanIp() {
+  try {
+    const { execSync } = require('child_process');
+    const out = execSync('ipconfig getifaddr en0 2>/dev/null || ipconfig getifaddr en1 2>/dev/null', { timeout: 1000 }).toString().trim();
+    if (out && /^\d+\.\d+\.\d+\.\d+$/.test(out)) return out;
+  } catch (e) {}
+
   const interfaces = os.networkInterfaces();
   const candidates = [];
 
   for (const name of Object.keys(interfaces)) {
-    const isVirtual = /tailscale|docker|vethernet|vbox|vmware|hyper-v|wsl|tap|tun|loopback/i.test(name);
+    const isVirtual = /tailscale|docker|vethernet|vbox|vmware|hyper-v|wsl|tap|tun|loopback|bridge|p2p|awdl|llw|utun/i.test(name);
     for (const iface of interfaces[name]) {
       if (iface.family === 'IPv4' && !iface.internal) {
         const ip = iface.address;
         const isCgnat = /^100\.(6[4-9]|[7-9]\d|1[01]\d|12[0-7])\./.test(ip) || ip.startsWith('100.');
         let score = 0;
 
-        if (/wi-?fi|wireless|wlan/i.test(name)) score += 50;
-        else if (/ethernet|lan/i.test(name)) score += 40;
+        if (/^en0$/i.test(name)) score += 60;
+        else if (/wi-?fi|wireless|wlan/i.test(name)) score += 50;
+        else if (/ethernet|lan|en1/i.test(name)) score += 40;
 
         if (ip.startsWith('192.168.')) score += 30;
         else if (ip.startsWith('10.')) score += 20;
@@ -277,17 +288,19 @@ const server = http.createServer((req, res) => {
 
   // Network info endpoint for mobile discovery
   if (reqPath === '/__plezzy_info') {
+    const curLanIp = getLanIp();
+    const curLanUrl = `http://${curLanIp}:${PORT}/`;
     res.writeHead(200, {
       'Content-Type': 'application/json',
       'Cache-Control': 'no-store, no-cache, must-revalidate',
       'Access-Control-Allow-Origin': '*'
     });
     res.end(JSON.stringify({
-      hostIp: lanIp,
+      hostIp: curLanIp,
       port: PORT,
-      lanUrl: lanMobileUrl,
+      lanUrl: curLanUrl,
       tunnelUrl: tunnelUrl,
-      mobileUrl: lanMobileUrl
+      mobileUrl: curLanUrl
     }));
     return;
   }
@@ -295,8 +308,10 @@ const server = http.createServer((req, res) => {
   // QR Code SVG endpoint for instantaneous mobile camera scanning
   if (reqPath === '/api/qr.svg') {
     if (QRCode) {
+      const curLanIp = getLanIp();
+      const curLanUrl = `http://${curLanIp}:${PORT}/`;
       const customUrl = parsedUrl.searchParams.get('url');
-      const targetUrl = customUrl ? decodeURIComponent(customUrl) : (tunnelUrl || lanMobileUrl);
+      const targetUrl = customUrl ? decodeURIComponent(customUrl) : (curLanUrl || tunnelUrl);
 
       QRCode.toString(targetUrl, {
         type: 'svg',
