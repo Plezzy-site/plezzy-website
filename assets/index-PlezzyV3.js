@@ -9620,8 +9620,7 @@ function PlezzyAccountPage({ onBackToHome, onNavigateToCollections, onSelectProd
       lastName: "Singh",
       email: "khushwant@example.com",
       phone: "9876543210",
-      gender: "Male",
-      dob: "1998-05-14"
+      gender: "Male"
     };
   });
   const [isEditingProfile, setIsEditingProfile] = G.useState(false);
@@ -10324,46 +10323,28 @@ function PlezzyAccountPage({ onBackToHome, onNavigateToCollections, onSelectProd
                             ]
                           }),
 
-                          // Gender & Birthday Row
+                          // Gender Row
                           v.jsxs("div", {
-                            className: "grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2",
+                            className: "space-y-2 pt-2",
                             children: [
-                              v.jsxs("div", {
-                                className: "space-y-2",
-                                children: [
-                                  v.jsx("label", { className: "text-xs font-bold text-[#333333]", children: "Your Gender" }),
-                                  v.jsx("div", {
-                                    className: "flex flex-wrap gap-2",
-                                    children: ["Male", "Female", "Non-binary", "Other"].map((g) =>
-                                      v.jsx("button", {
-                                        key: g,
-                                        type: "button",
-                                        disabled: !isEditingProfile,
-                                        onClick: () => setProfileForm({ ...profileForm, gender: g }),
-                                        style: {
-                                          borderColor: profileForm.gender === g ? "#f82793" : "rgba(0,0,0,0.15)",
-                                          backgroundColor: profileForm.gender === g ? "#fff0f7" : "transparent",
-                                          color: profileForm.gender === g ? "#f82793" : "#444444"
-                                        },
-                                        className: `px-3.5 py-1.5 text-xs font-bold rounded-lg border transition-all ${isEditingProfile ? "cursor-pointer" : "opacity-90"}` ,
-                                        children: g
-                                      })
-                                    )
-                                  })
-                                ]
-                              }),
-                              v.jsxs("div", {
-                                className: "space-y-1.5",
-                                children: [
-                                  v.jsx("label", { className: "text-xs font-bold text-[#333333]", children: "Date of Birth" }),
-                                  v.jsx("input", {
-                                    type: "date",
+                              v.jsx("label", { className: "text-xs font-bold text-[#333333]", children: "Your Gender" }),
+                              v.jsx("div", {
+                                className: "flex flex-wrap gap-2",
+                                children: ["Male", "Female", "Non-binary", "Other"].map((g) =>
+                                  v.jsx("button", {
+                                    key: g,
+                                    type: "button",
                                     disabled: !isEditingProfile,
-                                    value: profileForm.dob,
-                                    onChange: (e) => setProfileForm({ ...profileForm, dob: e.target.value }),
-                                    className: `w-full px-3.5 py-2.5 text-xs font-semibold rounded-xl border transition-colors outline-none ${isEditingProfile ? "bg-white border-[#f82793] focus:ring-2 focus:ring-[#f82793]/20" : "bg-black/[0.02] border-black/10 text-[#444444]"}`
+                                    onClick: () => setProfileForm({ ...profileForm, gender: g }),
+                                    style: {
+                                      borderColor: profileForm.gender === g ? "#f82793" : "rgba(0,0,0,0.15)",
+                                      backgroundColor: profileForm.gender === g ? "#fff0f7" : "transparent",
+                                      color: profileForm.gender === g ? "#f82793" : "#444444"
+                                    },
+                                    className: `px-3.5 py-1.5 text-xs font-bold rounded-lg border transition-all ${isEditingProfile ? "cursor-pointer" : "opacity-90"}`,
+                                    children: g
                                   })
-                                ]
+                                )
                               })
                             ]
                           }),
@@ -10380,49 +10361,6 @@ function PlezzyAccountPage({ onBackToHome, onNavigateToCollections, onSelectProd
                               className: "px-6 py-2.5 rounded-xl text-white font-extrabold text-xs uppercase tracking-wider transition-all cursor-pointer hover:bg-[#d41c7b] active:scale-95",
                               children: "Save Changes"
                             })
-                          })
-                        ]
-                      })
-                    ]
-                  }),
-
-                  // Discreet Shopping & Privacy Settings Card
-                  v.jsxs("div", {
-                    className: "p-6 sm:p-7 rounded-2xl bg-white border border-black/10 shadow-sm space-y-4",
-                    children: [
-                      v.jsxs("div", {
-                        className: "pb-3 border-b border-black/10",
-                        children: [
-                          v.jsx("h3", { className: "font-extrabold text-base text-[#111111]", children: "Discreet Preferences" }),
-                          v.jsx("p", { className: "text-xs text-[#777777]", children: "Configure how your parcels, statements, and alerts are presented" })
-                        ]
-                      }),
-                      v.jsxs("div", {
-                        className: "divide-y divide-black/5 text-xs",
-                        children: [
-                          v.jsxs("div", {
-                            className: "py-3 flex items-center justify-between gap-4",
-                            children: [
-                              v.jsxs("div", {
-                                children: [
-                                  v.jsx("p", { className: "font-bold text-[#111111]", children: "Guaranteed Plain Unbranded Packaging" }),
-                                  v.jsx("p", { className: "text-[#666666] text-[11px]", children: "Every parcel sent in 100% unmarked outer box with zero logos" })
-                                ]
-                              }),
-                              v.jsx("span", { className: "px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 font-extrabold text-[11px]", children: "ACTIVE" })
-                            ]
-                          }),
-                          v.jsxs("div", {
-                            className: "py-3 flex items-center justify-between gap-4",
-                            children: [
-                              v.jsxs("div", {
-                                children: [
-                                  v.jsx("p", { className: "font-bold text-[#111111]", children: "Masked Billing Statement" }),
-                                  v.jsx("p", { className: "text-[#666666] text-[11px]", children: "Charges appear strictly as 'PLZ Digital Tech' on UPI/Card statements" })
-                                ]
-                              }),
-                              v.jsx("span", { className: "px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 font-extrabold text-[11px]", children: "ACTIVE" })
-                            ]
                           })
                         ]
                       })
