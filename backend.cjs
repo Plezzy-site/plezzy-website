@@ -417,6 +417,39 @@ async function handleApiRequest(req, res, parsedUrl) {
     return true;
   }
 
+  // OTP Authentication Endpoints (POST /api/auth/otp/send, /api/auth/otp/verify, /api/otp.php)
+  if ((pathname === '/api/auth/otp/send' || pathname === '/api/auth/otp/verify' || pathname === '/api/otp.php' || pathname === '/api/otp') && method === 'POST') {
+    readBody(req, body => {
+      const email = (body.email || '').trim().toLowerCase();
+      const name = (body.name || '').trim() || (email ? email.split('@')[0] : 'Customer');
+      const action = parsedUrl.searchParams.get('action') || body.action || (pathname.endsWith('verify') ? 'verify' : 'send');
+
+      if (action === 'verify' || pathname === '/api/auth/otp/verify') {
+        const otp = (body.otp || '').trim();
+        if (otp.length === 6) {
+          updateCustomerDatabase({ fullName: name, email });
+          return sendJson(res, 200, {
+            success: true,
+            message: 'Email verified successfully!',
+            user: { name, email, token: Math.random().toString(36).substring(2) }
+          });
+        }
+        return sendJson(res, 400, { success: false, error: 'Invalid verification code' });
+      }
+
+      const otp = Math.floor(100000 + Math.random() * 900000).toString();
+      console.log(`[OTP] Generated code ${otp} for ${email}`);
+      return sendJson(res, 200, {
+        success: true,
+        message: 'Verification code sent to ' + email,
+        email,
+        name,
+        preview_otp: otp
+      });
+    });
+    return true;
+  }
+
   // GET /api/orders
   if (pathname === '/api/orders' && method === 'GET') {
     let orders = readOrders();

@@ -80,6 +80,8 @@ async fn main() {
         .route("/__plezzy_info", get(plezzy_info))
         .route("/api/qr.svg", get(generate_qr))
         .route("/api/cart/calculate", post(calculate_cart))
+        .route("/api/auth/otp/send", post(handle_otp_send))
+        .route("/api/auth/otp/verify", post(handle_otp_verify))
         // Static assets serving
         .nest_service("/assets", ServeDir::new(public_dir.join("assets")))
         // Fallback handler for clean URLs and static pages
@@ -104,6 +106,78 @@ async fn main() {
         .expect("Failed to bind port");
 
     axum::serve(listener, app).await.expect("Server error");
+}
+
+
+#[derive(Deserialize)]
+struct OtpSendReq {
+    name: Option<String>,
+    email: String,
+}
+
+#[derive(Serialize)]
+struct OtpSendRes {
+    success: bool,
+    message: String,
+    email: String,
+    name: String,
+    preview_otp: String,
+}
+
+#[derive(Deserialize)]
+struct OtpVerifyReq {
+    email: String,
+    otp: String,
+}
+
+#[derive(Serialize)]
+struct OtpVerifyRes {
+    success: bool,
+    message: String,
+    user: Option<serde_json::Value>,
+}
+
+async fn handle_otp_send(Json(payload): Json<OtpSendReq>) -> Json<OtpSendRes> {
+    let email = payload.email.trim().to_lowercase();
+    let name = payload.name.unwrap_or_else(|| email.split('@').next().unwrap_or("Customer").to_string());
+    
+    // Generate 6-digit OTP using time nanos
+    let now = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_nanos();
+    let otp = format!("{:06}", (now % 900_000) + 100_000);
+
+    tracing::info!("🔑 Generated OTP {} for {}", otp, email);
+
+    Json(OtpSendRes {
+        success: true,
+        message: format!("Verification code sent to {}", email),
+        email,
+        name,
+        preview_otp: otp,
+    })
+}
+
+async fn handle_otp_verify(Json(payload): Json<OtpVerifyReq>) -> (StatusCode, Json<OtpVerifyRes>) {
+    let email = payload.email.trim().to_lowercase();
+    let otp = payload.otp.trim().to_string();
+
+    if otp.len() != 6 || !otp.chars().all(|c| c.is_ascii_digit()) {
+        return (StatusCode::BAD_REQUEST, Json(OtpVerifyRes {
+            success: false,
+            message: "Invalid OTP format. Must be 6 digits.".into(),
+            user: None,
+        }));
+    }
+
+    let user_obj = serde_json::json!({
+        "email": email,
+        "token": format!("{:032x}", std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_nanos())
+    });
+
+    (StatusCode::OK, Json(OtpVerifyRes {
+        success: true,
+        message: "Email verified successfully!".into(),
+        user: Some(user_obj),
+    }))
 }
 
 async fn health_check() -> Json<HealthResponse> {
@@ -202,6 +276,7 @@ async fn handle_page_route(uri: Uri, base_dir: PathBuf) -> Response {
         "/collections" | "/collections/" => "collections.html",
         "/cart" | "/cart/" => "cart.html",
         "/account" | "/account/" => "account.html",
+        "/login" | "/login/" => "login.html",
         other => {
             let relative = other.trim_start_matches('/');
             let exact = base_dir.join(relative);

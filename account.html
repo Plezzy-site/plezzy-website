@@ -3,6 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <script>
+      /* Require Login Authentication for Account Page */
+      (function() {
+        try {
+          var isLoggedIn = localStorage.getItem("plezzy_user_logged_in") === "true";
+          if (!isLoggedIn) {
+            window.location.replace("/login?redirect=" + encodeURIComponent(window.location.pathname + window.location.hash));
+          }
+        } catch(e) {}
+      })();
+    </script>
+
+    <script>
       /* Clean URL standard navigation: strip index.html and .html extensions */
       (function() {
         try {
