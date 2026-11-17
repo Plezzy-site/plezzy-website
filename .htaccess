@@ -1,32 +1,37 @@
+DirectoryIndex index.html
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
 
-  # 1. 301 Redirect index.html and index.php to clean root /
-  RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.(html|php) [NC]
-  RewriteRule ^index\.(html|php)$ / [R=301,L]
+  # 1. 301 Redirect any direct browser request for /index.html to clean root /
+  RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html [NC]
+  RewriteRule ^index\.html$ / [R=301,L]
 
-  # 2. 301 Redirect any *.html to clean URL (e.g. /collections.html -> /collections)
+  # 2. 301 Redirect direct requests for *.html to clean URL (e.g. /collections.html -> /collections)
   RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /([^\ ]+)\.html [NC]
   RewriteRule ^([^\ ]+)\.html$ /$1 [R=301,L]
 
-  # 3. Internally rewrite clean URL to the underlying .html file
+  # 3. Internally rewrite clean URL to the corresponding .html file
   RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{DOCUMENT_ROOT}/$1.html -f [OR]
   RewriteCond %{REQUEST_FILENAME}\.html -f
   RewriteRule ^([^\.]+)$ $1.html [NC,L]
 
-  # 4. Fallback for single-page app routing
+  # 4. Fallback for SPA routing (only if not root, not existing file, and not existing directory)
+  RewriteCond %{REQUEST_URI} !^/$
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule ^(.*)$ /index.html [L]
 </IfModule>
 
-# Caching & MIME types for high performance
+# Caching & Security & SEO Headers
 <IfModule mod_headers.c>
   <FilesMatch "\.(html|htm)$">
     Header set Cache-Control "no-cache, no-store, must-revalidate"
     Header set Pragma "no-cache"
     Header set Expires 0
+    Header set X-Robots-Tag "index, follow"
   </FilesMatch>
   <FilesMatch "\.(js|css|png|jpg|jpeg|gif|webp|svg|woff2?|ico|mp4)$">
     Header set Cache-Control "public, max-age=31536000, immutable"

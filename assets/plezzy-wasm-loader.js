@@ -29,3 +29,4 @@
     initPlezzyWasm();
   }
 })(window);
+

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://plezzy.in/sitemap.xml
+Sitemap: https://plezzy.tech/sitemap.xml

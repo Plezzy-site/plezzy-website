@@ -18,8 +18,9 @@
       })();
     </script>
 
-    <meta name="hosting-provider" content="Netlify">
-    <meta name="netlify-deploy" content="https://netlify.new/?utm_campaign=ai-legible&amp;utm_source=meta&amp;utm_medium=referral&amp;utm_id=49d0d0f0-8377-4c95-b39c-dede549f8578">
+    <!-- Search Engine Indexing (Clean Index & Follow) -->
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23f1f0ed'/><text x='50' y='64' font-family='sans-serif' font-size='42' font-weight='600' fill='%2367645e' text-anchor='middle'>p</text></svg>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="mobile-web-app-capable" content="yes" />
@@ -4272,26 +4273,33 @@
          PLEZZY 21+ AGE VERIFICATION MODAL (SINGLE DEDICATED SCREEN)
          ══════════════════════════════════════════════════════════════ -->
     <div id="plezzy-age-gate-overlay" style="display: flex; position: fixed; inset: 0; z-index: 999999; background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); align-items: center; justify-content: center; padding: 16px; box-sizing: border-box;">
-      <div style="position: relative; width: 90% !important; max-width: 420px !important; margin: 0 auto !important; border-radius: 28px; overflow: hidden; padding: 38px 28px; text-align: center; box-shadow: 0 25px 60px rgba(0,0,0,0.6), 0 0 50px rgba(248,39,147,0.35); display: flex; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box; background: linear-gradient(135deg, #fba18c 0%, #ff5297 45%, #e60067 100%); flex-shrink: 0;">
+      <div style="position: relative; width: 92% !important; max-width: 380px !important; margin: 0 auto !important; border-radius: 28px; overflow: hidden; padding: 36px 24px; text-align: center; box-shadow: 0 25px 60px rgba(0,0,0,0.5), 0 0 45px rgba(248,39,147,0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box; background: linear-gradient(135deg, #fba18c 0%, #ff5297 45%, #e60067 100%); flex-shrink: 0;">
         
         <!-- Background organic shapes -->
-        <div style="position: absolute; top: -50px; left: -50px; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.22) 0%, transparent 70%); pointer-events: none;"></div>
-        <div style="position: absolute; bottom: -60px; right: -40px; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle, rgba(255,200,180,0.35) 0%, transparent 70%); pointer-events: none;"></div>
+        <div style="position: absolute; top: -45px; left: -45px; width: 190px; height: 190px; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.22) 0%, transparent 70%); pointer-events: none;"></div>
+        <div style="position: absolute; bottom: -50px; right: -35px; width: 220px; height: 220px; border-radius: 50%; background: radial-gradient(circle, rgba(255,200,180,0.32) 0%, transparent 70%); pointer-events: none;"></div>
+
+        <!-- Stylized fluid heart monogram -->
+        <div style="position: relative; z-index: 2; margin-bottom: 2px; display: flex; align-items: center; justify-content: center;">
+          <svg width="34" height="34" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 28C14 20 18 14 24 14C29 14 34 18 32 24C30 30 20 34 16 34C14 34 12 32 14 28C16 22 22 17 28 20C32 22 32 26 29 28" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
 
         <!-- Brand Name: plezzy -->
-        <div style="position: relative; z-index: 2; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 38px; font-weight: 800; color: #ffffff; letter-spacing: -0.04em; margin-bottom: 6px; text-shadow: 0 2px 12px rgba(0,0,0,0.18); line-height: 1;">plezzy</div>
+        <div style="position: relative; z-index: 2; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 32px; font-weight: 800; color: #ffffff; letter-spacing: -0.04em; margin-bottom: 6px; text-shadow: 0 2px 12px rgba(0,0,0,0.18); line-height: 1;">plezzy</div>
 
         <!-- Heading: Are you over 21? -->
-        <h2 style="position: relative; z-index: 2; margin: 0 0 18px 0; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 22px; font-weight: 700; color: #ffffff; letter-spacing: -0.02em;">Are you over 21?</h2>
+        <h2 style="position: relative; z-index: 2; margin: 0 0 18px 0; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 21px; font-weight: 700; color: #ffffff; letter-spacing: -0.02em;">Are you over 21?</h2>
 
         <!-- Primary Pill Button: Yes I'm 21+ years old -->
-        <button type="button" id="plezzy-age-confirm-btn" onclick="verifyPlezzyAge()" style="position: relative; z-index: 2; width: 100%; max-width: 280px; padding: 14px 24px; border-radius: 9999px; background: #ffffff; color: #e60067; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13.5px; font-weight: 700; border: none; cursor: pointer; box-shadow: 0 8px 24px rgba(0,0,0,0.18); transition: transform 0.2s ease, box-shadow 0.2s ease; outline: none;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">Yes I'm 21+ years old</button>
+        <button type="button" id="plezzy-age-confirm-btn" onclick="verifyPlezzyAge()" style="position: relative; z-index: 2; width: 100%; max-width: 250px; padding: 13px 22px; border-radius: 9999px; background: #ffffff; color: #e60067; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13.5px; font-weight: 700; border: none; cursor: pointer; box-shadow: 0 8px 24px rgba(0,0,0,0.18); transition: transform 0.2s ease, box-shadow 0.2s ease; outline: none;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">Yes I'm 21+ years old</button>
 
         <!-- Secondary Link: Exit -->
-        <a href="https://www.google.com" style="position: relative; z-index: 2; margin-top: 14px; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; font-weight: 600; color: rgba(255, 255, 255, 0.9); text-decoration: underline; text-underline-offset: 4px; cursor: pointer; transition: color 0.15s ease;">Exit</a>
+        <a href="https://www.google.com" style="position: relative; z-index: 2; margin-top: 13px; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; font-weight: 600; color: rgba(255, 255, 255, 0.9); text-decoration: underline; text-underline-offset: 4px; cursor: pointer; transition: color 0.15s ease;">Exit</a>
 
         <!-- Legal Disclaimer -->
-        <p style="position: relative; z-index: 2; margin: 20px 0 0 0; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10.5px; line-height: 1.5; color: rgba(255, 255, 255, 0.8); max-width: 290px;">By entering the website, you are agreeing to the Terms of Use and Privacy Policy.</p>
+        <p style="position: relative; z-index: 2; margin: 18px 0 0 0; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10.5px; line-height: 1.5; color: rgba(255, 255, 255, 0.82); max-width: 280px;">By entering the website, you are agreeing to the Terms of Use and Privacy Policy.</p>
       </div>
     </div>
 
