@@ -1,0 +1,7 @@
+[workspace]
+members = [
+    "crates/plezzy-server",
+    "crates/plezzy-wasm",
+]
+resolver = "2"
+

@@ -2,6 +2,11 @@
 node_modules/
 package-lock.json
 
+# Rust & Cargo Build Artifacts
+/target/
+**/*.rs.bk
+Cargo.lock
+
 # Binaries & executables
 *.exe
 cloudflared.exe
