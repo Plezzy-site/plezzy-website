@@ -15220,15 +15220,31 @@ function SF() { const n = document.createElement("canvas"); n.style.position = "
   };
 
   return v.jsx("div", {
-    className: "fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-xs animate-in fade-in duration-200",
+    style: {
+      backgroundColor: "rgba(0, 0, 0, 0.82)",
+      backdropFilter: "blur(12px)",
+      WebkitBackdropFilter: "blur(12px)"
+    },
+    className: "fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200",
     children: v.jsxs("div", {
-      className: "relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl border border-[#dddedc] dark:border-[#2d2c29] bg-[#faf9f7] dark:bg-[#161514] shadow-2xl p-6 sm:p-8",
+      style: {
+        backgroundColor: "#ffffff",
+        color: "#1a1a1a",
+        boxShadow: "0 25px 80px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(0, 0, 0, 0.12)",
+        opacity: 1
+      },
+      className: "relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl border border-[#dddedc] p-6 sm:p-8 select-text",
       onClick: (w) => w.stopPropagation(),
       children: [
         // Close Button
         v.jsx("button", {
           onClick: handleClose,
-          className: "absolute top-5 right-5 w-8 h-8 rounded-full border border-[#dddedc] dark:border-[#2d2c29] bg-white dark:bg-[#1f1e1c] text-[#1a1a1a] dark:text-white flex items-center justify-center hover:bg-[#f1f0ed] transition-colors cursor-pointer",
+          style: {
+            backgroundColor: "#ffffff",
+            color: "#1a1a1a",
+            borderColor: "#dddedc"
+          },
+          className: "absolute top-5 right-5 w-8 h-8 rounded-full border border-[#dddedc] bg-white text-[#1a1a1a] flex items-center justify-center hover:bg-[#f1f0ed] transition-colors cursor-pointer shadow-sm",
           children: v.jsx(Ts, { className: "size-4" })
         }),
 
@@ -15467,7 +15483,7 @@ function SF() { const n = document.createElement("canvas"); n.style.position = "
                 v.jsxs("div", {
                   onClick: () => b("upi"),
                   className: "cursor-pointer rounded-2xl border p-4 flex items-center justify-between transition-all " +
-                    (y === "upi" ? "border-[#1a1a1a] dark:border-white bg-white dark:bg-[#252422] shadow-sm" : "border-[#dddedc] dark:border-[#2d2c29] bg-white/40 dark:bg-[#1c1b19]"),
+                    (y === "upi" ? "border-[#1a1a1a] dark:border-white bg-white dark:bg-[#252422] shadow-sm" : "border-[#dddedc] dark:border-[#2d2c29] bg-[#fbfaf8] dark:bg-[#1c1b19]"),
                   children: [
                     v.jsxs("div", {
                       className: "flex items-center gap-3",
@@ -15492,7 +15508,7 @@ function SF() { const n = document.createElement("canvas"); n.style.position = "
                 v.jsxs("div", {
                   onClick: () => b("card"),
                   className: "cursor-pointer rounded-2xl border p-4 flex items-center justify-between transition-all " +
-                    (y === "card" ? "border-[#1a1a1a] dark:border-white bg-white dark:bg-[#252422] shadow-sm" : "border-[#dddedc] dark:border-[#2d2c29] bg-white/40 dark:bg-[#1c1b19]"),
+                    (y === "card" ? "border-[#1a1a1a] dark:border-white bg-white dark:bg-[#252422] shadow-sm" : "border-[#dddedc] dark:border-[#2d2c29] bg-[#fbfaf8] dark:bg-[#1c1b19]"),
                   children: [
                     v.jsxs("div", {
                       className: "flex items-center gap-3",
@@ -15517,7 +15533,7 @@ function SF() { const n = document.createElement("canvas"); n.style.position = "
                 v.jsxs("div", {
                   onClick: () => b("cod"),
                   className: "cursor-pointer rounded-2xl border p-4 flex items-center justify-between transition-all " +
-                    (y === "cod" ? "border-[#1a1a1a] dark:border-white bg-white dark:bg-[#252422] shadow-sm" : "border-[#dddedc] dark:border-[#2d2c29] bg-white/40 dark:bg-[#1c1b19]"),
+                    (y === "cod" ? "border-[#1a1a1a] dark:border-white bg-white dark:bg-[#252422] shadow-sm" : "border-[#dddedc] dark:border-[#2d2c29] bg-[#fbfaf8] dark:bg-[#1c1b19]"),
                   children: [
                     v.jsxs("div", {
                       className: "flex items-center gap-3",
