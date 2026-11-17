@@ -12306,19 +12306,89 @@ function _F() {
                           color: "#111111",
                           boxShadow: "0 20px 45px -10px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(0, 0, 0, 0.08)",
                           borderRadius: "20px",
-                          minWidth: "230px",
+                          minWidth: "240px",
                           zIndex: 100
                         },
                         className: "absolute right-0 top-full mt-2.5 p-2 space-y-1 animate-in fade-in zoom-in-95 duration-150 select-none shadow-2xl",
-                        children: [
-                          // Dropdown Header
+                        children: !(typeof localStorage !== "undefined" && localStorage.getItem("plezzy_user_logged_in") === "true") ? [
+                          // ── GUEST DROPDOWN STATE (NOT LOGGED IN) ──
                           v.jsxs("div", {
-                            className: "px-3.5 py-2.5 border-b border-black/5 flex items-center justify-between",
+                            className: "px-3.5 py-2.5 border-b border-black/5 text-left",
+                            children: [
+                              v.jsx("p", { className: "text-[10px] font-extrabold uppercase tracking-wider text-[#777777]", children: "Your Account" }),
+                              v.jsx("p", { className: "text-xs font-semibold text-[#555555] mt-0.5", children: "To access orders & profile" })
+                            ]
+                          }),
+
+                          // Primary Log In / Sign Up Button
+                          v.jsx("div", {
+                            className: "pt-1.5 pb-1 px-1",
+                            children: v.jsxs("button", {
+                              type: "button",
+                              onClick: () => {
+                                setIsAccountDropdownOpen(false);
+                                window.location.href = "/login";
+                              },
+                              style: {
+                                background: "linear-gradient(135deg, #fba18c 0%, #ff5297 45%, #e60067 100%)",
+                                color: "#ffffff"
+                              },
+                              className: "w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-full text-xs font-bold shadow-md hover:opacity-95 transition-transform active:scale-95 cursor-pointer",
+                              children: [
+                                v.jsx("span", { children: "Log In / Sign Up" }),
+                                v.jsx("span", { className: "text-sm", children: "✨" })
+                              ]
+                            })
+                          }),
+
+                          // Divider
+                          v.jsx("div", { className: "my-1 border-t border-black/5" }),
+
+                          // Orders link for guest
+                          v.jsxs("button", {
+                            type: "button",
+                            onClick: () => {
+                              setIsAccountDropdownOpen(false);
+                              window.location.href = "/login?redirect=/account#orders";
+                            },
+                            className: "w-full flex items-center gap-3 px-3.5 py-2 text-xs font-semibold rounded-xl text-[#222222] hover:bg-[#fff0f7] hover:text-[#f82793] transition-colors cursor-pointer text-left",
+                            children: [
+                              v.jsx("span", { className: "text-base", children: "📦" }),
+                              v.jsx("span", { children: "Orders & Tracking" })
+                            ]
+                          }),
+
+                          // Wishlist link for guest
+                          v.jsxs("button", {
+                            type: "button",
+                            onClick: () => {
+                              setIsAccountDropdownOpen(false);
+                              window.location.href = "/login?redirect=/account#wishlist";
+                            },
+                            className: "w-full flex items-center gap-3 px-3.5 py-2 text-xs font-semibold rounded-xl text-[#222222] hover:bg-[#fff0f7] hover:text-[#f82793] transition-colors cursor-pointer text-left",
+                            children: [
+                              v.jsx("span", { className: "text-base", children: "♡" }),
+                              v.jsx("span", { children: "Saved Wishlist" })
+                            ]
+                          }),
+
+                          // Discreet Session Assurance
+                          v.jsxs("div", {
+                            className: "px-3.5 py-2 text-[10px] text-[#888888] flex items-center gap-1.5 border-t border-black/5 mt-1 text-left",
+                            children: [
+                              v.jsx("span", { className: "text-xs", children: "🔒" }),
+                              v.jsx("span", { children: "Discreet 21+ shopping session" })
+                            ]
+                          })
+                        ] : [
+                          // ── LOGGED-IN DROPDOWN STATE ──
+                          v.jsxs("div", {
+                            className: "px-3.5 py-2.5 border-b border-black/5 flex items-center justify-between text-left",
                             children: [
                               v.jsxs("div", {
                                 children: [
                                   v.jsx("p", { className: "text-[10.5px] font-extrabold uppercase tracking-wider text-[#777777]", children: "Your Account" }),
-                                  v.jsx("p", { className: "text-xs font-bold text-[#111111] truncate max-w-[160px]", children: (typeof localStorage !== "undefined" && localStorage.getItem("plezzy_user_name")) || "Khushwant Singh" })
+                                  v.jsx("p", { className: "text-xs font-bold text-[#111111] truncate max-w-[160px]", children: (typeof localStorage !== "undefined" && (localStorage.getItem("plezzy_user_name") || localStorage.getItem("plezzy_user_email"))) || "VIP Member" })
                                 ]
                               }),
                               v.jsx("span", { className: "w-2 h-2 rounded-full bg-emerald-500", title: "Active Session" })
@@ -12349,7 +12419,7 @@ function _F() {
                                   v.jsx("span", { children: "Orders" })
                                 ]
                               }),
-                              v.jsx("span", { className: "text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-black/5 font-bold text-[#555555]", children: "2" })
+                              v.jsx("span", { className: "text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-black/5 font-bold text-[#555555]", children: allOrders.length || "0" })
                             ]
                           }),
 
@@ -12377,7 +12447,7 @@ function _F() {
                                   v.jsx("span", { children: "Wishlist" })
                                 ]
                               }),
-                              v.jsx("span", { className: "text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-pink-100 font-bold text-[#f82793]", children: "3" })
+                              v.jsx("span", { className: "text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-pink-100 font-bold text-[#f82793]", children: wishlist.length || "0" })
                             ]
                           }),
 
@@ -12406,6 +12476,9 @@ function _F() {
                             type: "button",
                             onClick: () => {
                               setIsAccountDropdownOpen(false);
+                              try {
+                                localStorage.removeItem("plezzy_user_logged_in");
+                              } catch(e) {}
                               navigateToAccount("logout");
                             },
                             className: "w-full flex items-center gap-3 px-3.5 py-2 text-xs font-semibold rounded-xl text-rose-600 hover:bg-rose-50 transition-colors cursor-pointer text-left",
