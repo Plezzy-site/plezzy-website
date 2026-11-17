@@ -12419,7 +12419,7 @@ function _F() {
                                   v.jsx("span", { children: "Orders" })
                                 ]
                               }),
-                              v.jsx("span", { className: "text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-black/5 font-bold text-[#555555]", children: allOrders.length || "0" })
+                              v.jsx("span", { className: "text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-black/5 font-bold text-[#555555]", children: "2" })
                             ]
                           }),
 
@@ -12447,7 +12447,7 @@ function _F() {
                                   v.jsx("span", { children: "Wishlist" })
                                 ]
                               }),
-                              v.jsx("span", { className: "text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-pink-100 font-bold text-[#f82793]", children: wishlist.length || "0" })
+                              v.jsx("span", { className: "text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-pink-100 font-bold text-[#f82793]", children: "3" })
                             ]
                           }),
 
