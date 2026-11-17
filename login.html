@@ -272,45 +272,7 @@
         color: rgba(255, 255, 255, 0.5);
       }
 
-      /* Banner / Toast notification */
-      .notification-banner {
-        position: fixed;
-        top: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 99999;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 12px 20px;
-        border-radius: 9999px;
-        background: rgba(20, 16, 26, 0.95);
-        border: 1px solid rgba(248, 39, 147, 0.4);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(248, 39, 147, 0.25);
-        backdrop-filter: blur(16px);
-        font-size: 12.5px;
-        color: #ffffff;
-        animation: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        max-width: 90vw;
-      }
-      @keyframes slideDown {
-        from { opacity: 0; transform: translate(-50%, -12px); }
-        to { opacity: 1; transform: translate(-50%, 0); }
-      }
-      .pill-btn-autofill {
-        background: #ff479d;
-        border: none;
-        border-radius: 9999px;
-        padding: 5px 12px;
-        font-size: 11px;
-        font-weight: 800;
-        color: #ffffff;
-        cursor: pointer;
-        transition: transform 0.15s ease;
-      }
-      .pill-btn-autofill:hover {
-        transform: scale(1.05);
-      }
+      
 
       /* Success Screen */
       .success-checkmark {
@@ -415,20 +377,7 @@
     <div class="glow-orb-1"></div>
     <div class="glow-orb-2"></div>
 
-    <!-- Live OTP Dev Toast / Floating Banner (appears when OTP is sent) -->
-    <div id="otp-toast-banner" class="notification-banner" style="display: none;">
-      <span id="toast-text">🔑 Verification Code: <strong>849201</strong></span>
-      <button type="button" class="pill-btn-autofill" onclick="autofillReceivedOtp()">Auto-Fill</button>
-      <button type="button" style="background: none; border: none; color: rgba(255,255,255,0.6); cursor: pointer; font-size: 14px;" onclick="document.getElementById('otp-toast-banner').style.display='none'">✕</button>
-    </div>
-
-    <!-- Main Auth Card -->
-    <div class="auth-container">
-      <!-- Brand Logo -->
-      <div class="brand-header">
-        <a href="/" class="brand-logo">plezzy</a>
-        <div class="brand-badge">Discreet • Passwordless</div>
-      </div>
+    
 
       <!-- ══════════════════════════════════════════════════════════
            STEP 1: ENTER NAME & EMAIL ADDRESS
@@ -488,8 +437,11 @@
       <div id="auth-step-2" style="display: none;">
         <h2 class="auth-title">Verify Your Email</h2>
         <p class="auth-desc">
-          Enter the 6-digit code sent to<br>
-          <strong id="display-target-email" style="color: #ffffff;">email@example.com</strong>
+          We sent a 6-digit verification code to<br>
+          <strong id="display-target-email" style="color: #ffffff;">email@example.com</strong><br>
+          <span style="display: inline-flex; align-items: center; gap: 4px; margin-top: 6px; color: #10b981; font-size: 12px; font-weight: 600;">
+            <span>✓</span> Check your email inbox or spam folder
+          </span>
         </p>
 
         <form id="step-2-form" onsubmit="handleVerifyOtp(event)">
@@ -612,15 +564,6 @@
         return code;
       }
 
-      function autofillReceivedOtp() {
-        if (!lastGeneratedOtp) return;
-        for (var i = 0; i < otpInputs.length; i++) {
-          otpInputs[i].value = lastGeneratedOtp[i] || '';
-        }
-        document.getElementById("otp-toast-banner").style.display = "none";
-        handleVerifyOtp();
-      }
-
       // 1. Send OTP
       async function handleSendOtp(e) {
         if (e) e.preventDefault();
@@ -652,15 +595,17 @@
             body: JSON.stringify({ name: currentName, email: currentEmail, action: "send" })
           });
           var data = await resp.json();
-          if (data && data.preview_otp) {
-            lastGeneratedOtp = data.preview_otp;
+          if (data && !data.success && data.error) {
+            alert(data.error);
+            btn.disabled = false;
+            btn.innerHTML = '<span>Send Verification Code</span>';
+            return;
           }
         } catch(err) {
-          // Local / Static Mode fallback
-          console.log("Using localized OTP simulation:", fallbackOtp);
+          console.warn("Backend notification endpoint unreachable:", err);
         }
 
-        // Store active OTP record locally for guaranteed reliability
+        // Store active OTP session record
         try {
           sessionStorage.setItem("plezzy_pending_otp_" + currentEmail, lastGeneratedOtp);
           sessionStorage.setItem("plezzy_pending_name_" + currentEmail, currentName);
@@ -670,9 +615,7 @@
         document.getElementById("auth-step-1").style.display = "none";
         document.getElementById("auth-step-2").style.display = "block";
         document.getElementById("display-target-email").textContent = currentEmail;
-
-        // Show Dev / Instant Preview Toast with the Code
-        showOtpToast(lastGeneratedOtp, currentEmail);
+        
 
         // Start 45s Resend Countdown
         startResendTimer();
@@ -686,12 +629,7 @@
         btn.innerHTML = '<span>Send Verification Code</span>';
       }
 
-      function showOtpToast(otp, email) {
-        var toast = document.getElementById("otp-toast-banner");
-        var text = document.getElementById("toast-text");
-        text.innerHTML = '🔑 Code for <strong>' + email + '</strong> is <strong style="color: #ff479d; font-size: 15px; letter-spacing: 2px;">' + otp + '</strong>';
-        toast.style.display = "flex";
-      }
+      
 
       function startResendTimer() {
         var timeLeft = 45;
@@ -722,7 +660,7 @@
       function backToStep1() {
         document.getElementById("auth-step-2").style.display = "none";
         document.getElementById("auth-step-1").style.display = "block";
-        document.getElementById("otp-toast-banner").style.display = "none";
+        
         if (countdownTimer) clearInterval(countdownTimer);
       }
 
@@ -790,7 +728,7 @@
           document.getElementById("auth-step-2").style.display = "none";
           document.getElementById("auth-step-3").style.display = "block";
           document.getElementById("welcome-user-title").textContent = "Welcome, " + firstName + "!";
-          document.getElementById("otp-toast-banner").style.display = "none";
+          
 
           // Redirect to account or previous page
           setTimeout(function() {

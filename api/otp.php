@@ -53,7 +53,7 @@ if ($action === 'send' || (isset($input['action']) && $input['action'] === 'send
     $otp = strval(random_int(100000, 999999));
     $expiresAt = time() + 600; // 10 minutes validity
 
-    // Store OTP in JSON store and session
+    // Store OTP securely
     $store = readOtpStore($otpStoreFile);
     $store[$email] = [
         'name' => $name,
@@ -65,21 +65,55 @@ if ($action === 'send' || (isset($input['action']) && $input['action'] === 'send
     writeOtpStore($otpStoreFile, $store);
     $_SESSION['plezzy_otp_' . $email] = $otp;
 
-    // Send real email via PHP mail() if server supports it
+    // Send formatted HTML verification email
+    $host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'plezzy.in';
+    $senderDomain = preg_replace('/^www\./', '', $host);
+    if (!filter_var('test@' . $senderDomain, FILTER_VALIDATE_EMAIL)) {
+        $senderDomain = 'plezzy.in';
+    }
+
     $subject = "Your Plezzy Verification Code: {$otp}";
-    $message = "Hello {$name},\n\nYour 6-digit login verification code for Plezzy is:\n\n    {$otp}\n\nThis code expires in 10 minutes.\nIf you did not request this code, you can safely ignore this email.\n\nWarm regards,\nTeam Plezzy";
-    $headers = "From: Plezzy Security <no-reply@plezzy.in>\r\n" .
-               "Reply-To: support@plezzy.in\r\n" .
-               "X-Mailer: PHP/" . phpversion();
+    
+    $htmlMessage = '<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #08070b; color: #ffffff; padding: 40px 16px; margin: 0; }
+  .card { max-width: 480px; margin: 0 auto; background: #16131c; border: 1px solid rgba(255,255,255,0.12); border-radius: 24px; padding: 36px 28px; text-align: center; }
+  .brand { font-size: 32px; font-weight: 800; color: #ffffff; letter-spacing: -0.04em; margin-bottom: 8px; }
+  .title { font-size: 20px; font-weight: 700; color: #ffffff; margin-bottom: 12px; }
+  .desc { font-size: 13.5px; color: rgba(255,255,255,0.7); line-height: 1.5; margin-bottom: 28px; }
+  .otp-box { display: inline-block; padding: 16px 32px; border-radius: 16px; background: rgba(248,39,147,0.15); border: 1.5px solid #f82793; font-size: 32px; font-weight: 800; letter-spacing: 6px; color: #ff479d; margin-bottom: 24px; font-family: monospace; }
+  .footer { font-size: 11px; color: rgba(255,255,255,0.45); line-height: 1.5; margin-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); pt: 16px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="brand">plezzy</div>
+  <div class="title">Email Verification Code</div>
+  <div class="desc">Hello ' . htmlspecialchars($name) . ',<br>Use the 6-digit verification code below to securely sign in to your Plezzy account.</div>
+  <div class="otp-box">' . htmlspecialchars($otp) . '</div>
+  <div class="desc" style="font-size: 12px; margin-bottom: 0;">This code will expire in <strong>10 minutes</strong>.<br>If you did not request this verification, please ignore this email.</div>
+  <div class="footer">100% Discreet & Confidential &bull; Plezzy Modern Pleasure Essentials</div>
+</div>
+</body>
+</html>';
 
-    @mail($email, $subject, $message, $headers);
+    $headers  = "MIME-Version: 1.0\r\n";
+    $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+    $headers .= "From: Plezzy Security <no-reply@" . $senderDomain . ">\r\n";
+    $headers .= "Reply-To: support@" . $senderDomain . "\r\n";
+    $headers .= "X-Mailer: PHP/" . phpversion();
 
+    @mail($email, $subject, $htmlMessage, $headers);
+
+    // Return clean response without revealing the OTP code on screen
     echo json_encode([
         'success' => true,
         'message' => 'Verification code sent to ' . $email,
         'email' => $email,
-        'name' => $name,
-        'preview_otp' => $otp // Provided for instant preview / dev feedback
+        'name' => $name
     ]);
     exit();
 }
@@ -113,7 +147,7 @@ if ($action === 'verify' || (isset($input['action']) && $input['action'] === 've
         }
     }
 
-    // Also check session fallback
+    // Session fallback
     if (!$isMatch && isset($_SESSION['plezzy_otp_' . $email]) && $_SESSION['plezzy_otp_' . $email] === $otp) {
         $isMatch = true;
     }

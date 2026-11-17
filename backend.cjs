@@ -443,8 +443,7 @@ async function handleApiRequest(req, res, parsedUrl) {
         success: true,
         message: 'Verification code sent to ' + email,
         email,
-        name,
-        preview_otp: otp
+        name
       });
     });
     return true;

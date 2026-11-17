@@ -121,7 +121,6 @@ struct OtpSendRes {
     message: String,
     email: String,
     name: String,
-    preview_otp: String,
 }
 
 #[derive(Deserialize)]
@@ -152,7 +151,6 @@ async fn handle_otp_send(Json(payload): Json<OtpSendReq>) -> Json<OtpSendRes> {
         message: format!("Verification code sent to {}", email),
         email,
         name,
-        preview_otp: otp,
     })
 }
 
