@@ -13,9 +13,9 @@ if (!defined('DB_HOST')) {
     define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
 }
 
-// Hostinger Database Name (e.g., u123456789_plezzy)
+// Hostinger Database Name (from your phpMyAdmin: u364814416_Plezzy)
 if (!defined('DB_NAME')) {
-    define('DB_NAME', getenv('DB_NAME') ?: 'plezzy_db');
+    define('DB_NAME', getenv('DB_NAME') ?: 'u364814416_Plezzy');
 }
 
 // Hostinger Database Username
