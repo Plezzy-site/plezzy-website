@@ -14569,84 +14569,187 @@ function _F() {
       // TOPICALS STRUCTURED 5-COLUMN FOOTER (Hidden in Admin Mode)
       // ══════════════════════════════════════════════════════════════
       !isAdminView && v.jsx("footer", {
-        className: "w-full bg-[#0c0a10]/90 backdrop-blur-2xl border-t border-white/10 pt-16 pb-12 px-4 sm:px-8 mt-14 relative z-10 select-none text-white", children:
+        className: "w-full bg-[#08070b]/95 backdrop-blur-3xl border-t border-white/[0.08] pt-14 pb-10 px-4 sm:px-8 mt-14 relative z-10 select-none text-white", children:
           v.jsxs("div", {
             className: "max-w-7xl mx-auto space-y-12", children: [
 
-              // 5-Column Navigation Grid
+              // 1. Discreet Brand Trust & Reassurance Strip
+              v.jsx("div", {
+                className: "border-b border-white/[0.08] pb-10",
+                children: v.jsxs("div", {
+                  className: "grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 text-left",
+                  children: [
+                    v.jsxs("div", {
+                      className: "flex items-start gap-3.5 group",
+                      children: [
+                        v.jsx("div", { className: "w-9 h-9 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center shrink-0 text-base text-[#f82793] group-hover:border-[#f82793]/40 transition-colors", children: "📦" }),
+                        v.jsxs("div", { className: "space-y-0.5", children: [
+                          v.jsx("h6", { className: "text-xs font-bold text-white tracking-wide", children: "100% Plain Packaging" }),
+                          v.jsx("p", { className: "text-[11px] text-white/50 leading-relaxed", children: "Unmarked carton with zero brand or product labels." })
+                        ]})
+                      ]
+                    }),
+                    v.jsxs("div", {
+                      className: "flex items-start gap-3.5 group",
+                      children: [
+                        v.jsx("div", { className: "w-9 h-9 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center shrink-0 text-base text-[#f82793] group-hover:border-[#f82793]/40 transition-colors", children: "🔒" }),
+                        v.jsxs("div", { className: "space-y-0.5", children: [
+                          v.jsx("h6", { className: "text-xs font-bold text-white tracking-wide", children: "Discreet Billing" }),
+                          v.jsx("p", { className: "text-[11px] text-white/50 leading-relaxed", children: "Neutral billing descriptor on your payment statement." })
+                        ]})
+                      ]
+                    }),
+                    v.jsxs("div", {
+                      className: "flex items-start gap-3.5 group",
+                      children: [
+                        v.jsx("div", { className: "w-9 h-9 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center shrink-0 text-base text-[#f82793] group-hover:border-[#f82793]/40 transition-colors", children: "⚡" }),
+                        v.jsxs("div", { className: "space-y-0.5", children: [
+                          v.jsx("h6", { className: "text-xs font-bold text-white tracking-wide", children: "Express Stealth Dispatch" }),
+                          v.jsx("p", { className: "text-[11px] text-white/50 leading-relaxed", children: "Priority 2-3 day shipping across India." })
+                        ]})
+                      ]
+                    }),
+                    v.jsxs("div", {
+                      className: "flex items-start gap-3.5 group",
+                      children: [
+                        v.jsx("div", { className: "w-9 h-9 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center shrink-0 text-base text-[#f82793] group-hover:border-[#f82793]/40 transition-colors", children: "🛡️" }),
+                        v.jsxs("div", { className: "space-y-0.5", children: [
+                          v.jsx("h6", { className: "text-xs font-bold text-white tracking-wide", children: "Hygienic Factory Seals" }),
+                          v.jsx("p", { className: "text-[11px] text-white/50 leading-relaxed", children: "100% body-safe medical silicone & 1-year guarantee." })
+                        ]})
+                      ]
+                    })
+                  ]
+                })
+              }),
+
+              // 2. 5-Column Balanced Navigation Grid
               v.jsxs("div", {
-                id: "footer-nav-grid", className: "grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 sm:gap-10 text-left text-xs uppercase tracking-wider", children: [
-                  // 1. SHOP
+                id: "footer-nav-grid",
+                className: "grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 sm:gap-10 text-left text-xs",
+                children: [
+                  // Col 1: The Editions (Devices)
                   v.jsxs("div", {
-                    className: "space-y-3", children: [
-                      v.jsx("h5", { className: "font-extrabold text-white tracking-widest", children: "THE COLLECTION" }),
+                    className: "space-y-3.5", children: [
+                      v.jsxs("h5", {
+                        className: "font-bold text-xs text-white tracking-[0.16em] uppercase flex items-center gap-2",
+                        children: [
+                          v.jsx("span", { className: "w-1.5 h-1.5 rounded-full bg-[#f82793]" }),
+                          "The Editions"
+                        ]
+                      }),
+                      v.jsx("ul", {
+                        className: "space-y-2 text-white/60",
+                        children: prods.slice(0, 5).map(p => v.jsx("li", {
+                          key: p.id,
+                          children: v.jsx("button", {
+                            onClick: () => handleSelectProduct(p),
+                            className: "hover:text-[#f82793] hover:translate-x-0.5 transition-all cursor-pointer text-left normal-case text-xs text-white/65 leading-relaxed block",
+                            children: p.name
+                          })
+                        }))
+                      })
+                    ]
+                  }),
+
+                  // Col 2: Sets & Accessories
+                  v.jsxs("div", {
+                    className: "space-y-3.5", children: [
+                      v.jsxs("h5", {
+                        className: "font-bold text-xs text-white tracking-[0.16em] uppercase flex items-center gap-2",
+                        children: [
+                          v.jsx("span", { className: "w-1.5 h-1.5 rounded-full bg-[#f82793]" }),
+                          "Sets & Rituals"
+                        ]
+                      }),
                       v.jsxs("ul", {
-                        className: "space-y-2.5 text-white/60", children: [
-                          prods.map(p => v.jsx("li", {
-                            key: p.id, children:
-                              v.jsx("button", { onClick: () => handleSelectProduct(p), className: "hover:text-[#f82793] transition-colors cursor-pointer text-left", children: p.name })
+                        className: "space-y-2 text-white/60",
+                        children: [
+                          prods.slice(5).map(p => v.jsx("li", {
+                            key: p.id,
+                            children: v.jsx("button", {
+                              onClick: () => handleSelectProduct(p),
+                              className: "hover:text-[#f82793] hover:translate-x-0.5 transition-all cursor-pointer text-left normal-case text-xs text-white/65 leading-relaxed block",
+                              children: p.name
+                            })
                           })),
-                          v.jsx("li", { children: v.jsx("button", { onClick: handleShopClick, className: "hover:text-[#f82793] font-bold text-white transition-colors cursor-pointer", children: "All Editions →" }) })
+                          v.jsx("li", {
+                            className: "pt-1",
+                            children: v.jsx("button", {
+                              onClick: handleShopClick,
+                              className: "text-[#f82793] hover:text-[#ff479d] font-bold transition-colors cursor-pointer text-xs flex items-center gap-1",
+                              children: "All Editions & Bundles →"
+                            })
+                          })
                         ]
                       })
                     ]
                   }),
 
-                  // 2. HELP
+                  // Col 3: Concierge & Help
                   v.jsxs("div", {
-                    className: "space-y-3", children: [
-                      v.jsx("h5", { className: "font-extrabold text-white tracking-widest", children: "HELP" }),
+                    className: "space-y-3.5", children: [
+                      v.jsxs("h5", {
+                        className: "font-bold text-xs text-white tracking-[0.16em] uppercase flex items-center gap-2",
+                        children: [
+                          v.jsx("span", { className: "w-1.5 h-1.5 rounded-full bg-white/30" }),
+                          "Concierge & Help"
+                        ]
+                      }),
                       v.jsxs("ul", {
-                        className: "space-y-2.5 text-white/60", children: [
-                          v.jsx("li", { children: v.jsx("button", { onClick: () => a("contact"), className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "Contact" }) }),
-                          v.jsx("li", { children: v.jsx("button", { onClick: () => a("faq"), className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "FAQs" }) }),
-                          v.jsx("li", { children: v.jsx("button", { onClick: () => a("shipping"), className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "Shipping" }) }),
-                          v.jsx("li", { children: v.jsx("button", { onClick: () => a("shipping"), className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "Returns" }) }),
-                          v.jsx("li", { children: v.jsx("button", { onClick: () => a("tracking"), className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "Order Tracking" }) })
+                        className: "space-y-2 text-white/60",
+                        children: [
+                          v.jsx("li", { children: v.jsx("button", { onClick: () => a("contact"), className: "hover:text-[#f82793] hover:translate-x-0.5 transition-all cursor-pointer normal-case text-xs text-white/65 block", children: "Contact Concierge" }) }),
+                          v.jsx("li", { children: v.jsx("button", { onClick: () => a("faq"), className: "hover:text-[#f82793] hover:translate-x-0.5 transition-all cursor-pointer normal-case text-xs text-white/65 block", children: "FAQs & Ritual Guides" }) }),
+                          v.jsx("li", { children: v.jsx("button", { onClick: () => a("shipping"), className: "hover:text-[#f82793] hover:translate-x-0.5 transition-all cursor-pointer normal-case text-xs text-white/65 block", children: "Discreet Stealth Shipping" }) }),
+                          v.jsx("li", { children: v.jsx("button", { onClick: () => a("shipping"), className: "hover:text-[#f82793] hover:translate-x-0.5 transition-all cursor-pointer normal-case text-xs text-white/65 block", children: "Returns & Exchanges" }) }),
+                          v.jsx("li", { children: v.jsx("button", { onClick: () => a("tracking"), className: "hover:text-[#f82793] hover:translate-x-0.5 transition-all cursor-pointer normal-case text-xs text-white/65 block", children: "Track Your Order" }) })
                         ]
                       })
                     ]
                   }),
 
-                  // 3. ABOUT
+                  // Col 4: About Plezzy
                   v.jsxs("div", {
-                    className: "space-y-3", children: [
-                      v.jsx("h5", { className: "font-extrabold text-white tracking-widest", children: "ABOUT" }),
+                    className: "space-y-3.5", children: [
+                      v.jsxs("h5", {
+                        className: "font-bold text-xs text-white tracking-[0.16em] uppercase flex items-center gap-2",
+                        children: [
+                          v.jsx("span", { className: "w-1.5 h-1.5 rounded-full bg-white/30" }),
+                          "About Plezzy"
+                        ]
+                      }),
                       v.jsxs("ul", {
-                        className: "space-y-2.5 text-white/60", children: [
-                          v.jsx("li", { children: v.jsx("button", { onClick: () => { s(); if (isPdp) handleBackToHome(); setTimeout(() => { const el = document.getElementById("campaign-statement"); if (el) el.scrollIntoView({ behavior: "smooth" }); }, 100) }, className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "Our Story" }) }),
-                          v.jsx("li", { children: v.jsx("button", { onClick: () => { s(); if (isPdp) handleBackToHome(); setTimeout(() => { const el = document.getElementById("campaign-video"); if (el) el.scrollIntoView({ behavior: "smooth" }); }, 100) }, className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "Journal" }) }),
-                          v.jsx("li", { children: v.jsx("button", { onClick: () => { s(); if (isPdp) handleBackToHome(); setTimeout(() => { const el = document.getElementById("campaign-statement"); if (el) el.scrollIntoView({ behavior: "smooth" }); }, 100) }, className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "Careers" }) })
+                        className: "space-y-2 text-white/60",
+                        children: [
+                          v.jsx("li", { children: v.jsx("button", { onClick: () => { s(); if (isPdp) handleBackToHome(); setTimeout(() => { const el = document.getElementById("campaign-statement"); if (el) el.scrollIntoView({ behavior: "smooth" }); }, 100) }, className: "hover:text-[#f82793] hover:translate-x-0.5 transition-all cursor-pointer normal-case text-xs text-white/65 block", children: "Our Story & Ethos" }) }),
+                          v.jsx("li", { children: v.jsx("button", { onClick: () => { s(); if (isPdp) handleBackToHome(); setTimeout(() => { const el = document.getElementById("campaign-video"); if (el) el.scrollIntoView({ behavior: "smooth" }); }, 100) }, className: "hover:text-[#f82793] hover:translate-x-0.5 transition-all cursor-pointer normal-case text-xs text-white/65 block", children: "The Pleasure Journal" }) }),
+                          v.jsx("li", { children: v.jsx("button", { onClick: () => { s(); if (isPdp) handleBackToHome(); setTimeout(() => { const el = document.getElementById("campaign-statement"); if (el) el.scrollIntoView({ behavior: "smooth" }); }, 100) }, className: "hover:text-[#f82793] hover:translate-x-0.5 transition-all cursor-pointer normal-case text-xs text-white/65 block", children: "Body-Safe Standards" }) }),
+                          v.jsx("li", { children: v.jsx("button", { onClick: () => { s(); if (isPdp) handleBackToHome(); setTimeout(() => { const el = document.getElementById("campaign-statement"); if (el) el.scrollIntoView({ behavior: "smooth" }); }, 100) }, className: "hover:text-[#f82793] hover:translate-x-0.5 transition-all cursor-pointer normal-case text-xs text-white/65 block", children: "Careers & Press" }) })
                         ]
                       })
                     ]
                   }),
 
-                  // 4. FOLLOW
+                  // Col 5: Connect & Legal
                   v.jsxs("div", {
-                    className: "space-y-3", children: [
-                      v.jsx("h5", { className: "font-extrabold text-white tracking-widest", children: "FOLLOW" }),
-                      v.jsxs("ul", {
-                        className: "space-y-2.5 text-white/60", children: [
-                          v.jsx("li", { children: v.jsx("a", { href: "https://instagram.com", target: "_blank", rel: "noopener noreferrer", className: "hover:text-white transition-colors", children: "Instagram" }) }),
-                          v.jsx("li", { children: v.jsx("a", { href: "https://tiktok.com", target: "_blank", rel: "noopener noreferrer", className: "hover:text-white transition-colors", children: "TikTok" }) }),
-                          v.jsx("li", { children: v.jsx("a", { href: "https://youtube.com", target: "_blank", rel: "noopener noreferrer", className: "hover:text-white transition-colors", children: "YouTube" }) }),
-                          v.jsx("li", { children: v.jsx("button", { onClick: navigateToAdmin, className: "hover:text-[#f82793] text-[#f82793] font-bold transition-colors cursor-pointer", children: "Admin Portal →" }) })
+                    className: "space-y-3.5", children: [
+                      v.jsxs("h5", {
+                        className: "font-bold text-xs text-white tracking-[0.16em] uppercase flex items-center gap-2",
+                        children: [
+                          v.jsx("span", { className: "w-1.5 h-1.5 rounded-full bg-white/30" }),
+                          "Connect & Legal"
                         ]
-                      })
-                    ]
-                  }),
-
-                  // 5. LEGAL
-                  v.jsxs("div", {
-                    className: "space-y-3", children: [
-                      v.jsx("h5", { className: "font-extrabold text-white tracking-widest", children: "LEGAL" }),
+                      }),
                       v.jsxs("ul", {
-                        className: "space-y-2.5 text-white/60", children: [
-                          v.jsx("li", { children: v.jsx("button", { onClick: () => a("faq"), className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "Privacy Policy" }) }),
-                          v.jsx("li", { children: v.jsx("button", { onClick: () => a("faq"), className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "Terms of Service" }) }),
-                          v.jsx("li", { children: v.jsx("button", { onClick: () => a("shipping"), className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "Shipping Policy" }) }),
-                          v.jsx("li", { children: v.jsx("button", { onClick: () => a("shipping"), className: "hover:text-[#f82793] transition-colors cursor-pointer", children: "Refund Policy" }) })
+                        className: "space-y-2 text-white/60",
+                        children: [
+                          v.jsx("li", { children: v.jsx("a", { href: "https://instagram.com", target: "_blank", rel: "noopener noreferrer", className: "hover:text-[#f82793] hover:translate-x-0.5 transition-all normal-case text-xs text-white/65 flex items-center gap-1.5", children: ["Instagram", v.jsx("span", { className: "text-[10px] text-white/30", children: "↗" })] }) }),
+                          v.jsx("li", { children: v.jsx("a", { href: "https://tiktok.com", target: "_blank", rel: "noopener noreferrer", className: "hover:text-[#f82793] hover:translate-x-0.5 transition-all normal-case text-xs text-white/65 flex items-center gap-1.5", children: ["TikTok", v.jsx("span", { className: "text-[10px] text-white/30", children: "↗" })] }) }),
+                          v.jsx("li", { children: v.jsx("a", { href: "https://youtube.com", target: "_blank", rel: "noopener noreferrer", className: "hover:text-[#f82793] hover:translate-x-0.5 transition-all normal-case text-xs text-white/65 flex items-center gap-1.5", children: ["YouTube", v.jsx("span", { className: "text-[10px] text-white/30", children: "↗" })] }) }),
+                          v.jsx("li", { children: v.jsx("button", { onClick: () => a("faq"), className: "hover:text-[#f82793] hover:translate-x-0.5 transition-all cursor-pointer normal-case text-xs text-white/65 block", children: "Privacy Policy" }) }),
+                          v.jsx("li", { children: v.jsx("button", { onClick: () => a("faq"), className: "hover:text-[#f82793] hover:translate-x-0.5 transition-all cursor-pointer normal-case text-xs text-white/65 block", children: "Terms of Service" }) }),
+                          v.jsx("li", { children: v.jsx("button", { onClick: () => a("shipping"), className: "hover:text-[#f82793] hover:translate-x-0.5 transition-all cursor-pointer normal-case text-xs text-white/65 block", children: "Shipping & Refunds" }) })
                         ]
                       })
                     ]
@@ -14655,19 +14758,36 @@ function _F() {
                 ]
               }),
 
-              // Bottom Bar: Country / Currency Selector + Discreet Guarantee + Copyright
+              // 3. Bottom Bar: Currency + Discreet Guarantee + Copyright + Discreet Admin Link
               v.jsxs("div", {
-                className: "pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-white/40", children: [
+                className: "pt-8 border-t border-white/[0.08] flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-white/40",
+                children: [
                   v.jsxs("div", {
-                    className: "flex items-center gap-2", children: [
-                      v.jsx("span", { className: "font-bold text-white", children: "India (INR ₹)" }),
-                      v.jsx("span", { children: "•" }),
-                      v.jsx("span", { children: "tax inclusive" }),
-                      v.jsx("span", { children: "•" }),
-                      v.jsx("span", { children: "100% discreet packaging guaranteed" })
+                    className: "flex flex-wrap items-center justify-center sm:justify-start gap-2 text-center",
+                    children: [
+                      v.jsx("span", { className: "font-bold text-white/90", children: "India (INR ₹)" }),
+                      v.jsx("span", { className: "text-white/20", children: "•" }),
+                      v.jsx("span", { children: "All taxes included" }),
+                      v.jsx("span", { className: "text-white/20", children: "•" }),
+                      v.jsx("span", { className: "text-[#f82793]/90 font-medium", children: "100% discreet packaging guaranteed" })
                     ]
                   }),
-                  v.jsx("div", { children: "plezzy © 2026 • everyday essentials, done well." })
+                  v.jsxs("div", {
+                    className: "flex items-center gap-4",
+                    children: [
+                      v.jsx("span", { children: "plezzy © 2026 • modern pleasure essentials, done well." }),
+                      v.jsx("span", { className: "text-white/20", children: "•" }),
+                      v.jsxs("button", {
+                        onClick: navigateToAdmin,
+                        className: "hover:text-[#f82793] text-white/35 transition-colors cursor-pointer flex items-center gap-1 font-mono text-[10.5px]",
+                        title: "Admin Management Portal",
+                        children: [
+                          v.jsx("span", { children: "🔒" }),
+                          "Admin"
+                        ]
+                      })
+                    ]
+                  })
                 ]
               })
 
