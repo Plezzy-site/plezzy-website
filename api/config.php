@@ -20,12 +20,12 @@ if (!defined('DB_NAME')) {
 
 // Hostinger Database Username
 if (!defined('DB_USER')) {
-    define('DB_USER', getenv('DB_USER') ?: 'root');
+    define('DB_USER', getenv('DB_USER') ?: 'u364814416_Plezzydata');
 }
 
 // Hostinger Database Password
 if (!defined('DB_PASS')) {
-    define('DB_PASS', getenv('DB_PASS') ?: '');
+    define('DB_PASS', getenv('DB_PASS') ?: 'Plezzy@123');
 }
 
 // MySQL Port (Default 3306)
