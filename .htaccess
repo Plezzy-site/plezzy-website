@@ -12,6 +12,20 @@ DirectoryIndex index.html
   RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /([^\ ]+)\.html [NC]
   RewriteRule ^([^\ ]+)\.html$ /$1 [R=301,L]
 
+  # ── HOSTINGER PHP REST API ROUTING ────────────────────────────
+  RewriteRule ^api/products/?$ /api/products.php [QSA,L]
+  RewriteRule ^api/products/([a-zA-Z0-9_-]+)/?$ /api/products.php?id=$1 [QSA,L]
+  RewriteRule ^api/orders/export/?$ /api/orders.php?export=csv [QSA,L]
+  RewriteRule ^api/orders/([a-zA-Z0-9_-]+)/status/?$ /api/orders.php?id=$1&action=status [QSA,L]
+  RewriteRule ^api/orders/([a-zA-Z0-9_-]+)/?$ /api/orders.php?id=$1 [QSA,L]
+  RewriteRule ^api/orders/?$ /api/orders.php [QSA,L]
+  RewriteRule ^api/customers/?$ /api/customers.php [QSA,L]
+  RewriteRule ^api/admin/stats/?$ /api/stats.php [QSA,L]
+  RewriteRule ^api/upload/?$ /api/upload.php [QSA,L]
+  RewriteRule ^api/auth/otp/send/?$ /api/otp.php?action=send [QSA,L]
+  RewriteRule ^api/auth/otp/verify/?$ /api/otp.php?action=verify [QSA,L]
+  RewriteRule ^api/setup/?$ /api/setup.php [QSA,L]
+
   # 3. Internally rewrite clean URL to the corresponding .html file
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{DOCUMENT_ROOT}/$1.html -f [OR]

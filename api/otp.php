@@ -1,5 +1,7 @@
 <?php
 // PLEZZY Production OTP Verification API (Hostinger Apache/PHP Compatible)
+require_once __DIR__ . '/db.php';
+
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
@@ -65,6 +67,15 @@ if ($action === 'send' || (isset($input['action']) && $input['action'] === 'send
     writeOtpStore($otpStoreFile, $store);
     $_SESSION['plezzy_otp_' . $email] = $otp;
 
+    // Record in MySQL if connected
+    $pdo = PlezzyDB::getConnection();
+    if ($pdo) {
+        try {
+            $stmt = $pdo->prepare("INSERT INTO otp_verifications (email, name, otp_code, expires_at, ip_address) VALUES (?, ?, ?, ?, ?)");
+            $stmt->execute([$email, $name, $otp, date('Y-m-d H:i:s', $expiresAt), $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1']);
+        } catch (Exception $e) {}
+    }
+
     // Send formatted HTML verification email
     $host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'plezzy.in';
     $senderDomain = preg_replace('/^www\./', '', $host);
@@ -111,6 +122,8 @@ if ($action === 'send' || (isset($input['action']) && $input['action'] === 'send
     // Return clean response without revealing the OTP code on screen
     echo json_encode([
         'success' => true,
+        'message' => 'Verification code sent to ' . $em
+    ail,
         'message' => 'Verification code sent to ' . $email,
         'email' => $email,
         'name' => $name
@@ -135,7 +148,22 @@ if ($action === 'verify' || (isset($input['action']) && $input['action'] === 've
     $isMatch = false;
     $userName = '';
 
-    if ($validEntry) {
+    // Check MySQL records first
+    $pdo = PlezzyDB::getConnection();
+    if ($pdo) {
+        try {
+            $stmt = $pdo->prepare("SELECT * FROM otp_verifications WHERE email = ? AND otp_code = ? AND expires_at > NOW() AND is_verified = 0 ORDER BY id DESC LIMIT 1");
+            $stmt->execute([$email, $otp]);
+            $row = $stmt->fetch();
+            if ($row) {
+                $isMatch = true;
+                $userName = $row['name'] ?: $userName;
+                $pdo->prepare("UPDATE otp_verifications SET is_verified = 1 WHERE id = ?")->execute([$row['id']]);
+            }
+        } catch (Exception $e) {}
+    }
+
+    if (!$isMatch && $validEntry) {
         if (time() > $validEntry['expires_at']) {
             http_response_code(400);
             echo json_encode(['success' => false, 'error' => 'Verification code has expired. Please request a new one.']);
