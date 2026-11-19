@@ -70,7 +70,7 @@ try {
     $isConnected = true;
 
     // Check tables
-    $tables = ['products', 'orders', 'customers', 'otp_verifications', 'admin_settings'];
+    $tables = ['products', 'orders', 'customers', 'newsletter_subscribers', 'otp_verifications', 'admin_settings'];
     foreach ($tables as $tbl) {
         try {
             $stmt = $pdo->query("SELECT COUNT(*) AS c FROM `{$tbl}`");

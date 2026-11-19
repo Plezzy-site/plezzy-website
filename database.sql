@@ -7,6 +7,10 @@
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
+-- Automatically select the Hostinger Plezzy database
+CREATE DATABASE IF NOT EXISTS `u364814416_Plezzy` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE `u364814416_Plezzy`;
+
 -- ------------------------------------------------------------------------------
 -- 1. TABLE: products
 -- Stores the complete product catalog, pricing, availability, and media
