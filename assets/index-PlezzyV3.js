@@ -11917,10 +11917,28 @@ function _F() {
   };
 
   // Video & Newsletter Interactive State
-  const [isVideoPlaying, setIsVideoPlaying] = G.useState(true);
+  const [isVideoPlaying, setIsVideoPlaying] = G.useState(false);
   const [isVideoMuted, setIsVideoMuted] = G.useState(true);
   const [newsletterEmail, setNewsletterEmail] = G.useState("");
   const [newsletterSubmitted, setNewsletterSubmitted] = G.useState(false);
+
+  // Lazy-load and smart auto-play video only when visible in viewport (saves 11MB initial bandwidth)
+  G.useEffect(() => {
+    const vid = document.getElementById("plezzy-campaign-video");
+    if (!vid || !window.IntersectionObserver) return;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          vid.play().then(() => setIsVideoPlaying(true)).catch(() => {});
+        } else {
+          vid.pause();
+          setIsVideoPlaying(false);
+        }
+      });
+    }, { rootMargin: "250px" });
+    observer.observe(vid);
+    return () => observer.disconnect();
+  }, []);
 
   const toggleVideoPlay = () => {
     const vid = document.getElementById("plezzy-campaign-video");
@@ -14352,11 +14370,13 @@ function _F() {
                 style: { width: "100%", minHeight: "100vh", height: "100vh" },
                 children: [
 
-                  // Native Video Element
+                  // Native Video Element (Optimized: Lazy Buffering & Lightweight Poster)
                   v.jsx("video", {
                     id: "plezzy-campaign-video",
                     src: "/plezzy-hero-video.mp4?v=20260925",
-                    autoPlay: true,
+                    preload: "none",
+                    poster: "/assets/plezzy-hero-banner.jpg",
+                    autoPlay: false,
                     loop: true,
                     muted: true,
                     playsInline: true,
