@@ -103,15 +103,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         $msgType = "error";
     } else {
         $testSubject = "PLEZZY VIP Test Delivery • " . date('H:i:s');
+        $siteUrl = 'https://plezzy.in';
         $testBody = '
         <div style="font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif; background:#08070b; color:#fff; padding:32px 24px; border-radius:20px; max-width:480px; margin:0 auto; text-align:center;">
-          <h1 style="color:#f82793; font-size:28px; margin:0 0 10px 0;">plezzy</h1>
-          <p style="font-size:14px; color:#aaa; margin:0 0 20px 0;">Inbox Verification Test</p>
+          <a href="' . $siteUrl . '" style="text-decoration:none;" target="_blank"><h1 style="color:#f82793; font-size:28px; margin:0 0 6px 0;">plezzy</h1></a>
+          <p style="font-size:13px; color:#aaa; margin:0 0 20px 0;">Inbox Verification Test</p>
           <div style="background:rgba(248,39,147,0.12); border:1.5px dashed #f82793; border-radius:14px; padding:16px; margin-bottom:20px;">
             <p style="font-size:11px; text-transform:uppercase; letter-spacing:1px; color:#ddd; margin:0 0 6px 0;">VIP Code</p>
             <h2 style="color:#f82793; font-size:24px; margin:0; letter-spacing:3px;">PLEZZY10</h2>
           </div>
-          <p style="font-size:12px; color:#888;">If you received this email, your PLEZZY email delivery pipeline is 100% operational!</p>
+          <div style="margin-bottom:20px;">
+            <a href="' . $siteUrl . '" style="display:inline-block; padding:12px 28px; border-radius:9999px; background:#f82793; color:#fff; text-decoration:none; font-size:12px; font-weight:700; text-transform:uppercase;" target="_blank">Visit Website &rarr;</a>
+          </div>
+          <p style="font-size:12px; color:#aaa; margin:0 0 6px 0;">Direct Site Link: <a href="' . $siteUrl . '" style="color:#f82793; font-weight:bold;" target="_blank">' . $siteUrl . '</a></p>
+          <p style="font-size:11px; color:#666;">If you received this email, your PLEZZY email delivery pipeline is 100% operational!</p>
         </div>';
 
         $result = PlezzyMailer::send($testTo, $testSubject, $testBody);

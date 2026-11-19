@@ -89,40 +89,51 @@ if ($method === 'POST') {
     }
     PlezzyDB::writeJson($subscribersFile, $subscribers);
 
-    // 3. Send Luxury Branded VIP Welcome Email via PHP mail()
-    $host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'plezzy.in';
-    $senderDomain = preg_replace('/^www\./', '', $host);
-    if (!filter_var('test@' . $senderDomain, FILTER_VALIDATE_EMAIL)) {
-        $senderDomain = 'plezzy.in';
-    }
-
+    // 3. Send Luxury Branded VIP Welcome Email via PlezzyMailer
+    $siteUrl = 'https://plezzy.in';
     $subject = "Welcome to PLEZZY • Here is your 10% VIP gift";
 
     $htmlBody = '<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome to PLEZZY</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #08070b; color: #ffffff; padding: 40px 16px; margin: 0; }
-  .card { max-width: 500px; margin: 0 auto; background: #14111a; border: 1px solid rgba(255,255,255,0.12); border-radius: 28px; padding: 40px 32px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
-  .brand { font-size: 34px; font-weight: 800; color: #f82793; letter-spacing: -0.04em; margin-bottom: 8px; }
-  .tagline { font-size: 11px; text-transform: uppercase; letter-spacing: 0.25em; color: rgba(255,255,255,0.45); margin-bottom: 24px; }
-  .title { font-size: 22px; font-weight: 700; color: #ffffff; margin-bottom: 12px; }
-  .desc { font-size: 13.5px; color: rgba(255,255,255,0.7); line-height: 1.6; margin-bottom: 28px; }
-  .code-container { background: rgba(248,39,147,0.12); border: 1.5px dashed #f82793; border-radius: 20px; padding: 20px; margin: 0 auto 28px auto; max-width: 320px; }
-  .code-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(255,255,255,0.6); margin-bottom: 6px; }
-  .code-value { font-size: 28px; font-weight: 900; color: #f82793; letter-spacing: 4px; font-family: monospace; }
-  .btn-shop { display: inline-block; padding: 14px 36px; border-radius: 9999px; background: #f82793; color: #ffffff; text-decoration: none; font-size: 12.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 28px; }
-  .guarantees { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; text-align: left; }
-  .guarantee-item { font-size: 11.5px; color: rgba(255,255,255,0.6); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-  .footer { font-size: 10.5px; color: rgba(255,255,255,0.35); margin-top: 24px; line-height: 1.5; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background-color: #08070b; color: #ffffff; padding: 36px 12px; margin: 0; }
+  .card { max-width: 520px; margin: 0 auto; background: #14111a; border: 1px solid rgba(255,255,255,0.14); border-radius: 28px; padding: 40px 32px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
+  .brand-link { text-decoration: none; display: inline-block; }
+  .brand { font-size: 36px; font-weight: 800; color: #f82793; letter-spacing: -0.04em; margin-bottom: 6px; }
+  .tagline { font-size: 11px; text-transform: uppercase; letter-spacing: 0.25em; color: rgba(255,255,255,0.5); margin-bottom: 26px; }
+  .title { font-size: 23px; font-weight: 700; color: #ffffff; margin-bottom: 12px; }
+  .desc { font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.6; margin-bottom: 26px; }
+  
+  .code-container { background: rgba(248,39,147,0.12); border: 1.5px dashed #f82793; border-radius: 20px; padding: 22px 16px; margin: 0 auto 24px auto; max-width: 340px; }
+  .code-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(255,255,255,0.7); margin-bottom: 6px; }
+  .code-value { font-size: 30px; font-weight: 900; color: #f82793; letter-spacing: 4px; font-family: monospace; }
+  .code-hint { font-size: 11.5px; color: rgba(255,255,255,0.55); margin-top: 6px; }
+
+  .btn-shop { display: inline-block; padding: 16px 42px; border-radius: 9999px; background: #f82793; color: #ffffff !important; text-decoration: none; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 18px; box-shadow: 0 10px 25px rgba(248,39,147,0.4); }
+  
+  .site-link-box { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 12px 16px; margin: 0 auto 28px auto; max-width: 380px; font-size: 12.5px; color: rgba(255,255,255,0.7); }
+  .site-url { color: #f82793 !important; font-weight: 700; text-decoration: underline; word-break: break-all; }
+
+  .guarantees { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; text-align: left; margin-bottom: 24px; }
+  .guarantee-item { font-size: 12px; color: rgba(255,255,255,0.65); margin-bottom: 9px; display: flex; align-items: center; gap: 8px; }
+  
+  .footer { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 18px; font-size: 11px; color: rgba(255,255,255,0.4); line-height: 1.6; }
+  .footer-links { margin-top: 8px; }
+  .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; margin: 0 8px; }
+  .footer-links a:hover { color: #f82793; }
 </style>
 </head>
 <body>
 <div class="card">
-  <div class="brand">plezzy</div>
+  <a href="' . $siteUrl . '" class="brand-link" target="_blank">
+    <div class="brand">plezzy</div>
+  </a>
   <div class="tagline">Everyday Essentials, Done Well</div>
-  <div class="title">You\'re on the list.</div>
+  <div class="title">You\'re on the VIP list.</div>
   <div class="desc">
     Welcome to the PLEZZY insider circle. You\'ll receive discreet early access to our sensory drops, limited color editions, and member rituals.
   </div>
@@ -130,11 +141,18 @@ if ($method === 'POST') {
   <div class="code-container">
     <div class="code-label">Your VIP Welcome Gift</div>
     <div class="code-value">' . htmlspecialchars($discountCode) . '</div>
-    <div style="font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 6px;">Use code at checkout for 10% off your entire order</div>
+    <div class="code-hint">Use code at checkout for 10% off your entire order</div>
   </div>
 
   <div>
-    <a href="https://' . htmlspecialchars($senderDomain) . '" class="btn-shop">Explore The Editions &rarr;</a>
+    <a href="' . $siteUrl . '?discount=' . htmlspecialchars($discountCode) . '" class="btn-shop" target="_blank">
+      Shop The Editions &rarr;
+    </a>
+  </div>
+
+  <div class="site-link-box">
+    <span>Direct Site Link: </span>
+    <a href="' . $siteUrl . '" class="site-url" target="_blank">' . $siteUrl . '</a>
   </div>
 
   <div class="guarantees">
@@ -144,8 +162,12 @@ if ($method === 'POST') {
   </div>
 
   <div class="footer">
-    100% Confidential &bull; Plezzy Modern Intimate Essentials<br>
-    Unsubscribe anytime with one click.
+    100% Confidential &bull; Plezzy Modern Intimate Essentials
+    <div class="footer-links">
+      <a href="' . $siteUrl . '" target="_blank">Visit Website (' . str_replace('https://', '', $siteUrl) . ')</a> &bull;
+      <a href="' . $siteUrl . '/collections.html" target="_blank">Collections</a> &bull;
+      <a href="' . $siteUrl . '/account.html" target="_blank">Account</a>
+    </div>
   </div>
 </div>
 </body>
