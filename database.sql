@@ -144,6 +144,24 @@ CREATE TABLE IF NOT EXISTS `admin_settings` (
   PRIMARY KEY (`setting_key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- ------------------------------------------------------------------------------
+-- 6. TABLE: newsletter_subscribers
+-- Email list for 'STAY IN THE LOOP' private offers & VIP discount delivery
+-- ------------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `newsletter_subscribers` (
+  `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `email` VARCHAR(191) NOT NULL,
+  `status` ENUM('active', 'unsubscribed') NOT NULL DEFAULT 'active',
+  `discount_code` VARCHAR(64) DEFAULT 'PLEZZY10',
+  `ip_address` VARCHAR(64) DEFAULT NULL,
+  `user_agent` TEXT DEFAULT NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `idx_subscriber_email` (`email`),
+  KEY `idx_subscriber_status` (`status`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Seed default promo code & brand settings
 INSERT INTO `admin_settings` (`setting_key`, `setting_value`) VALUES
 ('promo_codes', '[{"code":"PLEZZY10","discountPercent":10,"active":true},{"code":"VIP20","discountPercent":20,"active":true}]'),

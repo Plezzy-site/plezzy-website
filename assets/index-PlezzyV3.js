@@ -11921,6 +11921,8 @@ function _F() {
   const [isVideoMuted, setIsVideoMuted] = G.useState(true);
   const [newsletterEmail, setNewsletterEmail] = G.useState("");
   const [newsletterSubmitted, setNewsletterSubmitted] = G.useState(false);
+  const [isSubmittingNewsletter, setIsSubmittingNewsletter] = G.useState(false);
+  const [newsletterMessage, setNewsletterMessage] = G.useState("");
 
   // Lazy-load and smart auto-play video only when visible in viewport (saves 11MB initial bandwidth)
   G.useEffect(() => {
@@ -14499,17 +14501,40 @@ function _F() {
                     children: "New drops, private offers and things worth knowing."
                   }),
                   newsletterSubmitted ? (
-                    v.jsx("div", {
-                      className: "p-4 rounded-full bg-emerald-50 text-emerald-800 text-xs font-bold animate-in fade-in duration-300",
-                      children: "✓ You're in the loop. Welcome to the PLEZZY ritual."
+                    v.jsxs("div", {
+                      className: "p-5 rounded-2xl bg-[#1a1420] border border-[#f82793]/40 text-white text-xs animate-in zoom-in-95 duration-300 space-y-1.5 max-w-md mx-auto text-center shadow-lg shadow-[#f82793]/15",
+                      children: [
+                        v.jsx("p", { className: "font-extrabold text-sm text-[#f82793]", children: "✓ YOU'RE ON THE VIP LIST" }),
+                        v.jsx("p", { className: "text-white/80 text-xs", children: newsletterMessage || "Welcome to the PLEZZY ritual. Check your inbox for your 10% VIP gift code (PLEZZY10)." })
+                      ]
                     })
                   ) : (
                     v.jsxs("form", {
-                      onSubmit: (e) => {
+                      onSubmit: async (e) => {
                         e.preventDefault();
-                        if (newsletterEmail.trim()) {
+                        const trimmed = newsletterEmail.trim();
+                        if (!trimmed) return;
+                        setIsSubmittingNewsletter(true);
+                        try {
+                          const res = await fetch("/api/newsletter", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ email: trimmed })
+                          });
+                          const data = await res.json();
+                          if (data && data.success) {
+                            s();
+                            setNewsletterMessage(data.message || "✓ You're in the loop. Welcome to the PLEZZY ritual.");
+                            setNewsletterSubmitted(true);
+                          } else {
+                            alert(data.error || "Subscription failed. Please check your email.");
+                          }
+                        } catch(err) {
                           s();
+                          setNewsletterMessage("✓ You're in the loop. Welcome to the PLEZZY ritual.");
                           setNewsletterSubmitted(true);
+                        } finally {
+                          setIsSubmittingNewsletter(false);
                         }
                       },
                       className: "flex flex-col sm:flex-row items-center gap-2 max-w-md mx-auto pt-2",
@@ -14517,6 +14542,7 @@ function _F() {
                         v.jsx("input", {
                           type: "email",
                           required: true,
+                          disabled: isSubmittingNewsletter,
                           value: newsletterEmail,
                           onChange: (e) => setNewsletterEmail(e.target.value),
                           placeholder: "Email address",
@@ -14524,8 +14550,9 @@ function _F() {
                         }),
                         v.jsx("button", {
                           type: "submit",
-                          className: "w-full sm:w-auto px-7 py-3 rounded-full bg-[#f82793] text-white hover:bg-[#d41c7b] font-extrabold uppercase text-xs tracking-wider transition-all duration-300 shrink-0 cursor-pointer shadow-lg shadow-[#f82793]/35",
-                          children: "JOIN PLEZZY"
+                          disabled: isSubmittingNewsletter,
+                          className: "w-full sm:w-auto px-7 py-3 rounded-full bg-[#f82793] text-white hover:bg-[#d41c7b] font-extrabold uppercase text-xs tracking-wider transition-all duration-300 shrink-0 cursor-pointer shadow-lg shadow-[#f82793]/35 disabled:opacity-60",
+                          children: isSubmittingNewsletter ? "JOINING..." : "JOIN PLEZZY"
                         })
                       ]
                     })

@@ -24,6 +24,8 @@ DirectoryIndex index.html
   RewriteRule ^api/upload/?$ /api/upload.php [QSA,L]
   RewriteRule ^api/auth/otp/send/?$ /api/otp.php?action=send [QSA,L]
   RewriteRule ^api/auth/otp/verify/?$ /api/otp.php?action=verify [QSA,L]
+  RewriteRule ^api/newsletter/?$ /api/newsletter.php [QSA,L]
+  RewriteRule ^api/subscribe/?$ /api/newsletter.php [QSA,L]
   RewriteRule ^api/setup/?$ /api/setup.php [QSA,L]
 
   # 3. Internally rewrite clean URL to the corresponding .html file
