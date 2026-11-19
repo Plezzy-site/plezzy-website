@@ -7,6 +7,7 @@
  */
 
 require_once __DIR__ . '/db.php';
+require_once __DIR__ . '/mailer.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 $pdo = PlezzyDB::getConnection();
@@ -150,19 +151,16 @@ if ($method === 'POST') {
 </body>
 </html>';
 
-    $headers  = "MIME-Version: 1.0\r\n";
-    $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-    $headers .= "From: Plezzy VIP <no-reply@" . $senderDomain . ">\r\n";
-    $headers .= "Reply-To: support@" . $senderDomain . "\r\n";
-    $headers .= "X-Mailer: PHP/" . phpversion();
-
-    @mail($email, $subject, $htmlBody, $headers);
+    // Send VIP Welcome Email
+    $mailResult = PlezzyMailer::send($email, $subject, $htmlBody);
 
     PlezzyDB::json([
         'success' => true,
         'message' => "You're in the loop! Check your inbox for your 10% VIP gift code.",
         'discountCode' => $discountCode,
-        'email' => $email
+        'email' => $email,
+        'emailSent' => $mailResult['success'],
+        'deliveryMethod' => $mailResult['method'] ?? 'unknown'
     ], 200);
 }
 

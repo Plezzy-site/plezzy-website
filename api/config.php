@@ -33,5 +33,18 @@ if (!defined('DB_PORT')) {
     define('DB_PORT', getenv('DB_PORT') ?: 3306);
 }
 
+// ==============================================================================
+// Hostinger SMTP & Email Configuration
+// Hostinger Webmail/Titan Mail SMTP settings:
+// Host: smtp.hostinger.com | Port: 465 (SSL) or 587 (TLS)
+// ==============================================================================
+if (!defined('SMTP_HOST')) define('SMTP_HOST', getenv('SMTP_HOST') ?: 'smtp.hostinger.com');
+if (!defined('SMTP_PORT')) define('SMTP_PORT', getenv('SMTP_PORT') ?: 465);
+if (!defined('SMTP_SECURE')) define('SMTP_SECURE', getenv('SMTP_SECURE') ?: 'ssl');
+if (!defined('SMTP_USER')) define('SMTP_USER', getenv('SMTP_USER') ?: '');
+if (!defined('SMTP_PASS')) define('SMTP_PASS', getenv('SMTP_PASS') ?: '');
+if (!defined('SMTP_FROM_EMAIL')) define('SMTP_FROM_EMAIL', getenv('SMTP_FROM_EMAIL') ?: 'support@plezzy.in');
+if (!defined('SMTP_FROM_NAME')) define('SMTP_FROM_NAME', getenv('SMTP_FROM_NAME') ?: 'PLEZZY VIP');
+
 // Timezone
 date_default_timezone_set('Asia/Kolkata');
