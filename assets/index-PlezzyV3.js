@@ -14622,48 +14622,137 @@ function _F() {
 
               // 1. Discreet Brand Trust & Reassurance Strip
               v.jsx("div", {
-                className: "border-b border-white/[0.08] pb-10",
+                className: "border-b border-white/[0.08] pb-12",
                 children: v.jsxs("div", {
-                  className: "grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 text-left",
+                  className: "space-y-6",
                   children: [
                     v.jsxs("div", {
-                      className: "flex items-start gap-3.5 group",
+                      className: "flex items-center justify-between px-1",
                       children: [
-                        v.jsx("div", { className: "w-9 h-9 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center shrink-0 text-base text-[#f82793] group-hover:border-[#f82793]/40 transition-colors", children: "📦" }),
-                        v.jsxs("div", { className: "space-y-0.5", children: [
-                          v.jsx("h6", { className: "text-xs font-bold text-white tracking-wide", children: "100% Plain Packaging" }),
-                          v.jsx("p", { className: "text-[11px] text-white/50 leading-relaxed", children: "Unmarked carton with zero brand or product labels." })
-                        ]})
+                        v.jsxs("div", {
+                          className: "flex items-center gap-2.5",
+                          children: [
+                            v.jsx("span", { className: "w-2 h-2 rounded-full bg-[#f82793] shadow-[0_0_10px_#f82793]" }),
+                            v.jsx("span", { className: "text-xs font-mono uppercase tracking-[0.24em] text-white/80 font-bold", children: "The Plezzy Discretion Standards" })
+                          ]
+                        }),
+                        v.jsx("span", { className: "hidden sm:inline-block text-[11.5px] text-white/40 tracking-wider font-medium", children: "Standard on Every Order • 100% Confidential" })
                       ]
                     }),
                     v.jsxs("div", {
-                      className: "flex items-start gap-3.5 group",
+                      className: "plezzy-trust-bento-grid text-left",
                       children: [
-                        v.jsx("div", { className: "w-9 h-9 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center shrink-0 text-base text-[#f82793] group-hover:border-[#f82793]/40 transition-colors", children: "🔒" }),
-                        v.jsxs("div", { className: "space-y-0.5", children: [
-                          v.jsx("h6", { className: "text-xs font-bold text-white tracking-wide", children: "Discreet Billing" }),
-                          v.jsx("p", { className: "text-[11px] text-white/50 leading-relaxed", children: "Neutral billing descriptor on your payment statement." })
-                        ]})
-                      ]
-                    }),
-                    v.jsxs("div", {
-                      className: "flex items-start gap-3.5 group",
-                      children: [
-                        v.jsx("div", { className: "w-9 h-9 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center shrink-0 text-base text-[#f82793] group-hover:border-[#f82793]/40 transition-colors", children: "⚡" }),
-                        v.jsxs("div", { className: "space-y-0.5", children: [
-                          v.jsx("h6", { className: "text-xs font-bold text-white tracking-wide", children: "Express Stealth Dispatch" }),
-                          v.jsx("p", { className: "text-[11px] text-white/50 leading-relaxed", children: "Priority 2-3 day shipping across India." })
-                        ]})
-                      ]
-                    }),
-                    v.jsxs("div", {
-                      className: "flex items-start gap-3.5 group",
-                      children: [
-                        v.jsx("div", { className: "w-9 h-9 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center shrink-0 text-base text-[#f82793] group-hover:border-[#f82793]/40 transition-colors", children: "🛡️" }),
-                        v.jsxs("div", { className: "space-y-0.5", children: [
-                          v.jsx("h6", { className: "text-xs font-bold text-white tracking-wide", children: "Hygienic Factory Seals" }),
-                          v.jsx("p", { className: "text-[11px] text-white/50 leading-relaxed", children: "100% body-safe medical silicone & 1-year guarantee." })
-                        ]})
+                        // Card 1: 100% Plain Packaging
+                        v.jsxs("div", {
+                          className: "plezzy-trust-card",
+                          children: [
+                            v.jsx("div", {
+                              className: "plezzy-trust-icon-box",
+                              children: v.jsx("svg", {
+                                className: "w-5 h-5",
+                                fill: "none",
+                                viewBox: "0 0 24 24",
+                                stroke: "currentColor",
+                                strokeWidth: "1.8",
+                                children: v.jsx("path", {
+                                  strokeLinecap: "round",
+                                  strokeLinejoin: "round",
+                                  d: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+                                })
+                              })
+                            }),
+                            v.jsxs("div", {
+                              className: "min-w-0 flex-1",
+                              children: [
+                                v.jsx("h6", { className: "plezzy-trust-card-title", children: "100% Plain Packaging" }),
+                                v.jsx("p", { className: "plezzy-trust-card-desc", children: "Unmarked carton with zero brand or product labels." })
+                              ]
+                            })
+                          ]
+                        }),
+                        // Card 2: Discreet Billing
+                        v.jsxs("div", {
+                          className: "plezzy-trust-card",
+                          children: [
+                            v.jsx("div", {
+                              className: "plezzy-trust-icon-box",
+                              children: v.jsxs("svg", {
+                                className: "w-5 h-5",
+                                fill: "none",
+                                viewBox: "0 0 24 24",
+                                stroke: "currentColor",
+                                strokeWidth: "1.8",
+                                children: [
+                                  v.jsx("rect", { x: "3", y: "11", width: "18", height: "11", rx: "2", ry: "2" }),
+                                  v.jsx("path", { strokeLinecap: "round", strokeLinejoin: "round", d: "M7 11V7a5 5 0 0110 0v4" })
+                                ]
+                              })
+                            }),
+                            v.jsxs("div", {
+                              className: "min-w-0 flex-1",
+                              children: [
+                                v.jsx("h6", { className: "plezzy-trust-card-title", children: "Discreet Billing" }),
+                                v.jsx("p", { className: "plezzy-trust-card-desc", children: "Neutral billing descriptor on your payment statement." })
+                              ]
+                            })
+                          ]
+                        }),
+                        // Card 3: Express Stealth Dispatch
+                        v.jsxs("div", {
+                          className: "plezzy-trust-card",
+                          children: [
+                            v.jsx("div", {
+                              className: "plezzy-trust-icon-box",
+                              children: v.jsx("svg", {
+                                className: "w-5 h-5",
+                                fill: "none",
+                                viewBox: "0 0 24 24",
+                                stroke: "currentColor",
+                                strokeWidth: "1.8",
+                                children: v.jsx("path", {
+                                  strokeLinecap: "round",
+                                  strokeLinejoin: "round",
+                                  d: "M13 10V3L4 14h7v7l9-11h-7z"
+                                })
+                              })
+                            }),
+                            v.jsxs("div", {
+                              className: "min-w-0 flex-1",
+                              children: [
+                                v.jsx("h6", { className: "plezzy-trust-card-title", children: "Express Stealth Dispatch" }),
+                                v.jsx("p", { className: "plezzy-trust-card-desc", children: "Priority 2-3 day shipping across India." })
+                              ]
+                            })
+                          ]
+                        }),
+                        // Card 4: Hygienic Factory Seals
+                        v.jsxs("div", {
+                          className: "plezzy-trust-card",
+                          children: [
+                            v.jsx("div", {
+                              className: "plezzy-trust-icon-box",
+                              children: v.jsx("svg", {
+                                className: "w-5 h-5",
+                                fill: "none",
+                                viewBox: "0 0 24 24",
+                                stroke: "currentColor",
+                                strokeWidth: "1.8",
+                                children: v.jsx("path", {
+                                  strokeLinecap: "round",
+                                  strokeLinejoin: "round",
+                                  d: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                                })
+                              })
+                            }),
+                            v.jsxs("div", {
+                              className: "min-w-0 flex-1",
+                              children: [
+                                v.jsx("h6", { className: "plezzy-trust-card-title", children: "Hygienic Factory Seals" }),
+                                v.jsx("p", { className: "plezzy-trust-card-desc", children: "100% body-safe medical silicone & 1-year guarantee." })
+                              ]
+                            })
+                          ]
+                        })
                       ]
                     })
                   ]
